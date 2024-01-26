@@ -1,0 +1,708 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		16E008B92B63FDDB004F83F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008B82B63FDDB004F83F0 /* AppDelegate.swift */; };
+		16E008BB2B63FDDB004F83F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008BA2B63FDDB004F83F0 /* SceneDelegate.swift */; };
+		16E008C02B63FDDB004F83F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16E008BE2B63FDDB004F83F0 /* Main.storyboard */; };
+		16E008C22B63FDDB004F83F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16E008C12B63FDDB004F83F0 /* Assets.xcassets */; };
+		16E008C52B63FDDB004F83F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16E008C32B63FDDB004F83F0 /* LaunchScreen.storyboard */; };
+		16E008D02B63FDDC004F83F0 /* DrugBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008CF2B63FDDC004F83F0 /* DrugBoxTests.swift */; };
+		16E008DA2B63FDDC004F83F0 /* DrugBoxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008D92B63FDDC004F83F0 /* DrugBoxUITests.swift */; };
+		16E008DC2B63FDDC004F83F0 /* DrugBoxUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008DB2B63FDDC004F83F0 /* DrugBoxUITestsLaunchTests.swift */; };
+		16E008F32B6401B2004F83F0 /* MenuSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008F22B6401B2004F83F0 /* MenuSelectViewController.swift */; };
+		16E008F72B640459004F83F0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008F62B640459004F83F0 /* LoginViewController.swift */; };
+		16E008F92B6404FF004F83F0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008F82B6404FF004F83F0 /* Constants.swift */; };
+		16E008FB2B640BD6004F83F0 /* AlarmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008FA2B640BD6004F83F0 /* AlarmListViewController.swift */; };
+		16E008FD2B642ABE004F83F0 /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008FC2B642ABE004F83F0 /* AlarmCell.swift */; };
+		16E008FF2B642B33004F83F0 /* AlarmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16E008FE2B642B33004F83F0 /* AlarmCell.xib */; };
+		16E009012B642EB5004F83F0 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E009002B642EB5004F83F0 /* Alarm.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		16E008CC2B63FDDC004F83F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E008AD2B63FDDB004F83F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 16E008B42B63FDDB004F83F0;
+			remoteInfo = DrugBox;
+		};
+		16E008D62B63FDDC004F83F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 16E008AD2B63FDDB004F83F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 16E008B42B63FDDB004F83F0;
+			remoteInfo = DrugBox;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		16E008B52B63FDDB004F83F0 /* DrugBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrugBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		16E008B82B63FDDB004F83F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		16E008BA2B63FDDB004F83F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		16E008BF2B63FDDB004F83F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		16E008C12B63FDDB004F83F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		16E008C42B63FDDB004F83F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		16E008C62B63FDDB004F83F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16E008CB2B63FDDC004F83F0 /* DrugBoxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrugBoxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		16E008CF2B63FDDC004F83F0 /* DrugBoxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugBoxTests.swift; sourceTree = "<group>"; };
+		16E008D52B63FDDC004F83F0 /* DrugBoxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrugBoxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		16E008D92B63FDDC004F83F0 /* DrugBoxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugBoxUITests.swift; sourceTree = "<group>"; };
+		16E008DB2B63FDDC004F83F0 /* DrugBoxUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugBoxUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		16E008F22B6401B2004F83F0 /* MenuSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSelectViewController.swift; sourceTree = "<group>"; };
+		16E008F62B640459004F83F0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		16E008F82B6404FF004F83F0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		16E008FA2B640BD6004F83F0 /* AlarmListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListViewController.swift; sourceTree = "<group>"; };
+		16E008FC2B642ABE004F83F0 /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
+		16E008FE2B642B33004F83F0 /* AlarmCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmCell.xib; sourceTree = "<group>"; };
+		16E009002B642EB5004F83F0 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		16E008B22B63FDDB004F83F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16E008C82B63FDDC004F83F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16E008D22B63FDDC004F83F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		16E008AC2B63FDDB004F83F0 = {
+			isa = PBXGroup;
+			children = (
+				16E008B72B63FDDB004F83F0 /* DrugBox */,
+				16E008CE2B63FDDC004F83F0 /* DrugBoxTests */,
+				16E008D82B63FDDC004F83F0 /* DrugBoxUITests */,
+				16E008B62B63FDDB004F83F0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		16E008B62B63FDDB004F83F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				16E008B52B63FDDB004F83F0 /* DrugBox.app */,
+				16E008CB2B63FDDC004F83F0 /* DrugBoxTests.xctest */,
+				16E008D52B63FDDC004F83F0 /* DrugBoxUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		16E008B72B63FDDB004F83F0 /* DrugBox */ = {
+			isa = PBXGroup;
+			children = (
+				16E008EB2B63FE77004F83F0 /* Controllers */,
+				16E008E92B63FE5B004F83F0 /* Models */,
+				16E008E82B63FE53004F83F0 /* Views */,
+				16E008B82B63FDDB004F83F0 /* AppDelegate.swift */,
+				16E008BA2B63FDDB004F83F0 /* SceneDelegate.swift */,
+				16E008BE2B63FDDB004F83F0 /* Main.storyboard */,
+				16E008C12B63FDDB004F83F0 /* Assets.xcassets */,
+				16E008C32B63FDDB004F83F0 /* LaunchScreen.storyboard */,
+				16E008C62B63FDDB004F83F0 /* Info.plist */,
+				16E008F82B6404FF004F83F0 /* Constants.swift */,
+			);
+			path = DrugBox;
+			sourceTree = "<group>";
+		};
+		16E008CE2B63FDDC004F83F0 /* DrugBoxTests */ = {
+			isa = PBXGroup;
+			children = (
+				16E008CF2B63FDDC004F83F0 /* DrugBoxTests.swift */,
+			);
+			path = DrugBoxTests;
+			sourceTree = "<group>";
+		};
+		16E008D82B63FDDC004F83F0 /* DrugBoxUITests */ = {
+			isa = PBXGroup;
+			children = (
+				16E008D92B63FDDC004F83F0 /* DrugBoxUITests.swift */,
+				16E008DB2B63FDDC004F83F0 /* DrugBoxUITestsLaunchTests.swift */,
+			);
+			path = DrugBoxUITests;
+			sourceTree = "<group>";
+		};
+		16E008E82B63FE53004F83F0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				16E008FC2B642ABE004F83F0 /* AlarmCell.swift */,
+				16E008FE2B642B33004F83F0 /* AlarmCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		16E008E92B63FE5B004F83F0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				16E009002B642EB5004F83F0 /* Alarm.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		16E008EB2B63FE77004F83F0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				16E008ED2B640157004F83F0 /* Default */,
+				16E008EC2B640149004F83F0 /* Main */,
+				16E008EE2B640160004F83F0 /* ManagePage */,
+				16E008EF2B64016A004F83F0 /* DeletePage */,
+				16E008F02B640172004F83F0 /* MapPage */,
+				16E008F12B64017A004F83F0 /* AccountPage */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		16E008EC2B640149004F83F0 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				16E008F22B6401B2004F83F0 /* MenuSelectViewController.swift */,
+				16E008FA2B640BD6004F83F0 /* AlarmListViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		16E008ED2B640157004F83F0 /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				16E008F62B640459004F83F0 /* LoginViewController.swift */,
+			);
+			path = Default;
+			sourceTree = "<group>";
+		};
+		16E008EE2B640160004F83F0 /* ManagePage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ManagePage;
+			sourceTree = "<group>";
+		};
+		16E008EF2B64016A004F83F0 /* DeletePage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DeletePage;
+			sourceTree = "<group>";
+		};
+		16E008F02B640172004F83F0 /* MapPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MapPage;
+			sourceTree = "<group>";
+		};
+		16E008F12B64017A004F83F0 /* AccountPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AccountPage;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		16E008B42B63FDDB004F83F0 /* DrugBox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16E008DF2B63FDDC004F83F0 /* Build configuration list for PBXNativeTarget "DrugBox" */;
+			buildPhases = (
+				16E008B12B63FDDB004F83F0 /* Sources */,
+				16E008B22B63FDDB004F83F0 /* Frameworks */,
+				16E008B32B63FDDB004F83F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DrugBox;
+			productName = DrugBox;
+			productReference = 16E008B52B63FDDB004F83F0 /* DrugBox.app */;
+			productType = "com.apple.product-type.application";
+		};
+		16E008CA2B63FDDC004F83F0 /* DrugBoxTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16E008E22B63FDDC004F83F0 /* Build configuration list for PBXNativeTarget "DrugBoxTests" */;
+			buildPhases = (
+				16E008C72B63FDDC004F83F0 /* Sources */,
+				16E008C82B63FDDC004F83F0 /* Frameworks */,
+				16E008C92B63FDDC004F83F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				16E008CD2B63FDDC004F83F0 /* PBXTargetDependency */,
+			);
+			name = DrugBoxTests;
+			productName = DrugBoxTests;
+			productReference = 16E008CB2B63FDDC004F83F0 /* DrugBoxTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		16E008D42B63FDDC004F83F0 /* DrugBoxUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 16E008E52B63FDDC004F83F0 /* Build configuration list for PBXNativeTarget "DrugBoxUITests" */;
+			buildPhases = (
+				16E008D12B63FDDC004F83F0 /* Sources */,
+				16E008D22B63FDDC004F83F0 /* Frameworks */,
+				16E008D32B63FDDC004F83F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				16E008D72B63FDDC004F83F0 /* PBXTargetDependency */,
+			);
+			name = DrugBoxUITests;
+			productName = DrugBoxUITests;
+			productReference = 16E008D52B63FDDC004F83F0 /* DrugBoxUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		16E008AD2B63FDDB004F83F0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1510;
+				LastUpgradeCheck = 1510;
+				TargetAttributes = {
+					16E008B42B63FDDB004F83F0 = {
+						CreatedOnToolsVersion = 15.1;
+					};
+					16E008CA2B63FDDC004F83F0 = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = 16E008B42B63FDDB004F83F0;
+					};
+					16E008D42B63FDDC004F83F0 = {
+						CreatedOnToolsVersion = 15.1;
+						TestTargetID = 16E008B42B63FDDB004F83F0;
+					};
+				};
+			};
+			buildConfigurationList = 16E008B02B63FDDB004F83F0 /* Build configuration list for PBXProject "DrugBox" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 16E008AC2B63FDDB004F83F0;
+			productRefGroup = 16E008B62B63FDDB004F83F0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				16E008B42B63FDDB004F83F0 /* DrugBox */,
+				16E008CA2B63FDDC004F83F0 /* DrugBoxTests */,
+				16E008D42B63FDDC004F83F0 /* DrugBoxUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		16E008B32B63FDDB004F83F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16E008C52B63FDDB004F83F0 /* LaunchScreen.storyboard in Resources */,
+				16E008C22B63FDDB004F83F0 /* Assets.xcassets in Resources */,
+				16E008C02B63FDDB004F83F0 /* Main.storyboard in Resources */,
+				16E008FF2B642B33004F83F0 /* AlarmCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16E008C92B63FDDC004F83F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16E008D32B63FDDC004F83F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		16E008B12B63FDDB004F83F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16E008F92B6404FF004F83F0 /* Constants.swift in Sources */,
+				16E008F72B640459004F83F0 /* LoginViewController.swift in Sources */,
+				16E008F32B6401B2004F83F0 /* MenuSelectViewController.swift in Sources */,
+				16E009012B642EB5004F83F0 /* Alarm.swift in Sources */,
+				16E008FD2B642ABE004F83F0 /* AlarmCell.swift in Sources */,
+				16E008B92B63FDDB004F83F0 /* AppDelegate.swift in Sources */,
+				16E008FB2B640BD6004F83F0 /* AlarmListViewController.swift in Sources */,
+				16E008BB2B63FDDB004F83F0 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16E008C72B63FDDC004F83F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16E008D02B63FDDC004F83F0 /* DrugBoxTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		16E008D12B63FDDC004F83F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16E008DC2B63FDDC004F83F0 /* DrugBoxUITestsLaunchTests.swift in Sources */,
+				16E008DA2B63FDDC004F83F0 /* DrugBoxUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		16E008CD2B63FDDC004F83F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 16E008B42B63FDDB004F83F0 /* DrugBox */;
+			targetProxy = 16E008CC2B63FDDC004F83F0 /* PBXContainerItemProxy */;
+		};
+		16E008D72B63FDDC004F83F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 16E008B42B63FDDB004F83F0 /* DrugBox */;
+			targetProxy = 16E008D62B63FDDC004F83F0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		16E008BE2B63FDDB004F83F0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				16E008BF2B63FDDB004F83F0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		16E008C32B63FDDB004F83F0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				16E008C42B63FDDB004F83F0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		16E008DD2B63FDDC004F83F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		16E008DE2B63FDDC004F83F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		16E008E02B63FDDC004F83F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 83K577A944;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DrugBox/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DrugBox;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = drugbox.DrugBox;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		16E008E12B63FDDC004F83F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 83K577A944;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DrugBox/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DrugBox;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = drugbox.DrugBox;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		16E008E32B63FDDC004F83F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = drugbox.DrugBoxTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrugBox.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DrugBox";
+			};
+			name = Debug;
+		};
+		16E008E42B63FDDC004F83F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = drugbox.DrugBoxTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrugBox.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DrugBox";
+			};
+			name = Release;
+		};
+		16E008E62B63FDDC004F83F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = drugbox.DrugBoxUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DrugBox;
+			};
+			name = Debug;
+		};
+		16E008E72B63FDDC004F83F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = drugbox.DrugBoxUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DrugBox;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		16E008B02B63FDDB004F83F0 /* Build configuration list for PBXProject "DrugBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16E008DD2B63FDDC004F83F0 /* Debug */,
+				16E008DE2B63FDDC004F83F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16E008DF2B63FDDC004F83F0 /* Build configuration list for PBXNativeTarget "DrugBox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16E008E02B63FDDC004F83F0 /* Debug */,
+				16E008E12B63FDDC004F83F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16E008E22B63FDDC004F83F0 /* Build configuration list for PBXNativeTarget "DrugBoxTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16E008E32B63FDDC004F83F0 /* Debug */,
+				16E008E42B63FDDC004F83F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		16E008E52B63FDDC004F83F0 /* Build configuration list for PBXNativeTarget "DrugBoxUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16E008E62B63FDDC004F83F0 /* Debug */,
+				16E008E72B63FDDC004F83F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 16E008AD2B63FDDB004F83F0 /* Project object */;
+}

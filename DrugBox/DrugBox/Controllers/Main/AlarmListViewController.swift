@@ -10,21 +10,30 @@ import UIKit
 class AlarmListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    
+    let dateformatter = DateFormatter()
     var alarms: [Alarm] = [
-        Alarm(isUpdated: true, timestamp: Date(), alarmBody: "동백님이 구급상자1에 타이레놀 서방정을 추가하였습니다.")
+        Alarm(isUpdated: true, timestamp: "2024-01-27 12:20", alarmBody: "동백님이 구급상자1에 타이레놀 서방정을 추가하였습니다."),
+        Alarm(isUpdated: false, timestamp: "2024-01-27 9:33", alarmBody: "구급상자1에 들어있는 부루펜의 사용 가능 기한이 1주일 남았습니다. 교체하세요!")
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
         
-        self.tableView.estimatedRowHeight = 105.0
-        self.tableView.rowHeight = UITableView.automaticDimension
+//        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.estimatedRowHeight = UITableView.automaticDimension
         
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        // Do any additional setup after loading the view.
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 28))
+        header.backgroundColor = .systemBackground
+        let headerLabel = UILabel(frame: header.bounds)
+        headerLabel.text = "    알림"
+        headerLabel.font = UIFont.boldSystemFont(ofSize: 25)
+        headerLabel.textAlignment = .left
+        header.addSubview(headerLabel)
+        
+        tableView.tableHeaderView = header
     }
 
 
@@ -38,7 +47,7 @@ extension AlarmListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let alarm = alarms[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! AlarmCell
-        cell.TimestampLabel.text = DateFormatter().string(from: alarm.timestamp)
+        cell.TimestampLabel.text = alarm.timestamp
         cell.AlarmContentLabel.text = alarm.alarmBody
         
         if alarm.isUpdated == true {
@@ -49,5 +58,6 @@ extension AlarmListViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
+    
     
 }

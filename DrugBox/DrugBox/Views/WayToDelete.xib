@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="110" id="IGi-0F-sbE">
+            <rect key="frame" x="0.0" y="0.0" width="376" height="110"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IGi-0F-sbE" id="x2I-gY-aqE">
+                <rect key="frame" x="0.0" y="0.0" width="376" height="110"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMp-Nc-rRE">
+                        <rect key="frame" x="0.0" y="0.0" width="376" height="110"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="tinted" title="title"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="KMp-Nc-rRE" secondAttribute="bottom" id="GHH-QM-UQq"/>
+                    <constraint firstAttribute="trailing" secondItem="KMp-Nc-rRE" secondAttribute="trailing" id="IC2-C9-FdW"/>
+                    <constraint firstItem="KMp-Nc-rRE" firstAttribute="top" secondItem="x2I-gY-aqE" secondAttribute="top" id="Woz-pc-trt"/>
+                    <constraint firstItem="KMp-Nc-rRE" firstAttribute="leading" secondItem="x2I-gY-aqE" secondAttribute="leading" id="pcF-L5-0lE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="-141.98473282442748" y="-18.30985915492958"/>
+        </tableViewCell>
+    </objects>
+</document>

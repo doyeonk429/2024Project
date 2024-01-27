@@ -12,8 +12,16 @@ struct K {
     static let cellIdentifier = "ReusableCell"
     static let cellNibName = "AlarmCell"
 //    static let registerSegue = "RegisterToChat"
-    static let loginSegue = "LoginToMenuSelect"
-    static let alarmSegue = "MenuToAlarm"
+
+    
+    struct mainSegue {
+        static let loginSegue = "LoginToMenuSelect"
+        static let alarmSegue = "MenuToAlarm"
+        static let manageSegue = "MenuToManage"
+        static let deleteSegue = "MenuToDelete"
+        static let searchSegue = "MenuToSearch"
+    }
+    
     
     struct BrandColors {
         static let purple = "BrandPurple"

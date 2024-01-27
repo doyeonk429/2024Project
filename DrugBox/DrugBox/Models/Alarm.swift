@@ -9,6 +9,6 @@ import Foundation
 
 struct Alarm {
     let isUpdated: Bool
-    let timestamp: Date
+    let timestamp: String
     let alarmBody: String
 }

@@ -28,7 +28,6 @@ class MenuSelectViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
     @IBAction func alarmButtonPressed(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: K.mainSegue.alarmSegue, sender: self)
     }

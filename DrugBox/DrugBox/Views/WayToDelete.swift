@@ -8,6 +8,7 @@
 import UIKit
 
 class WayToDelete: UITableViewCell {
+    @IBOutlet weak var TitleButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -15,7 +16,7 @@ class WayToDelete: UITableViewCell {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
+        super.setSelected(selected, animated: animated)
     }
     
 }

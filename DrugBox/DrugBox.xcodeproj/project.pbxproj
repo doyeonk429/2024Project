@@ -10,9 +10,12 @@
 		16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */; };
 		16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */; };
 		16913C882B64FBB1006A0F0A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C872B64FBB1006A0F0A /* MapViewController.swift */; };
-		16913C8A2B64FF35006A0F0A /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C892B64FF35006A0F0A /* Box.swift */; };
+		16913C8A2B64FF35006A0F0A /* BoxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C892B64FF35006A0F0A /* BoxModel.swift */; };
 		16913C8C2B654A36006A0F0A /* WayToDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C8B2B654A36006A0F0A /* WayToDelete.swift */; };
 		16913C8F2B654A67006A0F0A /* WayToDelete.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16913C8E2B654A67006A0F0A /* WayToDelete.xib */; };
+		16C3B9FF2B6A8A7A00CD8B97 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 16C3B9FE2B6A8A7A00CD8B97 /* Alamofire */; };
+		16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */; };
+		16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */; };
 		16E008B92B63FDDB004F83F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008B82B63FDDB004F83F0 /* AppDelegate.swift */; };
 		16E008BB2B63FDDB004F83F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008BA2B63FDDB004F83F0 /* SceneDelegate.swift */; };
 		16E008C02B63FDDB004F83F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16E008BE2B63FDDB004F83F0 /* Main.storyboard */; };
@@ -51,9 +54,11 @@
 		16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBoxViewController.swift; sourceTree = "<group>"; };
 		16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDeleteViewController.swift; sourceTree = "<group>"; };
 		16913C872B64FBB1006A0F0A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		16913C892B64FF35006A0F0A /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		16913C892B64FF35006A0F0A /* BoxModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxModel.swift; sourceTree = "<group>"; };
 		16913C8B2B654A36006A0F0A /* WayToDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WayToDelete.swift; sourceTree = "<group>"; };
 		16913C8E2B654A67006A0F0A /* WayToDelete.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WayToDelete.xib; sourceTree = "<group>"; };
+		16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewBoxViewController.swift; sourceTree = "<group>"; };
+		16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxManager.swift; sourceTree = "<group>"; };
 		16E008B52B63FDDB004F83F0 /* DrugBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrugBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16E008B82B63FDDB004F83F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16E008BA2B63FDDB004F83F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C3B9FF2B6A8A7A00CD8B97 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +106,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16C3BA022B6A959900CD8B97 /* ForBox */ = {
+			isa = PBXGroup;
+			children = (
+				16913C892B64FF35006A0F0A /* BoxModel.swift */,
+				16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */,
+			);
+			path = ForBox;
+			sourceTree = "<group>";
+		};
+		16C3BA032B6A95B300CD8B97 /* ForDrug */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ForDrug;
+			sourceTree = "<group>";
+		};
 		16E008AC2B63FDDB004F83F0 = {
 			isa = PBXGroup;
 			children = (
@@ -168,8 +190,9 @@
 		16E008E92B63FE5B004F83F0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				16C3BA032B6A95B300CD8B97 /* ForDrug */,
+				16C3BA022B6A959900CD8B97 /* ForBox */,
 				16E009002B642EB5004F83F0 /* Alarm.swift */,
-				16913C892B64FF35006A0F0A /* Box.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */,
+				16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */,
 			);
 			path = ManagePage;
 			sourceTree = "<group>";
@@ -251,6 +275,9 @@
 			dependencies = (
 			);
 			name = DrugBox;
+			packageProductDependencies = (
+				16C3B9FE2B6A8A7A00CD8B97 /* Alamofire */,
+			);
 			productName = DrugBox;
 			productReference = 16E008B52B63FDDB004F83F0 /* DrugBox.app */;
 			productType = "com.apple.product-type.application";
@@ -323,6 +350,9 @@
 				Base,
 			);
 			mainGroup = 16E008AC2B63FDDB004F83F0;
+			packageReferences = (
+				16C3B9FD2B6A8A7A00CD8B97 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 16E008B62B63FDDB004F83F0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -371,13 +401,15 @@
 				16913C882B64FBB1006A0F0A /* MapViewController.swift in Sources */,
 				16E008F92B6404FF004F83F0 /* Constants.swift in Sources */,
 				16E008F72B640459004F83F0 /* LoginViewController.swift in Sources */,
+				16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */,
 				16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */,
+				16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */,
 				16E008F32B6401B2004F83F0 /* MenuSelectViewController.swift in Sources */,
 				16E009012B642EB5004F83F0 /* Alarm.swift in Sources */,
 				16E008FD2B642ABE004F83F0 /* AlarmCell.swift in Sources */,
 				16E008B92B63FDDB004F83F0 /* AppDelegate.swift in Sources */,
 				16E008FB2B640BD6004F83F0 /* AlarmListViewController.swift in Sources */,
-				16913C8A2B64FF35006A0F0A /* Box.swift in Sources */,
+				16913C8A2B64FF35006A0F0A /* BoxModel.swift in Sources */,
 				16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */,
 				16E008BB2B63FDDB004F83F0 /* SceneDelegate.swift in Sources */,
 				16913C8C2B654A36006A0F0A /* WayToDelete.swift in Sources */,
@@ -727,6 +759,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		16C3B9FD2B6A8A7A00CD8B97 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		16C3B9FE2B6A8A7A00CD8B97 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16C3B9FD2B6A8A7A00CD8B97 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 16E008AD2B63FDDB004F83F0 /* Project object */;
 }

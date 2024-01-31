@@ -24,6 +24,9 @@ struct K {
         static let searchSegue = "MenuToSearch"
     }
     
+    struct manageSegue {
+        static let createSegue = "DefaultToCreate"
+    }
     
     struct BrandColors {
         static let purple = "BrandPurple"

@@ -178,12 +178,100 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vSD-Fu-7Ni">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="8t3-R2-FNg"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="8t3-R2-FNg">
+                            <connections>
+                                <action selector="addButton:" destination="2UW-Md-cvT" id="HUy-Tr-bBX"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Asu-xv-JVw" kind="presentation" identifier="DefaultToCreate" id="EhO-b3-Roi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wiL-HM-P7U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="971.7557251908396" y="1518.3098591549297"/>
+        </scene>
+        <!--Create New Box View Controller-->
+        <scene sceneID="KVB-sM-0Ga">
+            <objects>
+                <viewController id="Asu-xv-JVw" customClass="CreateNewBoxViewController" customModule="DrugBox" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SHW-5z-fiz">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="qax-J7-iEE">
+                                <rect key="frame" x="46.666666666666657" y="144.66666666666663" width="300" height="553"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="WDf-aK-78g">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="314.33333333333331"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="er8-Yf-4Nk">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="GTl-hu-uO9"/>
+                                                    <constraint firstAttribute="height" constant="200" id="g7P-oq-P0t"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="gray" title="Button"/>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="구급상자의 이름을 지정해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HM6-K9-vuk">
+                                                <rect key="frame" x="0.0" y="230.00000000000003" width="300" height="33.999999999999972"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="혹은" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFD-Jo-Mwp">
+                                                <rect key="frame" x="0.0" y="294" width="300" height="20.333333333333314"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zab-2I-gF4">
+                                        <rect key="frame" x="0.0" y="384.33333333333337" width="169.33333333333334" height="64.333333333333314"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="초대코드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrk-g1-9br">
+                                                <rect key="frame" x="0.0" y="0.0" width="59" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="초대코드를 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4cZ-Tx-1cW">
+                                                <rect key="frame" x="0.0" y="30.333333333333371" width="169.33333333333334" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYE-WR-owA">
+                                        <rect key="frame" x="0.0" y="518.66666666666674" width="300" height="34.333333333333371"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="cNr-9Q-ebT"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hKl-Jq-DqE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qax-J7-iEE" firstAttribute="centerX" secondItem="SHW-5z-fiz" secondAttribute="centerX" id="1fg-qX-KPK"/>
+                            <constraint firstItem="qax-J7-iEE" firstAttribute="centerY" secondItem="SHW-5z-fiz" secondAttribute="centerY" id="u57-WM-Vad"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="BoxCodeLabel" destination="4cZ-Tx-1cW" id="7lk-Sw-l03"/>
+                        <outlet property="BoxNameLabel" destination="HM6-K9-vuk" id="Bhq-BA-pju"/>
+                        <outlet property="ImagePickButton" destination="er8-Yf-4Nk" id="88j-1x-y7v"/>
+                        <outlet property="SaveButton" destination="nYE-WR-owA" id="oF0-cC-Gkf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bNe-KE-CCO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1864.885496183206" y="1517.605633802817"/>
         </scene>
         <!--Main Delete View Controller-->
         <scene sceneID="6ne-BR-Mbv">

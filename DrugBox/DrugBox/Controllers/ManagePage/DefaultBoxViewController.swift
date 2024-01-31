@@ -9,11 +9,15 @@ import UIKit
 
 class DefaultBoxViewController: UIViewController {
     
-    var boxList: [Box] = []
+    var boxList: [BoxModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
+    
+    @IBAction func addButton(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: K.manageSegue.createSegue, sender: self)
+    }
 }

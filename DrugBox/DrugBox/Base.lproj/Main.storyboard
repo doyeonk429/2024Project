@@ -200,57 +200,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="qax-J7-iEE">
-                                <rect key="frame" x="46.666666666666657" y="144.66666666666663" width="300" height="553"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="qax-J7-iEE">
+                                <rect key="frame" x="46.666666666666657" y="152.66666666666663" width="300" height="537"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="WDf-aK-78g">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="314.33333333333331"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="WDf-aK-78g">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="368.66666666666669"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="er8-Yf-4Nk">
-                                                <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="GTl-hu-uO9"/>
-                                                    <constraint firstAttribute="height" constant="200" id="g7P-oq-P0t"/>
-                                                </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="gray" title="Button"/>
-                                            </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="구급상자의 이름을 지정해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HM6-K9-vuk">
-                                                <rect key="frame" x="0.0" y="230.00000000000003" width="300" height="33.999999999999972"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="jdH-Jf-ZRE">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="308.33333333333331"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Z0p-0K-4Cv">
+                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="244.33333333333334"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MHj-7V-2xF">
+                                                                <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="200" id="aox-Vj-ZNI"/>
+                                                                    <constraint firstAttribute="width" constant="300" id="eUb-kk-IP8"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="er8-Yf-4Nk">
+                                                                <rect key="frame" x="0.0" y="210.00000000000003" width="300" height="34.333333333333343"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="gray" title="사진 추가하기"/>
+                                                                <connections>
+                                                                    <action selector="pickButtonPressed:" destination="Asu-xv-JVw" eventType="touchUpInside" id="meF-OZ-xup"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="구급상자의 이름을 지정해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HM6-K9-vuk">
+                                                        <rect key="frame" x="0.0" y="274.33333333333337" width="300" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="혹은" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFD-Jo-Mwp">
-                                                <rect key="frame" x="0.0" y="294" width="300" height="20.333333333333314"/>
+                                                <rect key="frame" x="0.0" y="348.33333333333337" width="300" height="20.333333333333314"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zab-2I-gF4">
-                                        <rect key="frame" x="0.0" y="384.33333333333337" width="169.33333333333334" height="64.333333333333314"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Zab-2I-gF4">
+                                        <rect key="frame" x="0.0" y="418.66666666666674" width="279" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="초대코드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrk-g1-9br">
-                                                <rect key="frame" x="0.0" y="0.0" width="59" height="20.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="59" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="초대코드를 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4cZ-Tx-1cW">
-                                                <rect key="frame" x="0.0" y="30.333333333333371" width="169.33333333333334" height="34"/>
+                                                <rect key="frame" x="79" y="0.0" width="200" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="K6h-03-7aR"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYE-WR-owA">
-                                        <rect key="frame" x="0.0" y="518.66666666666674" width="300" height="34.333333333333371"/>
+                                        <rect key="frame" x="0.0" y="502.66666666666669" width="300" height="34.333333333333314"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="cNr-9Q-ebT"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                        <connections>
+                                            <action selector="saveButtonPressed:" destination="Asu-xv-JVw" eventType="touchUpInside" id="eqe-Rs-IJK"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -265,7 +287,8 @@
                     <connections>
                         <outlet property="BoxCodeLabel" destination="4cZ-Tx-1cW" id="7lk-Sw-l03"/>
                         <outlet property="BoxNameLabel" destination="HM6-K9-vuk" id="Bhq-BA-pju"/>
-                        <outlet property="ImagePickButton" destination="er8-Yf-4Nk" id="88j-1x-y7v"/>
+                        <outlet property="ImagePickButton" destination="er8-Yf-4Nk" id="1Jk-tC-jMv"/>
+                        <outlet property="ImageView" destination="MHj-7V-2xF" id="GVu-nH-cR5"/>
                         <outlet property="SaveButton" destination="nYE-WR-owA" id="oF0-cC-Gkf"/>
                     </connections>
                 </viewController>

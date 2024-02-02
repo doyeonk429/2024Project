@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 protocol BoxManagerDelegate {
     func didUpdateBox(_ boxManager: BoxManager, _ box: BoxModel)
@@ -20,8 +21,12 @@ protocol BoxManagerDelegate {
 
 struct BoxManager {
     let boxURL = "http://localhost:8080/drugbox/"
+    let header: HTTPHeaders = [
+        "Content-Type" : "multipart/form-data"
+    ]
     
     func setBoxParameters(_ userId: String, _ boxName: String) -> [[String : Any]] {
+        // 딕셔너리로 바꾸는 거 가능?
         let parameters = [
           [
             "key": "userId",
@@ -48,6 +53,7 @@ struct BoxManager {
         var error: Error? = nil
         let parameters = self.setBoxParameters(userId, boxName)
         
+        // api 예시 그대로 가져옴
         for param in parameters {
           if param["disabled"] == nil {
             let paramName = param["key"]!

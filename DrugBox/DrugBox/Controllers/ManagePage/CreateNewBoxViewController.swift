@@ -15,10 +15,13 @@ class CreateNewBoxViewController: UIViewController {
     @IBOutlet weak var ImagePickButton: UIButton!
     
     let picker = UIImagePickerController()
+    let userid: Int = 0 // dummy -> 나중에 로그인 연결하면 설정하기
     
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.delegate = self
+        BoxNameLabel.delegate = self
+        BoxCodeLabel.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -42,6 +45,17 @@ class CreateNewBoxViewController: UIViewController {
     
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
+        if let boxname = BoxNameLabel.text {
+            if let boxImage = ImageView.image {
+                let boxModel = BoxModel(userId: userid, boxName: boxname, boxImage: boxImage)
+                // post request 호출
+            } else {
+                // 이미지 선택하지 않을 경우 기본 이미지 전달해서 박스 제작
+            }
+        } else {
+            // 박스 이름 설정하지 않을 경우 경고 메세지
+        }
+        
     }
 }
 
@@ -62,9 +76,24 @@ extension CreateNewBoxViewController: UIImagePickerControllerDelegate, UINavigat
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            ImageView.image = image
-            print(info)
+            DispatchQueue.main.async {
+                self.ImageView.image = image
+            }
+//            print(info)
         }
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension CreateNewBoxViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        BoxNameLabel.endEditing(true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        // use searchTextField.text to get the weather for that city.
+        if let name = BoxNameLabel.text {
+//            weatherManager.fetchWeather(cityName: city)
+        }
     }
 }

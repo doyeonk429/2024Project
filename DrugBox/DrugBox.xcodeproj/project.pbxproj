@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		161DB4052B6DF79300F85377 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB4042B6DF79300F85377 /* UILabel.swift */; };
 		161DB4072B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB4062B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift */; };
+		161DB4092B6E6E4800F85377 /* BoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 161DB4082B6E6E4800F85377 /* BoxCell.xib */; };
+		161DB40B2B6E709500F85377 /* BoxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB40A2B6E709500F85377 /* BoxCell.swift */; };
+		161DB40D2B6E899C00F85377 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB40C2B6E899C00F85377 /* InfoViewController.swift */; };
+		161DB40F2B6E8E1D00F85377 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB40E2B6E8E1D00F85377 /* ItemListViewController.swift */; };
+		161DB4112B6E8F3100F85377 /* DrugModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB4102B6E8F3100F85377 /* DrugModel.swift */; };
+		161DB4132B6E927E00F85377 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB4122B6E927E00F85377 /* UIImage.swift */; };
 		16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */; };
 		16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */; };
 		16913C882B64FBB1006A0F0A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C872B64FBB1006A0F0A /* MapViewController.swift */; };
@@ -55,6 +61,12 @@
 /* Begin PBXFileReference section */
 		161DB4042B6DF79300F85377 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		161DB4062B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinWIthInvitationCodeViewController.swift; sourceTree = "<group>"; };
+		161DB4082B6E6E4800F85377 /* BoxCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoxCell.xib; sourceTree = "<group>"; };
+		161DB40A2B6E709500F85377 /* BoxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxCell.swift; sourceTree = "<group>"; };
+		161DB40C2B6E899C00F85377 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		161DB40E2B6E8E1D00F85377 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
+		161DB4102B6E8F3100F85377 /* DrugModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugModel.swift; sourceTree = "<group>"; };
+		161DB4122B6E927E00F85377 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBoxViewController.swift; sourceTree = "<group>"; };
 		16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDeleteViewController.swift; sourceTree = "<group>"; };
 		16913C872B64FBB1006A0F0A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +134,7 @@
 		16C3BA032B6A95B300CD8B97 /* ForDrug */ = {
 			isa = PBXGroup;
 			children = (
+				161DB4102B6E8F3100F85377 /* DrugModel.swift */,
 			);
 			path = ForDrug;
 			sourceTree = "<group>";
@@ -160,6 +173,7 @@
 				16E008C62B63FDDB004F83F0 /* Info.plist */,
 				16E008F82B6404FF004F83F0 /* Constants.swift */,
 				161DB4042B6DF79300F85377 /* UILabel.swift */,
+				161DB4122B6E927E00F85377 /* UIImage.swift */,
 			);
 			path = DrugBox;
 			sourceTree = "<group>";
@@ -188,6 +202,8 @@
 				16E008FE2B642B33004F83F0 /* AlarmCell.xib */,
 				16913C8B2B654A36006A0F0A /* WayToDelete.swift */,
 				16913C8E2B654A67006A0F0A /* WayToDelete.xib */,
+				161DB4082B6E6E4800F85377 /* BoxCell.xib */,
+				161DB40A2B6E709500F85377 /* BoxCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -238,6 +254,7 @@
 				16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */,
 				16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */,
 				161DB4062B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift */,
+				161DB40E2B6E8E1D00F85377 /* ItemListViewController.swift */,
 			);
 			path = ManagePage;
 			sourceTree = "<group>";
@@ -246,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */,
+				161DB40C2B6E899C00F85377 /* InfoViewController.swift */,
 			);
 			path = DeletePage;
 			sourceTree = "<group>";
@@ -380,6 +398,7 @@
 				16E008C02B63FDDB004F83F0 /* Main.storyboard in Resources */,
 				16913C8F2B654A67006A0F0A /* WayToDelete.xib in Resources */,
 				16E008FF2B642B33004F83F0 /* AlarmCell.xib in Resources */,
+				161DB4092B6E6E4800F85377 /* BoxCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,8 +424,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				16913C882B64FBB1006A0F0A /* MapViewController.swift in Sources */,
+				161DB4132B6E927E00F85377 /* UIImage.swift in Sources */,
+				161DB40F2B6E8E1D00F85377 /* ItemListViewController.swift in Sources */,
 				16E008F92B6404FF004F83F0 /* Constants.swift in Sources */,
 				16E008F72B640459004F83F0 /* LoginViewController.swift in Sources */,
+				161DB40B2B6E709500F85377 /* BoxCell.swift in Sources */,
 				16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */,
 				16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */,
 				16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */,
@@ -414,6 +436,7 @@
 				16E008F32B6401B2004F83F0 /* MenuSelectViewController.swift in Sources */,
 				16E009012B642EB5004F83F0 /* Alarm.swift in Sources */,
 				16E008FD2B642ABE004F83F0 /* AlarmCell.swift in Sources */,
+				161DB4112B6E8F3100F85377 /* DrugModel.swift in Sources */,
 				16E008B92B63FDDB004F83F0 /* AppDelegate.swift in Sources */,
 				16E008FB2B640BD6004F83F0 /* AlarmListViewController.swift in Sources */,
 				16913C8A2B64FF35006A0F0A /* BoxModel.swift in Sources */,
@@ -421,6 +444,7 @@
 				16E008BB2B63FDDB004F83F0 /* SceneDelegate.swift in Sources */,
 				16913C8C2B654A36006A0F0A /* WayToDelete.swift in Sources */,
 				161DB4072B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift in Sources */,
+				161DB40D2B6E899C00F85377 /* InfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

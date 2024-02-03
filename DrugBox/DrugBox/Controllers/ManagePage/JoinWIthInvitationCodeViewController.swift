@@ -53,6 +53,7 @@ extension JoinWIthInvitationCodeViewController: UITextFieldDelegate {
 extension JoinWIthInvitationCodeViewController: BoxManagerDelegate {
     func didFailWithError(error: Error) {
         //에러 경고창 띄우기
+        // 리퀘보내고 받은 response에 대한 에러
     }
     
     

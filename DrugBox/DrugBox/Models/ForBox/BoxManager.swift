@@ -60,7 +60,7 @@ struct BoxManager {
             } else {
               let paramSrc = param["src"] as! String
                 // 에러터짐..
-              let fileData = try NSData(contentsOfFile:paramSrc, options:[]) as Data
+              let fileData = try! NSData(contentsOfFile:paramSrc, options:[]) as Data
               let fileContent = String(data: fileData, encoding: .utf8)!
               body += "; filename=\"\(paramSrc)\"\r\n"
                 + "Content-Type: \"content-type header\"\r\n\r\n\(fileContent)\r\n"
@@ -94,7 +94,7 @@ struct BoxManager {
        
         // 헤더 구성 : Content-Type 필드에 multipart 타입추가
         let header: HTTPHeaders = [
-            "Accept" : "application/json, application/javascript, text/javascript, text/json",
+            "Accept" : "application/json",
             "Content-Type" : "multipart/form-data"
         ]
         

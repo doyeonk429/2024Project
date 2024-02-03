@@ -52,7 +52,7 @@ class CreateNewBoxViewController: UIViewController {
     @IBAction func invitationCodeButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: K.manageSegue.invitationCodeSegue, sender: self)
     }
-    
+    // image 리사이즈하는걸 어디서?
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if boxName != "" {
             if imageURL != "" {
@@ -67,6 +67,7 @@ class CreateNewBoxViewController: UIViewController {
     }
 }
 
+//MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 extension CreateNewBoxViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func openLibrary() {
@@ -94,7 +95,7 @@ extension CreateNewBoxViewController: UIImagePickerControllerDelegate, UINavigat
         dismiss(animated: true, completion: nil)
     }
 }
-
+//MARK: - UITextFieldDelegate
 extension CreateNewBoxViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         BoxNameLabel.endEditing(true)
@@ -114,17 +115,5 @@ extension CreateNewBoxViewController: UITextFieldDelegate {
             BoxNameLabel.placeholder = "구급상자의 이름을 지정해주세요"
             return false
         }
-    }
-}
-
-extension UIImage{
-    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-        let scale = newWidth / image.size.width // 새 이미지 확대/축소 비율
-        let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
-        image.draw(in: CGRectMake(0, 0, newWidth, newHeight))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return newImage
     }
 }

@@ -39,12 +39,15 @@ class AlarmListViewController: UIViewController {
 
 
 }
-
+//MARK: - TableView 구현
 extension AlarmListViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    // 테이블 셀 개수 설정
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alarms.count
     }
     
+    // 테이블에 셀 정보 넣어줌
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let alarm = alarms[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! AlarmCell
@@ -58,6 +61,14 @@ extension AlarmListViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         return cell
+    }
+    
+    // 옆으로 스와이프해서 삭제
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            alarms.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
     
     

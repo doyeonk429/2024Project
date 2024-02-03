@@ -9,6 +9,9 @@ import UIKit
 
 class DefaultBoxViewController: UIViewController {
     
+    // get으로 받아온 박스모델 여기에 추가
+    // 테이블 뷰 구현해야함
+    // 테이블 셀 선택 시 해당 구급상자 내의 알약 정보 get 해서 다음 페이지에 넘겨주기
     var boxList: [BoxModel] = []
     
     override func viewDidLoad() {

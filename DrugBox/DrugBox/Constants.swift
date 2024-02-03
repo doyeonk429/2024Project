@@ -26,6 +26,7 @@ struct K {
     
     struct manageSegue {
         static let createSegue = "DefaultToCreate"
+        static let invitationCodeSegue = "ToJoinInvitationCode"
     }
     
     struct BrandColors {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		161DB4052B6DF79300F85377 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB4042B6DF79300F85377 /* UILabel.swift */; };
+		161DB4072B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB4062B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift */; };
 		16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */; };
 		16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */; };
 		16913C882B64FBB1006A0F0A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C872B64FBB1006A0F0A /* MapViewController.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		161DB4042B6DF79300F85377 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		161DB4062B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinWIthInvitationCodeViewController.swift; sourceTree = "<group>"; };
 		16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBoxViewController.swift; sourceTree = "<group>"; };
 		16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDeleteViewController.swift; sourceTree = "<group>"; };
 		16913C872B64FBB1006A0F0A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 				16E008C32B63FDDB004F83F0 /* LaunchScreen.storyboard */,
 				16E008C62B63FDDB004F83F0 /* Info.plist */,
 				16E008F82B6404FF004F83F0 /* Constants.swift */,
+				161DB4042B6DF79300F85377 /* UILabel.swift */,
 			);
 			path = DrugBox;
 			sourceTree = "<group>";
@@ -232,6 +237,7 @@
 			children = (
 				16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */,
 				16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */,
+				161DB4062B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift */,
 			);
 			path = ManagePage;
 			sourceTree = "<group>";
@@ -404,6 +410,7 @@
 				16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */,
 				16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */,
 				16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */,
+				161DB4052B6DF79300F85377 /* UILabel.swift in Sources */,
 				16E008F32B6401B2004F83F0 /* MenuSelectViewController.swift in Sources */,
 				16E009012B642EB5004F83F0 /* Alarm.swift in Sources */,
 				16E008FD2B642ABE004F83F0 /* AlarmCell.swift in Sources */,
@@ -413,6 +420,7 @@
 				16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */,
 				16E008BB2B63FDDB004F83F0 /* SceneDelegate.swift in Sources */,
 				16913C8C2B654A36006A0F0A /* WayToDelete.swift in Sources */,
+				161DB4072B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

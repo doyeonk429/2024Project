@@ -10,19 +10,24 @@ import UIKit
 class CreateNewBoxViewController: UIViewController {
     @IBOutlet weak var ImageView: UIImageView!
     @IBOutlet weak var BoxNameLabel: UITextField!
-    @IBOutlet weak var BoxCodeLabel: UITextField!
     @IBOutlet weak var SaveButton: UIButton!
     @IBOutlet weak var ImagePickButton: UIButton!
+    @IBOutlet weak var invitationCodeButton: UIButton!
     
     let picker = UIImagePickerController()
-    let userid: Int = 0 // dummy -> 나중에 로그인 연결하면 설정하기
+    var boxManager = BoxManager()
+    
+    var userid: Int = 0 // dummy -> 나중에 로그인 연결하면 설정하기
+    var boxName: String = ""
+    var imageURL: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         picker.delegate = self
         BoxNameLabel.delegate = self
-        BoxCodeLabel.delegate = self
-        // Do any additional setup after loading the view.
+        
+        invitationCodeButton.titleLabel?.setUnderline(range: NSRange(location: 0, length: invitationCodeButton.currentTitle?.count ?? 0))
     }
     
     
@@ -44,16 +49,19 @@ class CreateNewBoxViewController: UIViewController {
     }
     
     
+    @IBAction func invitationCodeButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: K.manageSegue.invitationCodeSegue, sender: self)
+    }
+    
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        if let boxname = BoxNameLabel.text {
-            if let boxImage = ImageView.image {
-                let boxModel = BoxModel(userId: userid, boxName: boxname, boxImage: boxImage)
-                // post request 호출
-            } else {
-                // 이미지 선택하지 않을 경우 기본 이미지 전달해서 박스 제작
+        if boxName != "" {
+            if imageURL != "" {
+                // post 함수 call
+//                boxManager.sendNewBoxModel(userid, boxName, imageURL)
+//                boxManager.fileUpload(userid, boxName, <#T##img: UIImage##UIImage#>, completion: <#T##(String) -> Void#>)
+                BoxNameLabel.text = ""
+                // 이미지뷰에 있는 이미지 기본 이미지로 초기화
             }
-        } else {
-            // 박스 이름 설정하지 않을 경우 경고 메세지
         }
         
     }
@@ -78,6 +86,8 @@ extension CreateNewBoxViewController: UIImagePickerControllerDelegate, UINavigat
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             DispatchQueue.main.async {
                 self.ImageView.image = image
+                self.imageURL = "\(info[UIImagePickerController.InfoKey.imageURL]!)"
+                print(self.imageURL)
             }
 //            print(info)
         }
@@ -91,9 +101,30 @@ extension CreateNewBoxViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        // use searchTextField.text to get the weather for that city.
+        // boxnamelabel 전달
         if let name = BoxNameLabel.text {
-//            weatherManager.fetchWeather(cityName: city)
+            self.boxName = name
         }
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if BoxNameLabel.text != ""{
+            return true
+        } else {
+            BoxNameLabel.placeholder = "구급상자의 이름을 지정해주세요"
+            return false
+        }
+    }
+}
+
+extension UIImage{
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+        let scale = newWidth / image.size.width // 새 이미지 확대/축소 비율
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
+        image.draw(in: CGRectMake(0, 0, newWidth, newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
     }
 }

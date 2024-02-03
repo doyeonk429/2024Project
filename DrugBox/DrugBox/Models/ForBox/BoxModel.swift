@@ -10,5 +10,6 @@ import UIKit
 struct BoxModel {
     let userId: Int // 지금 로그인 중인 계정 정보 넘김
     let boxName: String
+//    let boxImage: String
     let boxImage: UIImage
 }

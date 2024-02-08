@@ -300,10 +300,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="xtF-rz-bUx">
-                                <rect key="frame" x="52" y="357" width="289" height="128.33333333333337"/>
+                                <rect key="frame" x="69.666666666666686" y="357" width="254" height="128.33333333333337"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="PVm-8X-002">
-                                        <rect key="frame" x="0.0" y="0.0" width="289" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="254" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="초대코드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hX2-aS-jla">
                                                 <rect key="frame" x="0.0" y="0.0" width="59" height="34"/>
@@ -311,18 +311,18 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="초대코드를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="grT-2k-pNZ">
-                                                <rect key="frame" x="89" y="0.0" width="200" height="34"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="초대코드를 입력해주세요" textAlignment="natural" minimumFontSize="17" sizingRule="oversize" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="grT-2k-pNZ">
+                                                <rect key="frame" x="89" y="0.0" width="165" height="34"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="8NC-Ns-Wck"/>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="165" id="04i-O5-r1Y"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNr-Ye-Ssz">
-                                        <rect key="frame" x="0.0" y="94" width="289" height="34.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="94" width="254" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="등록하기"/>
                                         <connections>
@@ -545,7 +545,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DHZ-zd-nDf">
-                                <rect key="frame" x="46" y="238.99999999999994" width="158" height="76.666666666666686"/>
+                                <rect key="frame" x="46" y="238.99999999999991" width="158" height="76.666666666666657"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DJs-VP-6O5">
                                         <rect key="frame" x="0.0" y="0.0" width="158" height="34.333333333333336"/>

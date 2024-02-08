@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class CreateNewBoxViewController: UIViewController {
     @IBOutlet weak var ImageView: UIImageView!
@@ -17,9 +18,9 @@ class CreateNewBoxViewController: UIViewController {
     let picker = UIImagePickerController()
     var boxManager = BoxManager()
     
-    var userid: Int = 0 // dummy -> 나중에 로그인 연결하면 설정하기
+    var userid: Int = 1 // dummy -> 나중에 로그인 연결하면 설정하기
     var boxName: String = ""
-    var imageURL: String = ""
+//    var imageURL: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,14 +56,14 @@ class CreateNewBoxViewController: UIViewController {
     // image 리사이즈하는걸 어디서?
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if boxName != "" {
-            if imageURL != "" {
+            let resizedImage = ImageView.image!.resizeImage(image: ImageView.image!, newWidth: 300)
+//            boxManager.fileUpload(userid, boxName, <#T##img: UIImage##UIImage#>, completion: <#T##(String) -> Void#>)
                 // post 함수 call
 //                boxManager.sendNewBoxModel(userid, boxName, imageURL)
 //                boxManager.fileUpload(userid, boxName, <#T##img: UIImage##UIImage#>, completion: <#T##(String) -> Void#>)
                 BoxNameLabel.text = ""
                 // 이미지뷰에 있는 이미지 기본 이미지로 초기화
             }
-        }
         
     }
 }
@@ -87,8 +88,8 @@ extension CreateNewBoxViewController: UIImagePickerControllerDelegate, UINavigat
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             DispatchQueue.main.async {
                 self.ImageView.image = image
-                self.imageURL = "\(info[UIImagePickerController.InfoKey.imageURL]!)"
-                print(self.imageURL)
+//                self.imageURL = "\(info[UIImagePickerController.InfoKey.imageURL]!)"
+//                print(self.imageURL)
             }
 //            print(info)
         }

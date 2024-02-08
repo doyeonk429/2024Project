@@ -11,7 +11,7 @@ class JoinWIthInvitationCodeViewController: UIViewController {
     
     @IBOutlet weak var codeTextField: UITextField!
     @IBOutlet weak var JoinButton: UIButton!
-    var usedId: Int = 0 // 로그인 상태에서 정보 가져옴
+    var usedId: Int = 1 // 로그인 상태에서 정보 가져옴
     var boxManager = BoxManager()
     
     override func viewDidLoad() {

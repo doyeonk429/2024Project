@@ -12,6 +12,8 @@ class MenuSelectViewController: UIViewController {
     @IBOutlet weak var manageButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
+    
+    static var userID: Int = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()

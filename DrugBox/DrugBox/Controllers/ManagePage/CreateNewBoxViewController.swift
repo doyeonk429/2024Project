@@ -31,7 +31,12 @@ class CreateNewBoxViewController: UIViewController {
         invitationCodeButton.titleLabel?.setUnderline(range: NSRange(location: 0, length: invitationCodeButton.currentTitle?.count ?? 0))
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.BoxNameLabel.text = ""
+        self.ImageView.image = UIImage(systemName: "photo.artframe")
+    }
     
+//MARK: - alert tap for selecting image
     @IBAction func pickButtonPressed(_ sender: UIButton) {
         let alert = UIAlertController(title: "사진을 가져올 곳 선택", message: "", preferredStyle: .actionSheet)
         let library = UIAlertAction(title: "사진앨범", style: .default) {
@@ -49,23 +54,54 @@ class CreateNewBoxViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    
+//MARK: - go to create box with inviteCode
     @IBAction func invitationCodeButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: K.manageSegue.invitationCodeSegue, sender: self)
     }
-    // image 리사이즈하는걸 어디서?
+    
+//MARK: - call POST API with boxModel
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if boxName != "" {
             let resizedImage = ImageView.image!.resizeImage(image: ImageView.image!, newWidth: 300)
-//            boxManager.fileUpload(userid, boxName, <#T##img: UIImage##UIImage#>, completion: <#T##(String) -> Void#>)
-                // post 함수 call
-//                boxManager.sendNewBoxModel(userid, boxName, imageURL)
-//                boxManager.fileUpload(userid, boxName, <#T##img: UIImage##UIImage#>, completion: <#T##(String) -> Void#>)
-                BoxNameLabel.text = ""
-                // 이미지뷰에 있는 이미지 기본 이미지로 초기화
+            self.fileUpload(id: userid, name: boxName, img: resizedImage)
+            // 정상 포스팅 되는 경우에만..
+            DispatchQueue.main.async {
+                self.BoxNameLabel.text = ""
+                self.ImageView.image = UIImage(systemName: "photo.artframe")
+                self.presentingViewController?.dismiss(animated: true)
             }
+        }
+    }
+    
+    func fileUpload(id userId: Int, name boxName: String, img: UIImage) -> Void {
+        // 헤더 구성 : Content-Type 필드에 multipart 타입추가
+        let header: HTTPHeaders = [
+            "Accept" : "application/json",
+            "Content-Type" : "multipart/form-data"
+        ]
+        let parameters : [String: Any] = ["userId" : userId, "name" : boxName]
+        let imageData = img.jpegData(compressionQuality: 1)
+        
+        AF.upload(multipartFormData: { MultipartFormData in
+            // body 추가
+            for (key, value) in parameters {
+                MultipartFormData.append("\(value)".data(using: .utf8)!, withName: key)
+            }
+            // image data 추가
+            if let image = imageData {
+                MultipartFormData.append(image, withName: "file", fileName: "test.jpeg", mimeType: "image/jpeg")
+            }
+        }, to: K.apiURL.POSTboxURL, method: .post, headers: header)
+        .validate(statusCode: 200..<500)
+        .responseData { <#AFDataResponse<Data>#> in
+            <#code#>
+            // response 받아서 error handle...
+        }
+        
         
     }
+
+
 }
 
 //MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
@@ -117,4 +153,38 @@ extension CreateNewBoxViewController: UITextFieldDelegate {
             return false
         }
     }
+}
+
+struct DrugBox {
+    static let boxData = DrugBox()
+    
+    // 헤더 구성 : Content-Type 필드에 multipart 타입추가
+    let header: HTTPHeaders = [
+        "Accept" : "application/json",
+        "Content-Type" : "multipart/form-data"
+    ]
+    
+//    func fileUpload(id userId: Int, name boxName: String, _ img: UIImage) -> Int{
+//        let parameters : [String: Any] = [
+//            "userId" : userId, "name" : boxName
+//        ]
+//        let imageData = img.jpegData(compressionQuality: 1)
+//        
+//        AF.upload(multipartFormData: { MultipartFormData in
+//            // body 추가
+//            for (key, value) in parameters {
+//                MultipartFormData.append("\(value)".data(using: .utf8)!, withName: key)
+//            }
+//            // image data 추가
+//            if let image = imageData {
+//                MultipartFormData.append(image, withName: "file", fileName: "test.jpeg", mimeType: "image/jpeg")
+//            }
+//        }, to: addUrl
+//        ,method: .post
+//                  ,headers: header).responseData { <#AFDataResponse<Data>#> in
+//            <#code#>
+//        }
+//        
+//        return 0
+//    }
 }

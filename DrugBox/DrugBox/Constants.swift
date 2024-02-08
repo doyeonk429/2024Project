@@ -27,6 +27,12 @@ struct K {
     struct manageSegue {
         static let createSegue = "DefaultToCreate"
         static let invitationCodeSegue = "ToJoinInvitationCode"
+        static let showItemSegue = "BoxListToItemList"
+        static let settingSegue = "ToSetting"
+    }
+    
+    struct deleteSegue {
+        static let showInformationContents = "ToInfo"
     }
     
     struct BrandColors {
@@ -41,5 +47,11 @@ struct K {
 //        static let senderField = "sender"
 //        static let bodyField = "body"
 //        static let dateField = "date"
+    }
+    
+    struct apiURL {
+        static let baseURL = "http://104.196.48.122:8080/drugbox/"
+        static let POSTboxURL = "\(baseURL)add"
+        static let GETboxListURL = "\(baseURL)user?userId="
     }
 }

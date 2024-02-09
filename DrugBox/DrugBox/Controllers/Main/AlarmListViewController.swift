@@ -21,7 +21,7 @@ class AlarmListViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
+        tableView.register(UINib(nibName: K.tableCell.cellNibName, bundle: nil), forCellReuseIdentifier: K.tableCell.cellIdentifier)
         
 //        tableView.rowHeight = UITableView.automaticDimension
 //        tableView.estimatedRowHeight = UITableView.automaticDimension
@@ -50,7 +50,7 @@ extension AlarmListViewController: UITableViewDataSource, UITableViewDelegate {
     // 테이블에 셀 정보 넣어줌
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let alarm = alarms[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! AlarmCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.tableCell.cellIdentifier, for: indexPath) as! AlarmCell
         cell.TimestampLabel.text = alarm.timestamp
         cell.AlarmContentLabel.text = alarm.alarmBody
         

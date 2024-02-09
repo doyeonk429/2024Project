@@ -136,7 +136,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="p0p-lr-0WV">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="244" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="p0p-lr-0WV">
                                 <rect key="frame" x="0.0" y="44" width="393" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
@@ -158,6 +158,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="boxTableView" destination="p0p-lr-0WV" id="b9Y-eL-uSn"/>
                         <segue destination="Asu-xv-JVw" kind="presentation" identifier="DefaultToCreate" id="EhO-b3-Roi"/>
                         <segue destination="6Tf-qc-fW1" kind="show" identifier="BoxListToItemList" id="rQ1-YK-HyJ"/>
                         <segue destination="GiD-eN-OMq" kind="show" identifier="ToSetting" id="dsm-l9-ehU"/>
@@ -336,7 +337,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9y8-yx-Am1" userLabel="plus">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9y8-yx-Am1" userLabel="Member Add Button">
                                 <rect key="frame" x="296.66666666666669" y="423" width="42" height="35"/>
                                 <buttonConfiguration key="configuration" style="plain">
                                     <imageReference key="image" image="plus" catalog="system" symbolScale="medium"/>
@@ -399,6 +400,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="n9W-dM-FfB"/>
+                    <connections>
+                        <outlet property="BoxImageView" destination="gPa-hO-lk5" id="gWM-u1-JUw"/>
+                        <outlet property="BoxNameLabel" destination="tA1-ek-fwH" id="JIK-fE-QIy"/>
+                        <outlet property="ImageChangeButton" destination="M0U-Gt-pGd" id="QVK-2Y-aRY"/>
+                        <outlet property="MemberAddButton" destination="9y8-yx-Am1" id="8Hx-RY-MCX"/>
+                        <outlet property="MemberTableView" destination="Dk7-5O-YI9" id="viZ-UK-EuC"/>
+                        <outlet property="NameLabelEditButton" destination="GC6-G3-TZG" id="iJ8-RT-hBI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1lZ-B2-pfG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

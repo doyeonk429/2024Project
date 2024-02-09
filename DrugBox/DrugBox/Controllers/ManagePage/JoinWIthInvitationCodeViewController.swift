@@ -12,19 +12,33 @@ class JoinWIthInvitationCodeViewController: UIViewController {
     @IBOutlet weak var codeTextField: UITextField!
     @IBOutlet weak var JoinButton: UIButton!
     var usedId: Int = 1 // 로그인 상태에서 정보 가져옴
-    var boxManager = BoxManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        boxManager.delegate = self
         // Do any additional setup after loading the view.
     }
     
     @IBAction func joinButtonPressed(_ sender: UIButton) {
         if let code = codeTextField.text{
-            boxManager.postInvitationCode(by: self.usedId, with: code)
+            self.postInvitationCode(by: self.usedId, with: code)
         }
+    }
+    
+    func postInvitationCode(by userid: Int, with inviteCode: String) {
+        let postURL = "\(K.apiURL.baseURL)/add/invite-code?inviteCode=\(inviteCode)&userId=\(userid)"
+        var request = URLRequest(url: URL(string: postURL)!,timeoutInterval: Double.infinity)
+        request.httpMethod = "POST"
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error : \(error)")
+            }
+            if let data = data {
+                print(String(data: data, encoding: .utf8)!)
+            }
+        }
+        task.resume()
+        dispatchMain()
     }
     
 }
@@ -36,7 +50,7 @@ extension JoinWIthInvitationCodeViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let code = codeTextField.text{
-            boxManager.postInvitationCode(by: self.usedId, with: code)
+            self.postInvitationCode(by: self.usedId, with: code)
         }
     }
     
@@ -50,11 +64,4 @@ extension JoinWIthInvitationCodeViewController: UITextFieldDelegate {
     }
 }
 
-extension JoinWIthInvitationCodeViewController: BoxManagerDelegate {
-    func didFailWithError(error: Error) {
-        //에러 경고창 띄우기
-        // 리퀘보내고 받은 response에 대한 에러
-    }
-    
-    
-}
+

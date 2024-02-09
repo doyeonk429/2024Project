@@ -10,11 +10,15 @@ import Foundation
 struct K {
     static let appName = "DrugBox"
     static let loginSegue = "LoginToMenuSelect"
-    
-    static let cellIdentifier = "ReusableCell"
-    static let cellNibName = "AlarmCell"
-    static let contentCellNibName = "WayToDelete"
 //    static let registerSegue = "RegisterToChat"
+    
+    struct tableCell {
+        static let cellIdentifier = "ReusableCell"
+        static let cellNibName = "AlarmCell"
+        static let contentCellNibName = "WayToDelete"
+        static let boxCellNibName = "BoxCell"
+        static let boxCellIdentifier = "BoxCell"
+    }
 
     
     struct mainSegue {

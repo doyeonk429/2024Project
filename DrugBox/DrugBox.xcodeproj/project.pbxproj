@@ -17,6 +17,8 @@
 		161DB4132B6E927E00F85377 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB4122B6E927E00F85377 /* UIImage.swift */; };
 		161DB4192B752B0E00F85377 /* AFDateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB4182B752B0E00F85377 /* AFDateResponse.swift */; };
 		161DB41D2B7540F500F85377 /* BoxSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB41C2B7540F500F85377 /* BoxSettingViewController.swift */; };
+		161DB4212B76190100F85377 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB4202B76190100F85377 /* UIImageView.swift */; };
+		161DB4262B763B2800F85377 /* ButtonTappedDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB4252B763B2800F85377 /* ButtonTappedDelegate.swift */; };
 		16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */; };
 		16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */; };
 		16913C882B64FBB1006A0F0A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C872B64FBB1006A0F0A /* MapViewController.swift */; };
@@ -71,6 +73,8 @@
 		161DB4122B6E927E00F85377 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		161DB4182B752B0E00F85377 /* AFDateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFDateResponse.swift; sourceTree = "<group>"; };
 		161DB41C2B7540F500F85377 /* BoxSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxSettingViewController.swift; sourceTree = "<group>"; };
+		161DB4202B76190100F85377 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		161DB4252B763B2800F85377 /* ButtonTappedDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTappedDelegate.swift; sourceTree = "<group>"; };
 		16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBoxViewController.swift; sourceTree = "<group>"; };
 		16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDeleteViewController.swift; sourceTree = "<group>"; };
 		16913C872B64FBB1006A0F0A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +130,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		161DB41F2B7618BD00F85377 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				161DB4042B6DF79300F85377 /* UILabel.swift */,
+				161DB4122B6E927E00F85377 /* UIImage.swift */,
+				161DB4202B76190100F85377 /* UIImageView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		161DB4222B761AAF00F85377 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		161DB4242B763B1200F85377 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				161DB4252B763B2800F85377 /* ButtonTappedDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		16C3BA022B6A959900CD8B97 /* ForBox */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +195,7 @@
 		16E008B72B63FDDB004F83F0 /* DrugBox */ = {
 			isa = PBXGroup;
 			children = (
+				161DB4222B761AAF00F85377 /* Assets */,
 				16E008EB2B63FE77004F83F0 /* Controllers */,
 				16E008E92B63FE5B004F83F0 /* Models */,
 				16E008E82B63FE53004F83F0 /* Views */,
@@ -176,8 +206,8 @@
 				16E008C32B63FDDB004F83F0 /* LaunchScreen.storyboard */,
 				16E008C62B63FDDB004F83F0 /* Info.plist */,
 				16E008F82B6404FF004F83F0 /* Constants.swift */,
-				161DB4042B6DF79300F85377 /* UILabel.swift */,
-				161DB4122B6E927E00F85377 /* UIImage.swift */,
+				161DB4242B763B1200F85377 /* Protocols */,
+				161DB41F2B7618BD00F85377 /* Extensions */,
 			);
 			path = DrugBox;
 			sourceTree = "<group>";
@@ -433,8 +463,10 @@
 				161DB4132B6E927E00F85377 /* UIImage.swift in Sources */,
 				161DB40F2B6E8E1D00F85377 /* ItemListViewController.swift in Sources */,
 				16E008F92B6404FF004F83F0 /* Constants.swift in Sources */,
+				161DB4262B763B2800F85377 /* ButtonTappedDelegate.swift in Sources */,
 				16E008F72B640459004F83F0 /* LoginViewController.swift in Sources */,
 				161DB40B2B6E709500F85377 /* BoxCell.swift in Sources */,
+				161DB4212B76190100F85377 /* UIImageView.swift in Sources */,
 				16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */,
 				161DB41D2B7540F500F85377 /* BoxSettingViewController.swift in Sources */,
 				16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */,

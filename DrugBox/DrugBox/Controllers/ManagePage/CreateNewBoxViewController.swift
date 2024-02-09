@@ -93,10 +93,10 @@ class CreateNewBoxViewController: UIViewController {
             }
         }, to: K.apiURL.POSTboxURL, method: .post, headers: header)
         .validate(statusCode: 200..<500)
-        .responseData { <#AFDataResponse<Data>#> in
-            <#code#>
-            // response 받아서 error handle...
-        }
+//        .responseData { <#AFDataResponse<Data>#> in
+//            <#code#>
+//            // response 받아서 error handle...
+//        }
         
         
     }

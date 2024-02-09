@@ -10,9 +10,21 @@ import Alamofire
 
 class BoxSettingViewController: UIViewController {
     
+    @IBOutlet weak var BoxImageView: UIImageView!
+    @IBOutlet weak var NameLabelEditButton: UIButton!
+    @IBOutlet weak var BoxNameLabel: UILabel!
+    @IBOutlet weak var MemberAddButton: UIButton!
+    @IBOutlet weak var ImageChangeButton: UIButton!
+    @IBOutlet weak var MemberTableView: UITableView!
+    
+    var drugBoxId : Int?
+    var boxName : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        BoxNameLabel.text = boxName
+        print(drugBoxId ?? 0)
+        
     }
     
 

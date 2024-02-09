@@ -17,7 +17,7 @@ class MainDeleteViewController: UIViewController {
         ContentsTableView.delegate = self
         ContentsTableView.dataSource = self
         
-        ContentsTableView.register(UINib(nibName: K.contentCellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
+        ContentsTableView.register(UINib(nibName:K.tableCell.contentCellNibName, bundle: nil), forCellReuseIdentifier: K.tableCell.contentCellNibName)
         ContentsTableView.rowHeight = UITableView.automaticDimension
         ContentsTableView.estimatedRowHeight = UITableView.automaticDimension
         
@@ -41,7 +41,7 @@ extension MainDeleteViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let content = contents[indexPath.row]
-        let cell = ContentsTableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! WayToDelete
+        let cell = ContentsTableView.dequeueReusableCell(withIdentifier: K.tableCell.contentCellNibName, for: indexPath) as! WayToDelete
         cell.TitleButton.setTitle(content, for: .normal)
         
         return cell

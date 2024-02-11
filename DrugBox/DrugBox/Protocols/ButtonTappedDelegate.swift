@@ -8,5 +8,5 @@
 import UIKit
 
 protocol ButtonTappedDelegate : AnyObject {
-    func cellButtonTapped()
+    func cellButtonTapped(_ buttonTag: Int)
 }

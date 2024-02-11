@@ -315,6 +315,9 @@
                                     <imageReference key="image" image="pencil" catalog="system" symbolScale="medium"/>
                                     <color key="baseForegroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="editNameButtonPressed:" destination="GiD-eN-OMq" eventType="touchUpInside" id="SmP-Jh-ZW8"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="구급상자명" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tA1-ek-fwH">
                                 <rect key="frame" x="96.666666666666686" y="76" width="200" height="21"/>
@@ -343,6 +346,9 @@
                                     <imageReference key="image" image="plus" catalog="system" symbolScale="medium"/>
                                     <color key="baseForegroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="addMemberButtonPressed:" destination="GiD-eN-OMq" eventType="touchUpInside" id="1rN-lM-d1x"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Dk7-5O-YI9">
                                 <rect key="frame" x="46.666666666666657" y="466" width="300" height="300"/>
@@ -373,6 +379,9 @@
                                     <imageReference key="image" image="photo" catalog="system" symbolScale="large"/>
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="changeImageButtonPressed:" destination="GiD-eN-OMq" eventType="touchUpInside" id="FnR-af-hwe"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vT1-9b-P4g"/>

@@ -11,13 +11,14 @@ import Alamofire
 class DefaultBoxViewController: UIViewController {
     
     @IBOutlet weak var boxTableView: UITableView!
+    var currentDrugbox : Int?
     
     // 테이블 셀 선택 시 해당 구급상자 내의 알약 정보 get 해서 다음 페이지에 넘겨주기
     var boxList: [BoxListModel] = [
-        BoxListModel(name: "test-01", drugboxId: 10, imageURL: ""),
+        BoxListModel(name: "test-01", drugboxId: 1, imageURL: ""),
         BoxListModel(name: "test-02", drugboxId: 12, imageURL: "")
     ]
-//    var testList: [tempModel] = []
+    //    var testList: [tempModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +26,14 @@ class DefaultBoxViewController: UIViewController {
         boxTableView.delegate = self
         boxTableView.dataSource = self
         boxTableView.register(UINib(nibName: K.tableCell.boxCellNibName, bundle: nil), forCellReuseIdentifier: K.tableCell.boxCellIdentifier)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // 다른 뷰 갓다와서 업데이트할 건 여기다가
         let userid = MenuSelectViewController.userID
-//        getDrugBoxList(userid) // 데이터 없어서 에러뜸 잠시 
+        //        getDrugBoxList(userid) // 데이터 없어서 에러뜸 잠시
         
         // 다시 화면으로 돌아왔을 때 선택 해제
         if let selectedIndexPath = boxTableView.indexPathForSelectedRow {
@@ -45,28 +47,26 @@ class DefaultBoxViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // 이거 왜 실행이 안되는가..
         if segue.identifier == K.manageSegue.showItemSegue {
             
         } else if segue.identifier == K.manageSegue.settingSegue {
             // setting 페이지에서 get api 호출에 필요한 data 넘겨줌
-//            guard let cell = sender as? BoxCell else { return }
-            guard sender is BoxCell else { return }
+            print("호출됨!!!!!!!성공!!!!!!")
+            print(self.currentDrugbox!)
             let destinationVC = segue.destination as! BoxSettingViewController
-            if let selectedIndextPath = boxTableView.indexPathForSelectedRow {
-                destinationVC.drugBoxId = boxList[selectedIndextPath.row].drugboxId
-                destinationVC.boxName = boxList[selectedIndextPath.row].name
-//                destinationVC?.BoxImageView.image = cell.boxImage.image
-            }
+            destinationVC.drugBoxId = self.currentDrugbox!
+            
         }
     }
     
-//MARK: - GET api
-// box GET api 호출 함수
+    //MARK: - GET api
+    // box GET api 호출 함수
     func getDrugBoxList(_ userId: Int) -> Void {
-//        print("box get api 호출")
+        //        print("box get api 호출")
         let urlString = "\(K.apiURL.GETboxListURL)\(userId)"
-//        let urlString = "https://jsonplaceholder.typicode.com/todos?userId=1"
-//        print(urlString)
+        //        let urlString = "https://jsonplaceholder.typicode.com/todos?userId=1"
+        //        print(urlString)
         
         if let url = URL(string: urlString) {
             // 2. create a URLSession
@@ -82,22 +82,20 @@ class DefaultBoxViewController: UIViewController {
                     return
                 }
                 do {
-//                    let json = try JSONSerialization.jsonObject(with: data)
-//                    print(json)
-//                    self.testList = self.parseJSON(data)
+                    //                    let json = try JSONSerialization.jsonObject(with: data)
+                    //                    print(json)
+                    //                    self.testList = self.parseJSON(data)
                     self.boxList = self.parseJSON(data)
-//                    for i in self.testList {
-//                        print(i.id)
-//                        print(i.userId)
-//                        print(i.title)
-//                        print("---")
-//                    }
+                    //                    for i in self.testList {
+                    //                        print(i.id)
+                    //                        print(i.userId)
+                    //                        print(i.title)
+                    //                        print("---")
                 }
             }
             task.resume()
-        }
-        
-    }
+        }}
+    
     
     func parseJSON(_ data: Data) -> [BoxListModel] {
         var returnList : [BoxListModel] = []
@@ -113,7 +111,6 @@ class DefaultBoxViewController: UIViewController {
         }
         return returnList
     }
-    
 }
 //MARK: - test model
 struct tempModel: Codable {
@@ -156,9 +153,10 @@ extension DefaultBoxViewController: UITableViewDataSource, UITableViewDelegate {
         if let url = URL(string: box.imageURL) {
             cell.boxImage.loadImage(url: url)
         } else {
-            cell.boxImage.image = UIImage(systemName: "shippingbox")
+            cell.boxImage.image = UIImage(systemName: K.drugboxDefaultImage)
         }
         cell.drugboxId = box.drugboxId
+        cell.SettingButton.tag = box.drugboxId
         cell.delegate = self
         
         return cell
@@ -169,7 +167,7 @@ extension DefaultBoxViewController: UITableViewDataSource, UITableViewDelegate {
 //        print("테이블뷰 셀이 클릭 되었다!")
         // segue call
         self.performSegue(withIdentifier: K.manageSegue.showItemSegue, sender: self)
-        // get api call
+        self.prepare(for: UIStoryboardSegue.init(identifier: K.manageSegue.showItemSegue, source: self, destination: ItemListViewController()), sender: self)
         
 //        boxTableView.deselectRow(at: indexPath, animated: true) // 색 원상태로 복귀
     }
@@ -177,8 +175,9 @@ extension DefaultBoxViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension DefaultBoxViewController: ButtonTappedDelegate {
-    func cellButtonTapped() {
+    func cellButtonTapped(_ buttonTag: Int) {
+        self.currentDrugbox = buttonTag
         self.performSegue(withIdentifier: K.manageSegue.settingSegue, sender: self)
-        
+//        self.prepare(for: UIStoryboardSegue.init(identifier: K.manageSegue.settingSegue, source: self, destination: BoxSettingViewController()), sender: UIButton.self) -- 이거 왜고민한거야...!!!!!!1(극대노)
     }
 }

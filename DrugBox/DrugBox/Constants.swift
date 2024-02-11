@@ -9,6 +9,7 @@ import Foundation
 
 struct K {
     static let appName = "DrugBox"
+    static let drugboxDefaultImage = "shippingbox"
     static let loginSegue = "LoginToMenuSelect"
 //    static let registerSegue = "RegisterToChat"
     
@@ -57,5 +58,6 @@ struct K {
         static let baseURL = "http://104.196.48.122:8080/drugbox/"
         static let POSTboxURL = "\(baseURL)add"
         static let GETboxListURL = "\(baseURL)user?userId="
+        static let GETboxDetailURL = "\(baseURL)setting?drugboxId="
     }
 }

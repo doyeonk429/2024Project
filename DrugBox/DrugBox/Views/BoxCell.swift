@@ -36,7 +36,7 @@ class BoxCell: UITableViewCell {
     
     
     @IBAction func settingButtonPressed(_ sender: UIButton) {
-        delegate?.cellButtonTapped()
+        delegate?.cellButtonTapped(sender.tag)
     }
     
 }

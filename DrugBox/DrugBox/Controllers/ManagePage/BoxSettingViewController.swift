@@ -23,9 +23,9 @@ class BoxSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getBoxDetail(drugBoxId ?? 0)
-        
+        boxSetting = BoxSettingModel(boxName: "test-01", drugboxId: 1, imageURL: "", users: [User(nickname: "AAA", userId: 12), User(nickname: "BBB", userId: 15)])
         DispatchQueue.main.async {
-            self.BoxNameLabel.text = self.boxSetting?.boxName
+            self.BoxNameLabel.text = self.boxSetting!.boxName
             if let url = URL(string: self.boxSetting!.imageURL) {
                 self.BoxImageView.loadImage(url: url)
             } else {
@@ -37,14 +37,17 @@ class BoxSettingViewController: UIViewController {
     
     
     @IBAction func editNameButtonPressed(_ sender: UIButton) {
+        
     }
     
     
     @IBAction func changeImageButtonPressed(_ sender: UIButton) {
+        
     }
     
     
     @IBAction func addMemberButtonPressed(_ sender: UIButton) {
+        
     }
     
     // api call
@@ -59,7 +62,7 @@ class BoxSettingViewController: UIViewController {
 //MARK: - GET api
     func getBoxDetail(_ drugBoxId: Int){
         let urlString = "\(K.apiURL.GETboxDetailURL)\(drugBoxId)"
-        print(urlString)
+//        print(urlString)
         if let url = URL(string: urlString) {
             // 2. create a URLSession
             let session = URLSession(configuration: .default)

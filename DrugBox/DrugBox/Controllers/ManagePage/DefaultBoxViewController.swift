@@ -52,8 +52,8 @@ class DefaultBoxViewController: UIViewController {
             
         } else if segue.identifier == K.manageSegue.settingSegue {
             // setting 페이지에서 get api 호출에 필요한 data 넘겨줌
-            print("호출됨!!!!!!!성공!!!!!!")
-            print(self.currentDrugbox!)
+//            print("호출됨!!!!!!!성공!!!!!!")
+//            print(self.currentDrugbox!)
             let destinationVC = segue.destination as! BoxSettingViewController
             destinationVC.drugBoxId = self.currentDrugbox!
             

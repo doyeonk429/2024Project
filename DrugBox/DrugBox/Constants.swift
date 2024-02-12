@@ -34,6 +34,7 @@ struct K {
         static let invitationCodeSegue = "ToJoinInvitationCode"
         static let showItemSegue = "BoxListToItemList"
         static let settingSegue = "ToSetting"
+        static let inviteSegue = "ToInvite"
     }
     
     struct deleteSegue {
@@ -59,5 +60,6 @@ struct K {
         static let POSTboxURL = "\(baseURL)add"
         static let GETboxListURL = "\(baseURL)user?userId="
         static let GETboxDetailURL = "\(baseURL)setting?drugboxId="
+        static let POSTinviteURL = "\(baseURL)invite?drugboxId="
     }
 }

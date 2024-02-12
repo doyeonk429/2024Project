@@ -86,15 +86,11 @@ class DefaultBoxViewController: UIViewController {
                     //                    print(json)
                     //                    self.testList = self.parseJSON(data)
                     self.boxList = self.parseJSON(data)
-                    //                    for i in self.testList {
-                    //                        print(i.id)
-                    //                        print(i.userId)
-                    //                        print(i.title)
-                    //                        print("---")
                 }
             }
             task.resume()
-        }}
+        }
+    }
     
     
     func parseJSON(_ data: Data) -> [BoxListModel] {

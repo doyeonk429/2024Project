@@ -416,11 +416,109 @@
                         <outlet property="MemberAddButton" destination="9y8-yx-Am1" id="8Hx-RY-MCX"/>
                         <outlet property="MemberTableView" destination="Dk7-5O-YI9" id="viZ-UK-EuC"/>
                         <outlet property="NameLabelEditButton" destination="GC6-G3-TZG" id="iJ8-RT-hBI"/>
+                        <segue destination="OEa-G0-x6p" kind="presentation" identifier="ToInvite" id="8cl-QP-poM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1lZ-B2-pfG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="971.7557251908396" y="3443.6619718309862"/>
+        </scene>
+        <!--Invite View Controller-->
+        <scene sceneID="CKi-k5-Tvb">
+            <objects>
+                <viewController id="OEa-G0-x6p" customClass="InviteViewController" customModule="DrugBox" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fuh-qf-lsO">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="120" translatesAutoresizingMaskIntoConstraints="NO" id="0fX-AR-tQQ">
+                                <rect key="frame" x="53.333333333333343" y="267" width="286.33333333333326" height="308"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="1K7-ea-QvF">
+                                        <rect key="frame" x="0.0" y="0.0" width="286.33333333333331" height="118.33333333333333"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vdc-gp-FdM">
+                                                <rect key="frame" x="0.0" y="0.0" width="286.33333333333331" height="34"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nsd-GR-rFE">
+                                                        <rect key="frame" x="0.0" y="0.0" width="44.333333333333336" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="초대할 닉네임을 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PAf-nI-oYL">
+                                                        <rect key="frame" x="54.333333333333343" y="0.0" width="232.00000000000003" height="34"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="230" id="wJP-MG-mXl"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMg-6A-MDS">
+                                                <rect key="frame" x="0.0" y="84" width="286.33333333333331" height="34.333333333333343"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="초대하기"/>
+                                                <connections>
+                                                    <action selector="inviteButtonPressed:" destination="OEa-G0-x6p" eventType="touchUpInside" id="bsg-az-Apd"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="AS1-n4-dPU">
+                                        <rect key="frame" x="0.0" y="238.33333333333329" width="286.33333333333331" height="69.666666666666657"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="초대코드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUD-Fl-oG0">
+                                                <rect key="frame" x="0.0" y="0.0" width="59" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1de-1B-IkY">
+                                                <rect key="frame" x="0.0" y="35.333333333333314" width="286.33333333333331" height="34.333333333333343"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000-0000-0000-0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ms5-8z-PVI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="230" height="34.333333333333336"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="230" id="cfS-aq-agS"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJd-rS-c5s">
+                                                        <rect key="frame" x="234.99999999999997" y="0.0" width="51.333333333333343" height="34.333333333333336"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="doc.on.doc" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="copyButtonPressed:" destination="OEa-G0-x6p" eventType="touchUpInside" id="77Y-Jh-rVM"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xVo-5j-mLH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0fX-AR-tQQ" firstAttribute="centerY" secondItem="Fuh-qf-lsO" secondAttribute="centerY" id="6qi-1e-CZ8"/>
+                            <constraint firstItem="0fX-AR-tQQ" firstAttribute="centerX" secondItem="Fuh-qf-lsO" secondAttribute="centerX" id="sMA-A1-ifh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="CopyButton" destination="tJd-rS-c5s" id="5UM-ah-vUy"/>
+                        <outlet property="InviteButton" destination="FMg-6A-MDS" id="tUO-WX-dkW"/>
+                        <outlet property="InviteCodeLabel" destination="Ms5-8z-PVI" id="AId-bs-2mm"/>
+                        <outlet property="NicknameTextField" destination="PAf-nI-oYL" id="kHB-CI-5cQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VQW-93-teN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1890.8396946564885" y="3443.6619718309862"/>
         </scene>
         <!--JoinW Ith Invitation Code View Controller-->
         <scene sceneID="Jho-Dv-Bbr">
@@ -676,7 +774,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DHZ-zd-nDf">
-                                <rect key="frame" x="46" y="238.99999999999994" width="158" height="76.666666666666686"/>
+                                <rect key="frame" x="46" y="238.99999999999991" width="158" height="76.666666666666657"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DJs-VP-6O5">
                                         <rect key="frame" x="0.0" y="0.0" width="158" height="34.333333333333336"/>
@@ -782,6 +880,7 @@
     <resources>
         <image name="bell.fill" catalog="system" width="123" height="128"/>
         <image name="circle.fill" catalog="system" width="128" height="123"/>
+        <image name="doc.on.doc" catalog="system" width="116" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="photo" catalog="system" width="128" height="93"/>

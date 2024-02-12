@@ -15,6 +15,7 @@ class JoinWIthInvitationCodeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        codeTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     

@@ -1,14 +1,14 @@
 //
-//  ItemListViewController.swift
+//  AddPrescriptionViewController.swift
 //  DrugBox
 //
-//  Created by 김도연 on 2/4/24.
+//  Created by 김도연 on 2/13/24.
 //
 
 import UIKit
 import Alamofire
 
-class ItemListViewController: UIViewController {
+class AddPrescriptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

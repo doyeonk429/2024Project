@@ -9,11 +9,35 @@ import UIKit
 import Alamofire
 
 class ItemListViewController: UIViewController {
+    @IBOutlet weak var DrugTableView: UITableView!
+    @IBOutlet weak var AddNewDrugButton: UIBarButtonItem!
+    @IBOutlet weak var UseDrugButton: UIButton!
+    
+    var Drugs : [DrugModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
+    func getDrugList(_ drugboxId: Int) {
+        <#function body#>
+    }
+    
+    func parseJSON(_ data: Data) -> <#return type#> {
+        <#function body#>
+    }
+}
 
+extension ItemListViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        Drugs.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
+    
+    
 }

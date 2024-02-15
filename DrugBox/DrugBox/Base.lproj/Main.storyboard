@@ -617,7 +617,10 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4Qe-q8-qN1"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="AddNewDrugButton" destination="4Qe-q8-qN1" id="CNC-0o-l7w"/>
                         <outlet property="ContentsTableView" destination="0A3-y9-VaB" id="0Lx-fW-OPE"/>
+                        <outlet property="DrugTableView" destination="0A3-y9-VaB" id="Z82-ct-j5M"/>
+                        <outlet property="UseDrugButton" destination="J5M-5q-9AX" id="X0F-as-znM"/>
                         <segue destination="oq6-zu-1em" kind="show" id="2oY-d4-K8E"/>
                     </connections>
                 </viewController>

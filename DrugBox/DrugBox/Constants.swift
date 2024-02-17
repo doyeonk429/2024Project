@@ -15,10 +15,15 @@ struct K {
     
     struct tableCell {
         static let cellIdentifier = "ReusableCell"
+        
         static let cellNibName = "AlarmCell"
         static let contentCellNibName = "WayToDelete"
+        
         static let boxCellNibName = "BoxCell"
         static let boxCellIdentifier = "BoxCell"
+        
+        static let drugCellNibName = "DrugCell"
+        static let drugCellIdentifier = "DrugCell"
     }
 
     

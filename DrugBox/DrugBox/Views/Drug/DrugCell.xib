@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DrugCell" rowHeight="60" id="srG-sc-qXu" customClass="DrugCell" customModule="DrugBox" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="srG-sc-qXu" id="ABU-am-ZyD">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZ4-X7-qPF">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fS2-kq-XaC">
+                                <rect key="frame" x="20.000000000000004" y="13" width="43.333333333333343" height="34.333333333333336"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="checkmark.square" catalog="system" symbolScale="medium"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="checkButtonPressed:" destination="srG-sc-qXu" eventType="touchUpInside" id="oWZ-Dd-2TT"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이레놀 서방정" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbs-Fy-EkC">
+                                <rect key="frame" x="73.333333333333314" y="19" width="113.66666666666669" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="210" id="7RF-xq-vtp"/>
+                                    <constraint firstAttribute="height" constant="22" id="m0d-b9-Wsz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaK-fd-VYh">
+                                <rect key="frame" x="351" y="19" width="12" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fS2-kq-XaC" firstAttribute="centerY" secondItem="oZ4-X7-qPF" secondAttribute="centerY" id="9hn-LK-GYW"/>
+                            <constraint firstItem="Qbs-Fy-EkC" firstAttribute="leading" secondItem="fS2-kq-XaC" secondAttribute="trailing" constant="10" id="Mra-aA-SHu"/>
+                            <constraint firstItem="Qbs-Fy-EkC" firstAttribute="centerY" secondItem="oZ4-X7-qPF" secondAttribute="centerY" id="UjB-BE-g5C"/>
+                            <constraint firstItem="fS2-kq-XaC" firstAttribute="leading" secondItem="oZ4-X7-qPF" secondAttribute="leading" constant="20" id="bbY-gU-ggH"/>
+                            <constraint firstItem="iaK-fd-VYh" firstAttribute="centerY" secondItem="oZ4-X7-qPF" secondAttribute="centerY" id="rRF-3a-Gzw"/>
+                            <constraint firstAttribute="trailing" secondItem="iaK-fd-VYh" secondAttribute="trailing" constant="30" id="so9-1a-S6f"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="oZ4-X7-qPF" secondAttribute="trailing" id="2aY-Uc-wai"/>
+                    <constraint firstItem="oZ4-X7-qPF" firstAttribute="leading" secondItem="ABU-am-ZyD" secondAttribute="leading" id="PBj-Y4-VZE"/>
+                    <constraint firstItem="oZ4-X7-qPF" firstAttribute="top" secondItem="ABU-am-ZyD" secondAttribute="top" id="gmO-bK-eih"/>
+                    <constraint firstAttribute="bottom" secondItem="oZ4-X7-qPF" secondAttribute="bottom" id="vSj-zJ-ajN"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="CheckButton" destination="fS2-kq-XaC" id="yKt-79-pQ6"/>
+                <outlet property="DrugCountLabel" destination="iaK-fd-VYh" id="Fic-hi-GbG"/>
+                <outlet property="DrugNameLabel" destination="Qbs-Fy-EkC" id="YnJ-fd-knM"/>
+            </connections>
+            <point key="canvasLocation" x="43.511450381679388" y="-48.591549295774648"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="checkmark.square" catalog="system" width="128" height="114"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

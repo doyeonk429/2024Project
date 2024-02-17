@@ -47,6 +47,10 @@
 		16E008FD2B642ABE004F83F0 /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008FC2B642ABE004F83F0 /* AlarmCell.swift */; };
 		16E008FF2B642B33004F83F0 /* AlarmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16E008FE2B642B33004F83F0 /* AlarmCell.xib */; };
 		16E009012B642EB5004F83F0 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E009002B642EB5004F83F0 /* Alarm.swift */; };
+		16EFBB352B80FFDC006C2EFF /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EFBB342B80FFDC006C2EFF /* String.swift */; };
+		16EFBB372B810006006C2EFF /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EFBB362B810006006C2EFF /* Date.swift */; };
+		16EFBB3F2B8105A1006C2EFF /* DrugCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EFBB3E2B8105A1006C2EFF /* DrugCell.swift */; };
+		16EFBB412B8105AD006C2EFF /* DrugCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16EFBB402B8105AD006C2EFF /* DrugCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +114,10 @@
 		16E008FC2B642ABE004F83F0 /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 		16E008FE2B642B33004F83F0 /* AlarmCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmCell.xib; sourceTree = "<group>"; };
 		16E009002B642EB5004F83F0 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		16EFBB342B80FFDC006C2EFF /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		16EFBB362B810006006C2EFF /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		16EFBB3E2B8105A1006C2EFF /* DrugCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugCell.swift; sourceTree = "<group>"; };
+		16EFBB402B8105AD006C2EFF /* DrugCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrugCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +152,8 @@
 				161DB4042B6DF79300F85377 /* UILabel.swift */,
 				161DB4122B6E927E00F85377 /* UIImage.swift */,
 				161DB4202B76190100F85377 /* UIImageView.swift */,
+				16EFBB342B80FFDC006C2EFF /* String.swift */,
+				16EFBB362B810006006C2EFF /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -250,12 +260,10 @@
 		16E008E82B63FE53004F83F0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				16E008FC2B642ABE004F83F0 /* AlarmCell.swift */,
-				16E008FE2B642B33004F83F0 /* AlarmCell.xib */,
-				16913C8B2B654A36006A0F0A /* WayToDelete.swift */,
-				16913C8E2B654A67006A0F0A /* WayToDelete.xib */,
-				161DB4082B6E6E4800F85377 /* BoxCell.xib */,
-				161DB40A2B6E709500F85377 /* BoxCell.swift */,
+				16EFBB3B2B810580006C2EFF /* Drug */,
+				16EFBB3A2B81056B006C2EFF /* TextForDelete */,
+				16EFBB392B810562006C2EFF /* Alarm */,
+				16EFBB382B810551006C2EFF /* Box */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -337,6 +345,42 @@
 			children = (
 			);
 			path = AccountPage;
+			sourceTree = "<group>";
+		};
+		16EFBB382B810551006C2EFF /* Box */ = {
+			isa = PBXGroup;
+			children = (
+				161DB4082B6E6E4800F85377 /* BoxCell.xib */,
+				161DB40A2B6E709500F85377 /* BoxCell.swift */,
+			);
+			path = Box;
+			sourceTree = "<group>";
+		};
+		16EFBB392B810562006C2EFF /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				16E008FE2B642B33004F83F0 /* AlarmCell.xib */,
+				16E008FC2B642ABE004F83F0 /* AlarmCell.swift */,
+			);
+			path = Alarm;
+			sourceTree = "<group>";
+		};
+		16EFBB3A2B81056B006C2EFF /* TextForDelete */ = {
+			isa = PBXGroup;
+			children = (
+				16913C8E2B654A67006A0F0A /* WayToDelete.xib */,
+				16913C8B2B654A36006A0F0A /* WayToDelete.swift */,
+			);
+			path = TextForDelete;
+			sourceTree = "<group>";
+		};
+		16EFBB3B2B810580006C2EFF /* Drug */ = {
+			isa = PBXGroup;
+			children = (
+				16EFBB3E2B8105A1006C2EFF /* DrugCell.swift */,
+				16EFBB402B8105AD006C2EFF /* DrugCell.xib */,
+			);
+			path = Drug;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,6 +493,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16EFBB412B8105AD006C2EFF /* DrugCell.xib in Resources */,
 				16E008C52B63FDDB004F83F0 /* LaunchScreen.storyboard in Resources */,
 				16E008C22B63FDDB004F83F0 /* Assets.xcassets in Resources */,
 				16E008C02B63FDDB004F83F0 /* Main.storyboard in Resources */,
@@ -482,12 +527,15 @@
 				16913C882B64FBB1006A0F0A /* MapViewController.swift in Sources */,
 				161DB4132B6E927E00F85377 /* UIImage.swift in Sources */,
 				161DB40F2B6E8E1D00F85377 /* ItemListViewController.swift in Sources */,
+				16EFBB372B810006006C2EFF /* Date.swift in Sources */,
 				16E008F92B6404FF004F83F0 /* Constants.swift in Sources */,
+				16EFBB352B80FFDC006C2EFF /* String.swift in Sources */,
 				16205A822B7BB4B0002DF4D2 /* AddDrugViewController.swift in Sources */,
 				161DB4262B763B2800F85377 /* ButtonTappedDelegate.swift in Sources */,
 				16E008F72B640459004F83F0 /* LoginViewController.swift in Sources */,
 				161DB40B2B6E709500F85377 /* BoxCell.swift in Sources */,
 				161DB4212B76190100F85377 /* UIImageView.swift in Sources */,
+				16EFBB3F2B8105A1006C2EFF /* DrugCell.swift in Sources */,
 				16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */,
 				161DB41D2B7540F500F85377 /* BoxSettingViewController.swift in Sources */,
 				16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */,

@@ -51,6 +51,8 @@
 		16EFBB372B810006006C2EFF /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EFBB362B810006006C2EFF /* Date.swift */; };
 		16EFBB3F2B8105A1006C2EFF /* DrugCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EFBB3E2B8105A1006C2EFF /* DrugCell.swift */; };
 		16EFBB412B8105AD006C2EFF /* DrugCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16EFBB402B8105AD006C2EFF /* DrugCell.xib */; };
+		16EFBB442B84F1E5006C2EFF /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 16EFBB432B84F1E5006C2EFF /* GoogleSignIn */; };
+		16EFBB462B84F1E5006C2EFF /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 16EFBB452B84F1E5006C2EFF /* GoogleSignInSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,7 +127,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16EFBB462B84F1E5006C2EFF /* GoogleSignInSwift in Frameworks */,
 				16C3B9FF2B6A8A7A00CD8B97 /* Alamofire in Frameworks */,
+				16EFBB442B84F1E5006C2EFF /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +405,8 @@
 			name = DrugBox;
 			packageProductDependencies = (
 				16C3B9FE2B6A8A7A00CD8B97 /* Alamofire */,
+				16EFBB432B84F1E5006C2EFF /* GoogleSignIn */,
+				16EFBB452B84F1E5006C2EFF /* GoogleSignInSwift */,
 			);
 			productName = DrugBox;
 			productReference = 16E008B52B63FDDB004F83F0 /* DrugBox.app */;
@@ -476,6 +482,7 @@
 			mainGroup = 16E008AC2B63FDDB004F83F0;
 			packageReferences = (
 				16C3B9FD2B6A8A7A00CD8B97 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				16EFBB422B84F1E5006C2EFF /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 16E008B62B63FDDB004F83F0 /* Products */;
 			projectDirPath = "";
@@ -743,6 +750,8 @@
 				INFOPLIST_FILE = DrugBox/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DrugBox;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSCameraUsageDescription = test;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = test;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -773,6 +782,8 @@
 				INFOPLIST_FILE = DrugBox/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DrugBox;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSCameraUsageDescription = test;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = test;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -913,6 +924,14 @@
 				minimumVersion = 5.8.1;
 			};
 		};
+		16EFBB422B84F1E5006C2EFF /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -920,6 +939,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 16C3B9FD2B6A8A7A00CD8B97 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		16EFBB432B84F1E5006C2EFF /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16EFBB422B84F1E5006C2EFF /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		16EFBB452B84F1E5006C2EFF /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16EFBB422B84F1E5006C2EFF /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

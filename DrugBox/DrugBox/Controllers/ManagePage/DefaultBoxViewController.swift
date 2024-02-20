@@ -15,8 +15,8 @@ class DefaultBoxViewController: UIViewController {
     
     // 테이블 셀 선택 시 해당 구급상자 내의 알약 정보 get 해서 다음 페이지에 넘겨주기
     var boxList: [BoxListModel] = [
-        BoxListModel(name: "test-01", drugboxId: 1, imageURL: ""),
-        BoxListModel(name: "test-02", drugboxId: 12, imageURL: "")
+//        BoxListModel(name: "test-01", drugboxId: 1, imageURL: ""),
+//        BoxListModel(name: "test-02", drugboxId: 12, imageURL: "")
     ]
     //    var testList: [tempModel] = []
     
@@ -33,7 +33,7 @@ class DefaultBoxViewController: UIViewController {
         super.viewWillAppear(animated)
         // 다른 뷰 갓다와서 업데이트할 건 여기다가
         let userid = MenuSelectViewController.userID
-        //        getDrugBoxList(userid) // 데이터 없어서 에러뜸 잠시
+        getDrugBoxList(userid) // 데이터 없어서 에러뜸 잠시
         
         // 다시 화면으로 돌아왔을 때 선택 해제
         if let selectedIndexPath = boxTableView.indexPathForSelectedRow {
@@ -63,30 +63,35 @@ class DefaultBoxViewController: UIViewController {
     //MARK: - GET api
     // box GET api 호출 함수
     func getDrugBoxList(_ userId: Int) -> Void {
-        //        print("box get api 호출")
+        print("box get api 호출")
         let urlString = "\(K.apiURL.GETboxListURL)\(userId)"
         //        let urlString = "https://jsonplaceholder.typicode.com/todos?userId=1"
-        //        print(urlString)
+        print(urlString)
         
         if let url = URL(string: urlString) {
-            // 2. create a URLSession
             let session = URLSession(configuration: .default)
-            // 3. give the session a task
             let task = session.dataTask(with: url) { data, response, error in
                 if let error = error {
-                    print(error)
+                    print("session error: \(error)")
                     return
                 }
                 guard let data = data else {
-                    print("no data")
+                    print("data error: no data")
                     return
                 }
                 do {
+                    print("do in")
                     //                    let json = try JSONSerialization.jsonObject(with: data)
                     //                    print(json)
-                    //                    self.testList = self.parseJSON(data)
                     self.boxList = self.parseJSON(data)
+                    for box in self.boxList {
+                        print(box.drugboxId)
+                        print(box.name)
+                    }
                 }
+//                } catch (let error){
+//                    print("paring error: \(error)")
+//                }
             }
             task.resume()
         }

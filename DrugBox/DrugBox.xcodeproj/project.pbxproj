@@ -53,6 +53,7 @@
 		16EFBB412B8105AD006C2EFF /* DrugCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16EFBB402B8105AD006C2EFF /* DrugCell.xib */; };
 		16EFBB442B84F1E5006C2EFF /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 16EFBB432B84F1E5006C2EFF /* GoogleSignIn */; };
 		16EFBB462B84F1E5006C2EFF /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 16EFBB452B84F1E5006C2EFF /* GoogleSignInSwift */; };
+		16EFBB482B8720CA006C2EFF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EFBB472B8720CA006C2EFF /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		16EFBB362B810006006C2EFF /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		16EFBB3E2B8105A1006C2EFF /* DrugCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugCell.swift; sourceTree = "<group>"; };
 		16EFBB402B8105AD006C2EFF /* DrugCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrugCell.xib; sourceTree = "<group>"; };
+		16EFBB472B8720CA006C2EFF /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				16E008F62B640459004F83F0 /* LoginViewController.swift */,
+				16EFBB472B8720CA006C2EFF /* RegisterViewController.swift */,
 			);
 			path = Default;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				161DB4212B76190100F85377 /* UIImageView.swift in Sources */,
 				16EFBB3F2B8105A1006C2EFF /* DrugCell.swift in Sources */,
 				16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */,
+				16EFBB482B8720CA006C2EFF /* RegisterViewController.swift in Sources */,
 				161DB41D2B7540F500F85377 /* BoxSettingViewController.swift in Sources */,
 				16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */,
 				16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */,

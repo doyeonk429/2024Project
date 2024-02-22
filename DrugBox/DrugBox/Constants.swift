@@ -64,6 +64,8 @@ struct K {
         static let baseURL = "http://104.196.48.122:8080/drugbox/"
         static let drugBaseURL = "http://104.196.48.122:8080/drugs/"
         
+        static let loginURL = "http://104.196.48.122:8080/auth/login/pw"
+        
         static let POSTboxURL = "\(baseURL)add"
         static let GETboxListURL = "\(baseURL)user?userId="
         static let GETboxDetailURL = "\(baseURL)setting?drugboxId="

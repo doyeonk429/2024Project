@@ -116,6 +116,21 @@
             </objects>
             <point key="canvasLocation" x="46.564885496183201" y="18.30985915492958"/>
         </scene>
+        <!--Register View Controller-->
+        <scene sceneID="JEA-4a-nVH">
+            <objects>
+                <viewController id="eow-FC-97M" customClass="RegisterViewController" customModule="DrugBox" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vbr-fM-Fmz">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="tHi-q5-5an"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e42-Iv-Ayv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1003" y="18"/>
+        </scene>
         <!--Menu Select View Controller-->
         <scene sceneID="mX5-hI-nhh">
             <objects>

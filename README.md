@@ -38,7 +38,37 @@ Note! Main branch is not working. You must choose the **forDemoVideo** branch.
 
 <br/>
 
-## Previews
+
+## 🖼 Previews
+<img src="https://github.com/2024-Google-Solution-Challenge-Team5/mobile-ios-native/assets/80318425/1859370f-ec65-4367-a2df-a952a785592f" width="200" height="430"/>
+
+<img src="https://github.com/2024-Google-Solution-Challenge-Team5/mobile-ios-native/assets/80318425/8a4fe429-b97c-4ffa-925b-5e12827e50b1" width="200" height="430"/>
+
+<img src="https://github.com/2024-Google-Solution-Challenge-Team5/mobile-ios-native/assets/80318425/8dfc683e-48bf-43a2-a18c-c4aaa098dcda" width="200" height="430"/>
+
+<img src="https://github.com/2024-Google-Solution-Challenge-Team5/mobile-ios-native/assets/80318425/9b1f1bb3-5190-408c-a6ee-9f614287bb0b" width="200" height="430"/>
+
+<img src="https://github.com/2024-Google-Solution-Challenge-Team5/mobile-ios-native/assets/80318425/5a1c2102-c3ba-4f5f-825f-7ecf5b5e28e3" width="200" height="430"/>
+
+<img src="https://github.com/2024-Google-Solution-Challenge-Team5/mobile-ios-native/assets/80318425/8ae9c120-a79f-42b9-827e-03de9add3ada" width="200" height="430"/>
+
+<img src="https://github.com/2024-Google-Solution-Challenge-Team5/mobile-ios-native/assets/80318425/f7d1f1de-29a6-436a-b891-389a4ffadd26" width="200" height="430"/>
+
+<img src="https://github.com/2024-Google-Solution-Challenge-Team5/mobile-ios-native/assets/80318425/a10c4b21-2174-4e56-8c96-e6277c14a6d0" width="200" height="430"/>
+
+<img src="https://github.com/2024-Google-Solution-Challenge-Team5/mobile-ios-native/assets/80318425/d895dbbe-f497-4d55-9a1f-6a8182676df3" width="200" height="430"/>
+
+<img src="https://github.com/2024-Google-Solution-Challenge-Team5/mobile-ios-native/assets/80318425/5f54a716-cf7c-41fa-b5a2-b70a4c621433" width="200" height="430"/>
+
+<img src="https://github.com/2024-Google-Solution-Challenge-Team5/mobile-ios-native/assets/80318425/c20ab2e7-03b4-48f4-9eb5-925f24218ae3" width="200" height="430"/>
+
+<img src="https://github.com/2024-Google-Solution-Challenge-Team5/mobile-ios-native/assets/80318425/b7dcab58-015a-4703-a1b5-392e4c251d80" width="200" height="430"/>
+
+<img src="https://github.com/2024-Google-Solution-Challenge-Team5/mobile-ios-native/assets/80318425/b6947645-a732-40dc-8afe-348a64d721d9" width="200" height="430"/>
+
+<img src="https://github.com/2024-Google-Solution-Challenge-Team5/mobile-ios-native/assets/80318425/f6b6422f-224f-4018-bec6-a50ec61a7592" width="200" height="430"/>
+
+
 
 <br/>
 

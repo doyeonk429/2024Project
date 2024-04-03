@@ -11,7 +11,8 @@ struct K {
     static let appName = "DrugBox"
     static let drugboxDefaultImage = "shippingbox"
     static let loginSegue = "LoginToMenuSelect"
-//    static let registerSegue = "RegisterToChat"
+    static let onboardingSegue = "OnboardingToLogin"
+    static let registerSegue = "ToRegister"
     
     struct tableCell {
         static let cellIdentifier = "ReusableCell"

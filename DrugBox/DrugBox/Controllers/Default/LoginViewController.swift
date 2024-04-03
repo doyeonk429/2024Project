@@ -3,19 +3,25 @@
 //  DrugBox
 //
 //  Created by 김도연 on 1/27/24.
-//
+//  Modifed by doyeonk429 on 3/4/24.
 import UIKit
 import GoogleSignIn
 
 class LoginViewController: UIViewController {
+    //MARK: - Outlet section
     @IBOutlet weak var EmailTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
+    @IBOutlet weak var GoogleLoginButton: GIDSignInButton!
     
+    
+    //MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        GoogleLoginButton.colorScheme = .light
+        GoogleLoginButton.style = .wide
     }
-
+    //MARK: - Button Actions
     @IBAction func buttonPressed(_ sender: UIButton) {
         if let email = EmailTextField.text, let password = PasswordTextField.text {
             postLogin(email: email, pw: password)
@@ -24,16 +30,17 @@ class LoginViewController: UIViewController {
     }
     
     
-    @IBAction func googleLoginButtonPressed(_ sender: UIButton) {
-        
-    }
+    
     
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
-        
+        self.performSegue(withIdentifier: K.registerSegue, sender: self)
     }
     
     
+}
+//MARK: - API section
+extension LoginViewController {
     func postLogin(email: String, pw: String) {
         let parameters = "{\r\n    \"email\": \"\(email)\",\r\n    \"password\": \"\(pw)\"\r\n}"
         let postData = parameters.data(using: .utf8)
@@ -54,8 +61,5 @@ class LoginViewController: UIViewController {
         task.resume()
         dispatchMain()
     }
-    
 }
-
-
 

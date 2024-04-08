@@ -12,20 +12,28 @@ class RegisterViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var EmailTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
-    @IBOutlet weak var UserNameTextField: UITextField!
     
     //MARK: - Variables
     var userEmail : String?
     var userPW : String?
-    var userName : String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        EmailTextField.delegate = self
+        PasswordTextField.delegate = self
+        PasswordTextField.textContentType = .newPassword
     }
+    
     //MARK: - Actions
     @IBAction func CompletedButtonPressed(_ sender: UIButton) {
-        self.dismiss(animated: true)
+        // post request 날리기
+        if let email = userEmail, let pw = userPW {
+            DispatchQueue.main.async {
+                self.PostUserRegisterAPI(email: email, pw: pw)
+            }
+            self.dismiss(animated: true)
+        }
     }
     
 }
@@ -33,8 +41,45 @@ class RegisterViewController: UIViewController {
 //MARK: - TextField Delegate Fuctions
 extension RegisterViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        <#code#>
+        // 텍스트필드 내용 입력 후, return key 입력 시 다음 텍스트필드로 이동
+        if textField == self.EmailTextField, self.EmailTextField.text != "" {
+            self.userEmail = self.EmailTextField.text
+            self.PasswordTextField.becomeFirstResponder()
+        } else if textField == self.PasswordTextField, self.PasswordTextField.text != ""{
+            self.userPW = self.PasswordTextField.text
+            self.PasswordTextField.resignFirstResponder()
+        }
+        return true
     }
     
+}
 
+extension RegisterViewController {
+    func PostUserRegisterAPI(email userEmail: String, pw userPassword: String) -> Void {
+        let url = "http://104.196.48.122:8080/auth/signup/pw"
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 10
+        // POST 로 보낼 정보
+        let params = ["email": userEmail, "password": userPassword] as Dictionary
+        
+        // httpBody 에 parameters 추가
+        do {
+            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
+        } catch {
+            print("등록 포스트 http body Error : \(error)")
+        }
+        AF.request(request).responseString { (response) in
+            switch response.result {
+            case .success:
+                print("POST 성공 \(response)")
+                if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                        print("* RESPONSE DATA: \(utf8Text)") // encode data to UTF8
+                    }
+            case .failure(let error):
+                print("error : \(error.errorDescription!)")
+            }
+        }
+    }
 }

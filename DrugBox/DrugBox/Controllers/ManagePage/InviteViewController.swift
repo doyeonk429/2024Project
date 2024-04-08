@@ -83,7 +83,7 @@ extension InviteViewController: UITextFieldDelegate {
         if NicknameTextField.text != ""{
             return true
         } else {
-            NicknameTextField.placeholder = "초대할 닉네임을 입력해주세요"
+            NicknameTextField.placeholder = "내용을 입력해주세요"
             return false
         }
     }

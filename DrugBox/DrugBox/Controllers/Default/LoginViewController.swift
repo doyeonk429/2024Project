@@ -6,10 +6,12 @@
 //  Modifed by doyeonk429 on 3/4/24.
 import UIKit
 import Firebase
+import FirebaseAuth
 import GoogleSignIn
 import Alamofire
 
-class LoginViewController: UIViewController {
+
+class LoginViewController: UIViewController{
     //MARK: - Outlet section
     @IBOutlet weak var EmailTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
@@ -31,12 +33,36 @@ class LoginViewController: UIViewController {
         }
     }
     
-    
-    
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: K.registerSegue, sender: self)
     }
     
+    @IBAction func googleLogin(_ sender: GIDSignInButton) {
+            // 구글 인증
+            guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+            let config = GIDConfiguration(clientID: clientID)
+            
+            GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
+                guard error == nil else { return }
+                
+                // 인증을 해도 계정은 따로 등록을 해주어야 한다.
+                // 구글 인증 토큰 받아서 -> 사용자 정보 토큰 생성 -> 파이어베이스 인증에 등록
+                guard
+                   let authentication = user?.authentication,
+                   let idToken = authentication.idToken
+                 else {
+                   return
+                 }
+                 let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                                accessToken: authentication.accessToken)
+                
+                // 사용자 정보 등록
+                Auth.auth().signIn(with: credential) { _, _ in
+                    // 로그인 화면으로 이동?
+                    
+                }
+              }
+        }
     
 }
 //MARK: - API section
@@ -68,32 +94,4 @@ extension LoginViewController {
             }
         }
     }
-}
-
-extension LoginViewController {
-    @IBAction func googleLogin(_ sender: GIDSignInButton) {
-            // 구글 인증
-            guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-            let config = GIDConfiguration(clientID: clientID)
-            
-            GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
-                guard error == nil else { return }
-                
-                // 인증을 해도 계정은 따로 등록을 해주어야 한다.
-                // 구글 인증 토큰 받아서 -> 사용자 정보 토큰 생성 -> 파이어베이스 인증에 등록
-                guard
-                   let authentication = user?.authentication,
-                   let idToken = authentication.idToken
-                 else {
-                   return
-                 }
-                 let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-                                                                accessToken: authentication.accessToken)
-                
-                // 사용자 정보 등록
-                Auth.auth().signIn(with: credential) { _, _ in
-                    // 로그인 화면으로 이동?
-                }
-              }
-        }
 }

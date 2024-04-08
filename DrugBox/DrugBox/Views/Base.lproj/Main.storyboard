@@ -141,6 +141,9 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nN8-cc-18O" customClass="GIDSignInButton">
                                                                 <rect key="frame" x="0.0" y="58.333333333333314" width="310" height="50"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <connections>
+                                                                    <action selector="googleLogin:" destination="BYZ-38-t0r" eventType="valueChanged" id="Lpr-hH-2D4"/>
+                                                                </connections>
                                                             </view>
                                                         </subviews>
                                                     </stackView>

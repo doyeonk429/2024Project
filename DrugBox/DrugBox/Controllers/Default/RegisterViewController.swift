@@ -60,7 +60,7 @@ extension RegisterViewController {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.timeoutInterval = 10
+        request.timeoutInterval = 60
         // POST 로 보낼 정보
         let params = ["email": userEmail, "password": userPassword] as Dictionary
         
@@ -73,6 +73,7 @@ extension RegisterViewController {
         AF.request(request).responseString { (response) in
             switch response.result {
             case .success:
+                // 성공 창을 띄워 -> 확인 버튼 누르면 segue 돌아가게 되나?
                 print("POST 성공 \(response)")
                 if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                         print("* RESPONSE DATA: \(utf8Text)") // encode data to UTF8

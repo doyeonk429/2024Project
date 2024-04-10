@@ -25,10 +25,13 @@ class LoginViewController: UIViewController{
         GoogleLoginButton.colorScheme = .light
         GoogleLoginButton.style = .wide
     }
+    
     //MARK: - Button Actions
     @IBAction func buttonPressed(_ sender: UIButton) {
         if let email = EmailTextField.text, let password = PasswordTextField.text {
-            postLogin(email: email, pw: password)
+            DispatchQueue.main.async {
+                self.postLogin(email: email, pw: password)
+            }
             self.performSegue(withIdentifier: K.loginSegue, sender: self)
         }
     }
@@ -38,31 +41,30 @@ class LoginViewController: UIViewController{
     }
     
     @IBAction func googleLogin(_ sender: GIDSignInButton) {
-            // 구글 인증
-            guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-            let config = GIDConfiguration(clientID: clientID)
-            
-            GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
-                guard error == nil else { return }
-                
-                // 인증을 해도 계정은 따로 등록을 해주어야 한다.
-                // 구글 인증 토큰 받아서 -> 사용자 정보 토큰 생성 -> 파이어베이스 인증에 등록
-                guard
-                   let authentication = user?.authentication,
-                   let idToken = authentication.idToken
-                 else {
-                   return
-                 }
-                 let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-                                                                accessToken: authentication.accessToken)
-                
-                // 사용자 정보 등록
-                Auth.auth().signIn(with: credential) { _, _ in
-                    // 로그인 화면으로 이동?
-                    
-                }
-              }
+        // 구글 인증
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        let config = GIDConfiguration.init(clientID: clientID)
+        
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
+            guard error == nil else {
+                // login failure
+                let popup = UIAlertController(title: "로그인 실패", message: "다시 로그인 해주세요", preferredStyle: .alert)
+                let action = UIAlertAction(title: "확인", style: .default)
+                popup.addAction(action)
+                self.present(popup, animated: true)
+                return
+            }
+            // success
+            guard
+                let idToken = signInResult?.user.idToken,
+                let accessToken = signInResult?.user.accessToken
+            else {
+                return
+            }
+//            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
         }
+        
+    }
     
 }
 //MARK: - API section

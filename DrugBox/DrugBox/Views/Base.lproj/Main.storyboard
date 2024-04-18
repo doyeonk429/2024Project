@@ -309,46 +309,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tgw-9H-d1s">
+                                <rect key="frame" x="30" y="74" width="370" height="368"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GJf-RL-q0E">
-                                <rect key="frame" x="65" y="462" width="300" height="320"/>
+                                <rect key="frame" x="30" y="512" width="370" height="320"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6u-fM-AlL" userLabel="Manage Button">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="370" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="i0a-Bx-bQ1"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="mst-Ch-Tts"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="OEH-zJ-5vB"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="비상약품 관리하기">
                                             <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="30"/>
+                                            <color key="baseBackgroundColor" red="0.2578609993" green="0.5" blue="0.26496164509999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="manageButtonPressed:" destination="NSA-Wc-GFc" eventType="touchUpInside" id="cfc-q5-APo"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8A-of-msj">
-                                        <rect key="frame" x="0.0" y="110" width="300" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="dow-p5-b1Q"/>
-                                            <constraint firstAttribute="height" constant="100" id="qyC-Vy-ik0"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="110" width="370" height="100"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="폐의약품 처리하기">
                                             <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="30"/>
+                                            <color key="baseBackgroundColor" red="0.2578609993" green="0.5" blue="0.26496164509999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="deleteButtonPressed:" destination="NSA-Wc-GFc" eventType="touchUpInside" id="dvF-51-mCT"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6V3-Gh-qr6">
-                                        <rect key="frame" x="0.0" y="220" width="300" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Oh3-85-Qu8"/>
-                                            <constraint firstAttribute="height" constant="100" id="YrZ-UM-Ldz"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="220" width="370" height="100"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="페기장소 검색하기">
                                             <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="30"/>
+                                            <color key="baseBackgroundColor" red="0.2578609993" green="0.5" blue="0.26496164509999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="searchButtonPressed:" destination="NSA-Wc-GFc" eventType="touchUpInside" id="SjY-sR-gRD"/>
@@ -360,14 +357,22 @@
                         <viewLayoutGuide key="safeArea" id="AQG-GV-HLx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="GJf-RL-q0E" firstAttribute="centerX" secondItem="VOF-b8-7Fz" secondAttribute="centerX" id="Vv4-2O-2H1"/>
-                            <constraint firstItem="AQG-GV-HLx" firstAttribute="bottom" secondItem="GJf-RL-q0E" secondAttribute="bottom" constant="150" id="kQl-Dk-Jjn"/>
+                            <constraint firstItem="AQG-GV-HLx" firstAttribute="bottom" secondItem="GJf-RL-q0E" secondAttribute="bottom" constant="100" id="IXC-M6-gQV"/>
+                            <constraint firstItem="AQG-GV-HLx" firstAttribute="trailing" secondItem="GJf-RL-q0E" secondAttribute="trailing" constant="30" id="Sg2-8D-fll"/>
+                            <constraint firstItem="tgw-9H-d1s" firstAttribute="leading" secondItem="AQG-GV-HLx" secondAttribute="leading" constant="30" id="TL0-B1-cPQ"/>
+                            <constraint firstItem="tgw-9H-d1s" firstAttribute="bottom" secondItem="GJf-RL-q0E" secondAttribute="top" constant="-70" id="USf-mm-Dxy"/>
+                            <constraint firstItem="AQG-GV-HLx" firstAttribute="trailing" secondItem="tgw-9H-d1s" secondAttribute="trailing" constant="30" id="gow-Zh-tUq"/>
+                            <constraint firstItem="tgw-9H-d1s" firstAttribute="top" secondItem="AQG-GV-HLx" secondAttribute="top" constant="30" id="qEd-nZ-B1Q"/>
+                            <constraint firstItem="GJf-RL-q0E" firstAttribute="leading" secondItem="AQG-GV-HLx" secondAttribute="leading" constant="30" id="wdg-dc-7xF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6RU-yj-lww">
                         <rightBarButtonItems>
-                            <barButtonItem title="Account" image="circle.fill" catalog="system" id="deb-A2-BqE"/>
+                            <barButtonItem title="Account" image="person.fill" catalog="system" id="deb-A2-BqE">
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </barButtonItem>
                             <barButtonItem title="alarm" image="bell.fill" catalog="system" id="b6g-Wf-6Oe">
+                                <color key="tintColor" name="AccentColor"/>
                                 <connections>
                                     <action selector="alarmButtonPressed:" destination="NSA-Wc-GFc" id="QXQ-Sg-xA5"/>
                                     <segue destination="G1U-yN-pK5" kind="show" identifier="MenuToAlarm" id="qjT-fA-30y"/>
@@ -376,6 +381,8 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="AccountButton" destination="deb-A2-BqE" id="Wfo-1J-cWu"/>
+                        <outlet property="AlarmButton" destination="b6g-Wf-6Oe" id="onQ-z2-7IA"/>
                         <outlet property="deleteButton" destination="Z8A-of-msj" id="lAd-03-2m8"/>
                         <outlet property="manageButton" destination="s6u-fM-AlL" id="Tyw-qu-riK"/>
                         <outlet property="searchButton" destination="6V3-Gh-qr6" id="FVV-8g-T5h"/>
@@ -1334,11 +1341,11 @@
     </scenes>
     <resources>
         <image name="bell.fill" catalog="system" width="123" height="128"/>
-        <image name="circle.fill" catalog="system" width="128" height="123"/>
         <image name="cross.case.circle.fill" catalog="system" width="128" height="123"/>
         <image name="doc.on.doc" catalog="system" width="116" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="photo.artframe" catalog="system" width="128" height="93"/>
         <image name="plus" catalog="system" width="128" height="113"/>

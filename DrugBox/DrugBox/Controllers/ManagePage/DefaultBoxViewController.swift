@@ -14,11 +14,11 @@ class DefaultBoxViewController: UIViewController {
     var currentDrugbox : Int?
     
     // 테이블 셀 선택 시 해당 구급상자 내의 알약 정보 get 해서 다음 페이지에 넘겨주기
+    // UI test용 dummy data
     var boxList: [BoxListModel] = [
-//        BoxListModel(name: "test-01", drugboxId: 1, imageURL: ""),
-//        BoxListModel(name: "test-02", drugboxId: 12, imageURL: "")
+        BoxListModel(name: "test-01", drugboxId: 1, imageURL: ""),
+        BoxListModel(name: "test-02", drugboxId: 12, imageURL: "")
     ]
-    //    var testList: [tempModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +32,8 @@ class DefaultBoxViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // 다른 뷰 갓다와서 업데이트할 건 여기다가
-        let userid = MenuSelectViewController.userID
-        getDrugBoxList(userid) // 데이터 없어서 에러뜸 잠시
+//        let userid = MenuSelectViewController.userID
+//        getDrugBoxList(userid) // 데이터 없어서 에러뜸 잠시
         
         // 다시 화면으로 돌아왔을 때 선택 해제
         if let selectedIndexPath = boxTableView.indexPathForSelectedRow {
@@ -49,11 +49,12 @@ class DefaultBoxViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // 이거 왜 실행이 안되는가..
         if segue.identifier == K.manageSegue.showItemSegue {
-            
+            // drug 리스트 api 불러오는데 필요한 drugbox number 변수값 지정 후 segue 이동
+            let destinationVC = segue.destination as! ItemListViewController
+            destinationVC.drugBoxId = self.currentDrugbox!
         } else if segue.identifier == K.manageSegue.settingSegue {
             // setting 페이지에서 get api 호출에 필요한 data 넘겨줌
-//            print("호출됨!!!!!!!성공!!!!!!")
-//            print(self.currentDrugbox!)
+//            print(self.currentDrugbox!) -> 맞게 호출되는지 확인
             let destinationVC = segue.destination as! BoxSettingViewController
             destinationVC.drugBoxId = self.currentDrugbox!
             
@@ -165,7 +166,6 @@ extension DefaultBoxViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //테이블뷰의 이벤트처리 함수
-//        print("테이블뷰 셀이 클릭 되었다!")
         // segue call
         self.performSegue(withIdentifier: K.manageSegue.showItemSegue, sender: self)
         self.prepare(for: UIStoryboardSegue.init(identifier: K.manageSegue.showItemSegue, source: self, destination: ItemListViewController()), sender: self)
@@ -179,6 +179,5 @@ extension DefaultBoxViewController: ButtonTappedDelegate {
     func cellButtonTapped(_ buttonTag: Int) {
         self.currentDrugbox = buttonTag
         self.performSegue(withIdentifier: K.manageSegue.settingSegue, sender: self)
-//        self.prepare(for: UIStoryboardSegue.init(identifier: K.manageSegue.settingSegue, source: self, destination: BoxSettingViewController()), sender: UIButton.self) -- 이거 왜고민한거야...!!!!!!1(극대노)
     }
 }

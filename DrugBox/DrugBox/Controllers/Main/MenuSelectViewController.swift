@@ -13,6 +13,9 @@ class MenuSelectViewController: UIViewController {
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
     
+    @IBOutlet weak var AccountButton: UIBarButtonItem!
+    @IBOutlet weak var AlarmButton: UIBarButtonItem!
+    
     static var userID: Int = 1
 
     override func viewDidLoad() {
@@ -25,6 +28,8 @@ class MenuSelectViewController: UIViewController {
         titleLabel.text = "   DrugBox"
         titleLabel.font = UIFont.boldSystemFont(ofSize: 25)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: titleLabel)
+        AlarmButton.tintColor = UIColor.systemYellow
+        AccountButton.tintColor = UIColor.lightGray
         
         
         // Do any additional setup after loading the view.

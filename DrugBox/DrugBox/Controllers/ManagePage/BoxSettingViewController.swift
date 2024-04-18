@@ -94,22 +94,22 @@ class BoxSettingViewController: UIViewController {
             task.resume()
         }
     }
-    
-    func parseJSON(_ data: Data) -> BoxSettingModel? {
-        var boxsetting : BoxSettingModel?
-        let decoder = JSONDecoder()
-        do {
-            let decodedData = try! decoder.decode(BoxSettingData.self, from: data)
-            let name = decodedData.boxName
-            let drugboxId = decodedData.drugboxId
-            let imageURL = decodedData.imageURL
-            let users = decodedData.users
-            let code = decodedData.inviteCode
-            boxsetting = BoxSettingModel(boxName: name, drugboxId: drugboxId, imageURL: imageURL, inviteCode: code, users: users)
-            self.boxInviteCode = code
-        }
-        return boxsetting
-    }
+    // 코드 수정 필요
+//    func parseJSON(_ data: Data) -> BoxSettingModel? {
+//        var boxsetting : BoxSettingModel?
+//        let decoder = JSONDecoder()
+//        do {
+//            let decodedData = try? decoder.decode(BoxSettingData.self, from: data)
+//            let name = decodedData?.boxName
+//            let drugboxId = decodedData?.drugboxId
+//            let imageURL = decodedData?.imageURL
+//            let users = decodedData?.users
+//            let code = decodedData?.inviteCode
+//            boxsetting = BoxSettingModel(boxName: name, drugboxId: drugboxId, imageURL: imageURL, inviteCode: code, users: users)
+//            self.boxInviteCode = code
+//        }
+//        return boxsetting
+//    }
     
 }
 

@@ -14,9 +14,11 @@ class ItemListViewController: UIViewController {
     @IBOutlet weak var UseDrugButton: UIButton!
     
     var Drugs : [DrugModel] = []
+    var drugBoxId : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // view 그릴 때 이전 페이지에서 정보 받아와야?함
         
         DrugTableView.delegate = self
         DrugTableView.dataSource = self
@@ -44,7 +46,7 @@ class ItemListViewController: UIViewController {
             task.resume()
         }
     }
-    
+    //MARK: - json parsing function
     func parseJSON(_ data: Data) -> [DrugModel] {
         var returnList : [DrugModel] = []
         let decoder = JSONDecoder()
@@ -67,7 +69,7 @@ class ItemListViewController: UIViewController {
         return returnList
     }
 }
-
+//MARK: - TableView delegate Methods
 extension ItemListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Drugs.count
@@ -82,11 +84,11 @@ extension ItemListViewController: UITableViewDataSource, UITableViewDelegate {
         
 //        cell.delegate = self
         
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 약 상세 정보로 이동하도록 만들기
         //테이블뷰의 이벤트처리 함수
 //        print("테이블뷰 셀이 클릭 되었다!")
         // segue call

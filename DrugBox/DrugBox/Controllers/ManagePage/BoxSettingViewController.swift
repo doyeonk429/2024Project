@@ -88,7 +88,7 @@ class BoxSettingViewController: UIViewController {
                     return
                 }
                 do {
-                    self.boxSetting = self.parseJSON(data)
+//                    self.boxSetting = self.parseJSON(data)
                 }
             }
             task.resume()

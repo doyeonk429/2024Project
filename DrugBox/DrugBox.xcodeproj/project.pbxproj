@@ -29,6 +29,7 @@
 		16913C8A2B64FF35006A0F0A /* BoxModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C892B64FF35006A0F0A /* BoxModel.swift */; };
 		16913C8C2B654A36006A0F0A /* WayToDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C8B2B654A36006A0F0A /* WayToDelete.swift */; };
 		16913C8F2B654A67006A0F0A /* WayToDelete.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16913C8E2B654A67006A0F0A /* WayToDelete.xib */; };
+		16A213872BF30DCA00D82CE3 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 16A213862BF30DCA00D82CE3 /* Toast */; };
 		16C3B9FF2B6A8A7A00CD8B97 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 16C3B9FE2B6A8A7A00CD8B97 /* Alamofire */; };
 		16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */; };
 		16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */; };
@@ -182,6 +183,7 @@
 				16D147F92BC3E86F0036C01C /* FirebaseInAppMessaging-Beta in Frameworks */,
 				16C3B9FF2B6A8A7A00CD8B97 /* Alamofire in Frameworks */,
 				16D147D52BBCDCF40036C01C /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				16A213872BF30DCA00D82CE3 /* Toast in Frameworks */,
 				16D148072BC3E86F0036C01C /* FirebaseRemoteConfigSwift in Frameworks */,
 				16D147E52BC3E86F0036C01C /* FirebaseAuthCombine-Community in Frameworks */,
 				16D147F52BC3E86F0036C01C /* FirebaseFunctions in Frameworks */,
@@ -511,6 +513,7 @@
 				16D148062BC3E86F0036C01C /* FirebaseRemoteConfigSwift */,
 				16D148082BC3E86F0036C01C /* FirebaseStorage */,
 				16D1480A2BC3E86F0036C01C /* FirebaseStorageCombine-Community */,
+				16A213862BF30DCA00D82CE3 /* Toast */,
 			);
 			productName = DrugBox;
 			productReference = 16E008B52B63FDDB004F83F0 /* DrugBox.app */;
@@ -588,6 +591,7 @@
 				16C3B9FD2B6A8A7A00CD8B97 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				16EFBB422B84F1E5006C2EFF /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				16D147D12BBCDCF40036C01C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				16A213852BF30DCA00D82CE3 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 16E008B62B63FDDB004F83F0 /* Products */;
 			projectDirPath = "";
@@ -1026,6 +1030,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		16A213852BF30DCA00D82CE3 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
 		16C3B9FD2B6A8A7A00CD8B97 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -1053,6 +1065,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		16A213862BF30DCA00D82CE3 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16A213852BF30DCA00D82CE3 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
 		16C3B9FE2B6A8A7A00CD8B97 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 16C3B9FD2B6A8A7A00CD8B97 /* XCRemoteSwiftPackageReference "Alamofire" */;

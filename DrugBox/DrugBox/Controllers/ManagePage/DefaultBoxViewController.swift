@@ -47,7 +47,6 @@ class DefaultBoxViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // 이거 왜 실행이 안되는가..
         if segue.identifier == K.manageSegue.showItemSegue {
             // drug 리스트 api 불러오는데 필요한 drugbox number 변수값 지정 후 segue 이동
             let destinationVC = segue.destination as! ItemListViewController
@@ -64,38 +63,34 @@ class DefaultBoxViewController: UIViewController {
     //MARK: - GET api
     // box GET api 호출 함수
     func getDrugBoxList(_ userId: Int) -> Void {
-        print("box get api 호출")
-        let urlString = "\(K.apiURL.GETboxListURL)\(userId)"
-        //        let urlString = "https://jsonplaceholder.typicode.com/todos?userId=1"
-        print(urlString)
-        
-        if let url = URL(string: urlString) {
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { data, response, error in
-                if let error = error {
-                    print("session error: \(error)")
-                    return
-                }
-                guard let data = data else {
-                    print("data error: no data")
-                    return
-                }
-                do {
-                    print("do in")
-                    //                    let json = try JSONSerialization.jsonObject(with: data)
-                    //                    print(json)
-                    self.boxList = self.parseJSON(data)
-                    for box in self.boxList {
-                        print(box.drugboxId)
-                        print(box.name)
-                    }
-                }
+//        let urlString = "\(K.apiURL.GETboxListURL)\(userId)"
+//        
+//        if let url = URL(string: urlString) {
+//            let session = URLSession(configuration: .default)
+//            let task = session.dataTask(with: url) { data, response, error in
+//                if let error = error {
+//                    print("session error: \(error)")
+//                    return
+//                }
+//                guard let data = data else {
+//                    print("data error: no data")
+//                    return
+//                }
+//                do {
+//                    let json = try JSONSerialization.jsonObject(with: data)
+////                    print(json)
+//                    self.boxList = self.parseJSON(data)
+//                    for box in self.boxList {
+//                        print(box.drugboxId)
+//                        print(box.name)
+//                    }
+//                }
 //                } catch (let error){
 //                    print("paring error: \(error)")
 //                }
-            }
-            task.resume()
-        }
+//            }
+//            task.resume()
+//        }
     }
     
     
@@ -181,3 +176,4 @@ extension DefaultBoxViewController: ButtonTappedDelegate {
         self.performSegue(withIdentifier: K.manageSegue.settingSegue, sender: self)
     }
 }
+

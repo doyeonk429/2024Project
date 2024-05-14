@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import Toast
 
 class InviteViewController: UIViewController {
     @IBOutlet weak var NicknameTextField: UITextField!
@@ -15,7 +16,8 @@ class InviteViewController: UIViewController {
     @IBOutlet weak var CopyButton: UIButton!
     
     var boxID: Int?
-    var InviteCode: String?
+    var InviteCode: String? // 초대 코드 저장 변수
+    private let pasteboard = UIPasteboard.general
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,8 @@ class InviteViewController: UIViewController {
     }
     
     @IBAction func copyButtonPressed(_ sender: UIButton) {
-        
+        pasteboard.string = InviteCode
+        self.view.makeToast("Copied!", duration: 2.0, position: .bottom)
     }
     
     func postInviteapi(_ drugboxId: Int, _ nickname: String) {

@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import Toast
 
 class RegisterViewController: UIViewController {
     //MARK: - Outlets
@@ -32,7 +33,6 @@ class RegisterViewController: UIViewController {
             DispatchQueue.main.async {
                 self.PostUserRegisterAPI(email: email, pw: pw)
             }
-            self.dismiss(animated: true)
         }
     }
     
@@ -56,7 +56,7 @@ extension RegisterViewController: UITextFieldDelegate {
 
 extension RegisterViewController {
     func PostUserRegisterAPI(email userEmail: String, pw userPassword: String) -> Void {
-        let url = "http://104.196.48.122:8080/auth/signup/pw"
+        let url = K.apiURL.registerURL
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -73,13 +73,15 @@ extension RegisterViewController {
         AF.request(request).responseString { (response) in
             switch response.result {
             case .success:
-                // 성공 창을 띄워 -> 확인 버튼 누르면 segue 돌아가게 되나?
                 print("POST 성공 \(response)")
                 if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                         print("* RESPONSE DATA: \(utf8Text)") // encode data to UTF8
+                    self.view.makeToast("가입 완료!", duration: 2.0, position: .center)
+                    self.dismiss(animated: true)
                     }
             case .failure(let error):
                 print("error : \(error.errorDescription!)")
+//                self.view.makeToast("가입 실패", duration: 2.0, position: .center)
             }
         }
     }

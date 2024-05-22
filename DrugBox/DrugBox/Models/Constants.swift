@@ -62,13 +62,15 @@ struct K {
     }
     
     struct apiURL {
-        static let baseURL = "http://104.196.48.122:8080/drugbox/"
-        static let drugBaseURL = "http://104.196.48.122:8080/drugs/"
+        static let baseServer = "3.39.46.141:8080"
+        static let baseURL = "http://\(baseServer)/"
+        static let drugBaseURL = "\(baseURL)/drugbox"
         
-        static let loginURL = "http://104.196.48.122:8080/auth/login/pw"
+        static let loginURL = "\(baseURL)auth/login/pw"
+        static let registerURL = "\(baseURL)auth/signup/pw"
         
         static let POSTboxURL = "\(baseURL)add"
-        static let GETboxListURL = "\(baseURL)user?userId="
+        static let GETboxListURL = "\(baseURL)/user"
         static let GETboxDetailURL = "\(baseURL)setting?drugboxId="
         static let POSTinviteURL = "\(baseURL)invite?drugboxId="
         

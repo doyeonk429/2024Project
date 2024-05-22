@@ -18,7 +18,6 @@ class CreateNewBoxViewController: UIViewController {
     let picker = UIImagePickerController()
     var boxManager = BoxManager()
     
-    var userid: Int = 1 // dummy -> 나중에 로그인 연결하면 설정하기
     var boxName: String = ""
 //    var imageURL: String = ""
     
@@ -63,7 +62,8 @@ class CreateNewBoxViewController: UIViewController {
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if boxName != "" {
             let resizedImage = ImageView.image!.resizeImage(image: ImageView.image!, newWidth: 300)
-            self.fileUpload(id: userid, name: boxName, img: resizedImage)
+            self.fileUpload(name: boxName, img: resizedImage)
+            print("name : \(boxName) +  img : \(resizedImage)")
             // 정상 포스팅 되는 경우에만..
             DispatchQueue.main.async {
                 self.BoxNameLabel.text = ""
@@ -73,13 +73,13 @@ class CreateNewBoxViewController: UIViewController {
         }
     }
     
-    func fileUpload(id userId: Int, name boxName: String, img: UIImage) -> Void {
+    func fileUpload(name boxName: String, img: UIImage) -> Void {
         // 헤더 구성 : Content-Type 필드에 multipart 타입추가
         let header: HTTPHeaders = [
             "Accept" : "application/json",
             "Content-Type" : "multipart/form-data"
         ]
-        let parameters : [String: Any] = ["userId" : userId, "name" : boxName]
+        let parameters : [String: Any] = ["name" : boxName]
         let imageData = img.jpegData(compressionQuality: 1)
         
         AF.upload(multipartFormData: { MultipartFormData in

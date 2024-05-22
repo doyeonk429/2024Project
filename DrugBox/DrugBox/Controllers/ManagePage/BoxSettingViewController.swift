@@ -21,6 +21,8 @@ class BoxSettingViewController: UIViewController {
     var boxInviteCode : String?
     var boxSetting : BoxSettingModel?
     
+    var users : [User] = [User(nickname: "김도연", userId: 12)]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getBoxDetail(drugBoxId ?? 0)

@@ -10,9 +10,19 @@ import Alamofire
 
 struct BoxManager {
     
-    func fetchDrugboxDetail(drugboxId: Int) {
-//        var urlString = "\(url)setting?drugboxId=\(drugboxId)"
-//        performRequest(with: urlString, type: 1)
+    func parseJSON(_ data: Data) -> [BoxListModel] {
+        var returnList : [BoxListModel] = []
+        let decoder = JSONDecoder()
+        do {
+            let decodedData = try! decoder.decode([BoxListData].self, from: data)
+            for data in decodedData {
+                let name = data.name
+                let drugboxId = data.drugboxId
+                let imageURL = data.imageURL
+                returnList.append(BoxListModel(name: name, drugboxId: drugboxId, imageURL: imageURL))
+            }
+        }
+        return returnList
     }
     
     

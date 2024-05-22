@@ -31,6 +31,7 @@ class LoginViewController: UIViewController{
         if let email = EmailTextField.text, let password = PasswordTextField.text {
             DispatchQueue.main.async {
                 self.postLogin(email: email, pw: password)
+                
             }
             self.performSegue(withIdentifier: K.loginSegue, sender: self)
         }
@@ -70,7 +71,7 @@ class LoginViewController: UIViewController{
 //MARK: - API section
 extension LoginViewController {
     func postLogin(email: String, pw: String) {
-        let url = "http://104.196.48.122:8080/auth/login/pw"
+        let url = K.apiURL.loginURL
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

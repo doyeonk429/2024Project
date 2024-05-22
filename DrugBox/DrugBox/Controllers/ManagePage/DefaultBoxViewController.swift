@@ -11,41 +11,41 @@ import Alamofire
 class DefaultBoxViewController: UIViewController {
     
     @IBOutlet weak var boxTableView: UITableView!
-    var currentDrugbox : Int?
+    var boxManager = BoxManager() // json data parsing functions
+    var currentDrugbox : Int? // 선택한 drugbox의 id 저장 변수
     
     // 테이블 셀 선택 시 해당 구급상자 내의 알약 정보 get 해서 다음 페이지에 넘겨주기
     // UI test용 dummy data
     var boxList: [BoxListModel] = [
-        BoxListModel(name: "test-01", drugboxId: 1, imageURL: ""),
-        BoxListModel(name: "test-02", drugboxId: 12, imageURL: "")
+        
     ]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getDrugBoxList()
+
         boxTableView.delegate = self
         boxTableView.dataSource = self
         boxTableView.register(UINib(nibName: K.tableCell.boxCellNibName, bundle: nil), forCellReuseIdentifier: K.tableCell.boxCellIdentifier)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // 다른 뷰 갓다와서 업데이트할 건 여기다가
-//        let userid = MenuSelectViewController.userID
-//        getDrugBoxList(userid) // 데이터 없어서 에러뜸 잠시
+        
+        getDrugBoxList()
         
         // 다시 화면으로 돌아왔을 때 선택 해제
         if let selectedIndexPath = boxTableView.indexPathForSelectedRow {
             boxTableView.deselectRow(at: selectedIndexPath, animated: animated)
         }
-        
     }
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: K.manageSegue.createSegue, sender: self)
     }
     
+    //MARK: - Segue prepare
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.manageSegue.showItemSegue {
             // drug 리스트 api 불러오는데 필요한 drugbox number 변수값 지정 후 segue 이동
@@ -53,89 +53,33 @@ class DefaultBoxViewController: UIViewController {
             destinationVC.drugBoxId = self.currentDrugbox!
         } else if segue.identifier == K.manageSegue.settingSegue {
             // setting 페이지에서 get api 호출에 필요한 data 넘겨줌
-//            print(self.currentDrugbox!) -> 맞게 호출되는지 확인
             let destinationVC = segue.destination as! BoxSettingViewController
             destinationVC.drugBoxId = self.currentDrugbox!
-            
         }
     }
     
     //MARK: - GET api
-    // box GET api 호출 함수
-    func getDrugBoxList(_ userId: Int) -> Void {
-//        let urlString = "\(K.apiURL.GETboxListURL)\(userId)"
-//        
-//        if let url = URL(string: urlString) {
-//            let session = URLSession(configuration: .default)
-//            let task = session.dataTask(with: url) { data, response, error in
-//                if let error = error {
-//                    print("session error: \(error)")
-//                    return
-//                }
-//                guard let data = data else {
-//                    print("data error: no data")
-//                    return
-//                }
-//                do {
-//                    let json = try JSONSerialization.jsonObject(with: data)
-////                    print(json)
-//                    self.boxList = self.parseJSON(data)
-//                    for box in self.boxList {
-//                        print(box.drugboxId)
-//                        print(box.name)
-//                    }
-//                }
-//                } catch (let error){
-//                    print("paring error: \(error)")
-//                }
-//            }
-//            task.resume()
-//        }
-    }
-    
-    
-    func parseJSON(_ data: Data) -> [BoxListModel] {
-        var returnList : [BoxListModel] = []
-        let decoder = JSONDecoder()
-        do {
-            let decodedData = try! decoder.decode([BoxListData].self, from: data)
-            for data in decodedData {
-                let name = data.name
-                let drugboxId = data.drugboxId
-                let imageURL = data.imageURL
-                returnList.append(BoxListModel(name: name, drugboxId: drugboxId, imageURL: imageURL))
+    func getDrugBoxList() -> Void {
+        let url = K.apiURL.GETboxListURL
+
+        AF.request(url,
+                   method: .get,
+                   encoding: URLEncoding.default)
+        .validate(statusCode: 200..<300)
+        .responseData { response in
+            switch response.result {
+            case .success:
+                print("성공")
+                self.boxList = self.boxManager.parseJSON(response.data!)
+                self.boxTableView.reloadData() // 저장한 data UI에 그려주기
+            case .failure:
+                print(response.error.debugDescription)
             }
         }
-        return returnList
     }
 }
-//MARK: - test model
-struct tempModel: Codable {
-    let id: Int
-    let title: String
-    let userId: Int
-}
-//MARK: - box for listview model
-struct BoxListModel: Codable {
-    let name: String
-    let drugboxId: Int
-    let imageURL: String
-}
-//MARK: - test data
-struct tempData: Codable{
-    let completed: Bool
-    let id: Int
-    let title: String
-    let userId: Int
-}
 
-struct BoxListData: Codable {
-    let name: String
-    let drugboxId: Int
-    let imageURL: String
-    let inviteCode: String
-}
-
+//MARK: - TableView functions
 extension DefaultBoxViewController: UITableViewDataSource, UITableViewDelegate {
     // 테이블 셀 개수 설정
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -170,6 +114,7 @@ extension DefaultBoxViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
+//MARK: - Button func In the Cell
 extension DefaultBoxViewController: ButtonTappedDelegate {
     func cellButtonTapped(_ buttonTag: Int) {
         self.currentDrugbox = buttonTag

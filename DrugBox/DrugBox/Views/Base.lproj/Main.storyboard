@@ -142,7 +142,7 @@
                                                                 <rect key="frame" x="0.0" y="58.333333333333314" width="310" height="50"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <connections>
-                                                                    <action selector="googleLogin:" destination="BYZ-38-t0r" eventType="valueChanged" id="Lpr-hH-2D4"/>
+                                                                    <action selector="googleLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hgd-rt-1Zl"/>
                                                                 </connections>
                                                             </view>
                                                         </subviews>

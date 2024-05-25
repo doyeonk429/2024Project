@@ -132,6 +132,7 @@
 		16A213882BF3467C00D82CE3 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		16A2138A2BFDCAD600D82CE3 /* BoxListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxListModel.swift; sourceTree = "<group>"; };
 		16A2138C2BFDCB0200D82CE3 /* BoxListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxListData.swift; sourceTree = "<group>"; };
+		16A2138E2C01837B00D82CE3 /* DrugBox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DrugBox.entitlements; sourceTree = "<group>"; };
 		16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewBoxViewController.swift; sourceTree = "<group>"; };
 		16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxManager.swift; sourceTree = "<group>"; };
 		16C5CFF12BB7ED10008DF3D3 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
@@ -307,6 +308,7 @@
 		16E008B72B63FDDB004F83F0 /* DrugBox */ = {
 			isa = PBXGroup;
 			children = (
+				16A2138E2C01837B00D82CE3 /* DrugBox.entitlements */,
 				161DB4222B761AAF00F85377 /* Assets */,
 				16E008EB2B63FE77004F83F0 /* Controllers */,
 				16E008E92B63FE5B004F83F0 /* Models */,
@@ -865,6 +867,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DrugBox/DrugBox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 83K577A944;
@@ -897,6 +900,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DrugBox/DrugBox.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 83K577A944;

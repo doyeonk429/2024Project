@@ -24,6 +24,10 @@
 		16205A842B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16205A832B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift */; };
 		16205A862B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16205A852B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift */; };
 		1662B8112C1FD04900BF7802 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1662B8102C1FD04900BF7802 /* KeychainSwift */; };
+		1662B8142C1FD16500BF7802 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 1662B8132C1FD16500BF7802 /* CombineMoya */; };
+		1662B8162C1FD16500BF7802 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 1662B8152C1FD16500BF7802 /* Moya */; };
+		1662B8182C1FD16500BF7802 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 1662B8172C1FD16500BF7802 /* ReactiveMoya */; };
+		1662B81A2C1FD16500BF7802 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 1662B8192C1FD16500BF7802 /* RxMoya */; };
 		16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */; };
 		16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */; };
 		16913C882B64FBB1006A0F0A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C872B64FBB1006A0F0A /* MapViewController.swift */; };
@@ -171,11 +175,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1662B8162C1FD16500BF7802 /* Moya in Frameworks */,
 				16D147FB2BC3E86F0036C01C /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				16D147EB2BC3E86F0036C01C /* FirebaseDatabaseSwift in Frameworks */,
 				16D147E92BC3E86F0036C01C /* FirebaseDatabase in Frameworks */,
 				16D147FF2BC3E86F0036C01C /* FirebaseMLModelDownloader in Frameworks */,
 				16D147DB2BBCDCF40036C01C /* FirebaseAppCheck in Frameworks */,
+				1662B81A2C1FD16500BF7802 /* RxMoya in Frameworks */,
+				1662B8142C1FD16500BF7802 /* CombineMoya in Frameworks */,
 				16D147F72BC3E86F0036C01C /* FirebaseFunctionsCombine-Community in Frameworks */,
 				1662B8112C1FD04900BF7802 /* KeychainSwift in Frameworks */,
 				16D147FD2BC3E86F0036C01C /* FirebaseInstallations in Frameworks */,
@@ -197,6 +204,7 @@
 				16D147D92BBCDCF40036C01C /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				16D1480B2BC3E86F0036C01C /* FirebaseStorageCombine-Community in Frameworks */,
 				16D147F12BC3E86F0036C01C /* FirebaseFirestoreCombine-Community in Frameworks */,
+				1662B8182C1FD16500BF7802 /* ReactiveMoya in Frameworks */,
 				16D147D32BBCDCF40036C01C /* FirebaseAnalytics in Frameworks */,
 				16D147E72BC3E86F0036C01C /* FirebaseCrashlytics in Frameworks */,
 				16EFBB442B84F1E5006C2EFF /* GoogleSignIn in Frameworks */,
@@ -525,6 +533,10 @@
 				16D1480A2BC3E86F0036C01C /* FirebaseStorageCombine-Community */,
 				16A213862BF30DCA00D82CE3 /* Toast */,
 				1662B8102C1FD04900BF7802 /* KeychainSwift */,
+				1662B8132C1FD16500BF7802 /* CombineMoya */,
+				1662B8152C1FD16500BF7802 /* Moya */,
+				1662B8172C1FD16500BF7802 /* ReactiveMoya */,
+				1662B8192C1FD16500BF7802 /* RxMoya */,
 			);
 			productName = DrugBox;
 			productReference = 16E008B52B63FDDB004F83F0 /* DrugBox.app */;
@@ -604,6 +616,7 @@
 				16D147D12BBCDCF40036C01C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				16A213852BF30DCA00D82CE3 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				1662B80F2C1FD04900BF7802 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				1662B8122C1FD16500BF7802 /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = 16E008B62B63FDDB004F83F0 /* Products */;
 			projectDirPath = "";
@@ -1054,6 +1067,14 @@
 				minimumVersion = 24.0.0;
 			};
 		};
+		1662B8122C1FD16500BF7802 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
 		16A213852BF30DCA00D82CE3 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift";
@@ -1093,6 +1114,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1662B80F2C1FD04900BF7802 /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
+		};
+		1662B8132C1FD16500BF7802 /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1662B8122C1FD16500BF7802 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		1662B8152C1FD16500BF7802 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1662B8122C1FD16500BF7802 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		1662B8172C1FD16500BF7802 /* ReactiveMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1662B8122C1FD16500BF7802 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = ReactiveMoya;
+		};
+		1662B8192C1FD16500BF7802 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1662B8122C1FD16500BF7802 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
 		};
 		16A213862BF30DCA00D82CE3 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;

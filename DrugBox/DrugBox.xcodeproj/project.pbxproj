@@ -23,6 +23,7 @@
 		16205A822B7BB4B0002DF4D2 /* AddDrugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16205A812B7BB4B0002DF4D2 /* AddDrugViewController.swift */; };
 		16205A842B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16205A832B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift */; };
 		16205A862B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16205A852B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift */; };
+		1662B8112C1FD04900BF7802 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1662B8102C1FD04900BF7802 /* KeychainSwift */; };
 		16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */; };
 		16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */; };
 		16913C882B64FBB1006A0F0A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C872B64FBB1006A0F0A /* MapViewController.swift */; };
@@ -176,6 +177,7 @@
 				16D147FF2BC3E86F0036C01C /* FirebaseMLModelDownloader in Frameworks */,
 				16D147DB2BBCDCF40036C01C /* FirebaseAppCheck in Frameworks */,
 				16D147F72BC3E86F0036C01C /* FirebaseFunctionsCombine-Community in Frameworks */,
+				1662B8112C1FD04900BF7802 /* KeychainSwift in Frameworks */,
 				16D147FD2BC3E86F0036C01C /* FirebaseInstallations in Frameworks */,
 				16D148012BC3E86F0036C01C /* FirebaseMessaging in Frameworks */,
 				16D147E32BC3E86E0036C01C /* FirebaseAuth in Frameworks */,
@@ -522,6 +524,7 @@
 				16D148082BC3E86F0036C01C /* FirebaseStorage */,
 				16D1480A2BC3E86F0036C01C /* FirebaseStorageCombine-Community */,
 				16A213862BF30DCA00D82CE3 /* Toast */,
+				1662B8102C1FD04900BF7802 /* KeychainSwift */,
 			);
 			productName = DrugBox;
 			productReference = 16E008B52B63FDDB004F83F0 /* DrugBox.app */;
@@ -600,6 +603,7 @@
 				16EFBB422B84F1E5006C2EFF /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				16D147D12BBCDCF40036C01C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				16A213852BF30DCA00D82CE3 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				1662B80F2C1FD04900BF7802 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = 16E008B62B63FDDB004F83F0 /* Products */;
 			projectDirPath = "";
@@ -1042,6 +1046,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1662B80F2C1FD04900BF7802 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 24.0.0;
+			};
+		};
 		16A213852BF30DCA00D82CE3 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift";
@@ -1077,6 +1089,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1662B8102C1FD04900BF7802 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1662B80F2C1FD04900BF7802 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
 		16A213862BF30DCA00D82CE3 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 16A213852BF30DCA00D82CE3 /* XCRemoteSwiftPackageReference "Toast-Swift" */;

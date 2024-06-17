@@ -10,12 +10,12 @@ import FirebaseAuth
 import GoogleSignIn
 import Alamofire
 
-
 class LoginViewController: UIViewController{
     //MARK: - Outlet section
     @IBOutlet weak var EmailTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
     @IBOutlet weak var GoogleLoginButton: GIDSignInButton!
+    
     
     
     //MARK: - View
@@ -31,7 +31,6 @@ class LoginViewController: UIViewController{
         if let email = EmailTextField.text, let password = PasswordTextField.text {
             DispatchQueue.main.async {
                 self.postLogin(email: email, pw: password)
-                
             }
             self.performSegue(withIdentifier: K.loginSegue, sender: self)
         }
@@ -55,29 +54,8 @@ class LoginViewController: UIViewController{
             
             let credential = GoogleAuthProvider.credential(withIDToken: token, accessToken: accesstoken)
         }
+        // 이 정보를 api 호출해서 전송해야함..
     }
-        
-//        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-//        let config = GIDConfiguration.init(clientID: clientID)
-//        
-//        GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
-//            guard error == nil else {
-//                // login failure
-//                let popup = UIAlertController(title: "로그인 실패", message: "다시 로그인 해주세요", preferredStyle: .alert)
-//                let action = UIAlertAction(title: "확인", style: .default)
-//                popup.addAction(action)
-//                self.present(popup, animated: true)
-//                return
-//            }
-//            // success
-//            guard
-//                let idToken = signInResult?.user.idToken,
-//                let accessToken = signInResult?.user.accessToken
-//            else {
-//                return
-//            }
-////            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
-//        }
         
 }
     
@@ -90,11 +68,9 @@ extension LoginViewController {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.setValue("\()저장한 키 받기", forHTTPHeaderField: "인증")
         request.timeoutInterval = 10
-        // POST 로 보낼 정보
         let params = ["email": email, "password": pw] as Dictionary
-        
-        // httpBody 에 parameters 추가
         do {
             try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
         } catch {

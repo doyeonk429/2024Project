@@ -32,6 +32,7 @@
 		16A213892BF3467C00D82CE3 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A213882BF3467C00D82CE3 /* UserData.swift */; };
 		16A2138B2BFDCAD600D82CE3 /* BoxListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A2138A2BFDCAD600D82CE3 /* BoxListModel.swift */; };
 		16A2138D2BFDCB0200D82CE3 /* BoxListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A2138C2BFDCB0200D82CE3 /* BoxListData.swift */; };
+		16A213942C0836E000D82CE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16A213932C0836E000D82CE3 /* GoogleService-Info.plist */; };
 		16C3B9FF2B6A8A7A00CD8B97 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 16C3B9FE2B6A8A7A00CD8B97 /* Alamofire */; };
 		16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */; };
 		16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */; };
@@ -43,7 +44,6 @@
 		16D147D72BBCDCF40036C01C /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 16D147D62BBCDCF40036C01C /* FirebaseAnalyticsSwift */; };
 		16D147D92BBCDCF40036C01C /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 16D147D82BBCDCF40036C01C /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		16D147DB2BBCDCF40036C01C /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 16D147DA2BBCDCF40036C01C /* FirebaseAppCheck */; };
-		16D147DD2BBD088B0036C01C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16D147DC2BBD088B0036C01C /* GoogleService-Info.plist */; };
 		16D147E12BC3E86E0036C01C /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 16D147E02BC3E86E0036C01C /* FirebaseAppDistribution-Beta */; };
 		16D147E32BC3E86E0036C01C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 16D147E22BC3E86E0036C01C /* FirebaseAuth */; };
 		16D147E52BC3E86F0036C01C /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 16D147E42BC3E86F0036C01C /* FirebaseAuthCombine-Community */; };
@@ -133,12 +133,12 @@
 		16A2138A2BFDCAD600D82CE3 /* BoxListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxListModel.swift; sourceTree = "<group>"; };
 		16A2138C2BFDCB0200D82CE3 /* BoxListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxListData.swift; sourceTree = "<group>"; };
 		16A2138E2C01837B00D82CE3 /* DrugBox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DrugBox.entitlements; sourceTree = "<group>"; };
+		16A213932C0836E000D82CE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewBoxViewController.swift; sourceTree = "<group>"; };
 		16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxManager.swift; sourceTree = "<group>"; };
 		16C5CFF12BB7ED10008DF3D3 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		16C5CFF32BB7ED1E008DF3D3 /* OnboardingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingCell.xib; sourceTree = "<group>"; };
 		16C5CFF52BB7EDC8008DF3D3 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		16D147DC2BBD088B0036C01C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		16E008B52B63FDDB004F83F0 /* DrugBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrugBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16E008B82B63FDDB004F83F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16E008BA2B63FDDB004F83F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -314,8 +314,8 @@
 				16E008E92B63FE5B004F83F0 /* Models */,
 				16E008E82B63FE53004F83F0 /* Views */,
 				16E008B82B63FDDB004F83F0 /* AppDelegate.swift */,
+				16A213932C0836E000D82CE3 /* GoogleService-Info.plist */,
 				16E008BA2B63FDDB004F83F0 /* SceneDelegate.swift */,
-				16D147DC2BBD088B0036C01C /* GoogleService-Info.plist */,
 				16E008C12B63FDDB004F83F0 /* Assets.xcassets */,
 				16E008C32B63FDDB004F83F0 /* LaunchScreen.storyboard */,
 				16E008C62B63FDDB004F83F0 /* Info.plist */,
@@ -619,7 +619,7 @@
 			files = (
 				16EFBB412B8105AD006C2EFF /* DrugCell.xib in Resources */,
 				16E008C52B63FDDB004F83F0 /* LaunchScreen.storyboard in Resources */,
-				16D147DD2BBD088B0036C01C /* GoogleService-Info.plist in Resources */,
+				16A213942C0836E000D82CE3 /* GoogleService-Info.plist in Resources */,
 				16E008C22B63FDDB004F83F0 /* Assets.xcassets in Resources */,
 				16E008C02B63FDDB004F83F0 /* Main.storyboard in Resources */,
 				16913C8F2B654A67006A0F0A /* WayToDelete.xib in Resources */,

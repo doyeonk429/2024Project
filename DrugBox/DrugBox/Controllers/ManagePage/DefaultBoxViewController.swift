@@ -15,10 +15,11 @@ class DefaultBoxViewController: UIViewController {
     var currentDrugbox : Int? // 선택한 drugbox의 id 저장 변수
     
     // 테이블 셀 선택 시 해당 구급상자 내의 알약 정보 get 해서 다음 페이지에 넘겨주기
-    // UI test용 dummy data
-    var boxList: [BoxListModel] = [
+
+    var boxList: [BoxListModel] = [ BoxListModel(name: "test-01", drugboxId: 123123, imageURL: "")
         
     ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +28,7 @@ class DefaultBoxViewController: UIViewController {
         boxTableView.delegate = self
         boxTableView.dataSource = self
         boxTableView.register(UINib(nibName: K.tableCell.boxCellNibName, bundle: nil), forCellReuseIdentifier: K.tableCell.boxCellIdentifier)
+        self.currentDrugbox = 1
     }
     
     override func viewWillAppear(_ animated: Bool) {

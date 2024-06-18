@@ -9,6 +9,7 @@ import Firebase
 import FirebaseAuth
 import GoogleSignIn
 import Alamofire
+import KeychainSwift
 
 class LoginViewController: UIViewController{
     //MARK: - Outlet section
@@ -16,7 +17,8 @@ class LoginViewController: UIViewController{
     @IBOutlet weak var PasswordTextField: UITextField!
     @IBOutlet weak var GoogleLoginButton: GIDSignInButton!
     
-    
+    // keychains
+    static let keychain = KeychainSwift() // GoogleAccessToken, GoogleRefreshToken, FCMToken, serverAccessToken
     
     //MARK: - View
     override func viewDidLoad() {
@@ -51,12 +53,17 @@ class LoginViewController: UIViewController{
                   let token = result.user.idToken?.tokenString else { return }
             
             let accesstoken = result.user.accessToken.tokenString
+            let refreshtoken = result.user.refreshToken.tokenString
             
             let credential = GoogleAuthProvider.credential(withIDToken: token, accessToken: accesstoken)
+            
+            // keychain에 tokens 저장
+            LoginViewController.keychain.set(accesstoken, forKey: "GoogleAccessToken")
+            LoginViewController.keychain.set(refreshtoken, forKey: "GoogleRefreshToken")
         }
-        // 이 정보를 api 호출해서 전송해야함..
-    }
+        // call moya api
         
+    }
 }
     
 
@@ -64,11 +71,10 @@ class LoginViewController: UIViewController{
 //MARK: - API section
 extension LoginViewController {
     func postLogin(email: String, pw: String) {
-        let url = K.apiURL.loginURL
+//        let url = K.apiURL.loginURL
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.setValue("\()저장한 키 받기", forHTTPHeaderField: "인증")
         request.timeoutInterval = 10
         let params = ["email": email, "password": pw] as Dictionary
         do {

@@ -28,6 +28,8 @@
 		1662B8162C1FD16500BF7802 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 1662B8152C1FD16500BF7802 /* Moya */; };
 		1662B8182C1FD16500BF7802 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 1662B8172C1FD16500BF7802 /* ReactiveMoya */; };
 		1662B81A2C1FD16500BF7802 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 1662B8192C1FD16500BF7802 /* RxMoya */; };
+		1662B81C2C21655400BF7802 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662B81B2C21655400BF7802 /* LoginService.swift */; };
+		1662B81F2C218AFA00BF7802 /* BoxManageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662B81E2C218AFA00BF7802 /* BoxManageService.swift */; };
 		16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */; };
 		16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */; };
 		16913C882B64FBB1006A0F0A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C872B64FBB1006A0F0A /* MapViewController.swift */; };
@@ -129,6 +131,8 @@
 		16205A812B7BB4B0002DF4D2 /* AddDrugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrugViewController.swift; sourceTree = "<group>"; };
 		16205A832B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDrugDetailViewController.swift; sourceTree = "<group>"; };
 		16205A852B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPrescriptionViewController.swift; sourceTree = "<group>"; };
+		1662B81B2C21655400BF7802 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		1662B81E2C218AFA00BF7802 /* BoxManageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxManageService.swift; sourceTree = "<group>"; };
 		16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBoxViewController.swift; sourceTree = "<group>"; };
 		16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDeleteViewController.swift; sourceTree = "<group>"; };
 		16913C872B64FBB1006A0F0A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -268,6 +272,15 @@
 			path = DrugPage;
 			sourceTree = "<group>";
 		};
+		1662B81D2C21655A00BF7802 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				1662B81B2C21655400BF7802 /* LoginService.swift */,
+				1662B81E2C218AFA00BF7802 /* BoxManageService.swift */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
 		16C3BA022B6A959900CD8B97 /* ForBox */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +381,7 @@
 		16E008E92B63FE5B004F83F0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1662B81D2C21655A00BF7802 /* APIs */,
 				16E008F82B6404FF004F83F0 /* Constants.swift */,
 				16C3BA032B6A95B300CD8B97 /* ForDrug */,
 				16C3BA022B6A959900CD8B97 /* ForBox */,
@@ -668,6 +682,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16913C882B64FBB1006A0F0A /* MapViewController.swift in Sources */,
+				1662B81C2C21655400BF7802 /* LoginService.swift in Sources */,
 				16C5CFF22BB7ED10008DF3D3 /* OnboardingCell.swift in Sources */,
 				161DB4132B6E927E00F85377 /* UIImage.swift in Sources */,
 				161DB40F2B6E8E1D00F85377 /* ItemListViewController.swift in Sources */,
@@ -702,6 +717,7 @@
 				16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */,
 				16E008BB2B63FDDB004F83F0 /* SceneDelegate.swift in Sources */,
 				16205A842B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift in Sources */,
+				1662B81F2C218AFA00BF7802 /* BoxManageService.swift in Sources */,
 				16913C8C2B654A36006A0F0A /* WayToDelete.swift in Sources */,
 				161DB4072B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift in Sources */,
 				161DB40D2B6E899C00F85377 /* InfoViewController.swift in Sources */,

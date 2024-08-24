@@ -29,6 +29,7 @@ class RegisterViewController: UIViewController {
     
     //MARK: - Actions
     @IBAction func CompletedButtonPressed(_ sender: UIButton) {
+        assignJoinData()
         postSignUp { [weak self] isSuccess in
             if isSuccess {
                 self?.dismiss(animated: true)
@@ -36,6 +37,11 @@ class RegisterViewController: UIViewController {
                 print("회원 가입 실패")
             }
         }
+    }
+    
+    private func assignJoinData() {
+        userEmail = self.EmailTextField.text
+        userPW = self.PasswordTextField.text
     }
     
     private func postSignUp(completion: @escaping (Bool) -> Void) {

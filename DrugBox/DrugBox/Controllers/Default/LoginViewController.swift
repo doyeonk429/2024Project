@@ -32,7 +32,7 @@ class LoginViewController: UIViewController{
     @IBAction func buttonPressed(_ sender: UIButton) {
         if let email = EmailTextField.text, let password = PasswordTextField.text {
             DispatchQueue.main.async {
-                self.postLogin(email: email, pw: password)
+//                self.postLogin(email: email, pw: password)
             }
             self.performSegue(withIdentifier: K.loginSegue, sender: self)
         }
@@ -63,35 +63,5 @@ class LoginViewController: UIViewController{
         }
         // call moya api
         
-    }
-}
-    
-
-    
-//MARK: - API section
-extension LoginViewController {
-    func postLogin(email: String, pw: String) {
-//        let url = K.apiURL.loginURL
-        var request = URLRequest(url: URL(string: url)!)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.timeoutInterval = 10
-        let params = ["email": email, "password": pw] as Dictionary
-        do {
-            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
-        } catch {
-            print("로그인 포스트 http body Error : \(error)")
-        }
-        AF.request(request).responseString { (response) in
-            switch response.result {
-            case .success:
-                print("POST 성공 \(response)")
-                if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                        print("* RESPONSE DATA: \(utf8Text)") // encode data to UTF8 토큰 처리하기
-                    }
-            case .failure(let error):
-                print("error : \(error.errorDescription!)")
-            }
-        }
     }
 }

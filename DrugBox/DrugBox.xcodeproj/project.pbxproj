@@ -40,6 +40,10 @@
 		16A2138B2BFDCAD600D82CE3 /* BoxListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A2138A2BFDCAD600D82CE3 /* BoxListModel.swift */; };
 		16A2138D2BFDCB0200D82CE3 /* BoxListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A2138C2BFDCB0200D82CE3 /* BoxListData.swift */; };
 		16A213942C0836E000D82CE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16A213932C0836E000D82CE3 /* GoogleService-Info.plist */; };
+		16C19AEB2C799B7500E93FD0 /* OAuthLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19AEA2C799B7500E93FD0 /* OAuthLoginRequest.swift */; };
+		16C19AEF2C799BC500E93FD0 /* TokenDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19AEE2C799BC500E93FD0 /* TokenDto.swift */; };
+		16C19AF12C799C3000E93FD0 /* UserLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19AF02C799C3000E93FD0 /* UserLoginRequest.swift */; };
+		16C19AF32C799DF600E93FD0 /* IdResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19AF22C799DF600E93FD0 /* IdResponse.swift */; };
 		16C3B9FF2B6A8A7A00CD8B97 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 16C3B9FE2B6A8A7A00CD8B97 /* Alamofire */; };
 		16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */; };
 		16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */; };
@@ -143,6 +147,10 @@
 		16A2138C2BFDCB0200D82CE3 /* BoxListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxListData.swift; sourceTree = "<group>"; };
 		16A2138E2C01837B00D82CE3 /* DrugBox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DrugBox.entitlements; sourceTree = "<group>"; };
 		16A213932C0836E000D82CE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		16C19AEA2C799B7500E93FD0 /* OAuthLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthLoginRequest.swift; sourceTree = "<group>"; };
+		16C19AEE2C799BC500E93FD0 /* TokenDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDto.swift; sourceTree = "<group>"; };
+		16C19AF02C799C3000E93FD0 /* UserLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginRequest.swift; sourceTree = "<group>"; };
+		16C19AF22C799DF600E93FD0 /* IdResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdResponse.swift; sourceTree = "<group>"; };
 		16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewBoxViewController.swift; sourceTree = "<group>"; };
 		16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxManager.swift; sourceTree = "<group>"; };
 		16C5CFF12BB7ED10008DF3D3 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
@@ -275,10 +283,38 @@
 		1662B81D2C21655A00BF7802 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
-				1662B81B2C21655400BF7802 /* LoginService.swift */,
+				16C19AE92C799B4800E93FD0 /* Auth */,
 				1662B81E2C218AFA00BF7802 /* BoxManageService.swift */,
 			);
 			path = APIs;
+			sourceTree = "<group>";
+		};
+		16C19AE92C799B4800E93FD0 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				1662B81B2C21655400BF7802 /* LoginService.swift */,
+				16C19AED2C799BB500E93FD0 /* Response */,
+				16C19AEC2C799BAA00E93FD0 /* Request */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		16C19AEC2C799BAA00E93FD0 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				16C19AEA2C799B7500E93FD0 /* OAuthLoginRequest.swift */,
+				16C19AF02C799C3000E93FD0 /* UserLoginRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		16C19AED2C799BB500E93FD0 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				16C19AEE2C799BC500E93FD0 /* TokenDto.swift */,
+				16C19AF22C799DF600E93FD0 /* IdResponse.swift */,
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 		16C3BA022B6A959900CD8B97 /* ForBox */ = {
@@ -681,7 +717,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C19AF12C799C3000E93FD0 /* UserLoginRequest.swift in Sources */,
 				16913C882B64FBB1006A0F0A /* MapViewController.swift in Sources */,
+				16C19AEF2C799BC500E93FD0 /* TokenDto.swift in Sources */,
 				1662B81C2C21655400BF7802 /* LoginService.swift in Sources */,
 				16C5CFF22BB7ED10008DF3D3 /* OnboardingCell.swift in Sources */,
 				161DB4132B6E927E00F85377 /* UIImage.swift in Sources */,
@@ -706,6 +744,8 @@
 				161DB4052B6DF79300F85377 /* UILabel.swift in Sources */,
 				16E008F32B6401B2004F83F0 /* MenuSelectViewController.swift in Sources */,
 				16E009012B642EB5004F83F0 /* Alarm.swift in Sources */,
+				16C19AF32C799DF600E93FD0 /* IdResponse.swift in Sources */,
+				16C19AEB2C799B7500E93FD0 /* OAuthLoginRequest.swift in Sources */,
 				16E008FD2B642ABE004F83F0 /* AlarmCell.swift in Sources */,
 				161DB4112B6E8F3100F85377 /* DrugModel.swift in Sources */,
 				16205A862B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift in Sources */,

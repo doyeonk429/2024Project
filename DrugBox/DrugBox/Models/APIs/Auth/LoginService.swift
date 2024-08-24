@@ -10,14 +10,16 @@ import Moya
 import KeychainSwift
 
 enum LoginService {
-    case postLogin(param: DefaultLoginPost)
-    case postRegister(param: DefaultLoginPost)
-    case postGoogleLogin(param: GoogleLoginPost)
+    // 자체 로그인
+    case postLogin(param: UserLoginRequest)
+    case postRegister(param: UserLoginRequest)
+    // 구글 로그인
+    case postGoogleLogin(param: OAuthLoginRequest)
     case postLogout(accessToken: String)
     case postQuit(accessToken: String)
 }
 
-extension LoginService {
+extension LoginService : TargetType {
     var baseURL : URL {
         return URL(string: K.apiURL.loginbaseURL)!
     }
@@ -63,13 +65,4 @@ extension LoginService {
             return ["Content-Type": "application/json"]
         }
     }
-}
-
-struct DefaultLoginPost : Codable {
-    let email, password : String
-}
-struct GoogleLoginPost : Codable {
-    var accesstoken = LoginViewController.keychain.get("GoogleAccessToken")
-    var refreshtoken = LoginViewController.keychain.get("GoogleRefreshToken")
-    var fcmtoken = LoginViewController.keychain.get("FCMToken")
 }

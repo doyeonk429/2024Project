@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import Toast
+import Moya
 
 class RegisterViewController: UIViewController {
     //MARK: - Outlets
@@ -15,9 +16,9 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var PasswordTextField: UITextField!
     
     //MARK: - Variables
+    let provider = MoyaProvider<LoginService>()
     var userEmail : String?
     var userPW : String?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +29,40 @@ class RegisterViewController: UIViewController {
     
     //MARK: - Actions
     @IBAction func CompletedButtonPressed(_ sender: UIButton) {
-        // post request 날리기
-        if let email = userEmail, let pw = userPW {
-            DispatchQueue.main.async {
-                self.PostUserRegisterAPI(email: email, pw: pw)
+        postSignUp { [weak self] isSuccess in
+            if isSuccess {
+                self?.dismiss(animated: true)
+            } else {
+                print("회원 가입 실패")
             }
         }
     }
+    
+    private func postSignUp(completion: @escaping (Bool) -> Void) {
+        if let emailString = userEmail, let pwString = userPW {
+            let userRequest = UserLoginRequest(email: emailString, password: pwString)
+            provider.request(.postRegister(param: userRequest)) { result in
+                switch result {
+                case .success(let response) :
+                    do {
+                        let data = try response.map(IdResponse.self)
+                        print("User Created: \(data)")
+                        completion(true)
+                    } catch {
+                        print("Failed to map data : \(error)")
+                        completion(false)
+                    }
+                case .failure(let error):
+                    print("Request failed : \(error)")
+                    completion(false)
+                }
+            }
+        } else {
+            print("User input이 없습니다")
+            completion(false)
+        }
+    }
+    
     
 }
 
@@ -52,37 +80,4 @@ extension RegisterViewController: UITextFieldDelegate {
         return true
     }
     
-}
-
-extension RegisterViewController {
-    func PostUserRegisterAPI(email userEmail: String, pw userPassword: String) -> Void {
-        let url = K.apiURL.registerURL
-        var request = URLRequest(url: URL(string: url)!)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.timeoutInterval = 60
-        // POST 로 보낼 정보
-        let params = ["email": userEmail, "password": userPassword] as Dictionary
-        
-        // httpBody 에 parameters 추가
-        do {
-            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
-        } catch {
-            print("등록 포스트 http body Error : \(error)")
-        }
-        AF.request(request).responseString { (response) in
-            switch response.result {
-            case .success:
-                print("POST 성공 \(response)")
-                if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                        print("* RESPONSE DATA: \(utf8Text)") // encode data to UTF8
-                    self.view.makeToast("가입 완료!", duration: 2.0, position: .center)
-                    self.dismiss(animated: true)
-                    }
-            case .failure(let error):
-                print("error : \(error.errorDescription!)")
-//                self.view.makeToast("가입 실패", duration: 2.0, position: .center)
-            }
-        }
-    }
 }

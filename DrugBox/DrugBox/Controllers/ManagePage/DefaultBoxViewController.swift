@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import Moya
 
 class DefaultBoxViewController: UIViewController {
     
@@ -14,28 +15,40 @@ class DefaultBoxViewController: UIViewController {
     var boxManager = BoxManager() // json data parsing functions
     var currentDrugbox : Int? // 선택한 drugbox의 id 저장 변수
     
+    //MARK: - API provider
+    let provider = MoyaProvider<BoxManageService>(plugins: [BearerTokenPlugin()])
+    
     // 테이블 셀 선택 시 해당 구급상자 내의 알약 정보 get 해서 다음 페이지에 넘겨주기
 
-    var boxList: [BoxListModel] = [ BoxListModel(name: "test-01", drugboxId: 123123, imageURL: "")
-        
+    var boxList: [BoxListModel] = [
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getDrugBoxList()
 
         boxTableView.delegate = self
         boxTableView.dataSource = self
         boxTableView.register(UINib(nibName: K.tableCell.boxCellNibName, bundle: nil), forCellReuseIdentifier: K.tableCell.boxCellIdentifier)
-        self.currentDrugbox = 1
+        
+        callGetBoxList { isSucess in
+            if isSucess {
+                self.boxTableView.reloadData()
+            } else {
+                print("구급상자 목록을 불러오는데 실패했습니다.\n다시 시도해주세요.")
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // 다른 뷰 갓다와서 업데이트할 건 여기다가
-        
-        getDrugBoxList()
+        callGetBoxList { isSucess in
+            if isSucess {
+                self.boxTableView.reloadData()
+            } else {
+                print("구급상자 목록을 불러오는데 실패했습니다.\n다시 시도해주세요.")
+            }
+        }
         
         // 다시 화면으로 돌아왔을 때 선택 해제
         if let selectedIndexPath = boxTableView.indexPathForSelectedRow {
@@ -61,21 +74,27 @@ class DefaultBoxViewController: UIViewController {
     }
     
     //MARK: - GET api
-    func getDrugBoxList() -> Void {
-        let url = K.apiURL.GETboxListURL
-
-        AF.request(url,
-                   method: .get,
-                   encoding: URLEncoding.default)
-        .validate(statusCode: 200..<300)
-        .responseData { response in
-            switch response.result {
-            case .success:
-                print("성공")
-                self.boxList = self.boxManager.parseJSON(response.data!)
-                self.boxTableView.reloadData() // 저장한 data UI에 그려주기
-            case .failure:
-                print(response.error.debugDescription)
+    func callGetBoxList(completion: @escaping (Bool) -> Void) {
+        provider.request(.getBoxes) { result in
+            switch result {
+            case .success(let response) :
+                do {
+                    let responseData = try JSONDecoder().decode(APIDrugboxResponse.self, from: response.data)
+                    for boxData in responseData.boxList {
+                        let tempbox = BoxListModel(name: boxData.name, drugboxId: boxData.drugboxId, imageURL: boxData.image)
+                        self.boxList.append(tempbox)
+                    }
+                    completion(true)
+                } catch {
+                    print("Failed to decode response: \(error)")
+                    completion(false)
+                }
+            case .failure(let error) :
+                print("Error: \(error.localizedDescription)")
+                if let response = error.response {
+                    print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                }
+                completion(false)
             }
         }
     }
@@ -107,11 +126,14 @@ extension DefaultBoxViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //테이블뷰의 이벤트처리 함수
+        // 선택된 셀의 데이터를 가져오기
+        let selectedBox = boxList[indexPath.row]
+        // 선택된 셀의 drugboxId를 설정하거나 사용
+        self.currentDrugbox = selectedBox.drugboxId
+        print(self.currentDrugbox ?? -100)
         // segue call
         self.performSegue(withIdentifier: K.manageSegue.showItemSegue, sender: self)
         self.prepare(for: UIStoryboardSegue.init(identifier: K.manageSegue.showItemSegue, source: self, destination: ItemListViewController()), sender: self)
-        
-//        boxTableView.deselectRow(at: indexPath, animated: true) // 색 원상태로 복귀
     }
     
 }

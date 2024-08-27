@@ -10,6 +10,8 @@ import FirebaseAuth
 import GoogleSignIn
 import Alamofire
 import KeychainSwift
+import Moya
+import FirebaseMessaging
 
 class LoginViewController: UIViewController{
     //MARK: - Outlet section
@@ -20,21 +22,41 @@ class LoginViewController: UIViewController{
     // keychains
     static let keychain = KeychainSwift() // GoogleAccessToken, GoogleRefreshToken, FCMToken, serverAccessToken
     
+    // FCM Token
+    var fcmToken: String?
+    
+    //MARK: - API provider
+    let provider = MoyaProvider<LoginService>()
+    
     //MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         GoogleLoginButton.colorScheme = .light
         GoogleLoginButton.style = .wide
+        
+        // FCM Token 발급
+        Messaging.messaging().token { token, error in
+            if let error = error {
+                print("Error fetching FCM token: \(error)")
+            } else if let token = token {
+                print("FCM token: \(token)")
+                self.fcmToken = token
+                LoginViewController.keychain.set(token, forKey: "FCMToken")
+            }
+        }
     }
     
     //MARK: - Button Actions
     @IBAction func buttonPressed(_ sender: UIButton) {
         if let email = EmailTextField.text, let password = PasswordTextField.text {
-            DispatchQueue.main.async {
-//                self.postLogin(email: email, pw: password)
+            callLogin(userData: assignLoginData(email: email, password: password)) { isSuccess in
+                if isSuccess {
+                    self.performSegue(withIdentifier: K.loginSegue, sender: self)
+                } else {
+                    print("로그인 정보가 없습니다.")
+                }
             }
-            self.performSegue(withIdentifier: K.loginSegue, sender: self)
         }
     }
     
@@ -45,7 +67,7 @@ class LoginViewController: UIViewController{
     @IBAction func googleLogin(_ sender: GIDSignInButton) {
         // 구글 인증
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-          let config = GIDConfiguration(clientID: clientID)
+        let config = GIDConfiguration(clientID: clientID)
         
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { [weak self] signInResult, _ in
             guard let self,
@@ -60,10 +82,51 @@ class LoginViewController: UIViewController{
             // keychain에 tokens 저장
             LoginViewController.keychain.set(accesstoken, forKey: "GoogleAccessToken")
             LoginViewController.keychain.set(refreshtoken, forKey: "GoogleRefreshToken")
+            
+            // fcmToken을 포함하여 로그인 데이터 구성
+            guard let fcmToken = self.fcmToken else {
+                print("FCM token not available")
+                return
+            }
+            let oauthData = self.assignGoogleLoginData(aToken: accesstoken, fcmToken: fcmToken, idToken: token)
+    //        self.callGoogleLogin(with: oauthData) { isSuccess in
+    //            if isSuccess {
+    //                self.performSegue(withIdentifier: K.loginSegue, sender: self)
+    //            }
+    //        }
         }
-        // call moya api
-        
+
     }
     
+    //MARK: - API call Func
+    private func callLogin(userData : UserLoginRequest ,completion : @escaping (Bool) -> Void) {
+        provider.request(.postLogin(param: userData)) { result in
+            switch result {
+            case .success(let response) :
+                do {
+                    let responseData = try JSONDecoder().decode(TokenDto.self, from: response.data)
+                    print(responseData)
+                } catch {
+                    print("Failed to map data : \(error)")
+                    completion(false)
+                }
+                completion(true)
+            case .failure(let error) :
+                print("Request failed : \(error)")
+                completion(false)
+            }
+        }
+    }
     
+    private func assignLoginData(email: String, password: String) -> UserLoginRequest {
+        return UserLoginRequest(email: email, password: password)
+    }
+    
+    private func assignGoogleLoginData(aToken: String, fcmToken: String, idToken: String) -> OAuthLoginRequest {
+        return OAuthLoginRequest(accessToken: aToken, fcmToken: fcmToken, idToken: idToken)
+    }
+    
+    private func callGoogleLogin(completion : @escaping (Bool) -> Void) {
+        
+    }
 }

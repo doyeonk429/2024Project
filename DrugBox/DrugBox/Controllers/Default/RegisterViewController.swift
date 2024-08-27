@@ -44,10 +44,12 @@ class RegisterViewController: UIViewController {
         userPW = self.PasswordTextField.text
     }
     
+    // TODO : 서버쪽 500 에러 테스트 확인 중
     private func postSignUp(completion: @escaping (Bool) -> Void) {
         if let emailString = userEmail, let pwString = userPW {
             let userRequest = UserLoginRequest(email: emailString, password: pwString)
             provider.request(.postRegister(param: userRequest)) { result in
+                print(result)
                 switch result {
                 case .success(let response) :
                     do {

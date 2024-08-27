@@ -44,6 +44,12 @@
 		16C19AEF2C799BC500E93FD0 /* TokenDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19AEE2C799BC500E93FD0 /* TokenDto.swift */; };
 		16C19AF12C799C3000E93FD0 /* UserLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19AF02C799C3000E93FD0 /* UserLoginRequest.swift */; };
 		16C19AF32C799DF600E93FD0 /* IdResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19AF22C799DF600E93FD0 /* IdResponse.swift */; };
+		16C19AF52C7D84C400E93FD0 /* BearerTokenPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19AF42C7D84C300E93FD0 /* BearerTokenPlugin.swift */; };
+		16C19AFE2C7D8A4900E93FD0 /* DrugboxSettingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19AFD2C7D8A4900E93FD0 /* DrugboxSettingResponse.swift */; };
+		16C19B012C7D8A7B00E93FD0 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19B002C7D8A7B00E93FD0 /* UserResponse.swift */; };
+		16C19B032C7D8E6200E93FD0 /* BoxNamePatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19B022C7D8E6200E93FD0 /* BoxNamePatch.swift */; };
+		16C19B052C7D8E6A00E93FD0 /* BoxInvitationPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19B042C7D8E6A00E93FD0 /* BoxInvitationPost.swift */; };
+		16C19B072C7D902A00E93FD0 /* DrugBoxResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19B062C7D902A00E93FD0 /* DrugBoxResponse.swift */; };
 		16C3B9FF2B6A8A7A00CD8B97 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 16C3B9FE2B6A8A7A00CD8B97 /* Alamofire */; };
 		16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */; };
 		16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */; };
@@ -151,6 +157,12 @@
 		16C19AEE2C799BC500E93FD0 /* TokenDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDto.swift; sourceTree = "<group>"; };
 		16C19AF02C799C3000E93FD0 /* UserLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginRequest.swift; sourceTree = "<group>"; };
 		16C19AF22C799DF600E93FD0 /* IdResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdResponse.swift; sourceTree = "<group>"; };
+		16C19AF42C7D84C300E93FD0 /* BearerTokenPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearerTokenPlugin.swift; sourceTree = "<group>"; };
+		16C19AFD2C7D8A4900E93FD0 /* DrugboxSettingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugboxSettingResponse.swift; sourceTree = "<group>"; };
+		16C19B002C7D8A7B00E93FD0 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
+		16C19B022C7D8E6200E93FD0 /* BoxNamePatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxNamePatch.swift; sourceTree = "<group>"; };
+		16C19B042C7D8E6A00E93FD0 /* BoxInvitationPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxInvitationPost.swift; sourceTree = "<group>"; };
+		16C19B062C7D902A00E93FD0 /* DrugBoxResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugBoxResponse.swift; sourceTree = "<group>"; };
 		16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewBoxViewController.swift; sourceTree = "<group>"; };
 		16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxManager.swift; sourceTree = "<group>"; };
 		16C5CFF12BB7ED10008DF3D3 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
@@ -283,8 +295,13 @@
 		1662B81D2C21655A00BF7802 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
+				16C19AF42C7D84C300E93FD0 /* BearerTokenPlugin.swift */,
 				16C19AE92C799B4800E93FD0 /* Auth */,
-				1662B81E2C218AFA00BF7802 /* BoxManageService.swift */,
+				16C19AF62C7D863000E93FD0 /* DrugBox */,
+				16C19AF72C7D864000E93FD0 /* Drug */,
+				16C19AF82C7D864D00E93FD0 /* Map */,
+				16C19AF92C7D865F00E93FD0 /* User */,
+				16C19AFA2C7D866A00E93FD0 /* Message */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -315,6 +332,71 @@
 				16C19AF22C799DF600E93FD0 /* IdResponse.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		16C19AF62C7D863000E93FD0 /* DrugBox */ = {
+			isa = PBXGroup;
+			children = (
+				1662B81E2C218AFA00BF7802 /* BoxManageService.swift */,
+				16C19AFB2C7D869200E93FD0 /* Request */,
+				16C19AFC2C7D869800E93FD0 /* Response */,
+			);
+			path = DrugBox;
+			sourceTree = "<group>";
+		};
+		16C19AF72C7D864000E93FD0 /* Drug */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Drug;
+			sourceTree = "<group>";
+		};
+		16C19AF82C7D864D00E93FD0 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		16C19AF92C7D865F00E93FD0 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				16C19AFF2C7D8A7500E93FD0 /* Reponse */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		16C19AFA2C7D866A00E93FD0 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		16C19AFB2C7D869200E93FD0 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				16C19B022C7D8E6200E93FD0 /* BoxNamePatch.swift */,
+				16C19B042C7D8E6A00E93FD0 /* BoxInvitationPost.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		16C19AFC2C7D869800E93FD0 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				16C19AFD2C7D8A4900E93FD0 /* DrugboxSettingResponse.swift */,
+				16C19B062C7D902A00E93FD0 /* DrugBoxResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		16C19AFF2C7D8A7500E93FD0 /* Reponse */ = {
+			isa = PBXGroup;
+			children = (
+				16C19B002C7D8A7B00E93FD0 /* UserResponse.swift */,
+			);
+			path = Reponse;
 			sourceTree = "<group>";
 		};
 		16C3BA022B6A959900CD8B97 /* ForBox */ = {
@@ -717,6 +799,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16C19AF52C7D84C400E93FD0 /* BearerTokenPlugin.swift in Sources */,
 				16C19AF12C799C3000E93FD0 /* UserLoginRequest.swift in Sources */,
 				16913C882B64FBB1006A0F0A /* MapViewController.swift in Sources */,
 				16C19AEF2C799BC500E93FD0 /* TokenDto.swift in Sources */,
@@ -734,11 +817,13 @@
 				16E008F72B640459004F83F0 /* LoginViewController.swift in Sources */,
 				161DB40B2B6E709500F85377 /* BoxCell.swift in Sources */,
 				161DB4212B76190100F85377 /* UIImageView.swift in Sources */,
+				16C19B052C7D8E6A00E93FD0 /* BoxInvitationPost.swift in Sources */,
 				16EFBB3F2B8105A1006C2EFF /* DrugCell.swift in Sources */,
 				16A2138B2BFDCAD600D82CE3 /* BoxListModel.swift in Sources */,
 				16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */,
 				16EFBB482B8720CA006C2EFF /* RegisterViewController.swift in Sources */,
 				161DB41D2B7540F500F85377 /* BoxSettingViewController.swift in Sources */,
+				16C19B072C7D902A00E93FD0 /* DrugBoxResponse.swift in Sources */,
 				16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */,
 				16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */,
 				161DB4052B6DF79300F85377 /* UILabel.swift in Sources */,
@@ -753,6 +838,9 @@
 				161DB4192B752B0E00F85377 /* AFDateResponse.swift in Sources */,
 				161DB4282B7A4E3B00F85377 /* InviteViewController.swift in Sources */,
 				16E008B92B63FDDB004F83F0 /* AppDelegate.swift in Sources */,
+				16C19B012C7D8A7B00E93FD0 /* UserResponse.swift in Sources */,
+				16C19AFE2C7D8A4900E93FD0 /* DrugboxSettingResponse.swift in Sources */,
+				16C19B032C7D8E6200E93FD0 /* BoxNamePatch.swift in Sources */,
 				16E008FB2B640BD6004F83F0 /* AlarmListViewController.swift in Sources */,
 				16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */,
 				16E008BB2B63FDDB004F83F0 /* SceneDelegate.swift in Sources */,

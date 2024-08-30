@@ -49,6 +49,7 @@ class LoginViewController: UIViewController{
     
     //MARK: - Button Actions
     @IBAction func buttonPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: K.loginSegue, sender: self)
         if let email = EmailTextField.text, let password = PasswordTextField.text {
             callLogin(userData: assignLoginData(email: email, password: password)) { isSuccess in
                 if isSuccess {

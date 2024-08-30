@@ -7,8 +7,10 @@
 
 import UIKit
 import Alamofire
+import SnapKit
 
 class AddDrugViewController: UIViewController {
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

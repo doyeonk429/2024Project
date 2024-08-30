@@ -21,6 +21,7 @@ class DefaultBoxViewController: UIViewController {
     // 테이블 셀 선택 시 해당 구급상자 내의 알약 정보 get 해서 다음 페이지에 넘겨주기
 
     var boxList: [BoxListModel] = [
+        BoxListModel(name: "테스트용-1", drugboxId: 1, imageURL: "")
     ]
     
     override func viewDidLoad() {
@@ -128,12 +129,15 @@ extension DefaultBoxViewController: UITableViewDataSource, UITableViewDelegate {
         //테이블뷰의 이벤트처리 함수
         // 선택된 셀의 데이터를 가져오기
         let selectedBox = boxList[indexPath.row]
-        // 선택된 셀의 drugboxId를 설정하거나 사용
-        self.currentDrugbox = selectedBox.drugboxId
-        print(self.currentDrugbox ?? -100)
-        // segue call
-        self.performSegue(withIdentifier: K.manageSegue.showItemSegue, sender: self)
-        self.prepare(for: UIStoryboardSegue.init(identifier: K.manageSegue.showItemSegue, source: self, destination: ItemListViewController()), sender: self)
+
+        let itemListVC = ItemListViewController()
+        itemListVC.drugBoxId = selectedBox.drugboxId
+        itemListVC.drugBoxName = selectedBox.name
+        self.navigationController?.pushViewController(itemListVC, animated: true)
+        
+//        // segue call
+//        self.performSegue(withIdentifier: K.manageSegue.showItemSegue, sender: self)
+//        self.prepare(for: UIStoryboardSegue.init(identifier: K.manageSegue.showItemSegue, source: self, destination: ItemListViewController()), sender: self)
     }
     
 }

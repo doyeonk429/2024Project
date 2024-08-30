@@ -6,68 +6,83 @@
 // 약 리스트 페이지. 멀티 선택 가능한
 
 import UIKit
-import Alamofire
+import SnapKit
+import Moya
+import Then
 
 class ItemListViewController: UIViewController {
-    @IBOutlet weak var DrugTableView: UITableView!
-    @IBOutlet weak var AddNewDrugButton: UIBarButtonItem!
-    @IBOutlet weak var UseDrugButton: UIButton!
     
-    var Drugs : [DrugModel] = []
-    var drugBoxId : Int?
+    // Drugs 데이터 배열
+    var Drugs: [DrugModel] = [
+        DrugModel(boxId: 1, drugName: "테스트", drugCount: 10, location: "몰라", expDate: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 30)) ?? Date(), inDisposalList: false)
+    ]
+    
+    // 선택된 drugBoxId
+    var drugBoxId: Int?
+    var drugBoxName: String?
+    
+    // 테이블뷰 생성
+    let drugTableView = UITableView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    // 하단 버튼 생성
+    let useDrugButton = UIButton(type: .system).then {
+        $0.setTitle("Use Drug", for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // view 그릴 때 이전 페이지에서 정보 받아와야?함
+        view.backgroundColor = .white
+
+        // 네비게이션 바 설정
+        self.title = drugBoxName ?? ""
+        let addNewDrugButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewDrugButtonTapped))
+        self.navigationItem.rightBarButtonItem = addNewDrugButton
         
-        DrugTableView.delegate = self
-        DrugTableView.dataSource = self
-        DrugTableView.register(UINib(nibName: K.tableCell.drugCellNibName, bundle: nil), forCellReuseIdentifier: K.tableCell.drugCellIdentifier)
-        // Do any additional setup after loading the view.
+        // 뷰에 서브뷰 추가
+        view.addSubview(drugTableView)
+        view.addSubview(useDrugButton)
+        
+        // 레이아웃 설정
+        setupLayout()
+        
+        // 테이블뷰 설정
+        drugTableView.delegate = self
+        drugTableView.dataSource = self
+        drugTableView.register(DrugCell.self, forCellReuseIdentifier: "DrugCell")
+        
+        drugTableView.reloadData()
     }
     
-    func getDrugList(_ drugboxId: Int) {
-        let urlString = "\(K.apiURL.GETDrugURL)\(drugboxId)"
-        if let url = URL(string: urlString) {
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { data, response, error in
-                if let error = error {
-                    print(error)
-                    return
-                }
-                guard let data = data else {
-                    print("no data")
-                    return
-                }
-                do {
-                    //self.boxSetting = self.parseJSON(data)
-                }
-            }
-            task.resume()
+    @objc func addNewDrugButtonTapped() {
+        // SearchViewController를 모달로 표시
+        let searchVC = SearchDrugViewController()
+        searchVC.modalPresentationStyle = .fullScreen  // 전체 화면 모달로 표시
+        present(searchVC, animated: true, completion: nil)
+    }
+    
+    // 레이아웃 설정 함수
+    func setupLayout() {
+        // 테이블뷰 레이아웃
+        drugTableView.snp.makeConstraints { make in
+            make.top.equalTo(view.snp.bottom)
+            make.left.equalToSuperview().offset(10)             // 왼쪽과 10의 offset
+            make.right.equalToSuperview().offset(-10)           // 오른쪽과 10의 offset
+            make.height.greaterThanOrEqualTo(200)
+        }
+        
+        // 버튼 레이아웃
+        useDrugButton.snp.makeConstraints { make in
+            make.top.greaterThanOrEqualTo(drugTableView.snp.bottom).offset(10)
+            make.left.equalToSuperview().offset(10)             // 왼쪽과 10의 offset
+            make.right.equalToSuperview().offset(-10)           // 오른쪽과 10의 offset
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-16) // Safe area의 하단과 10의 offset
         }
     }
-    //MARK: - json parsing function
-    func parseJSON(_ data: Data) -> [DrugModel] {
-        var returnList : [DrugModel] = []
-        let decoder = JSONDecoder()
-        do {
-            let decodedData = try! decoder.decode([DrugListData].self, from: data)
-            for data in decodedData {
-                if let expDate = data.expDate.toDate() {
-                    let boxId = data.id
-                    let drugName = data.name
-                    let drugCount = data.count
-                    let location = data.location
-                    let inDisposalList = data.inDisposalList
-                    returnList.append(DrugModel(boxId: boxId, drugName: drugName, drugCount: drugCount, location: location, expDate: expDate, inDisposalList: inDisposalList))
-                } else {
-                    print("error : no expiry date data.")
-                }
-                
-            }
-        }
-        return returnList
-    }
+
 }
 //MARK: - TableView delegate Methods
 extension ItemListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -76,16 +91,19 @@ extension ItemListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DrugCell", for: indexPath) as! DrugCell
         let drug = Drugs[indexPath.row]
-        let cell = DrugTableView.dequeueReusableCell(withIdentifier: K.tableCell.drugCellIdentifier, for: indexPath) as! DrugCell
         
-        cell.DrugNameLabel.text = "\(drug.drugName)"
-        cell.DrugCountLabel.text = "\(drug.drugCount)"
+        // DrugCell 데이터 설정
+        cell.drugNameLabel.text = drug.drugName
+        cell.drugCountLabel.text = "\(drug.drugCount)개"
         
-//        cell.delegate = self
+        // CheckBoxDelegate 설정
+        cell.delegate = self
         
         return cell
     }
+
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 약 상세 정보로 이동하도록 만들기
@@ -99,6 +117,12 @@ extension ItemListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     
+}
+
+extension ItemListViewController: CheckBoxDelegate {
+    func onCheck() {
+        print("체크버튼 눌림)")
+    }
 }
 
 

@@ -13,6 +13,10 @@ protocol ButtonTappedDelegate : AnyObject {
 }
 
 // 약품 리스트 용
-protocol CheckBoxDelegate : AnyObject {
-    func OnCheck(_ curState: Bool)
+//protocol CheckBoxDelegate : AnyObject {
+//    func OnCheck(_ curState: Bool)
+//}
+
+protocol CheckBoxDelegate: AnyObject {
+    func onCheck()
 }

@@ -76,6 +76,10 @@
 		16C19B782C81BFF400E93FD0 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 16C19B772C81BFF400E93FD0 /* GoogleSignInSwift */; };
 		16C19B7B2C81C13200E93FD0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 16C19B7A2C81C13200E93FD0 /* SnapKit */; };
 		16C19B7E2C81C14D00E93FD0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 16C19B7D2C81C14D00E93FD0 /* Alamofire */; };
+		16C19B802C81DFEC00E93FD0 /* DrugService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19B7F2C81DFEC00E93FD0 /* DrugService.swift */; };
+		16C19B832C81E06D00E93FD0 /* DrugSaveRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19B822C81E06D00E93FD0 /* DrugSaveRequest.swift */; };
+		16C19B852C81E07B00E93FD0 /* DrugDetailSaveRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19B842C81E07B00E93FD0 /* DrugDetailSaveRequest.swift */; };
+		16C19B872C81E16100E93FD0 /* DrugUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19B862C81E16100E93FD0 /* DrugUpdateRequest.swift */; };
 		16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */; };
 		16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */; };
 		16C5CFF22BB7ED10008DF3D3 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C5CFF12BB7ED10008DF3D3 /* OnboardingCell.swift */; };
@@ -160,6 +164,10 @@
 		16C19B042C7D8E6A00E93FD0 /* BoxInvitationPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxInvitationPost.swift; sourceTree = "<group>"; };
 		16C19B062C7D902A00E93FD0 /* DrugBoxResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugBoxResponse.swift; sourceTree = "<group>"; };
 		16C19B262C81B52D00E93FD0 /* SearchDrugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDrugViewController.swift; sourceTree = "<group>"; };
+		16C19B7F2C81DFEC00E93FD0 /* DrugService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugService.swift; sourceTree = "<group>"; };
+		16C19B822C81E06D00E93FD0 /* DrugSaveRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugSaveRequest.swift; sourceTree = "<group>"; };
+		16C19B842C81E07B00E93FD0 /* DrugDetailSaveRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugDetailSaveRequest.swift; sourceTree = "<group>"; };
+		16C19B862C81E16100E93FD0 /* DrugUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugUpdateRequest.swift; sourceTree = "<group>"; };
 		16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewBoxViewController.swift; sourceTree = "<group>"; };
 		16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxManager.swift; sourceTree = "<group>"; };
 		16C5CFF12BB7ED10008DF3D3 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
@@ -340,6 +348,8 @@
 		16C19AF72C7D864000E93FD0 /* Drug */ = {
 			isa = PBXGroup;
 			children = (
+				16C19B7F2C81DFEC00E93FD0 /* DrugService.swift */,
+				16C19B812C81E05C00E93FD0 /* Request */,
 			);
 			path = Drug;
 			sourceTree = "<group>";
@@ -390,6 +400,16 @@
 				16C19B002C7D8A7B00E93FD0 /* UserResponse.swift */,
 			);
 			path = Reponse;
+			sourceTree = "<group>";
+		};
+		16C19B812C81E05C00E93FD0 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				16C19B822C81E06D00E93FD0 /* DrugSaveRequest.swift */,
+				16C19B842C81E07B00E93FD0 /* DrugDetailSaveRequest.swift */,
+				16C19B862C81E16100E93FD0 /* DrugUpdateRequest.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		16C3BA022B6A959900CD8B97 /* ForBox */ = {
@@ -795,7 +815,9 @@
 				16C19AEF2C799BC500E93FD0 /* TokenDto.swift in Sources */,
 				1662B81C2C21655400BF7802 /* LoginService.swift in Sources */,
 				16C5CFF22BB7ED10008DF3D3 /* OnboardingCell.swift in Sources */,
+				16C19B872C81E16100E93FD0 /* DrugUpdateRequest.swift in Sources */,
 				161DB4132B6E927E00F85377 /* UIImage.swift in Sources */,
+				16C19B802C81DFEC00E93FD0 /* DrugService.swift in Sources */,
 				161DB40F2B6E8E1D00F85377 /* ItemListViewController.swift in Sources */,
 				16EFBB372B810006006C2EFF /* Date.swift in Sources */,
 				16E008F92B6404FF004F83F0 /* Constants.swift in Sources */,
@@ -815,6 +837,7 @@
 				161DB41D2B7540F500F85377 /* BoxSettingViewController.swift in Sources */,
 				16C19B072C7D902A00E93FD0 /* DrugBoxResponse.swift in Sources */,
 				16C19B272C81B52D00E93FD0 /* SearchDrugViewController.swift in Sources */,
+				16C19B852C81E07B00E93FD0 /* DrugDetailSaveRequest.swift in Sources */,
 				16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */,
 				16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */,
 				161DB4052B6DF79300F85377 /* UILabel.swift in Sources */,
@@ -824,6 +847,7 @@
 				16C19AEB2C799B7500E93FD0 /* OAuthLoginRequest.swift in Sources */,
 				16E008FD2B642ABE004F83F0 /* AlarmCell.swift in Sources */,
 				161DB4112B6E8F3100F85377 /* DrugModel.swift in Sources */,
+				16C19B832C81E06D00E93FD0 /* DrugSaveRequest.swift in Sources */,
 				16205A862B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift in Sources */,
 				16A2138D2BFDCB0200D82CE3 /* BoxListData.swift in Sources */,
 				161DB4192B752B0E00F85377 /* AFDateResponse.swift in Sources */,

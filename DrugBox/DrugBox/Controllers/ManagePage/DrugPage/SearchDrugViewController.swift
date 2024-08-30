@@ -8,8 +8,12 @@
 import UIKit
 import SnapKit
 import Then
+import Moya
 
 class SearchDrugViewController : UIViewController {
+    
+    let provider = MoyaProvider<DrugService>(plugins: [BearerTokenPlugin()])
+    var searchResultList = [String]()
     
     // 제목 라벨
     let titleLabel = UILabel().then {
@@ -86,6 +90,25 @@ class SearchDrugViewController : UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    public func callGetSearchResult(keyword: String, completion : @escaping (Bool) -> Void) {
+        provider.request(.getSearchResult(name: keyword)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let drugStringList = try response.map([String].self)
+                    self.searchResultList = drugStringList
+                    completion(true)
+                } catch {
+                    print("map data error : \(error)")
+                    completion(false)
+                }
+            case .failure(let error):
+                print("Request Error : \(error)")
+                completion(false)
+            }
+        }
+    }
+    
 }
 
 extension SearchDrugViewController : UISearchBarDelegate {
@@ -97,6 +120,15 @@ extension SearchDrugViewController : UISearchBarDelegate {
         
         // 검색 실행 (예: 콘솔에 출력)
         print("검색어: \(searchText)")
+        self.callGetSearchResult(keyword: searchText) { isSuccess in
+            if isSuccess {
+                for drug in self.searchResultList {
+                    print("약 1 : \(drug)")
+                }
+            } else {
+                print("실패")
+            }
+        }
         
         // 키보드 닫기
         searchBar.resignFirstResponder()

@@ -106,7 +106,7 @@ class LoginViewController: UIViewController{
     
     //MARK: - API call Func
     // TODO : response null값 해결중
-    private func callLogin(userData : UserLoginRequest ,completion : @escaping (Bool) -> Void) {
+    private func callLogin(userData : UserLoginRequest, completion : @escaping (Bool) -> Void) {
         provider.request(.postLogin(param: userData)) { result in
             switch result {
             case .success(let response) :

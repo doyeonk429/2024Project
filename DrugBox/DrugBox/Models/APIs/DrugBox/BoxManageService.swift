@@ -28,7 +28,7 @@ enum BoxManageService {
 
 extension BoxManageService : TargetType {
     var baseURL: URL {
-        return URL(string: K.apiURL.drugBaseURL)!
+        return URL(string: "http://13.125.191.198:8080/drugbox")!
     }
     
     var path: String {

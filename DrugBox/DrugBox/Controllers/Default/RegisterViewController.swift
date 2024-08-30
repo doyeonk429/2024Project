@@ -10,12 +10,26 @@ import Alamofire
 import Toast
 import Moya
 
+// 자세한 로그 보기
+//let requestClosure = { (endpoint: Endpoint, closure: MoyaProvider<LoginService>.RequestResultClosure) in
+//    do {
+//        var request = try endpoint.urlRequest()
+//        if let body = request.httpBody {
+//            print("Request Body: \(String(data: body, encoding: .utf8) ?? "Cannot display body")")
+//        }
+//        closure(.success(request))
+//    } catch {
+//        closure(.failure(MoyaError.underlying(error, nil)))
+//    }
+//}
+
 class RegisterViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet weak var EmailTextField: UITextField!
     @IBOutlet weak var PasswordTextField: UITextField!
     
     //MARK: - Variables
+//    let provider = MoyaProvider<LoginService>(requestClosure: requestClosure)
     let provider = MoyaProvider<LoginService>()
     var userEmail : String?
     var userPW : String?
@@ -24,7 +38,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         EmailTextField.delegate = self
         PasswordTextField.delegate = self
-        PasswordTextField.textContentType = .newPassword
+        PasswordTextField.textContentType = .oneTimeCode
     }
     
     //MARK: - Actions
@@ -44,12 +58,11 @@ class RegisterViewController: UIViewController {
         userPW = self.PasswordTextField.text
     }
     
-    // TODO : 서버쪽 500 에러 테스트 확인 중
     private func postSignUp(completion: @escaping (Bool) -> Void) {
         if let emailString = userEmail, let pwString = userPW {
             let userRequest = UserLoginRequest(email: emailString, password: pwString)
+            print(userRequest)
             provider.request(.postRegister(param: userRequest)) { result in
-                print(result)
                 switch result {
                 case .success(let response) :
                     do {
@@ -70,8 +83,6 @@ class RegisterViewController: UIViewController {
             completion(false)
         }
     }
-    
-    
 }
 
 //MARK: - TextField Delegate Fuctions
@@ -87,5 +98,4 @@ extension RegisterViewController: UITextFieldDelegate {
         }
         return true
     }
-    
 }

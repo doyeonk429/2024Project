@@ -21,7 +21,7 @@ enum LoginService {
 
 extension LoginService : TargetType {
     var baseURL : URL {
-        return URL(string: K.apiURL.loginbaseURL)!
+        return URL(string: "http://13.125.191.198:8080/auth/")!
     }
     
     var path : String {
@@ -47,17 +47,11 @@ extension LoginService : TargetType {
     var task : Task {
         switch self {
         case .postLogin(let param) :
-//            return .requestJSONEncodable(param)
-            return .requestParameters(parameters: ["userLoginRequest" : param], encoding: JSONEncoding.default)
+            return .requestJSONEncodable(param)
         case .postRegister(let param) :
-//            return .requestJSONEncodable(param)
-            let jsonData = try! JSONEncoder().encode(param)
-            let jsonDict = try! JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? [String: Any]
-            return .requestParameters(parameters: ["userLoginRequest": jsonDict], encoding: JSONEncoding.default)
-//            return .requestParameters(parameters: ["userLoginRequest" : param], encoding: JSONEncoding.default)
+            return .requestJSONEncodable(param)
         case .postGoogleLogin(let param) :
-//            return .requestJSONEncodable(param)
-            return .requestParameters(parameters: ["request" : param], encoding: JSONEncoding.default)
+            return .requestJSONEncodable(param)
         case .postLogout(let accessToken) :
             return .requestParameters(parameters: ["accessToken": accessToken], encoding: JSONEncoding.default)
         case .postQuit(let accessToken) :

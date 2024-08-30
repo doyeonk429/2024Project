@@ -64,7 +64,7 @@ struct K {
     struct apiURL {
         static let baseServer = "13.125.191.198:8080"
         static let baseURL = "http://\(baseServer)/"
-        static let drugBaseURL = "\(baseURL)/drugbox"
+        static let drugBaseURL = "\(baseURL)drugbox/"
         static let loginbaseURL = "\(baseURL)auth/"
         
         static let POSTboxURL = "\(baseURL)add"

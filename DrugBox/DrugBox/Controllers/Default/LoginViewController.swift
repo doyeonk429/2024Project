@@ -4,6 +4,7 @@
 //
 //  Created by 김도연 on 1/27/24.
 //  Modifed by doyeonk429 on 3/4/24.
+
 import UIKit
 import Firebase
 import FirebaseAuth
@@ -45,11 +46,15 @@ class LoginViewController: UIViewController{
                 LoginViewController.keychain.set(token, forKey: "FCMToken")
             }
         }
+        
+        EmailTextField.delegate = self
+        PasswordTextField.delegate = self
+        PasswordTextField.textContentType = .oneTimeCode
+        
     }
     
     //MARK: - Button Actions
     @IBAction func buttonPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: K.loginSegue, sender: self)
         if let email = EmailTextField.text, let password = PasswordTextField.text {
             callLogin(userData: assignLoginData(email: email, password: password)) { isSuccess in
                 if isSuccess {
@@ -100,12 +105,15 @@ class LoginViewController: UIViewController{
     }
     
     //MARK: - API call Func
+    // TODO : response null값 해결중
     private func callLogin(userData : UserLoginRequest ,completion : @escaping (Bool) -> Void) {
         provider.request(.postLogin(param: userData)) { result in
             switch result {
             case .success(let response) :
                 do {
-                    let responseData = try JSONDecoder().decode(TokenDto.self, from: response.data)
+                    let responseData = try response.mapJSON()
+//                    let rData = try response.map(TokenDto.self)
+//                    let responseData = try JSONDecoder().decode(TokenDto.self, from: response.data)
                     print(responseData)
                 } catch {
                     print("Failed to map data : \(error)")
@@ -130,4 +138,19 @@ class LoginViewController: UIViewController{
     private func callGoogleLogin(completion : @escaping (Bool) -> Void) {
         
     }
+}
+
+extension LoginViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.EmailTextField, self.EmailTextField.text != "" {
+//            self.userEmail = self.EmailTextField.text
+            self.PasswordTextField.becomeFirstResponder()
+        } else if textField == self.PasswordTextField, self.PasswordTextField.text != ""{
+//            self.userPW = self.PasswordTextField.text
+            self.PasswordTextField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    
 }

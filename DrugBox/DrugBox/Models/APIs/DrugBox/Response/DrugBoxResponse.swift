@@ -14,6 +14,6 @@ struct DrugBoxResponse : Codable {
     let name : String
 }
 
-struct APIDrugboxResponse : Codable {
-    let boxList : [DrugBoxResponse]
-}
+//struct APIDrugboxResponse : Codable {
+//    let boxList : [DrugBoxResponse]
+//}

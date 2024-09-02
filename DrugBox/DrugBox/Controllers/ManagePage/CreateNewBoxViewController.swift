@@ -66,7 +66,7 @@ class CreateNewBoxViewController: UIViewController {
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if boxName != "" {
 //            let resizedImage = ImageView.image!.resizeImage(image: ImageView.image!, newWidth: 300)
-            print("현재 설정된 이미지 \(image), 이미지 이름 \(imageName), 박스 이름 \(boxName)")
+//            print("현재 설정된 이미지 \(image), 이미지 이름 \(imageName), 박스 이름 \(boxName)")
             callPostNewBox { isSuccess in
                 if isSuccess {
                     // reset 후, dismiss
@@ -84,7 +84,7 @@ class CreateNewBoxViewController: UIViewController {
             switch result {
             case .success(let response) :
                 do {
-                    let responseData = try JSONDecoder().decode(IdResponse.self, from: response.data)
+                    let responseData = try response.map(IdResponse.self)
                     print("정상 Post된 box id : \(responseData.id)")
                 } catch {
                     print("Failed to decode response: \(error)")
@@ -126,7 +126,7 @@ extension CreateNewBoxViewController: UIImagePickerControllerDelegate, UINavigat
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             DispatchQueue.main.async {
                 self.ImageView.image = image
-                let fileName = "\(UUID().uuidString).jpg"
+                let fileName = "\(UUID().uuidString).jpeg"
                 self.setImageInfo(img: image, imgName: fileName)
             }
         }

@@ -81,7 +81,6 @@ extension BoxManageService : TargetType {
                 let imageMultipart = MultipartFormData(provider: .data(imageData), name: "image", fileName: imageName, mimeType: "image/jpeg")
                 formData.append(imageMultipart)
             }
-            
             return .uploadMultipart(formData)
         case .postJoinBox(let inviteCode) :
             return .requestParameters(parameters: ["inviteCode" : inviteCode], encoding: JSONEncoding.default)

@@ -111,10 +111,11 @@ class LoginViewController: UIViewController{
             switch result {
             case .success(let response) :
                 do {
-                    let responseData = try response.mapJSON()
-//                    let rData = try response.map(TokenDto.self)
+//                    let responseData = try response.mapJSON()
+                    let rData = try response.map(TokenDto.self)
 //                    let responseData = try JSONDecoder().decode(TokenDto.self, from: response.data)
-                    print(responseData)
+//                    print(rData)
+                    LoginViewController.keychain.set(rData.accessToken, forKey: "serverAccessToken")
                 } catch {
                     print("Failed to map data : \(error)")
                     completion(false)

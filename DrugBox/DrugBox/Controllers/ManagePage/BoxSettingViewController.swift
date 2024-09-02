@@ -7,9 +7,10 @@
 
 import UIKit
 import Alamofire
+import Moya
 
-class BoxSettingViewController: UIViewController {
-    
+
+class BoxSettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var BoxImageView: UIImageView!
     @IBOutlet weak var NameLabelEditButton: UIButton!
     @IBOutlet weak var BoxNameLabel: UILabel!
@@ -17,26 +18,23 @@ class BoxSettingViewController: UIViewController {
     @IBOutlet weak var ImageChangeButton: UIButton!
     @IBOutlet weak var MemberTableView: UITableView!
     
-    var drugBoxId : Int?
-    var boxInviteCode : String?
-    var boxSetting : BoxSettingModel?
+    let provider = MoyaProvider<BoxManageService>(plugins: [BearerTokenPlugin()])
     
-    var users : [User] = [User(nickname: "김도연", userId: 12)]
+    public var drugBoxId : Int?
+    var boxSetting = BoxSettingModel(boxName: "", drugboxId: 0, imageURL: "", inviteCode: "", users: [])
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getBoxDetail(drugBoxId ?? 0)
-        boxSetting = BoxSettingModel(boxName: "test-01", drugboxId: 1, imageURL: "", inviteCode: "1234-1234-1234-1234", users: [User(nickname: "AAA", userId: 12), User(nickname: "BBB", userId: 15)])
-        DispatchQueue.main.async {
-            self.BoxNameLabel.text = self.boxSetting!.boxName
-            if let url = URL(string: self.boxSetting!.imageURL) {
-                self.BoxImageView.loadImage(url: url)
-            } else {
-                self.BoxImageView.image = UIImage(systemName: K.drugboxDefaultImage)
-            }
-            self.boxInviteCode = self.boxSetting!.inviteCode
-        }
         
+        callGetSetting { isSuccess in
+            if isSuccess {
+                if let imageURL = URL(string: self.boxSetting.imageURL) {
+                    self.BoxImageView.loadImage(url: imageURL)
+                }
+                self.BoxNameLabel.text = self.boxSetting.boxName
+                
+            }
+        }
     }
     
     
@@ -54,85 +52,46 @@ class BoxSettingViewController: UIViewController {
         performSegue(withIdentifier: K.manageSegue.inviteSegue, sender: self)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.manageSegue.inviteSegue {
-            let destinationVC = segue.destination as! InviteViewController
-            destinationVC.boxID = self.drugBoxId
-            destinationVC.InviteCode = self.boxInviteCode
-            print(self.boxInviteCode ?? 0)
-        }
-    }
-    
-    // api call
-//    func patchImage(_ img: UIImage) {
-//        
-//    }
-    // api call
-//    func patchName(_ name: String, _ boxId: Int) {
-//        let urlString = "\(K.apiURL.baseURL)/setting/name?drugboxId=\(boxId)&name=\(name)"
-//    }
-    
-//MARK: - GET api
-    func getBoxDetail(_ drugBoxId: Int){
-        let urlString = "\(K.apiURL.GETboxDetailURL)\(drugBoxId)"
-//        print(urlString)
-        if let url = URL(string: urlString) {
-            // 2. create a URLSession
-            let session = URLSession(configuration: .default)
-            // 3. give the session a task
-            let task = session.dataTask(with: url) { data, response, error in
-                if let error = error {
-                    print(error)
-                    return
-                }
-                guard let data = data else {
-                    print("no data")
-                    return
-                }
-                do {
-//                    self.boxSetting = self.parseJSON(data)
+    private func callGetSetting(completion : @escaping (Bool) -> Void) {
+        if let id = self.drugBoxId {
+            provider.request(.getSetting(id: id)) { result in
+                switch result {
+                case .success(let response) :
+                    do {
+                        let data = try response.map(DrugboxSettingResponse.self)
+                        self.boxSetting = BoxSettingModel(boxName: data.name, drugboxId: data.drugboxId, imageURL: data.image, inviteCode: data.inviteCode, users: data.users)
+                    } catch {
+                        print("Failed to decode response: \(error)")
+                        completion(false)
+                    }
+                    completion(true)
+                case .failure(let error) :
+                    print("Error: \(error.localizedDescription)")
+                    if let response = error.response {
+                        print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                    }
+                    completion(false)
                 }
             }
-            task.resume()
         }
+        
     }
-    // 코드 수정 필요
-//    func parseJSON(_ data: Data) -> BoxSettingModel? {
-//        var boxsetting : BoxSettingModel?
-//        let decoder = JSONDecoder()
-//        do {
-//            let decodedData = try? decoder.decode(BoxSettingData.self, from: data)
-//            let name = decodedData?.boxName
-//            let drugboxId = decodedData?.drugboxId
-//            let imageURL = decodedData?.imageURL
-//            let users = decodedData?.users
-//            let code = decodedData?.inviteCode
-//            boxsetting = BoxSettingModel(boxName: name, drugboxId: drugboxId, imageURL: imageURL, inviteCode: code, users: users)
-//            self.boxInviteCode = code
-//        }
-//        return boxsetting
-//    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.boxSetting.users.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
     
 }
 
-struct BoxSettingModel {
+struct BoxSettingModel : Codable {
     let boxName: String
     let drugboxId: Int
     let imageURL: String
     let inviteCode: String
-    let users: [User]
-}
-
-struct BoxSettingData: Codable {
-    let boxName: String
-    let drugboxId: Int
-    let imageURL: String
-    let inviteCode: String
-    let users: [User]
-}
-
-struct User: Codable{
-    let nickname: String
-    let userId: Int
+    let users: [UserResponse]
 }
 

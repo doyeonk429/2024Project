@@ -17,6 +17,7 @@ final class BearerTokenPlugin: PluginType {
 
         // 만약 accessToken이 있다면 Authorization 헤더에 추가합니다.
         if let token = accessToken {
+//            print("토큰 추가 완료")
             request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
 

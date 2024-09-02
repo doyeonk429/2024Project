@@ -12,7 +12,7 @@ struct TokenDto : Codable {
     let accessToken : String
     let accessTokenExpiresIn : Int
     let grantType : String
-    let isNewUser : Bool
+    let isNewUser : Bool?
     let refreshToken : String
     let refreshTokenExpiresIn : Int
     let userId : Int

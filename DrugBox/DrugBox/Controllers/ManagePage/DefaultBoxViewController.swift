@@ -20,9 +20,7 @@ class DefaultBoxViewController: UIViewController {
     
     // 테이블 셀 선택 시 해당 구급상자 내의 알약 정보 get 해서 다음 페이지에 넘겨주기
 
-    var boxList: [BoxListModel] = [
-        BoxListModel(name: "테스트용-1", drugboxId: 1, imageURL: "")
-    ]
+    var boxList: [BoxListModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +31,7 @@ class DefaultBoxViewController: UIViewController {
         
         callGetBoxList { isSucess in
             if isSucess {
+//                print("박스 개수 : \(self.boxList.count)")
                 self.boxTableView.reloadData()
             } else {
                 print("구급상자 목록을 불러오는데 실패했습니다.\n다시 시도해주세요.")
@@ -43,13 +42,6 @@ class DefaultBoxViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // 다른 뷰 갓다와서 업데이트할 건 여기다가
-        callGetBoxList { isSucess in
-            if isSucess {
-                self.boxTableView.reloadData()
-            } else {
-                print("구급상자 목록을 불러오는데 실패했습니다.\n다시 시도해주세요.")
-            }
-        }
         
         // 다시 화면으로 돌아왔을 때 선택 해제
         if let selectedIndexPath = boxTableView.indexPathForSelectedRow {
@@ -62,17 +54,17 @@ class DefaultBoxViewController: UIViewController {
     }
     
     //MARK: - Segue prepare
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.manageSegue.showItemSegue {
-            // drug 리스트 api 불러오는데 필요한 drugbox number 변수값 지정 후 segue 이동
-            let destinationVC = segue.destination as! ItemListViewController
-            destinationVC.drugBoxId = self.currentDrugbox!
-        } else if segue.identifier == K.manageSegue.settingSegue {
-            // setting 페이지에서 get api 호출에 필요한 data 넘겨줌
-            let destinationVC = segue.destination as! BoxSettingViewController
-            destinationVC.drugBoxId = self.currentDrugbox!
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == K.manageSegue.showItemSegue {
+//            // drug 리스트 api 불러오는데 필요한 drugbox number 변수값 지정 후 segue 이동
+//            let destinationVC = segue.destination as! ItemListViewController
+//            destinationVC.drugBoxId = self.currentDrugbox!
+//        } else if segue.identifier == K.manageSegue.settingSegue {
+//            // setting 페이지에서 get api 호출에 필요한 data 넘겨줌
+//            let destinationVC = segue.destination as! BoxSettingViewController
+//            destinationVC.drugBoxId = self.currentDrugbox!
+//        }
+//    }
     
     //MARK: - GET api
     func callGetBoxList(completion: @escaping (Bool) -> Void) {
@@ -80,8 +72,10 @@ class DefaultBoxViewController: UIViewController {
             switch result {
             case .success(let response) :
                 do {
-                    let responseData = try JSONDecoder().decode(APIDrugboxResponse.self, from: response.data)
-                    for boxData in responseData.boxList {
+                    let responseData = try response.map([DrugBoxResponse].self)
+//                    print(responseData)
+//                    print("-----------------------------")
+                    for boxData in responseData {
                         let tempbox = BoxListModel(name: boxData.name, drugboxId: boxData.drugboxId, imageURL: boxData.image)
                         self.boxList.append(tempbox)
                     }
@@ -129,7 +123,8 @@ extension DefaultBoxViewController: UITableViewDataSource, UITableViewDelegate {
         //테이블뷰의 이벤트처리 함수
         // 선택된 셀의 데이터를 가져오기
         let selectedBox = boxList[indexPath.row]
-
+        self.currentDrugbox = selectedBox.drugboxId
+        
         let itemListVC = ItemListViewController()
         itemListVC.drugBoxId = selectedBox.drugboxId
         itemListVC.drugBoxName = selectedBox.name
@@ -145,8 +140,10 @@ extension DefaultBoxViewController: UITableViewDataSource, UITableViewDelegate {
 //MARK: - Button func In the Cell
 extension DefaultBoxViewController: ButtonTappedDelegate {
     func cellButtonTapped(_ buttonTag: Int) {
-        self.currentDrugbox = buttonTag
-        self.performSegue(withIdentifier: K.manageSegue.settingSegue, sender: self)
+        let settingVC = BoxSettingViewController()
+        settingVC.drugBoxId = self.currentDrugbox
+        self.navigationController?.pushViewController(settingVC, animated: true)
+//        self.performSegue(withIdentifier: K.manageSegue.settingSegue, sender: self)
     }
 }
 

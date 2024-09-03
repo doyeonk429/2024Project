@@ -80,6 +80,7 @@
 		16C19B832C81E06D00E93FD0 /* DrugSaveRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19B822C81E06D00E93FD0 /* DrugSaveRequest.swift */; };
 		16C19B852C81E07B00E93FD0 /* DrugDetailSaveRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19B842C81E07B00E93FD0 /* DrugDetailSaveRequest.swift */; };
 		16C19B872C81E16100E93FD0 /* DrugUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19B862C81E16100E93FD0 /* DrugUpdateRequest.swift */; };
+		16C19B892C86CDDF00E93FD0 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19B882C86CDDF00E93FD0 /* UserCell.swift */; };
 		16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */; };
 		16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */; };
 		16C5CFF22BB7ED10008DF3D3 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C5CFF12BB7ED10008DF3D3 /* OnboardingCell.swift */; };
@@ -168,6 +169,7 @@
 		16C19B822C81E06D00E93FD0 /* DrugSaveRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugSaveRequest.swift; sourceTree = "<group>"; };
 		16C19B842C81E07B00E93FD0 /* DrugDetailSaveRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugDetailSaveRequest.swift; sourceTree = "<group>"; };
 		16C19B862C81E16100E93FD0 /* DrugUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugUpdateRequest.swift; sourceTree = "<group>"; };
+		16C19B882C86CDDF00E93FD0 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewBoxViewController.swift; sourceTree = "<group>"; };
 		16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxManager.swift; sourceTree = "<group>"; };
 		16C5CFF12BB7ED10008DF3D3 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
@@ -505,6 +507,7 @@
 				16EFBB3A2B81056B006C2EFF /* TextForDelete */,
 				16EFBB392B810562006C2EFF /* Alarm */,
 				16EFBB382B810551006C2EFF /* Box */,
+				16C19B882C86CDDF00E93FD0 /* UserCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -857,6 +860,7 @@
 				16C19AFE2C7D8A4900E93FD0 /* DrugboxSettingResponse.swift in Sources */,
 				16C19B032C7D8E6200E93FD0 /* BoxNamePatch.swift in Sources */,
 				16E008FB2B640BD6004F83F0 /* AlarmListViewController.swift in Sources */,
+				16C19B892C86CDDF00E93FD0 /* UserCell.swift in Sources */,
 				16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */,
 				16E008BB2B63FDDB004F83F0 /* SceneDelegate.swift in Sources */,
 				16205A842B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift in Sources */,

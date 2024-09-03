@@ -8,6 +8,6 @@
 import Foundation
 
 struct UserResponse : Codable {
-    let nickname : String
+    let nickname : String?
     let userId : Int
 }

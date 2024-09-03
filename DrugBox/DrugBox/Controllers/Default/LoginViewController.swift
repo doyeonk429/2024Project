@@ -27,7 +27,7 @@ class LoginViewController: UIViewController{
     var fcmToken: String?
     
     //MARK: - API provider
-    let provider = MoyaProvider<LoginService>()
+    let provider = MoyaProvider<LoginService>(plugins: [NetworkLoggerPlugin()])
     
     //MARK: - View
     override func viewDidLoad() {
@@ -114,7 +114,7 @@ class LoginViewController: UIViewController{
 //                    let responseData = try response.mapJSON()
                     let rData = try response.map(TokenDto.self)
 //                    let responseData = try JSONDecoder().decode(TokenDto.self, from: response.data)
-//                    print(rData)
+                    print(rData)
                     LoginViewController.keychain.set(rData.accessToken, forKey: "serverAccessToken")
                 } catch {
                     print("Failed to map data : \(error)")

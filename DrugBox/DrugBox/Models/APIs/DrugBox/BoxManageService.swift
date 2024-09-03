@@ -68,7 +68,8 @@ extension BoxManageService : TargetType {
         case .getBoxes :
             return .requestPlain
         case .getSetting(let id) :
-            return .requestParameters(parameters: ["drugboxId" : id], encoding: JSONEncoding.default)
+//            return .requestParameters(parameters: ["drugboxId" : id], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: ["drugboxId": id], encoding: URLEncoding.queryString)
         case .postCreateBox(let image, let imageName, let name) :
             var formData : [MultipartFormData] = []
             

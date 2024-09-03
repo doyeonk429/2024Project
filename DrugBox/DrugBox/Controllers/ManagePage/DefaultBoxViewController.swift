@@ -16,7 +16,11 @@ class DefaultBoxViewController: UIViewController {
     var currentDrugbox : Int? // 선택한 drugbox의 id 저장 변수
     
     //MARK: - API provider
-    let provider = MoyaProvider<BoxManageService>(plugins: [BearerTokenPlugin()])
+//    let provider = MoyaProvider<BoxManageService>(plugins: [BearerTokenPlugin()])
+    let provider = MoyaProvider<BoxManageService>(plugins: [
+        BearerTokenPlugin(),
+        NetworkLoggerPlugin(configuration: .init(logOptions: .verbose))
+    ])
     
     // 테이블 셀 선택 시 해당 구급상자 내의 알약 정보 get 해서 다음 페이지에 넘겨주기
 
@@ -31,12 +35,12 @@ class DefaultBoxViewController: UIViewController {
         
         callGetBoxList { isSucess in
             if isSucess {
-//                print("박스 개수 : \(self.boxList.count)")
                 self.boxTableView.reloadData()
             } else {
                 print("구급상자 목록을 불러오는데 실패했습니다.\n다시 시도해주세요.")
             }
         }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,36 +57,47 @@ class DefaultBoxViewController: UIViewController {
         self.performSegue(withIdentifier: K.manageSegue.createSegue, sender: self)
     }
     
-    //MARK: - Segue prepare
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == K.manageSegue.showItemSegue {
-//            // drug 리스트 api 불러오는데 필요한 drugbox number 변수값 지정 후 segue 이동
-//            let destinationVC = segue.destination as! ItemListViewController
-//            destinationVC.drugBoxId = self.currentDrugbox!
-//        } else if segue.identifier == K.manageSegue.settingSegue {
-//            // setting 페이지에서 get api 호출에 필요한 data 넘겨줌
-//            let destinationVC = segue.destination as! BoxSettingViewController
-//            destinationVC.drugBoxId = self.currentDrugbox!
+    //MARK: - GET api
+    
+//    func callGetBox() -> [BoxListModel] {
+//        var boxList = [BoxListModel]()
+//        provider.request(.getBoxes) { result in
+//            switch result {
+//            case .success(let response):
+//                do {
+//                    let responseData = try response.map([DrugBoxResponse].self)
+//                    for boxData in responseData {
+//                        let tempbox = BoxListModel(name: boxData.name, drugboxId: boxData.drugboxId, imageURL: boxData.image)
+//                        boxList.append(tempbox)
+//                    }
+//                } catch {
+//                    print("failed")
+//                }
+//            case .failure(let error) :
+//                print("Error: \(error.localizedDescription)")
+//            }
 //        }
+//        print(boxList)
+//        return boxList
 //    }
     
-    //MARK: - GET api
     func callGetBoxList(completion: @escaping (Bool) -> Void) {
         provider.request(.getBoxes) { result in
             switch result {
             case .success(let response) :
-                do {
-                    let responseData = try response.map([DrugBoxResponse].self)
-//                    print(responseData)
-//                    print("-----------------------------")
-                    for boxData in responseData {
-                        let tempbox = BoxListModel(name: boxData.name, drugboxId: boxData.drugboxId, imageURL: boxData.image)
-                        self.boxList.append(tempbox)
+//                print(response.statusCode)
+                if response.statusCode == 200 {
+                    do {
+                        let responseData = try response.map([DrugBoxResponse].self)
+                        for boxData in responseData {
+                            let tempbox = BoxListModel(name: boxData.name, drugboxId: boxData.drugboxId, imageURL: boxData.image)
+                            self.boxList.append(tempbox)
+                        }
+                    } catch {
+                        print("Failed to decode response: \(error)")
+                        completion(false)
                     }
                     completion(true)
-                } catch {
-                    print("Failed to decode response: \(error)")
-                    completion(false)
                 }
             case .failure(let error) :
                 print("Error: \(error.localizedDescription)")
@@ -104,11 +119,14 @@ extension DefaultBoxViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let box = boxList[indexPath.row]
-        let cell = boxTableView.dequeueReusableCell(withIdentifier: K.tableCell.boxCellIdentifier, for: indexPath) as! BoxCell
+        
+        let cell = boxTableView.dequeueReusableCell(withIdentifier: "BoxCell", for: indexPath) as! BoxCell
         
         cell.BoxNameLabel.text = " \(box.name)"
         if let url = URL(string: box.imageURL) {
             cell.boxImage.loadImage(url: url)
+//            cell.boxImage.image = UIImage(systemName: K.drugboxDefaultImage)
+//            print(url)
         } else {
             cell.boxImage.image = UIImage(systemName: K.drugboxDefaultImage)
         }
@@ -129,10 +147,6 @@ extension DefaultBoxViewController: UITableViewDataSource, UITableViewDelegate {
         itemListVC.drugBoxId = selectedBox.drugboxId
         itemListVC.drugBoxName = selectedBox.name
         self.navigationController?.pushViewController(itemListVC, animated: true)
-        
-//        // segue call
-//        self.performSegue(withIdentifier: K.manageSegue.showItemSegue, sender: self)
-//        self.prepare(for: UIStoryboardSegue.init(identifier: K.manageSegue.showItemSegue, source: self, destination: ItemListViewController()), sender: self)
     }
     
 }
@@ -140,10 +154,91 @@ extension DefaultBoxViewController: UITableViewDataSource, UITableViewDelegate {
 //MARK: - Button func In the Cell
 extension DefaultBoxViewController: ButtonTappedDelegate {
     func cellButtonTapped(_ buttonTag: Int) {
+        print("currentDrugbox in cellButtonTapped: \(currentDrugbox ?? -1) 태그는 \(buttonTag)")
+        
         let settingVC = BoxSettingViewController()
-        settingVC.drugBoxId = self.currentDrugbox
+//        settingVC.drugBoxId = self.currentDrugbox
+        settingVC.drugBoxId = buttonTag
         self.navigationController?.pushViewController(settingVC, animated: true)
-//        self.performSegue(withIdentifier: K.manageSegue.settingSegue, sender: self)
     }
 }
 
+
+//class boxCell: UITableViewCell {
+//    
+//    // UI 요소 생성
+//    let boxImage = UIImageView().then {
+//        $0.contentMode = .scaleAspectFit
+//        $0.clipsToBounds = true
+//    }
+//    
+//    let boxNameLabel = UILabel().then {
+//        $0.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+//        $0.textColor = .black
+//    }
+//    
+//    let settingButton = UIButton(type: .system).then {
+//        $0.setImage(UIImage(systemName: "gear"), for: .normal)
+//        $0.tintColor = .systemBlue
+//        $0.addTarget(self, action: #selector(settingButtonPressed(_:)), for: .touchUpInside)
+//    }
+//    
+//    var drugboxId: Int = 0
+//    
+//    weak var delegate: ButtonTappedDelegate?
+//    
+//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+//        super.init(style: style, reuseIdentifier: reuseIdentifier)
+//        
+//        // UI 요소를 contentView에 추가
+//        contentView.addSubview(boxNameLabel)
+//        contentView.addSubview(settingButton)
+//        contentView.addSubview(boxImage)
+//        
+//        // SnapKit을 사용하여 레이아웃 설정
+//        setupLayout()
+//        
+//        // 셀 스타일 설정
+//        contentView.layer.borderWidth = 2
+//        contentView.layer.borderColor = UIColor.black.cgColor
+//        contentView.layer.cornerRadius = 10
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        super.init(coder: coder)
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//    
+//    private func setupLayout() {
+//        // boxNameLabel 레이아웃 설정
+//        boxNameLabel.snp.makeConstraints { make in
+//            make.top.equalToSuperview().offset(10)
+//            make.leading.equalToSuperview().offset(10)
+//            make.trailing.equalTo(settingButton.snp.leading).offset(-10)
+//        }
+//        
+//        // settingButton 레이아웃 설정
+//        settingButton.snp.makeConstraints { make in
+//            make.centerY.equalTo(boxNameLabel.snp.centerY)
+//            make.trailing.equalToSuperview().offset(-10)
+//            make.width.height.equalTo(24)
+//        }
+//        
+//        // boxImage 레이아웃 설정
+//        boxImage.snp.makeConstraints { make in
+//            make.top.equalTo(boxNameLabel.snp.bottom).offset(10)
+//            make.leading.equalToSuperview().offset(10)
+//            make.trailing.equalToSuperview().offset(-10)
+//            make.bottom.equalToSuperview().offset(-10)
+//        }
+//    }
+//    
+//    @objc func settingButtonPressed(_ sender: UIButton) {
+//        delegate?.cellButtonTapped(drugboxId)
+//    }
+//    
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10.0, left: 10, bottom: 10, right: 10))
+//    }
+//}

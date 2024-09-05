@@ -21,7 +21,7 @@ enum BoxManageService {
     
     // setting page
     case getSetting(id: Int) // drugbox/setting
-    case patchBoxName(data : BoxNamePatch) // drugbox/setting/name
+    case patchBoxName(id: Int, name: String) // drugbox/setting/name
     case patchBoxImage(id : Int, image: UIImage, imageName : String) // drugbox/setting/image
     
 }
@@ -89,8 +89,8 @@ extension BoxManageService : TargetType {
             return .requestJSONEncodable(data)
         case .postAddBoxbyCode(let invitId) :
             return .requestParameters(parameters: ["invitationId" : invitId], encoding: JSONEncoding.default)
-        case .patchBoxName(let data) :
-            return .requestJSONEncodable(data)
+        case .patchBoxName(let id, let name) :
+            return .requestParameters(parameters: ["drugboxId" : id, "name" : name], encoding: URLEncoding.queryString)
         case .patchBoxImage(let id, let image, let imageName) :
             var formData : [MultipartFormData] = []
             

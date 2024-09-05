@@ -16,7 +16,10 @@ class BoxSettingViewController: UIViewController, UITableViewDelegate, UITableVi
         BearerTokenPlugin(),
         NetworkLoggerPlugin(configuration: .init(logOptions: .verbose))
     ])
-
+    
+    let picker = UIImagePickerController()
+    private var imageName : String = ""
+    private var image : UIImage = UIImage()
     
     let tableView = UITableView()
     
@@ -101,13 +104,29 @@ class BoxSettingViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         setNameUI()
+        NameLabelEditButton.addTarget(self, action: #selector(changeName), for: .touchUpInside)
         setImageUI()
+        ImageChangeButton.addTarget(self, action: #selector(changeImage), for: .touchUpInside)
         setUserTableUI()
         
         tableView.dataSource = self
         tableView.register(UserCell.self, forCellReuseIdentifier: "UserCell")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        callGetSetting { isSuccess in
+            if isSuccess {
+                if let imageURL = URL(string: self.boxSetting.imageURL) {
+                    self.BoxImageView.loadImage(url: imageURL)
+                }
+                self.BoxNameLabel.text = self.boxSetting.boxName
+            }
+        }
+    }
+    
+    //MARK: - UI setting codes
     private func setNameUI() {
         view.addSubview(BoxNameLabel)
         view.addSubview(SettingLabel)
@@ -176,6 +195,36 @@ class BoxSettingViewController: UIViewController, UITableViewDelegate, UITableVi
 //        performSegue(withIdentifier: K.manageSegue.inviteSegue, sender: self)
 //    }
     
+    //MARK: - Button Actions
+    @objc func changeImage() {
+        let alert = UIAlertController(title: "사진을 가져올 곳 선택", message: "", preferredStyle: .actionSheet)
+        let library = UIAlertAction(title: "사진앨범", style: .default) {
+            (action) in self.openLibrary()
+        }
+        let camera = UIAlertAction(title: "카메라", style: .default) {
+            (action) in self.openCamera()
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alert.addAction(library)
+        alert.addAction(camera)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func changeName() {
+        let nameChangeVC = BoxSettingNameViewController()
+        nameChangeVC.drugboxId = boxSetting.drugboxId
+        nameChangeVC.modalPresentationStyle = .fullScreen
+        self.present(nameChangeVC, animated: true, completion: nil)
+    }
+    
+    @objc func goToAddMemberPage() {
+        
+    }
+    
+    //MARK: - API func
     private func callGetSetting(completion : @escaping (Bool) -> Void) {
         if let id = self.drugBoxId {
             provider.request(.getSetting(id: id)) { result in
@@ -202,6 +251,7 @@ class BoxSettingViewController: UIViewController, UITableViewDelegate, UITableVi
         
     }
     
+    //MARK: - TableView Settings
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         self.boxSetting.users.count
     }
@@ -212,10 +262,46 @@ class BoxSettingViewController: UIViewController, UITableViewDelegate, UITableVi
         // configure 메서드를 통해 nameLabel의 텍스트 설정
         cell.configure(with: "\(boxSetting.users[indexPath.row].userId)")
         
-        
         return cell
     }
     
+}
+
+//MARK: - ImagePicker
+extension BoxSettingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    // 라이브러리 선택
+    func openLibrary() {
+        picker.sourceType = .photoLibrary
+        present(picker, animated: false, completion: nil)
+    }
+    
+    // 카메라 선택
+    func openCamera() {
+        if(UIImagePickerController.isSourceTypeAvailable(.camera)) {
+            present(picker, animated: false, completion: nil)
+        } else {
+            print("Camera is not available")
+        }
+    }
+    
+    // 이미지 선택 완료 후, 현재 이미지뷰에 선택된 이미지 삽입
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            DispatchQueue.main.async {
+                self.BoxImageView.image = image
+                let fileName = "\(UUID().uuidString).jpeg"
+                self.setImageInfo(img: image, imgName: fileName)
+            }
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // 선택된 이미지 정보 저장
+    private func setImageInfo(img : UIImage, imgName : String) {
+        self.image = img
+        self.imageName = imgName
+        // moya patch call
+    }
 }
 
 struct BoxSettingModel : Codable {

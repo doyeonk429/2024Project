@@ -95,7 +95,7 @@ extension BoxManageService : TargetType {
             var formData : [MultipartFormData] = []
             
             let idData = "\(id)".data(using: .utf8) ?? Data()
-            let idMultipart = MultipartFormData(provider: .data(idData), name: "id")
+            let idMultipart = MultipartFormData(provider: .data(idData), name: "drugboxId")
             formData.append(idMultipart)
             
             if let imageData = image.jpegData(compressionQuality: 0.8) {

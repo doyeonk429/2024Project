@@ -6,45 +6,103 @@
 //
 
 import UIKit
+import SnapKit
+import SafariServices
+import Then
 
-class MainDeleteViewController: UIViewController {
-    @IBOutlet weak var ContentsTableView: UITableView!
+class MainDeleteViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var contents: [String] = ["폐의약품 분리배출", "서울권 지역 폐기 방법", "비서울권 지역 폐기 방법"
-    ]
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        ContentsTableView.delegate = self
-        ContentsTableView.dataSource = self
-        
-        ContentsTableView.register(UINib(nibName:K.tableCell.contentCellNibName, bundle: nil), forCellReuseIdentifier: K.tableCell.contentCellNibName)
-        ContentsTableView.rowHeight = UITableView.automaticDimension
-        ContentsTableView.estimatedRowHeight = UITableView.automaticDimension
-        
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 28))
-        header.backgroundColor = .systemBackground
-        let headerLabel = UILabel(frame: header.bounds)
-        headerLabel.text = "   의약품 폐기 방법"
-        headerLabel.font = UIFont.boldSystemFont(ofSize: 25)
-        headerLabel.textAlignment = .left
-        header.addSubview(headerLabel)
-        
-        ContentsTableView.tableHeaderView = header
+    private let titleLabel = UILabel().then {
+        $0.text = "거주 지역을 선택하세요(현재 서울시만 지원)"
+        $0.font = UIFont.boldSystemFont(ofSize: 24)
+        $0.textAlignment = .center
+        $0.textColor = .black
     }
     
-}
-
-extension MainDeleteViewController: UITableViewDataSource, UITableViewDelegate {
+    // Create the table view
+    private let tableView = UITableView().then {
+        $0.register(LabelTableViewCell.self, forCellReuseIdentifier: "LabelCell")
+        $0.rowHeight = UITableView.automaticDimension
+        $0.estimatedRowHeight = 44
+    }
+    
+    private let actionButton = UIButton(type: .system).then {
+        $0.setTitle("내 폐의약품 보러가기", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.backgroundColor = .systemBlue
+        $0.layer.cornerRadius = 8
+        $0.addTarget(self, action: #selector(actionButtonPressed), for: .touchUpInside)
+    }
+    
+    // Extract keys from the dictionary for displaying in the table view
+    private var keys: [String] {
+        return Array(K.DeletePageURL.seoulDistricts.keys).sorted()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        setupViews()
+    }
+    
+    private func setupViews() {
+        view.addSubview(titleLabel)
+        view.addSubview(tableView)
+        view.addSubview(actionButton)
+        
+        // Set up title label constraints
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
+            make.left.right.equalToSuperview().inset(16)
+        }
+        
+        // Set up table view constraints
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(16)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(actionButton.snp.top).offset(-16)
+        }
+        
+        // Set up button constraints
+        actionButton.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().inset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-16)
+            make.height.equalTo(50)
+        }
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contents.count
+        return keys.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let content = contents[indexPath.row]
-        let cell = ContentsTableView.dequeueReusableCell(withIdentifier: K.tableCell.contentCellNibName, for: indexPath) as! WayToDelete
-        cell.TitleButton.setTitle(content, for: .normal)
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath) as? LabelTableViewCell else {
+            return UITableViewCell()
+        }
+        let key = keys[indexPath.row]
+        cell.cellLabel.text = key
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let key = keys[indexPath.row]
+        if let urlString = K.DeletePageURL.seoulDistricts[key], let url = URL(string: urlString) {
+            // Use SFSafariViewController to open the URL
+            let safariVC = SFSafariViewController(url: url)
+            present(safariVC, animated: true, completion: nil)
+        }
+    }
+    
+    // Button Action Method
+    @objc private func actionButtonPressed() {
+//        print("Action button pressed!")
+        // Add additional functionality here if needed
+        let infoView = InfoViewController()
+        self.navigationController?.pushViewController(infoView, animated: true)
     }
     
 }

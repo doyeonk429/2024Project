@@ -45,11 +45,14 @@ class MenuSelectViewController: UIViewController {
     }
     
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: K.mainSegue.deleteSegue, sender: self)
+        let deleteVC = MainDeleteViewController()
+        self.navigationController?.pushViewController(deleteVC, animated: true)
+//        present(deleteVC, animated: true, completion: nil)
     }
     
 
     @IBAction func searchButtonPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: K.mainSegue.searchSegue, sender: self)
     }
+    
 }

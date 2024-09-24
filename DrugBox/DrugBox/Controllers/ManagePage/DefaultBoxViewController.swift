@@ -46,6 +46,13 @@ class DefaultBoxViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // 다른 뷰 갓다와서 업데이트할 건 여기다가
+        callGetBoxList { isSucess in
+            if isSucess {
+                self.boxTableView.reloadData()
+            } else {
+                print("구급상자 목록을 불러오는데 실패했습니다.\n다시 시도해주세요.")
+            }
+        }
         
         // 다시 화면으로 돌아왔을 때 선택 해제
         if let selectedIndexPath = boxTableView.indexPathForSelectedRow {
@@ -88,6 +95,7 @@ class DefaultBoxViewController: UIViewController {
 //                print(response.statusCode)
                 if response.statusCode == 200 {
                     do {
+                        self.boxList = []
                         let responseData = try response.map([DrugBoxResponse].self)
                         for boxData in responseData {
                             let tempbox = BoxListModel(name: boxData.name, drugboxId: boxData.drugboxId, imageURL: boxData.image)

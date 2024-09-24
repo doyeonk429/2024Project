@@ -90,10 +90,7 @@ class BoxSettingViewController: UIViewController, UITableViewDelegate, UITableVi
     public var drugBoxId : Int?
     var boxSetting = BoxSettingModel(boxName: "", drugboxId: 0, imageURL: "", inviteCode: "", users: [])
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        
+    fileprivate func updateBoxList() {
         callGetSetting { isSuccess in
             if isSuccess {
                 if let imageURL = URL(string: self.boxSetting.imageURL) {
@@ -102,11 +99,21 @@ class BoxSettingViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.BoxNameLabel.text = self.boxSetting.boxName
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        picker.delegate = self
+        
+        updateBoxList()
         
         setNameUI()
         NameLabelEditButton.addTarget(self, action: #selector(changeName), for: .touchUpInside)
+        
         setImageUI()
         ImageChangeButton.addTarget(self, action: #selector(changeImage), for: .touchUpInside)
+        
         setUserTableUI()
         
         tableView.dataSource = self
@@ -291,9 +298,14 @@ extension BoxSettingViewController: UIImagePickerControllerDelegate, UINavigatio
                 self.BoxImageView.image = image
                 let fileName = "\(UUID().uuidString).jpeg"
                 self.setImageInfo(img: image, imgName: fileName)
+//                print("Selected image: \(fileName)")
             }
         }
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true) {
+            // picker가 dismiss된 후에 UI 업데이트 호출
+            self.updateBoxList() // picker dismiss 후 박스 목록 업데이트
+            self.tableView.reloadData()
+        }
     }
     
     // 선택된 이미지 정보 저장
@@ -301,7 +313,35 @@ extension BoxSettingViewController: UIImagePickerControllerDelegate, UINavigatio
         self.image = img
         self.imageName = imgName
         // moya patch call
+        
+        callPatchImage { isSuccess in
+            if isSuccess {
+                print("이미지 업로드 성공")
+                self.updateBoxList() // 이미지가 서버로 업로드된 후 UI 업데이트
+            } else {
+                print("다시 시도 해주세요.")
+            }
+        }
     }
+    
+    private func callPatchImage(completion : @escaping (Bool) -> Void) {
+        if let id = self.drugBoxId {
+            provider.request(.patchBoxImage(id: self.boxSetting.drugboxId, image: self.image, imageName: self.imageName)) { result in
+                switch result {
+                case .success(let response) :
+                    if response.statusCode == 200 {
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
+                case .failure(let error) :
+                    print("Error: \(error.localizedDescription)")
+                    completion(false)
+                }
+            }
+        }
+    }
+    
 }
 
 struct BoxSettingModel : Codable {

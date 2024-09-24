@@ -10,7 +10,7 @@ import SnapKit
 import Then
 import Moya
 
-class SearchDrugViewController : UIViewController {
+class SearchDrugViewController : UIViewController, UISearchBarDelegate {
     
     let provider = MoyaProvider<DrugService>(plugins: [BearerTokenPlugin()])
     var searchResultList = [String]()
@@ -33,10 +33,30 @@ class SearchDrugViewController : UIViewController {
     }
     
     // UISearchBar 생성
-    let searchBar = UISearchBar().then {
-        $0.placeholder = "약 이름을 입력하세요"
-        $0.showsCancelButton = true
-    }
+    lazy var searchBar: UISearchBar = {
+        let s = UISearchBar()
+        s.delegate = self
+        //경계선 제거
+        s.searchBarStyle = .minimal
+        s.layer.cornerRadius = 8
+        s.layer.masksToBounds = true
+        
+        if let searchIcon = UIImage(named: "icon_search") {
+            s.setImage(searchIcon, for: .search, state: .normal)
+        }
+        if let textField = s.value(forKey: "searchField") as? UITextField {
+            // Placeholder 텍스트 속성 설정
+            let placeholderText = "약 이름을 검색하세요"
+            let attributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: UIColor(hue: 0, saturation: 0, brightness: 0.45, alpha: 1.0), // 색상 설정
+                .font: UIFont.boldSystemFont(ofSize: 12) // 크기 설정
+            ]
+            textField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+        }
+        s.searchTextField.backgroundColor = UIColor(hex: "#E5E5E5")
+        
+        return s
+    }()
     
     
     override func viewDidLoad() {
@@ -82,7 +102,7 @@ class SearchDrugViewController : UIViewController {
         }
         
         // UISearchBarDelegate 설정
-        searchBar.delegate = self
+//        searchBar.delegate = self
     }
     
     // 닫기 버튼 액션
@@ -109,9 +129,6 @@ class SearchDrugViewController : UIViewController {
         }
     }
     
-}
-
-extension SearchDrugViewController : UISearchBarDelegate {
     // 검색 버튼 클릭 시 호출
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text, !searchText.isEmpty else {
@@ -140,4 +157,5 @@ extension SearchDrugViewController : UISearchBarDelegate {
         searchBar.text = ""
         searchBar.resignFirstResponder()
     }
+    
 }

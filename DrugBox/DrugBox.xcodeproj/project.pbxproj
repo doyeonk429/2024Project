@@ -27,6 +27,8 @@
 		1662B8112C1FD04900BF7802 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1662B8102C1FD04900BF7802 /* KeychainSwift */; };
 		1662B81C2C21655400BF7802 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662B81B2C21655400BF7802 /* LoginService.swift */; };
 		1662B81F2C218AFA00BF7802 /* BoxManageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662B81E2C218AFA00BF7802 /* BoxManageService.swift */; };
+		16674C1A2CA28ACA00551008 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16674C192CA28ACA00551008 /* UIColor.swift */; };
+		16674C1C2CA2935200551008 /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16674C1B2CA2935200551008 /* LabelTableViewCell.swift */; };
 		16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */; };
 		16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */; };
 		16913C882B64FBB1006A0F0A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C872B64FBB1006A0F0A /* MapViewController.swift */; };
@@ -146,6 +148,8 @@
 		16205A852B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPrescriptionViewController.swift; sourceTree = "<group>"; };
 		1662B81B2C21655400BF7802 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		1662B81E2C218AFA00BF7802 /* BoxManageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxManageService.swift; sourceTree = "<group>"; };
+		16674C192CA28ACA00551008 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		16674C1B2CA2935200551008 /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBoxViewController.swift; sourceTree = "<group>"; };
 		16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDeleteViewController.swift; sourceTree = "<group>"; };
 		16913C872B64FBB1006A0F0A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +271,7 @@
 				161DB4202B76190100F85377 /* UIImageView.swift */,
 				16EFBB342B80FFDC006C2EFF /* String.swift */,
 				16EFBB362B810006006C2EFF /* Date.swift */,
+				16674C192CA28ACA00551008 /* UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -510,6 +515,7 @@
 				16EFBB392B810562006C2EFF /* Alarm */,
 				16EFBB382B810551006C2EFF /* Box */,
 				16C19B882C86CDDF00E93FD0 /* UserCell.swift */,
+				16674C1B2CA2935200551008 /* LabelTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -836,6 +842,7 @@
 				161DB40B2B6E709500F85377 /* BoxCell.swift in Sources */,
 				161DB4212B76190100F85377 /* UIImageView.swift in Sources */,
 				16C19B052C7D8E6A00E93FD0 /* BoxInvitationPost.swift in Sources */,
+				16674C1C2CA2935200551008 /* LabelTableViewCell.swift in Sources */,
 				16EFBB3F2B8105A1006C2EFF /* DrugCell.swift in Sources */,
 				16A2138B2BFDCAD600D82CE3 /* BoxListModel.swift in Sources */,
 				16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */,
@@ -848,6 +855,7 @@
 				16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */,
 				161DB4052B6DF79300F85377 /* UILabel.swift in Sources */,
 				16E008F32B6401B2004F83F0 /* MenuSelectViewController.swift in Sources */,
+				16674C1A2CA28ACA00551008 /* UIColor.swift in Sources */,
 				16E009012B642EB5004F83F0 /* Alarm.swift in Sources */,
 				16C19AF32C799DF600E93FD0 /* IdResponse.swift in Sources */,
 				16C19AEB2C799B7500E93FD0 /* OAuthLoginRequest.swift in Sources */,

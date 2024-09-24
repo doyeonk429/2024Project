@@ -13,15 +13,15 @@ class InfoViewController: UIViewController {
 
     
     private let titleLabel = UILabel().then {
-        $0.text = "거주 지역을 선택하세요(현재 서울시만 지원)"
+        $0.text = "내 폐의약품 목록"
         $0.font = UIFont.boldSystemFont(ofSize: 24)
-        $0.textAlignment = .center
-        $0.textColor = .white
+        $0.textAlignment = .left
+        $0.textColor = .systemGreen
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGreen
+        view.backgroundColor = .white
         
         view.addSubview(titleLabel)
         // Do any additional setup after loading the view.

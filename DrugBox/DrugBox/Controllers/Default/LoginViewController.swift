@@ -4,7 +4,6 @@
 //
 //  Created by 김도연 on 1/27/24.
 //  Modifed by doyeonk429 on 3/4/24.
-
 import UIKit
 import Firebase
 import FirebaseAuth
@@ -13,30 +12,176 @@ import Alamofire
 import KeychainSwift
 import Moya
 import FirebaseMessaging
+import SnapKit
 
-class LoginViewController: UIViewController{
-    //MARK: - Outlet section
-    @IBOutlet weak var EmailTextField: UITextField!
-    @IBOutlet weak var PasswordTextField: UITextField!
-    @IBOutlet weak var GoogleLoginButton: GIDSignInButton!
+class LoginViewController: UIViewController {
     
-    // keychains
-    static let keychain = KeychainSwift() // GoogleAccessToken, GoogleRefreshToken, FCMToken, serverAccessToken
+    // Keychains
+    static let keychain = KeychainSwift() // For storing tokens like GoogleAccessToken, GoogleRefreshToken, FCMToken, serverAccessToken
     
     // FCM Token
     var fcmToken: String?
     
-    //MARK: - API provider
+    // API provider
     let provider = MoyaProvider<LoginService>(plugins: [NetworkLoggerPlugin()])
     
-    //MARK: - View
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Start to DrugBox"
+        label.font = UIFont.boldSystemFont(ofSize: 44)
+        label.textAlignment = .center
+        label.textColor = .black
+        return label
+    }()
+    // Creating the titleLabel with an icon in the text
+//    private let titleLabel: UILabel = {
+//        let label = UILabel()
+//            label.textAlignment = .center
+//            label.textColor = .green
+//            label.font = UIFont.boldSystemFont(ofSize: 30)
+//
+//        // Create an attachment with the icon image
+//        let imageAttachment = NSTextAttachment()
+//        imageAttachment.image = UIImage(systemName: "cross.case.circle.fill") // Use an SF Symbol or custom image
+//        
+//        // Adjust the image size to fit the label's text size
+//        let imageOffsetY: CGFloat = -6.0 // Adjust the offset to align with the larger text size
+//            imageAttachment.bounds = CGRect(x: 0, y: imageOffsetY, width: 24, height: 24)
+//        
+//        // Create attributed string with the image
+//        let attachmentString = NSAttributedString(attachment: imageAttachment)
+//
+//        let fullString = NSMutableAttributedString()
+//        fullString.append(attachmentString) // Add the image first
+//        fullString.append(NSAttributedString(string: " Start DrugBox"))
+//        label.attributedText = fullString
+//        
+//        return label
+//    }()
+
+    
+    // UI Components
+    private let emailTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Email"
+        textField.borderStyle = .roundedRect
+        textField.autocapitalizationType = .none
+        textField.keyboardType = .emailAddress
+        return textField
+    }()
+    
+    private let passwordTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Password"
+        textField.borderStyle = .roundedRect
+        textField.isSecureTextEntry = true
+        textField.autocapitalizationType = .none
+        textField.textContentType = .oneTimeCode
+        return textField
+    }()
+    
+    private let googleLoginButton: GIDSignInButton = {
+        let button = GIDSignInButton()
+        button.colorScheme = .light
+        button.style = .wide
+        return button
+    }()
+    
+    private let loginButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Login", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 8
+        return button
+    }()
+    
+    private let registerButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Register", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemGreen
+        button.layer.cornerRadius = 8
+        return button
+    }()
+    
+    private let contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        GoogleLoginButton.colorScheme = .light
-        GoogleLoginButton.style = .wide
+        setupViews()
+        setupConstraints()
+        setupActions()
+        configureFCM()
+    }
+    
+    private func setupViews() {
+        view.backgroundColor = .white
+        view.addSubview(contentView) // Add contentView to the main view
+        contentView.addSubview(titleLabel) // Add titleLabel to contentView
+        contentView.addSubview(emailTextField)
+        contentView.addSubview(passwordTextField)
+        contentView.addSubview(loginButton)
+        contentView.addSubview(registerButton)
+        contentView.addSubview(googleLoginButton)
+    }
+    
+    private func setupConstraints() {
+        contentView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide).offset(4)
+        }
         
-        // FCM Token 발급
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(contentView).offset(100)
+            make.left.right.equalToSuperview().inset(20)
+            make.height.equalTo(40)
+        }
+        
+        emailTextField.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+            make.left.right.equalToSuperview().inset(20)
+            make.height.equalTo(50)
+        }
+        
+        passwordTextField.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).offset(20)
+            make.left.right.equalTo(emailTextField)
+            make.height.equalTo(50)
+        }
+        
+        loginButton.snp.makeConstraints { make in
+            make.top.equalTo(passwordTextField.snp.bottom).offset(20)
+            make.left.right.equalTo(emailTextField)
+            make.height.equalTo(50)
+        }
+        
+        registerButton.snp.makeConstraints { make in
+            make.top.equalTo(loginButton.snp.bottom).offset(10)
+            make.left.right.equalTo(loginButton)
+            make.height.equalTo(50)
+        }
+        
+        googleLoginButton.snp.makeConstraints { make in
+            make.top.equalTo(registerButton.snp.bottom).offset(20)
+            make.left.right.equalTo(loginButton)
+        }
+    }
+    
+    private func setupActions() {
+        loginButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
+        googleLoginButton.addTarget(self, action: #selector(googleLogin), for: .touchUpInside)
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+    }
+    
+    private func configureFCM() {
         Messaging.messaging().token { token, error in
             if let error = error {
                 print("Error fetching FCM token: \(error)")
@@ -46,83 +191,70 @@ class LoginViewController: UIViewController{
                 LoginViewController.keychain.set(token, forKey: "FCMToken")
             }
         }
-        
-        EmailTextField.delegate = self
-        PasswordTextField.delegate = self
-        PasswordTextField.textContentType = .oneTimeCode
-        
     }
     
-    //MARK: - Button Actions
-    @IBAction func buttonPressed(_ sender: UIButton) {
-        if let email = EmailTextField.text, let password = PasswordTextField.text {
-            callLogin(userData: assignLoginData(email: email, password: password)) { isSuccess in
-                if isSuccess {
-                    self.performSegue(withIdentifier: K.loginSegue, sender: self)
-                } else {
-                    print("로그인 정보가 없습니다.")
-                }
+    // MARK: - Button Actions
+    @objc private func buttonPressed() {
+        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+        callLogin(userData: assignLoginData(email: email, password: password)) { isSuccess in
+            if isSuccess {
+                self.navigationController?.pushViewController(MenuSelectViewController(), animated: true)
+            } else {
+                print("로그인 정보가 없습니다.")
             }
         }
     }
     
-    @IBAction func registerButtonPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: K.registerSegue, sender: self)
+    @objc private func registerButtonPressed() {
+        // Replace with appropriate action or segue
+        print("Register button pressed.")
+        let registerVC = RegisterViewController()
+        //        self.navigationController?.pushViewController(registerVC, animated: true)
     }
     
-    @IBAction func googleLogin(_ sender: GIDSignInButton) {
-        // 구글 인증
+    @objc private func googleLogin() {
+        // Google login setup
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         let config = GIDConfiguration(clientID: clientID)
         
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { [weak self] signInResult, _ in
-            guard let self,
+            guard let self = self,
                   let result = signInResult,
                   let token = result.user.idToken?.tokenString else { return }
             
             let accesstoken = result.user.accessToken.tokenString
             let refreshtoken = result.user.refreshToken.tokenString
             
-            let credential = GoogleAuthProvider.credential(withIDToken: token, accessToken: accesstoken)
-            
-            // keychain에 tokens 저장
+            // Keychain store
             LoginViewController.keychain.set(accesstoken, forKey: "GoogleAccessToken")
             LoginViewController.keychain.set(refreshtoken, forKey: "GoogleRefreshToken")
             
-            // fcmToken을 포함하여 로그인 데이터 구성
+            // Use tokens as needed
             guard let fcmToken = self.fcmToken else {
                 print("FCM token not available")
                 return
             }
             let oauthData = self.assignGoogleLoginData(aToken: accesstoken, fcmToken: fcmToken, idToken: token)
-    //        self.callGoogleLogin(with: oauthData) { isSuccess in
-    //            if isSuccess {
-    //                self.performSegue(withIdentifier: K.loginSegue, sender: self)
-    //            }
-    //        }
+            // Further OAuth handling
         }
-
     }
     
-    //MARK: - API call Func
-    // TODO : response null값 해결중
-    private func callLogin(userData : UserLoginRequest, completion : @escaping (Bool) -> Void) {
+    // MARK: - API Call Functions
+    private func callLogin(userData: UserLoginRequest, completion: @escaping (Bool) -> Void) {
         provider.request(.postLogin(param: userData)) { result in
             switch result {
-            case .success(let response) :
+            case .success(let response):
                 do {
-//                    let responseData = try response.mapJSON()
                     let rData = try response.map(TokenDto.self)
-//                    let responseData = try JSONDecoder().decode(TokenDto.self, from: response.data)
                     print(rData)
                     LoginViewController.keychain.set(rData.accessToken, forKey: "serverAccessToken")
+                    completion(true)
                 } catch {
-                    print("Failed to map data : \(error)")
+                    print("Failed to map data: \(error)")
                     completion(false)
                 }
-                completion(true)
-            case .failure(let error) :
-                print("Request failed : \(error)")
+            case .failure(let error):
+                print("Request failed: \(error)")
                 completion(false)
             }
         }
@@ -135,23 +267,15 @@ class LoginViewController: UIViewController{
     private func assignGoogleLoginData(aToken: String, fcmToken: String, idToken: String) -> OAuthLoginRequest {
         return OAuthLoginRequest(accessToken: aToken, fcmToken: fcmToken, idToken: idToken)
     }
-    
-    private func callGoogleLogin(completion : @escaping (Bool) -> Void) {
-        
-    }
 }
 
-extension LoginViewController : UITextFieldDelegate {
+extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == self.EmailTextField, self.EmailTextField.text != "" {
-//            self.userEmail = self.EmailTextField.text
-            self.PasswordTextField.becomeFirstResponder()
-        } else if textField == self.PasswordTextField, self.PasswordTextField.text != ""{
-//            self.userPW = self.PasswordTextField.text
-            self.PasswordTextField.resignFirstResponder()
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            passwordTextField.resignFirstResponder()
         }
         return true
     }
-    
-    
 }

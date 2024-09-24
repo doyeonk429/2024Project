@@ -13,10 +13,18 @@ import Then
 class MainDeleteViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private let titleLabel = UILabel().then {
-        $0.text = "거주 지역을 선택하세요(현재 서울시만 지원)"
+        $0.text = "폐의약품 처리 방법"
         $0.font = UIFont.boldSystemFont(ofSize: 24)
-        $0.textAlignment = .center
+        $0.textAlignment = .left
         $0.textColor = .black
+    }
+    
+    private let subtitleLabel = UILabel().then {
+        $0.text = "거주 지역을 선택하여 자세한 정보를 확인하세요.(현재 서울시만 지원)"
+        $0.font = UIFont.systemFont(ofSize: 14)
+        $0.textAlignment = .left
+        $0.textColor = .darkGray
+        $0.numberOfLines = 0
     }
     
     // Create the table view
@@ -29,7 +37,7 @@ class MainDeleteViewController: UIViewController, UITableViewDataSource, UITable
     private let actionButton = UIButton(type: .system).then {
         $0.setTitle("내 폐의약품 보러가기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.backgroundColor = .systemBlue
+        $0.backgroundColor = .green
         $0.layer.cornerRadius = 8
         $0.addTarget(self, action: #selector(actionButtonPressed), for: .touchUpInside)
     }
@@ -47,6 +55,7 @@ class MainDeleteViewController: UIViewController, UITableViewDataSource, UITable
     
     private func setupViews() {
         view.addSubview(titleLabel)
+        view.addSubview(subtitleLabel)
         view.addSubview(tableView)
         view.addSubview(actionButton)
         
@@ -56,9 +65,15 @@ class MainDeleteViewController: UIViewController, UITableViewDataSource, UITable
             make.left.right.equalToSuperview().inset(16)
         }
         
-        // Set up table view constraints
+        // Set up constraints for subtitleLabel
+        subtitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(8) // Positioned right below titleLabel
+            make.left.right.equalToSuperview().inset(16)
+        }
+        
+        // Set up constraints for tableView
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(16)
+            make.top.equalTo(subtitleLabel.snp.bottom).offset(16)
             make.left.right.equalToSuperview()
             make.bottom.equalTo(actionButton.snp.top).offset(-16)
         }
@@ -99,8 +114,6 @@ class MainDeleteViewController: UIViewController, UITableViewDataSource, UITable
     
     // Button Action Method
     @objc private func actionButtonPressed() {
-//        print("Action button pressed!")
-        // Add additional functionality here if needed
         let infoView = InfoViewController()
         self.navigationController?.pushViewController(infoView, animated: true)
     }

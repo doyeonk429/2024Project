@@ -24,6 +24,8 @@
 		16205A822B7BB4B0002DF4D2 /* AddDrugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16205A812B7BB4B0002DF4D2 /* AddDrugViewController.swift */; };
 		16205A842B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16205A832B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift */; };
 		16205A862B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16205A852B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift */; };
+		164A0A072CA29E2600504BF1 /* AdImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A0A062CA29E2600504BF1 /* AdImageCollectionViewCell.swift */; };
+		164A0A092CA2A22100504BF1 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A0A082CA2A22100504BF1 /* TestViewController.swift */; };
 		1662B8112C1FD04900BF7802 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1662B8102C1FD04900BF7802 /* KeychainSwift */; };
 		1662B81C2C21655400BF7802 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662B81B2C21655400BF7802 /* LoginService.swift */; };
 		1662B81F2C218AFA00BF7802 /* BoxManageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662B81E2C218AFA00BF7802 /* BoxManageService.swift */; };
@@ -146,6 +148,8 @@
 		16205A812B7BB4B0002DF4D2 /* AddDrugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrugViewController.swift; sourceTree = "<group>"; };
 		16205A832B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDrugDetailViewController.swift; sourceTree = "<group>"; };
 		16205A852B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPrescriptionViewController.swift; sourceTree = "<group>"; };
+		164A0A062CA29E2600504BF1 /* AdImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		164A0A082CA2A22100504BF1 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		1662B81B2C21655400BF7802 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		1662B81E2C218AFA00BF7802 /* BoxManageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxManageService.swift; sourceTree = "<group>"; };
 		16674C192CA28ACA00551008 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -516,6 +520,7 @@
 				16EFBB382B810551006C2EFF /* Box */,
 				16C19B882C86CDDF00E93FD0 /* UserCell.swift */,
 				16674C1B2CA2935200551008 /* LabelTableViewCell.swift */,
+				164A0A062CA29E2600504BF1 /* AdImageCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -562,6 +567,7 @@
 				16E008F62B640459004F83F0 /* LoginViewController.swift */,
 				16EFBB472B8720CA006C2EFF /* RegisterViewController.swift */,
 				16C5CFF52BB7EDC8008DF3D3 /* OnboardingViewController.swift */,
+				164A0A082CA2A22100504BF1 /* TestViewController.swift */,
 			);
 			path = Default;
 			sourceTree = "<group>";
@@ -821,6 +827,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				164A0A092CA2A22100504BF1 /* TestViewController.swift in Sources */,
 				16C19AF52C7D84C400E93FD0 /* BearerTokenPlugin.swift in Sources */,
 				16C19AF12C799C3000E93FD0 /* UserLoginRequest.swift in Sources */,
 				16913C882B64FBB1006A0F0A /* MapViewController.swift in Sources */,
@@ -874,6 +881,7 @@
 				16C19B892C86CDDF00E93FD0 /* UserCell.swift in Sources */,
 				16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */,
 				160307512C89814C007FD16E /* BoxSettingNameViewController.swift in Sources */,
+				164A0A072CA29E2600504BF1 /* AdImageCollectionViewCell.swift in Sources */,
 				16E008BB2B63FDDB004F83F0 /* SceneDelegate.swift in Sources */,
 				16205A842B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift in Sources */,
 				1662B81F2C218AFA00BF7802 /* BoxManageService.swift in Sources */,

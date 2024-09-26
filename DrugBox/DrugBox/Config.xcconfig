@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  DrugBox
+//
+//  Created by 김도연 on 9/25/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+KAKAO_API_KEY = d5a1d31c9e28897bd824b23fd063c6ca

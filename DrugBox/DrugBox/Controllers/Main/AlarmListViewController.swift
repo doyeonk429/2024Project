@@ -6,70 +6,91 @@
 //
 
 import UIKit
+import SnapKit
+import Then
 
 class AlarmListViewController: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
+
+    // Title label
+    private let titleLabel = UILabel().then {
+        $0.text = "알림"
+        $0.font = UIFont.boldSystemFont(ofSize: 25)
+        $0.textAlignment = .left
+        $0.textColor = .black
+    }
     
-    let dateformatter = DateFormatter()
+    // Table view
+    private let tableView = UITableView().then {
+        $0.separatorStyle = .singleLine
+        $0.backgroundColor = .systemBackground
+        $0.rowHeight = UITableView.automaticDimension
+        $0.estimatedRowHeight = 44
+    }
+
+    private let dateformatter = DateFormatter()
+    
     var alarms: [Alarm] = [
         Alarm(isUpdated: true, timestamp: "2024-01-27 12:20", alarmBody: "동백님이 구급상자1에 타이레놀 서방정을 추가하였습니다."),
         Alarm(isUpdated: false, timestamp: "2024-01-27 9:33", alarmBody: "구급상자1에 들어있는 부루펜의 사용 가능 기한이 1주일 남았습니다. 교체하세요!")
     ]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: K.tableCell.cellNibName, bundle: nil), forCellReuseIdentifier: K.tableCell.cellIdentifier)
-        
-//        tableView.rowHeight = UITableView.automaticDimension
-//        tableView.estimatedRowHeight = UITableView.automaticDimension
-        
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 28))
-        header.backgroundColor = .systemBackground
-        let headerLabel = UILabel(frame: header.bounds)
-        headerLabel.text = "    알림"
-        headerLabel.font = UIFont.boldSystemFont(ofSize: 25)
-        headerLabel.textAlignment = .left
-        header.addSubview(headerLabel)
-        
-        tableView.tableHeaderView = header
+        setupUI()
     }
 
-
+    private func setupUI() {
+        view.backgroundColor = .white
+        
+        // Add subviews
+        view.addSubview(titleLabel)
+        view.addSubview(tableView)
+        
+        // Set up the title label constraints
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
+            make.leading.trailing.equalToSuperview().inset(16)
+        }
+        
+        // Set up the table view constraints
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(8)
+            make.leading.equalTo(titleLabel.snp.leading)
+            make.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
+        }
+        
+        // Set delegates and register cell
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(AlarmCell.self, forCellReuseIdentifier: K.tableCell.cellIdentifier)
+    }
 }
-//MARK: - TableView 구현
+
+// MARK: - UITableViewDataSource, UITableViewDelegate
+
 extension AlarmListViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    // 테이블 셀 개수 설정
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alarms.count
     }
-    
-    // 테이블에 셀 정보 넣어줌
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: K.tableCell.cellIdentifier, for: indexPath) as? AlarmCell else {
+            return UITableViewCell()
+        }
+
         let alarm = alarms[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.tableCell.cellIdentifier, for: indexPath) as! AlarmCell
         cell.TimestampLabel.text = alarm.timestamp
         cell.AlarmContentLabel.text = alarm.alarmBody
-        
-        if alarm.isUpdated == true {
-            cell.alarmLightIcon.tintColor = UIColor.systemGreen
-        } else {
-            cell.alarmLightIcon.tintColor = UIColor.lightGray
-        }
+        cell.alarmLightIcon.tintColor = alarm.isUpdated ? .systemGreen : .lightGray
         
         return cell
     }
-    
-    // 옆으로 스와이프해서 삭제
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             alarms.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
-    
-    
 }

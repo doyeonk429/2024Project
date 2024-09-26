@@ -14,7 +14,7 @@ class TestViewController: UIViewController {
     private let pushButton = UIButton(type: .system).then {
         $0.setTitle("Go to Login", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.backgroundColor = .systemBlue
+        $0.backgroundColor = UIColor(hex: "169F00")
         $0.layer.cornerRadius = 8
     }
     

@@ -71,7 +71,7 @@ class MenuSelectViewController: UIViewController, UICollectionViewDataSource, UI
     private lazy var pageControl: UIPageControl = {
         let p = UIPageControl()
         p.pageIndicatorTintColor = UIColor(hex: "#D9D9D9")
-        p.currentPageIndicatorTintColor = UIColor(hex: "#FF7A6D")
+        p.currentPageIndicatorTintColor = UIColor(hex: "169F00")
         return p
     }()
     
@@ -169,7 +169,7 @@ class MenuSelectViewController: UIViewController, UICollectionViewDataSource, UI
     private func configureButton(_ button: UIButton, title: String, action: Selector) {
         button.setTitle(title, for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .darkGray
+        button.backgroundColor = UIColor(hex: "169F00")
         button.layer.cornerRadius = 8
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18) // Set bold font with size 20
         button.addTarget(self, action: action, for: .touchUpInside)
@@ -196,8 +196,8 @@ class MenuSelectViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     @objc private func searchButtonPressed() {
-        // Handle search button action
-        print("Search button pressed.")
+        let searchVC = DefaultMapViewController()
+        navigationController?.pushViewController(searchVC, animated: true)
     }
     
     // MARK: - UICollectionView DataSource & Delegate

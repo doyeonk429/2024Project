@@ -16,7 +16,7 @@ class MainDeleteViewController: UIViewController, UITableViewDataSource, UITable
         $0.text = "폐의약품 처리 방법"
         $0.font = UIFont.boldSystemFont(ofSize: 24)
         $0.textAlignment = .left
-        $0.textColor = .black
+        $0.textColor = UIColor(hex: "169F00")
     }
     
     private let subtitleLabel = UILabel().then {
@@ -35,9 +35,9 @@ class MainDeleteViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     private let actionButton = UIButton(type: .system).then {
-        $0.setTitle("내 폐의약품 보러가기", for: .normal)
+        $0.setTitle("내 폐의약품 확인하기", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.backgroundColor = .green
+        $0.backgroundColor = UIColor(hex: "169F00")
         $0.layer.cornerRadius = 8
         $0.addTarget(self, action: #selector(actionButtonPressed), for: .touchUpInside)
     }
@@ -59,26 +59,23 @@ class MainDeleteViewController: UIViewController, UITableViewDataSource, UITable
         view.addSubview(tableView)
         view.addSubview(actionButton)
         
-        // Set up title label constraints
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
             make.left.right.equalToSuperview().inset(16)
         }
-        
-        // Set up constraints for subtitleLabel
+
         subtitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(8) // Positioned right below titleLabel
+            make.top.equalTo(titleLabel.snp.bottom).offset(8)
             make.left.right.equalToSuperview().inset(16)
         }
         
-        // Set up constraints for tableView
+ 
         tableView.snp.makeConstraints { make in
             make.top.equalTo(subtitleLabel.snp.bottom).offset(16)
             make.left.right.equalToSuperview()
             make.bottom.equalTo(actionButton.snp.top).offset(-16)
         }
-        
-        // Set up button constraints
+ 
         actionButton.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-16)
@@ -106,13 +103,12 @@ class MainDeleteViewController: UIViewController, UITableViewDataSource, UITable
         tableView.deselectRow(at: indexPath, animated: true)
         let key = keys[indexPath.row]
         if let urlString = K.DeletePageURL.seoulDistricts[key], let url = URL(string: urlString) {
-            // Use SFSafariViewController to open the URL
             let safariVC = SFSafariViewController(url: url)
             present(safariVC, animated: true, completion: nil)
         }
     }
+
     
-    // Button Action Method
     @objc private func actionButtonPressed() {
         let infoView = InfoViewController()
         self.navigationController?.pushViewController(infoView, animated: true)

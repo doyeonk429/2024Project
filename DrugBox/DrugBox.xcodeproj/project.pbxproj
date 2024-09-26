@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		160307512C89814C007FD16E /* BoxSettingNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160307502C89814C007FD16E /* BoxSettingNameViewController.swift */; };
+		16126D9F2CA420F400828185 /* KakaoMapsSDK-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 16126D9E2CA420F400828185 /* KakaoMapsSDK-SPM */; };
+		16126DA12CA50F2B00828185 /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16126DA02CA50F2B00828185 /* AlarmCell.swift */; };
 		161DB4052B6DF79300F85377 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB4042B6DF79300F85377 /* UILabel.swift */; };
 		161DB4072B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB4062B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift */; };
 		161DB4092B6E6E4800F85377 /* BoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 161DB4082B6E6E4800F85377 /* BoxCell.xib */; };
@@ -33,7 +35,6 @@
 		16674C1C2CA2935200551008 /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16674C1B2CA2935200551008 /* LabelTableViewCell.swift */; };
 		16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */; };
 		16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */; };
-		16913C882B64FBB1006A0F0A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C872B64FBB1006A0F0A /* MapViewController.swift */; };
 		16913C8C2B654A36006A0F0A /* WayToDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C8B2B654A36006A0F0A /* WayToDelete.swift */; };
 		16913C8F2B654A67006A0F0A /* WayToDelete.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16913C8E2B654A67006A0F0A /* WayToDelete.xib */; };
 		16A213872BF30DCA00D82CE3 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 16A213862BF30DCA00D82CE3 /* Toast */; };
@@ -41,6 +42,9 @@
 		16A2138B2BFDCAD600D82CE3 /* BoxListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A2138A2BFDCAD600D82CE3 /* BoxListModel.swift */; };
 		16A2138D2BFDCB0200D82CE3 /* BoxListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A2138C2BFDCB0200D82CE3 /* BoxListData.swift */; };
 		16A213942C0836E000D82CE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16A213932C0836E000D82CE3 /* GoogleService-Info.plist */; };
+		16AA2AF12CA3F35B00C4CD24 /* DisposalDrugCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AA2AF02CA3F35B00C4CD24 /* DisposalDrugCell.swift */; };
+		16AA2AF82CA4056400C4CD24 /* DefaultMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AA2AF72CA4056400C4CD24 /* DefaultMapViewController.swift */; };
+		16AA2AFA2CA4061400C4CD24 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 16AA2AF92CA4061400C4CD24 /* Config.xcconfig */; };
 		16C19AEB2C799B7500E93FD0 /* OAuthLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19AEA2C799B7500E93FD0 /* OAuthLoginRequest.swift */; };
 		16C19AEF2C799BC500E93FD0 /* TokenDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19AEE2C799BC500E93FD0 /* TokenDto.swift */; };
 		16C19AF12C799C3000E93FD0 /* UserLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19AF02C799C3000E93FD0 /* UserLoginRequest.swift */; };
@@ -103,8 +107,6 @@
 		16E008F72B640459004F83F0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008F62B640459004F83F0 /* LoginViewController.swift */; };
 		16E008F92B6404FF004F83F0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008F82B6404FF004F83F0 /* Constants.swift */; };
 		16E008FB2B640BD6004F83F0 /* AlarmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008FA2B640BD6004F83F0 /* AlarmListViewController.swift */; };
-		16E008FD2B642ABE004F83F0 /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008FC2B642ABE004F83F0 /* AlarmCell.swift */; };
-		16E008FF2B642B33004F83F0 /* AlarmCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16E008FE2B642B33004F83F0 /* AlarmCell.xib */; };
 		16E009012B642EB5004F83F0 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E009002B642EB5004F83F0 /* Alarm.swift */; };
 		16EFBB352B80FFDC006C2EFF /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EFBB342B80FFDC006C2EFF /* String.swift */; };
 		16EFBB372B810006006C2EFF /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16EFBB362B810006006C2EFF /* Date.swift */; };
@@ -132,6 +134,7 @@
 
 /* Begin PBXFileReference section */
 		160307502C89814C007FD16E /* BoxSettingNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxSettingNameViewController.swift; sourceTree = "<group>"; };
+		16126DA02CA50F2B00828185 /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 		161DB4042B6DF79300F85377 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		161DB4062B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinWIthInvitationCodeViewController.swift; sourceTree = "<group>"; };
 		161DB4082B6E6E4800F85377 /* BoxCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoxCell.xib; sourceTree = "<group>"; };
@@ -156,7 +159,6 @@
 		16674C1B2CA2935200551008 /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBoxViewController.swift; sourceTree = "<group>"; };
 		16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDeleteViewController.swift; sourceTree = "<group>"; };
-		16913C872B64FBB1006A0F0A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		16913C8B2B654A36006A0F0A /* WayToDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WayToDelete.swift; sourceTree = "<group>"; };
 		16913C8E2B654A67006A0F0A /* WayToDelete.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WayToDelete.xib; sourceTree = "<group>"; };
 		16A213882BF3467C00D82CE3 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
@@ -164,6 +166,9 @@
 		16A2138C2BFDCB0200D82CE3 /* BoxListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxListData.swift; sourceTree = "<group>"; };
 		16A2138E2C01837B00D82CE3 /* DrugBox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DrugBox.entitlements; sourceTree = "<group>"; };
 		16A213932C0836E000D82CE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		16AA2AF02CA3F35B00C4CD24 /* DisposalDrugCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisposalDrugCell.swift; sourceTree = "<group>"; };
+		16AA2AF72CA4056400C4CD24 /* DefaultMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMapViewController.swift; sourceTree = "<group>"; };
+		16AA2AF92CA4061400C4CD24 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		16C19AEA2C799B7500E93FD0 /* OAuthLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthLoginRequest.swift; sourceTree = "<group>"; };
 		16C19AEE2C799BC500E93FD0 /* TokenDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDto.swift; sourceTree = "<group>"; };
 		16C19AF02C799C3000E93FD0 /* UserLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginRequest.swift; sourceTree = "<group>"; };
@@ -201,8 +206,6 @@
 		16E008F62B640459004F83F0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		16E008F82B6404FF004F83F0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		16E008FA2B640BD6004F83F0 /* AlarmListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListViewController.swift; sourceTree = "<group>"; };
-		16E008FC2B642ABE004F83F0 /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
-		16E008FE2B642B33004F83F0 /* AlarmCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmCell.xib; sourceTree = "<group>"; };
 		16E009002B642EB5004F83F0 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		16EFBB342B80FFDC006C2EFF /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		16EFBB362B810006006C2EFF /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -223,6 +226,7 @@
 				16C19B532C81BFD500E93FD0 /* FirebaseAuthCombine-Community in Frameworks */,
 				16C19B6F2C81BFD500E93FD0 /* FirebaseStorage in Frameworks */,
 				16C19B6B2C81BFD500E93FD0 /* FirebasePerformance in Frameworks */,
+				16126D9F2CA420F400828185 /* KakaoMapsSDK-SPM in Frameworks */,
 				16C19B632C81BFD500E93FD0 /* FirebaseInAppMessaging-Beta in Frameworks */,
 				16C19B372C81BF5D00E93FD0 /* Then in Frameworks */,
 				16C19B5D2C81BFD500E93FD0 /* FirebaseFirestoreCombine-Community in Frameworks */,
@@ -318,6 +322,14 @@
 				16C19AFA2C7D866A00E93FD0 /* Message */,
 			);
 			path = APIs;
+			sourceTree = "<group>";
+		};
+		16AA2AED2CA3F32900C4CD24 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				16AA2AF02CA3F35B00C4CD24 /* DisposalDrugCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		16C19AE92C799B4800E93FD0 /* Auth */ = {
@@ -488,6 +500,7 @@
 				16E008C62B63FDDB004F83F0 /* Info.plist */,
 				161DB4242B763B1200F85377 /* Protocols */,
 				161DB41F2B7618BD00F85377 /* Extensions */,
+				16AA2AF92CA4061400C4CD24 /* Config.xcconfig */,
 			);
 			path = DrugBox;
 			sourceTree = "<group>";
@@ -512,7 +525,7 @@
 		16E008E82B63FE53004F83F0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				16E008BE2B63FDDB004F83F0 /* Main.storyboard */,
+				16AA2AED2CA3F32900C4CD24 /* Cells */,
 				16C5CFF02BB7ECF7008DF3D3 /* Onboarding */,
 				16EFBB3B2B810580006C2EFF /* Drug */,
 				16EFBB3A2B81056B006C2EFF /* TextForDelete */,
@@ -521,6 +534,7 @@
 				16C19B882C86CDDF00E93FD0 /* UserCell.swift */,
 				16674C1B2CA2935200551008 /* LabelTableViewCell.swift */,
 				164A0A062CA29E2600504BF1 /* AdImageCollectionViewCell.swift */,
+				16E008BE2B63FDDB004F83F0 /* Main.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -599,7 +613,7 @@
 		16E008F02B640172004F83F0 /* SearchPage */ = {
 			isa = PBXGroup;
 			children = (
-				16913C872B64FBB1006A0F0A /* MapViewController.swift */,
+				16AA2AF72CA4056400C4CD24 /* DefaultMapViewController.swift */,
 			);
 			path = SearchPage;
 			sourceTree = "<group>";
@@ -623,8 +637,7 @@
 		16EFBB392B810562006C2EFF /* Alarm */ = {
 			isa = PBXGroup;
 			children = (
-				16E008FE2B642B33004F83F0 /* AlarmCell.xib */,
-				16E008FC2B642ABE004F83F0 /* AlarmCell.swift */,
+				16126DA02CA50F2B00828185 /* AlarmCell.swift */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -695,6 +708,7 @@
 				16C19B772C81BFF400E93FD0 /* GoogleSignInSwift */,
 				16C19B7A2C81C13200E93FD0 /* SnapKit */,
 				16C19B7D2C81C14D00E93FD0 /* Alamofire */,
+				16126D9E2CA420F400828185 /* KakaoMapsSDK-SPM */,
 			);
 			productName = DrugBox;
 			productReference = 16E008B52B63FDDB004F83F0 /* DrugBox.app */;
@@ -777,6 +791,7 @@
 				16C19B742C81BFF400E93FD0 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				16C19B792C81C13200E93FD0 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				16C19B7C2C81C14D00E93FD0 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				16126D9D2CA420F400828185 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
 			);
 			productRefGroup = 16E008B62B63FDDB004F83F0 /* Products */;
 			projectDirPath = "";
@@ -800,7 +815,7 @@
 				16E008C22B63FDDB004F83F0 /* Assets.xcassets in Resources */,
 				16E008C02B63FDDB004F83F0 /* Main.storyboard in Resources */,
 				16913C8F2B654A67006A0F0A /* WayToDelete.xib in Resources */,
-				16E008FF2B642B33004F83F0 /* AlarmCell.xib in Resources */,
+				16AA2AFA2CA4061400C4CD24 /* Config.xcconfig in Resources */,
 				16C5CFF42BB7ED1E008DF3D3 /* OnboardingCell.xib in Resources */,
 				161DB4092B6E6E4800F85377 /* BoxCell.xib in Resources */,
 			);
@@ -830,11 +845,11 @@
 				164A0A092CA2A22100504BF1 /* TestViewController.swift in Sources */,
 				16C19AF52C7D84C400E93FD0 /* BearerTokenPlugin.swift in Sources */,
 				16C19AF12C799C3000E93FD0 /* UserLoginRequest.swift in Sources */,
-				16913C882B64FBB1006A0F0A /* MapViewController.swift in Sources */,
 				16C19AEF2C799BC500E93FD0 /* TokenDto.swift in Sources */,
 				1662B81C2C21655400BF7802 /* LoginService.swift in Sources */,
 				16C5CFF22BB7ED10008DF3D3 /* OnboardingCell.swift in Sources */,
 				16C19B872C81E16100E93FD0 /* DrugUpdateRequest.swift in Sources */,
+				16AA2AF82CA4056400C4CD24 /* DefaultMapViewController.swift in Sources */,
 				161DB4132B6E927E00F85377 /* UIImage.swift in Sources */,
 				16C19B802C81DFEC00E93FD0 /* DrugService.swift in Sources */,
 				161DB40F2B6E8E1D00F85377 /* ItemListViewController.swift in Sources */,
@@ -859,14 +874,15 @@
 				16C19B272C81B52D00E93FD0 /* SearchDrugViewController.swift in Sources */,
 				16C19B852C81E07B00E93FD0 /* DrugDetailSaveRequest.swift in Sources */,
 				16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */,
+				16AA2AF12CA3F35B00C4CD24 /* DisposalDrugCell.swift in Sources */,
 				16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */,
 				161DB4052B6DF79300F85377 /* UILabel.swift in Sources */,
+				16126DA12CA50F2B00828185 /* AlarmCell.swift in Sources */,
 				16E008F32B6401B2004F83F0 /* MenuSelectViewController.swift in Sources */,
 				16674C1A2CA28ACA00551008 /* UIColor.swift in Sources */,
 				16E009012B642EB5004F83F0 /* Alarm.swift in Sources */,
 				16C19AF32C799DF600E93FD0 /* IdResponse.swift in Sources */,
 				16C19AEB2C799B7500E93FD0 /* OAuthLoginRequest.swift in Sources */,
-				16E008FD2B642ABE004F83F0 /* AlarmCell.swift in Sources */,
 				161DB4112B6E8F3100F85377 /* DrugModel.swift in Sources */,
 				16C19B832C81E06D00E93FD0 /* DrugSaveRequest.swift in Sources */,
 				16205A862B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift in Sources */,
@@ -945,6 +961,7 @@
 /* Begin XCBuildConfiguration section */
 		16E008DD2B63FDDC004F83F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16AA2AF92CA4061400C4CD24 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -1064,6 +1081,7 @@
 		};
 		16E008E02B63FDDC004F83F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16AA2AF92CA4061400C4CD24 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1130,6 +1148,7 @@
 		};
 		16E008E32B63FDDC004F83F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16AA2AF92CA4061400C4CD24 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1168,6 +1187,7 @@
 		};
 		16E008E62B63FDDC004F83F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16AA2AF92CA4061400C4CD24 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1210,7 +1230,7 @@
 				16E008DE2B63FDDC004F83F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		16E008DF2B63FDDC004F83F0 /* Build configuration list for PBXNativeTarget "DrugBox" */ = {
 			isa = XCConfigurationList;
@@ -1219,7 +1239,7 @@
 				16E008E12B63FDDC004F83F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		16E008E22B63FDDC004F83F0 /* Build configuration list for PBXNativeTarget "DrugBoxTests" */ = {
 			isa = XCConfigurationList;
@@ -1228,7 +1248,7 @@
 				16E008E42B63FDDC004F83F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		16E008E52B63FDDC004F83F0 /* Build configuration list for PBXNativeTarget "DrugBoxUITests" */ = {
 			isa = XCConfigurationList;
@@ -1237,11 +1257,19 @@
 				16E008E72B63FDDC004F83F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		16126D9D2CA420F400828185 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao-mapsSDK/KakaoMapsSDK-SPM.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.12.0;
+			};
+		};
 		1662B80F2C1FD04900BF7802 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
@@ -1309,6 +1337,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		16126D9E2CA420F400828185 /* KakaoMapsSDK-SPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16126D9D2CA420F400828185 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */;
+			productName = "KakaoMapsSDK-SPM";
+		};
 		1662B8102C1FD04900BF7802 /* KeychainSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1662B80F2C1FD04900BF7802 /* XCRemoteSwiftPackageReference "keychain-swift" */;

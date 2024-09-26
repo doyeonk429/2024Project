@@ -11,6 +11,8 @@ import GoogleSignIn
 import FirebaseCore
 import FirebaseMessaging
 
+import KakaoMapsSDK
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -33,6 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 파이어베이스 Meesaging 설정
         Messaging.messaging().delegate = self
         
+//        if let apiKey = Bundle.main.infoDictionary?["KAKAO_API_KEY"] as? String {
+//
+//            // Use the API key as needed
+//        } else {
+//            print("API Key not found.")
+//        }
+        SDKInitializer.InitSDK(appKey: "d5a1d31c9e28897bd824b23fd063c6ca")
         return true
     }
 

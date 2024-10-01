@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        } else {
 //            print("API Key not found.")
 //        }
-        SDKInitializer.InitSDK(appKey: "d5a1d31c9e28897bd824b23fd063c6ca")
+//        SDKInitializer.InitSDK(appKey: "d5a1d31c9e28897bd824b23fd063c6ca")
         return true
     }
 

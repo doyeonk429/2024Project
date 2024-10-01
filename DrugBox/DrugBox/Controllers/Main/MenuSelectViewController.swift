@@ -210,7 +210,7 @@ class MenuSelectViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     @objc private func searchButtonPressed() {
-        let searchVC = DefaultMapViewController()
+        let searchVC = DefaultSearchViewController()
         navigationController?.pushViewController(searchVC, animated: true)
     }
     

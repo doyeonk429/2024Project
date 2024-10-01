@@ -15,6 +15,12 @@
 		16126DAB2CABC59100828185 /* UserSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16126DAA2CABC59100828185 /* UserSettingViewController.swift */; };
 		16126DAD2CABC5A200828185 /* NotificationSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16126DAC2CABC5A200828185 /* NotificationSettingViewController.swift */; };
 		16126DAF2CABC5AF00828185 /* PrivacyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16126DAE2CABC5AF00828185 /* PrivacyInfoViewController.swift */; };
+		16126DB52CABE66D00828185 /* DefaultSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16126DB42CABE66D00828185 /* DefaultSearchViewController.swift */; };
+		16126DB82CABE8D700828185 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16126DB72CABE8D700828185 /* SearchViewController.swift */; };
+		16126DBA2CABEA6B00828185 /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16126DB92CABEA6B00828185 /* MapService.swift */; };
+		16126DBC2CABEB4D00828185 /* LocationParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16126DBB2CABEB4D00828185 /* LocationParameter.swift */; };
+		16126DBE2CABEBA600828185 /* AddrParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16126DBD2CABEBA600828185 /* AddrParameter.swift */; };
+		16126DC22CABF08900828185 /* MapResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16126DC12CABF08900828185 /* MapResponse.swift */; };
 		161DB4052B6DF79300F85377 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB4042B6DF79300F85377 /* UILabel.swift */; };
 		161DB4072B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB4062B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift */; };
 		161DB4092B6E6E4800F85377 /* BoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 161DB4082B6E6E4800F85377 /* BoxCell.xib */; };
@@ -145,6 +151,12 @@
 		16126DAA2CABC59100828185 /* UserSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingViewController.swift; sourceTree = "<group>"; };
 		16126DAC2CABC5A200828185 /* NotificationSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewController.swift; sourceTree = "<group>"; };
 		16126DAE2CABC5AF00828185 /* PrivacyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyInfoViewController.swift; sourceTree = "<group>"; };
+		16126DB42CABE66D00828185 /* DefaultSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchViewController.swift; sourceTree = "<group>"; };
+		16126DB72CABE8D700828185 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		16126DB92CABEA6B00828185 /* MapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapService.swift; sourceTree = "<group>"; };
+		16126DBB2CABEB4D00828185 /* LocationParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationParameter.swift; sourceTree = "<group>"; };
+		16126DBD2CABEBA600828185 /* AddrParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddrParameter.swift; sourceTree = "<group>"; };
+		16126DC12CABF08900828185 /* MapResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapResponse.swift; sourceTree = "<group>"; };
 		161DB4042B6DF79300F85377 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		161DB4062B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinWIthInvitationCodeViewController.swift; sourceTree = "<group>"; };
 		161DB4082B6E6E4800F85377 /* BoxCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoxCell.xib; sourceTree = "<group>"; };
@@ -300,6 +312,31 @@
 			path = UserSettingView;
 			sourceTree = "<group>";
 		};
+		16126DB62CABE67200828185 /* KakaoSDk */ = {
+			isa = PBXGroup;
+			children = (
+				16AA2AF72CA4056400C4CD24 /* DefaultMapViewController.swift */,
+			);
+			path = KakaoSDk;
+			sourceTree = "<group>";
+		};
+		16126DBF2CABF04A00828185 /* RequestDTO */ = {
+			isa = PBXGroup;
+			children = (
+				16126DBD2CABEBA600828185 /* AddrParameter.swift */,
+				16126DBB2CABEB4D00828185 /* LocationParameter.swift */,
+			);
+			path = RequestDTO;
+			sourceTree = "<group>";
+		};
+		16126DC02CABF07700828185 /* ResponseDTO */ = {
+			isa = PBXGroup;
+			children = (
+				16126DC12CABF08900828185 /* MapResponse.swift */,
+			);
+			path = ResponseDTO;
+			sourceTree = "<group>";
+		};
 		161DB41F2B7618BD00F85377 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,6 +448,9 @@
 		16C19AF82C7D864D00E93FD0 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				16126DC02CABF07700828185 /* ResponseDTO */,
+				16126DB92CABEA6B00828185 /* MapService.swift */,
+				16126DBF2CABF04A00828185 /* RequestDTO */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -643,7 +683,9 @@
 		16E008F02B640172004F83F0 /* SearchPage */ = {
 			isa = PBXGroup;
 			children = (
-				16AA2AF72CA4056400C4CD24 /* DefaultMapViewController.swift */,
+				16126DB62CABE67200828185 /* KakaoSDk */,
+				16126DB42CABE66D00828185 /* DefaultSearchViewController.swift */,
+				16126DB72CABE8D700828185 /* SearchViewController.swift */,
 			);
 			path = SearchPage;
 			sourceTree = "<group>";
@@ -878,6 +920,7 @@
 				16126DAB2CABC59100828185 /* UserSettingViewController.swift in Sources */,
 				161DB40F2B6E8E1D00F85377 /* ItemListViewController.swift in Sources */,
 				16EFBB372B810006006C2EFF /* Date.swift in Sources */,
+				16126DBC2CABEB4D00828185 /* LocationParameter.swift in Sources */,
 				16E008F92B6404FF004F83F0 /* Constants.swift in Sources */,
 				16EFBB352B80FFDC006C2EFF /* String.swift in Sources */,
 				16A213892BF3467C00D82CE3 /* UserData.swift in Sources */,
@@ -885,10 +928,13 @@
 				16205A822B7BB4B0002DF4D2 /* AddDrugViewController.swift in Sources */,
 				161DB4262B763B2800F85377 /* ButtonTappedDelegate.swift in Sources */,
 				16E008F72B640459004F83F0 /* LoginViewController.swift in Sources */,
+				16126DBA2CABEA6B00828185 /* MapService.swift in Sources */,
 				161DB40B2B6E709500F85377 /* BoxCell.swift in Sources */,
+				16126DC22CABF08900828185 /* MapResponse.swift in Sources */,
 				161DB4212B76190100F85377 /* UIImageView.swift in Sources */,
 				16C19B052C7D8E6A00E93FD0 /* BoxInvitationPost.swift in Sources */,
 				16674C1C2CA2935200551008 /* LabelTableViewCell.swift in Sources */,
+				16126DBE2CABEBA600828185 /* AddrParameter.swift in Sources */,
 				16EFBB3F2B8105A1006C2EFF /* DrugCell.swift in Sources */,
 				16A2138B2BFDCAD600D82CE3 /* BoxListModel.swift in Sources */,
 				16126DA92CABC36E00828185 /* MenuView.swift in Sources */,
@@ -901,6 +947,7 @@
 				16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */,
 				16AA2AF12CA3F35B00C4CD24 /* DisposalDrugCell.swift in Sources */,
 				16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */,
+				16126DB82CABE8D700828185 /* SearchViewController.swift in Sources */,
 				16126DAD2CABC5A200828185 /* NotificationSettingViewController.swift in Sources */,
 				161DB4052B6DF79300F85377 /* UILabel.swift in Sources */,
 				16126DA12CA50F2B00828185 /* AlarmCell.swift in Sources */,
@@ -931,6 +978,7 @@
 				1662B81F2C218AFA00BF7802 /* BoxManageService.swift in Sources */,
 				16913C8C2B654A36006A0F0A /* WayToDelete.swift in Sources */,
 				161DB4072B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift in Sources */,
+				16126DB52CABE66D00828185 /* DefaultSearchViewController.swift in Sources */,
 				161DB40D2B6E899C00F85377 /* InfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

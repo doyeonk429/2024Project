@@ -51,6 +51,10 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        self.navigationItem.hidesBackButton = false
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        
         setupUI()
     }
     

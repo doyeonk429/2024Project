@@ -75,17 +75,31 @@ class MenuSelectViewController: UIViewController, UICollectionViewDataSource, UI
         return p
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.hidesBackButton = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         setupUI()
+        
     }
     
     private func setupNavigationBar() {
-        let titleLabel = UILabel()
-        titleLabel.text = "   DrugBox"
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 25)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: titleLabel)
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.hidesBackButton = true
+        self.navigationItem.title = "DrugBox"
+        
+        
+//        let titleLabel = UILabel()
+//        titleLabel.text = "   DrugBox"
+//        titleLabel.font = UIFont.boldSystemFont(ofSize: 40) // 큰 글씨로 높이 간접 조절
+//        titleLabel.sizeToFit()
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: titleLabel)
         
         // Configure Alarm and Account buttons
         alarmButton.image = UIImage(systemName: "bell.fill")
@@ -124,8 +138,8 @@ class MenuSelectViewController: UIViewController, UICollectionViewDataSource, UI
     
     private func setupConstraints() {
         scrollView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
+            make.leading.trailing.equalToSuperview().offset(4)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
         
@@ -181,8 +195,8 @@ class MenuSelectViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     @objc private func accountButtonPressed() {
-        let alarmListViewController = AlarmListViewController()
-        navigationController?.pushViewController(alarmListViewController, animated: true)
+        let userSettingViewController = SettingMenuViewController()
+        navigationController?.pushViewController(userSettingViewController, animated: true)
     }
     
     @objc private func manageButtonPressed() {

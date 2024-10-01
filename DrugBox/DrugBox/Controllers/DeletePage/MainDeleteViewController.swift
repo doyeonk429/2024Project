@@ -51,6 +51,9 @@ class MainDeleteViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         view.backgroundColor = .white
         setupViews()
+        
+        self.navigationItem.hidesBackButton = false
+        self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     private func setupViews() {

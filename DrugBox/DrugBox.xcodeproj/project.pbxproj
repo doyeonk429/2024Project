@@ -10,6 +10,11 @@
 		160307512C89814C007FD16E /* BoxSettingNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160307502C89814C007FD16E /* BoxSettingNameViewController.swift */; };
 		16126D9F2CA420F400828185 /* KakaoMapsSDK-SPM in Frameworks */ = {isa = PBXBuildFile; productRef = 16126D9E2CA420F400828185 /* KakaoMapsSDK-SPM */; };
 		16126DA12CA50F2B00828185 /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16126DA02CA50F2B00828185 /* AlarmCell.swift */; };
+		16126DA52CABC2DD00828185 /* SettingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16126DA42CABC2DD00828185 /* SettingMenuViewController.swift */; };
+		16126DA92CABC36E00828185 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16126DA82CABC36E00828185 /* MenuView.swift */; };
+		16126DAB2CABC59100828185 /* UserSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16126DAA2CABC59100828185 /* UserSettingViewController.swift */; };
+		16126DAD2CABC5A200828185 /* NotificationSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16126DAC2CABC5A200828185 /* NotificationSettingViewController.swift */; };
+		16126DAF2CABC5AF00828185 /* PrivacyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16126DAE2CABC5AF00828185 /* PrivacyInfoViewController.swift */; };
 		161DB4052B6DF79300F85377 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB4042B6DF79300F85377 /* UILabel.swift */; };
 		161DB4072B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB4062B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift */; };
 		161DB4092B6E6E4800F85377 /* BoxCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 161DB4082B6E6E4800F85377 /* BoxCell.xib */; };
@@ -135,6 +140,11 @@
 /* Begin PBXFileReference section */
 		160307502C89814C007FD16E /* BoxSettingNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxSettingNameViewController.swift; sourceTree = "<group>"; };
 		16126DA02CA50F2B00828185 /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
+		16126DA42CABC2DD00828185 /* SettingMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuViewController.swift; sourceTree = "<group>"; };
+		16126DA82CABC36E00828185 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		16126DAA2CABC59100828185 /* UserSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingViewController.swift; sourceTree = "<group>"; };
+		16126DAC2CABC5A200828185 /* NotificationSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewController.swift; sourceTree = "<group>"; };
+		16126DAE2CABC5AF00828185 /* PrivacyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyInfoViewController.swift; sourceTree = "<group>"; };
 		161DB4042B6DF79300F85377 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		161DB4062B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinWIthInvitationCodeViewController.swift; sourceTree = "<group>"; };
 		161DB4082B6E6E4800F85377 /* BoxCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoxCell.xib; sourceTree = "<group>"; };
@@ -271,6 +281,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16126DA62CABC2E600828185 /* SettingPage */ = {
+			isa = PBXGroup;
+			children = (
+				16126DA42CABC2DD00828185 /* SettingMenuViewController.swift */,
+				16126DAA2CABC59100828185 /* UserSettingViewController.swift */,
+				16126DAC2CABC5A200828185 /* NotificationSettingViewController.swift */,
+				16126DAE2CABC5AF00828185 /* PrivacyInfoViewController.swift */,
+			);
+			path = SettingPage;
+			sourceTree = "<group>";
+		};
+		16126DA72CABC35E00828185 /* UserSettingView */ = {
+			isa = PBXGroup;
+			children = (
+				16126DA82CABC36E00828185 /* MenuView.swift */,
+			);
+			path = UserSettingView;
+			sourceTree = "<group>";
+		};
 		161DB41F2B7618BD00F85377 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,6 +554,7 @@
 		16E008E82B63FE53004F83F0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				16126DA72CABC35E00828185 /* UserSettingView */,
 				16AA2AED2CA3F32900C4CD24 /* Cells */,
 				16C5CFF02BB7ECF7008DF3D3 /* Onboarding */,
 				16EFBB3B2B810580006C2EFF /* Drug */,
@@ -561,7 +591,7 @@
 				16E008EE2B640160004F83F0 /* ManagePage */,
 				16E008EF2B64016A004F83F0 /* DeletePage */,
 				16E008F02B640172004F83F0 /* SearchPage */,
-				16E008F12B64017A004F83F0 /* AccountPage */,
+				16126DA62CABC2E600828185 /* SettingPage */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -616,13 +646,6 @@
 				16AA2AF72CA4056400C4CD24 /* DefaultMapViewController.swift */,
 			);
 			path = SearchPage;
-			sourceTree = "<group>";
-		};
-		16E008F12B64017A004F83F0 /* AccountPage */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AccountPage;
 			sourceTree = "<group>";
 		};
 		16EFBB382B810551006C2EFF /* Box */ = {
@@ -852,6 +875,7 @@
 				16AA2AF82CA4056400C4CD24 /* DefaultMapViewController.swift in Sources */,
 				161DB4132B6E927E00F85377 /* UIImage.swift in Sources */,
 				16C19B802C81DFEC00E93FD0 /* DrugService.swift in Sources */,
+				16126DAB2CABC59100828185 /* UserSettingViewController.swift in Sources */,
 				161DB40F2B6E8E1D00F85377 /* ItemListViewController.swift in Sources */,
 				16EFBB372B810006006C2EFF /* Date.swift in Sources */,
 				16E008F92B6404FF004F83F0 /* Constants.swift in Sources */,
@@ -867,6 +891,7 @@
 				16674C1C2CA2935200551008 /* LabelTableViewCell.swift in Sources */,
 				16EFBB3F2B8105A1006C2EFF /* DrugCell.swift in Sources */,
 				16A2138B2BFDCAD600D82CE3 /* BoxListModel.swift in Sources */,
+				16126DA92CABC36E00828185 /* MenuView.swift in Sources */,
 				16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */,
 				16EFBB482B8720CA006C2EFF /* RegisterViewController.swift in Sources */,
 				161DB41D2B7540F500F85377 /* BoxSettingViewController.swift in Sources */,
@@ -876,10 +901,12 @@
 				16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */,
 				16AA2AF12CA3F35B00C4CD24 /* DisposalDrugCell.swift in Sources */,
 				16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */,
+				16126DAD2CABC5A200828185 /* NotificationSettingViewController.swift in Sources */,
 				161DB4052B6DF79300F85377 /* UILabel.swift in Sources */,
 				16126DA12CA50F2B00828185 /* AlarmCell.swift in Sources */,
 				16E008F32B6401B2004F83F0 /* MenuSelectViewController.swift in Sources */,
 				16674C1A2CA28ACA00551008 /* UIColor.swift in Sources */,
+				16126DAF2CABC5AF00828185 /* PrivacyInfoViewController.swift in Sources */,
 				16E009012B642EB5004F83F0 /* Alarm.swift in Sources */,
 				16C19AF32C799DF600E93FD0 /* IdResponse.swift in Sources */,
 				16C19AEB2C799B7500E93FD0 /* OAuthLoginRequest.swift in Sources */,
@@ -899,6 +926,7 @@
 				160307512C89814C007FD16E /* BoxSettingNameViewController.swift in Sources */,
 				164A0A072CA29E2600504BF1 /* AdImageCollectionViewCell.swift in Sources */,
 				16E008BB2B63FDDB004F83F0 /* SceneDelegate.swift in Sources */,
+				16126DA52CABC2DD00828185 /* SettingMenuViewController.swift in Sources */,
 				16205A842B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift in Sources */,
 				1662B81F2C218AFA00BF7802 /* BoxManageService.swift in Sources */,
 				16913C8C2B654A36006A0F0A /* WayToDelete.swift in Sources */,

@@ -48,6 +48,9 @@ class DefaultMapViewController: UIViewController, MapControllerDelegate {
         
         super.viewDidLoad()
         
+        self.navigationItem.hidesBackButton = false
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        
         // Cast the main view to KMViewContainer after loadView() sets it
         guard let container = self.view as? KMViewContainer else {
             print("Error: View is not of type KMViewContainer")

@@ -37,24 +37,19 @@ class SettingMenuViewController: UIViewController {
 
 extension SettingMenuViewController: UITableViewDataSource {
     
-    // Number of sections (usually 1 unless there's grouping)
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    // Number of rows in the section (menuItems count)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItems.count
     }
     
-    // Provide a cell for each row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Using the basic style of UITableViewCell
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        // Set the textLabel (this is the default UILabel provided by UITableViewCell)
         cell.textLabel?.text = menuItems[indexPath.row]
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 18)  // Optional: Customize font size
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 18)
         return cell
     }
 }
@@ -79,7 +74,6 @@ extension SettingMenuViewController: UITableViewDelegate {
             
         }
         
-        // Deselect the selected row
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

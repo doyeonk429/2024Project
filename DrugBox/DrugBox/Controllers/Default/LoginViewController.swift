@@ -209,7 +209,7 @@ class LoginViewController: UIViewController {
         // Replace with appropriate action or segue
         print("Register button pressed.")
         let registerVC = RegisterViewController()
-        //        self.navigationController?.pushViewController(registerVC, animated: true)
+        self.navigationController?.pushViewController(registerVC, animated: true)
     }
     
     @objc private func googleLogin() {

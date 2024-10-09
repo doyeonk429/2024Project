@@ -75,21 +75,6 @@ class DefaultSearchViewController: UIViewController, CLLocationManagerDelegate, 
         mapView.showsUserLocation = true
         mapView.delegate = self
         
-        //        // 줌 가능 여부
-        //        mapView.isZoomEnabled = true
-        //        // 이동 가능 여부
-        //        mapView.isScrollEnabled = true
-        //        // 각도 조절 가능 여부 (두 손가락으로 위/아래 슬라이드)
-        //        mapView.isPitchEnabled = true
-        //        // 회전 가능 여부
-        //        mapView.isRotateEnabled = true
-        //        // 나침판 표시 여부
-        //        mapView.showsCompass = true
-        //        // 축척 정보 표시 여부
-        //        mapView.showsScale = true
-        //        // 위치 사용 시 사용자의 현재 위치를 표시
-        //        mapView.showsUserLocation = true
-        
         mapView.showsUserLocation = true
         mapView.delegate = self
         searchBar.delegate = self
@@ -230,44 +215,18 @@ extension DefaultSearchViewController: MKMapViewDelegate {
             }
         }
     }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+            guard let annotation = view.annotation as? MKPointAnnotation else { return }
+            
+            // 어노테이션에 저장된 장소 이름을 이용해 장소 정보 API를 호출할 수 있습니다.
+            if let selectedLocation = nearbyLocationList.first(where: { location in
+                location.locationName == annotation.title
+            }) {
+                // 장소 ID를 기반으로 새로운 페이지로 이동
+                let detailVC = LocationDetailviewController()
+                detailVC.locationID = selectedLocation.locationId  // 새로운 뷰 컨트롤러로 장소 ID 전달
+                navigationController?.pushViewController(detailVC, animated: true)
+            }
+        }
 }
-
-//// MARK: - SearchResultViewController
-//
-//class SearchResultViewController: UIViewController {
-//
-//    private let searchBar = UISearchBar().then {
-//        $0.placeholder = "Search for places"
-//        $0.showsCancelButton = true
-//    }
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        view.backgroundColor = .white
-//
-//        setupLayout()
-//    }
-//
-//    private func setupLayout() {
-//        view.addSubview(searchBar)
-//        searchBar.snp.makeConstraints { make in
-//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-//            make.left.right.equalToSuperview()
-//            make.height.equalTo(50)
-//        }
-//
-//        searchBar.delegate = self
-//    }
-//}
-//
-//// MARK: - UISearchBarDelegate for SearchResultViewController
-//
-//extension SearchResultViewController: UISearchBarDelegate {
-//
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        searchBar.resignFirstResponder() // Hide the keyboard
-//    }
-//}
-
-
-

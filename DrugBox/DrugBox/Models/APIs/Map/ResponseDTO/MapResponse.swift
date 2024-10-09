@@ -26,7 +26,7 @@ struct BinLocationResponse : Codable {
 }
 
 struct MapDetailResponse : Codable {
-    let currentOpeningHours : String
+    let currentOpeningHours : String?
     let formattedAddress : String
     let locationId : String
     let locationName : String

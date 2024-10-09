@@ -7,11 +7,33 @@
 
 import UIKit
 
-class SearchViewController : UIViewController {
+class SearchViewController : UIViewController, UISearchBarDelegate {
+    
+    private let searchBar = UISearchBar().then {
+        $0.placeholder = "Search for places"
+        $0.showsCancelButton = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         
-        view.backgroundColor = .blue
+        setupLayout()
     }
+    
+    private func setupLayout() {
+        view.addSubview(searchBar)
+        searchBar.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(50)
+        }
+        
+        searchBar.delegate = self
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder() // Hide the keyboard
+    }
+    
 }

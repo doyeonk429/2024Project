@@ -106,6 +106,7 @@
 		16C5CFF22BB7ED10008DF3D3 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C5CFF12BB7ED10008DF3D3 /* OnboardingCell.swift */; };
 		16C5CFF42BB7ED1E008DF3D3 /* OnboardingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16C5CFF32BB7ED1E008DF3D3 /* OnboardingCell.xib */; };
 		16C5CFF62BB7EDC8008DF3D3 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C5CFF52BB7EDC8008DF3D3 /* OnboardingViewController.swift */; };
+		16D3E6132CB6588F00124F6C /* LocationDetailviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D3E6122CB6588F00124F6C /* LocationDetailviewController.swift */; };
 		16E008B92B63FDDB004F83F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008B82B63FDDB004F83F0 /* AppDelegate.swift */; };
 		16E008BB2B63FDDB004F83F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008BA2B63FDDB004F83F0 /* SceneDelegate.swift */; };
 		16E008C02B63FDDB004F83F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16E008BE2B63FDDB004F83F0 /* Main.storyboard */; };
@@ -212,6 +213,7 @@
 		16C5CFF12BB7ED10008DF3D3 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		16C5CFF32BB7ED1E008DF3D3 /* OnboardingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingCell.xib; sourceTree = "<group>"; };
 		16C5CFF52BB7EDC8008DF3D3 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		16D3E6122CB6588F00124F6C /* LocationDetailviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailviewController.swift; sourceTree = "<group>"; };
 		16E008B52B63FDDB004F83F0 /* DrugBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrugBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16E008B82B63FDDB004F83F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16E008BA2B63FDDB004F83F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -685,6 +687,7 @@
 			children = (
 				16126DB62CABE67200828185 /* KakaoSDk */,
 				16126DB42CABE66D00828185 /* DefaultSearchViewController.swift */,
+				16D3E6122CB6588F00124F6C /* LocationDetailviewController.swift */,
 				16126DB72CABE8D700828185 /* SearchViewController.swift */,
 			);
 			path = SearchPage;
@@ -959,6 +962,7 @@
 				16C19AEB2C799B7500E93FD0 /* OAuthLoginRequest.swift in Sources */,
 				161DB4112B6E8F3100F85377 /* DrugModel.swift in Sources */,
 				16C19B832C81E06D00E93FD0 /* DrugSaveRequest.swift in Sources */,
+				16D3E6132CB6588F00124F6C /* LocationDetailviewController.swift in Sources */,
 				16205A862B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift in Sources */,
 				16A2138D2BFDCB0200D82CE3 /* BoxListData.swift in Sources */,
 				161DB4192B752B0E00F85377 /* AFDateResponse.swift in Sources */,

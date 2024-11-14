@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import SnapKit
 import Alamofire
 import Moya
 
 class DefaultBoxViewController: UIViewController {
     
-    @IBOutlet weak var boxTableView: UITableView!
+//    @IBOutlet weak var boxTableView: UITableView!
+    var boxTableView: UITableView!
+    lazy var addButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addButtonTapped))
+    
     var boxManager = BoxManager() // json data parsing functions
     var currentDrugbox : Int? // 선택한 drugbox의 id 저장 변수
     
@@ -21,17 +25,11 @@ class DefaultBoxViewController: UIViewController {
         BearerTokenPlugin(),
         NetworkLoggerPlugin(configuration: .init(logOptions: .verbose))
     ])
-    
-    // 테이블 셀 선택 시 해당 구급상자 내의 알약 정보 get 해서 다음 페이지에 넘겨주기
 
     var boxList: [BoxListModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        boxTableView.delegate = self
-        boxTableView.dataSource = self
-        boxTableView.register(UINib(nibName: K.tableCell.boxCellNibName, bundle: nil), forCellReuseIdentifier: K.tableCell.boxCellIdentifier)
         
         callGetBoxList { isSucess in
             if isSucess {
@@ -43,9 +41,15 @@ class DefaultBoxViewController: UIViewController {
         
     }
     
+    func tableViewSetting() {
+        self.boxTableView.delegate = self
+        self.boxTableView.dataSource = self
+        self.boxTableView.register(UINib(nibName: "NewBoxCell", bundle: nil), forCellReuseIdentifier: "NewBoxCell")
+        setLayout()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // 다른 뷰 갓다와서 업데이트할 건 여기다가
         callGetBoxList { isSucess in
             if isSucess {
                 self.boxTableView.reloadData()
@@ -55,44 +59,28 @@ class DefaultBoxViewController: UIViewController {
         }
         
         // 다시 화면으로 돌아왔을 때 선택 해제
-        if let selectedIndexPath = boxTableView.indexPathForSelectedRow {
-            boxTableView.deselectRow(at: selectedIndexPath, animated: animated)
+//        if let selectedIndexPath = boxTableView.indexPathForSelectedRow {
+//            boxTableView.deselectRow(at: selectedIndexPath, animated: animated)
+//        }
+    }
+    
+    func setLayout() {
+        view.addSubview(boxTableView)
+    
+        boxTableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     
-    @IBAction func addButton(_ sender: UIBarButtonItem) {
-        self.performSegue(withIdentifier: K.manageSegue.createSegue, sender: self)
+    @objc func addButtonTapped() {
+        let vc = CreateNewBoxViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    //MARK: - GET api
-    
-//    func callGetBox() -> [BoxListModel] {
-//        var boxList = [BoxListModel]()
-//        provider.request(.getBoxes) { result in
-//            switch result {
-//            case .success(let response):
-//                do {
-//                    let responseData = try response.map([DrugBoxResponse].self)
-//                    for boxData in responseData {
-//                        let tempbox = BoxListModel(name: boxData.name, drugboxId: boxData.drugboxId, imageURL: boxData.image)
-//                        boxList.append(tempbox)
-//                    }
-//                } catch {
-//                    print("failed")
-//                }
-//            case .failure(let error) :
-//                print("Error: \(error.localizedDescription)")
-//            }
-//        }
-//        print(boxList)
-//        return boxList
-//    }
     
     func callGetBoxList(completion: @escaping (Bool) -> Void) {
         provider.request(.getBoxes) { result in
             switch result {
             case .success(let response) :
-//                print(response.statusCode)
                 if response.statusCode == 200 {
                     do {
                         self.boxList = []
@@ -128,18 +116,9 @@ extension DefaultBoxViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let box = boxList[indexPath.row]
         
-        let cell = boxTableView.dequeueReusableCell(withIdentifier: "BoxCell", for: indexPath) as! BoxCell
-        
-        cell.BoxNameLabel.text = " \(box.name)"
-        if let url = URL(string: box.imageURL) {
-            cell.boxImage.loadImage(url: url)
-//            cell.boxImage.image = UIImage(systemName: K.drugboxDefaultImage)
-//            print(url)
-        } else {
-            cell.boxImage.image = UIImage(systemName: K.drugboxDefaultImage)
-        }
-        cell.drugboxId = box.drugboxId
-        cell.SettingButton.tag = box.drugboxId
+        let cell = boxTableView.dequeueReusableCell(withIdentifier: "NewBoxCell", for: indexPath) as! NewBoxCell
+
+        cell.configure(with: URL(string: box.imageURL), name: box.name, id: box.drugboxId)
         cell.delegate = self
         
         return cell
@@ -165,7 +144,6 @@ extension DefaultBoxViewController: ButtonTappedDelegate {
         print("currentDrugbox in cellButtonTapped: \(currentDrugbox ?? -1) 태그는 \(buttonTag)")
         
         let settingVC = BoxSettingViewController()
-//        settingVC.drugBoxId = self.currentDrugbox
         settingVC.drugBoxId = buttonTag
         self.navigationController?.pushViewController(settingVC, animated: true)
     }

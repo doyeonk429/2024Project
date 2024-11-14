@@ -27,10 +27,11 @@ class LoginViewController: UIViewController {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Start to DrugBox"
-        label.font = UIFont.boldSystemFont(ofSize: 44)
+        
+        label.text = "DrugBox"
+        label.font = UIFont.roRegularFont(ofSize: 40)
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = UIColor(named: "AppGreen")
         return label
     }()
     // Creating the titleLabel with an icon in the text
@@ -89,18 +90,20 @@ class LoginViewController: UIViewController {
     
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Login", for: .normal)
+        button.setTitle("로그인", for: .normal)
+        button.titleLabel?.font = UIFont.ptdRegularFont(ofSize: 20)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = UIColor(named: "AppGreen")
         button.layer.cornerRadius = 8
         return button
     }()
     
     private let registerButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Register", for: .normal)
+        button.setTitle("회원가입", for: .normal)
+        button.titleLabel?.font = UIFont.ptdRegularFont(ofSize: 20)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemGreen
+        button.backgroundColor = UIColor(named: "AppBlue")
         button.layer.cornerRadius = 8
         return button
     }()

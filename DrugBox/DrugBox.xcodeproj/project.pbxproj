@@ -38,12 +38,26 @@
 		16205A842B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16205A832B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift */; };
 		16205A862B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16205A852B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift */; };
 		164A0A072CA29E2600504BF1 /* AdImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A0A062CA29E2600504BF1 /* AdImageCollectionViewCell.swift */; };
-		164A0A092CA2A22100504BF1 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A0A082CA2A22100504BF1 /* TestViewController.swift */; };
 		1662B8112C1FD04900BF7802 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1662B8102C1FD04900BF7802 /* KeychainSwift */; };
 		1662B81C2C21655400BF7802 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662B81B2C21655400BF7802 /* LoginService.swift */; };
 		1662B81F2C218AFA00BF7802 /* BoxManageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662B81E2C218AFA00BF7802 /* BoxManageService.swift */; };
 		16674C1A2CA28ACA00551008 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16674C192CA28ACA00551008 /* UIColor.swift */; };
 		16674C1C2CA2935200551008 /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16674C1B2CA2935200551008 /* LabelTableViewCell.swift */; };
+		167EDFFF2CDFB15D00E9AAFE /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 167EDFF52CDFB15D00E9AAFE /* Pretendard-Bold.otf */; };
+		167EE0002CDFB15D00E9AAFE /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 167EDFF82CDFB15D00E9AAFE /* Pretendard-Light.otf */; };
+		167EE0012CDFB15D00E9AAFE /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 167EDFFA2CDFB15D00E9AAFE /* Pretendard-Regular.otf */; };
+		167EE0022CDFB15D00E9AAFE /* RussoOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 167EDFFD2CDFB15D00E9AAFE /* RussoOne-Regular.ttf */; };
+		167EE0032CDFB15D00E9AAFE /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 167EDFF92CDFB15D00E9AAFE /* Pretendard-Medium.otf */; };
+		167EE0042CDFB15D00E9AAFE /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 167EDFF62CDFB15D00E9AAFE /* Pretendard-ExtraBold.otf */; };
+		167EE0052CDFB15D00E9AAFE /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 167EDFF42CDFB15D00E9AAFE /* Pretendard-Black.otf */; };
+		167EE0062CDFB15D00E9AAFE /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 167EDFF72CDFB15D00E9AAFE /* Pretendard-ExtraLight.otf */; };
+		167EE0072CDFB15D00E9AAFE /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 167EDFFC2CDFB15D00E9AAFE /* Pretendard-Thin.otf */; };
+		167EE0082CDFB15D00E9AAFE /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 167EDFFB2CDFB15D00E9AAFE /* Pretendard-SemiBold.otf */; };
+		167EE00A2CDFB1BD00E9AAFE /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE0092CDFB1BD00E9AAFE /* UIFont+Extension.swift */; };
+		167EE00C2CDFB6E700E9AAFE /* NewBoxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE00B2CDFB6E700E9AAFE /* NewBoxCell.swift */; };
+		167EE00F2CDFBADB00E9AAFE /* DrugBoxListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE00E2CDFBADB00E9AAFE /* DrugBoxListVC.swift */; };
+		167EE0112CE47E2D00E9AAFE /* OCRSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE0102CE47E2D00E9AAFE /* OCRSearchVC.swift */; };
+		167EE0132CE47E5400E9AAFE /* OCRModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE0122CE47E5400E9AAFE /* OCRModel.swift */; };
 		16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */; };
 		16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */; };
 		16913C8C2B654A36006A0F0A /* WayToDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C8B2B654A36006A0F0A /* WayToDelete.swift */; };
@@ -105,7 +119,6 @@
 		16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */; };
 		16C5CFF22BB7ED10008DF3D3 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C5CFF12BB7ED10008DF3D3 /* OnboardingCell.swift */; };
 		16C5CFF42BB7ED1E008DF3D3 /* OnboardingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16C5CFF32BB7ED1E008DF3D3 /* OnboardingCell.xib */; };
-		16C5CFF62BB7EDC8008DF3D3 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C5CFF52BB7EDC8008DF3D3 /* OnboardingViewController.swift */; };
 		16D3E6132CB6588F00124F6C /* LocationDetailviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D3E6122CB6588F00124F6C /* LocationDetailviewController.swift */; };
 		16E008B92B63FDDB004F83F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008B82B63FDDB004F83F0 /* AppDelegate.swift */; };
 		16E008BB2B63FDDB004F83F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E008BA2B63FDDB004F83F0 /* SceneDelegate.swift */; };
@@ -175,11 +188,25 @@
 		16205A832B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDrugDetailViewController.swift; sourceTree = "<group>"; };
 		16205A852B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPrescriptionViewController.swift; sourceTree = "<group>"; };
 		164A0A062CA29E2600504BF1 /* AdImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdImageCollectionViewCell.swift; sourceTree = "<group>"; };
-		164A0A082CA2A22100504BF1 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		1662B81B2C21655400BF7802 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		1662B81E2C218AFA00BF7802 /* BoxManageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxManageService.swift; sourceTree = "<group>"; };
 		16674C192CA28ACA00551008 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		16674C1B2CA2935200551008 /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
+		167EDFF42CDFB15D00E9AAFE /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
+		167EDFF52CDFB15D00E9AAFE /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		167EDFF62CDFB15D00E9AAFE /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		167EDFF72CDFB15D00E9AAFE /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
+		167EDFF82CDFB15D00E9AAFE /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
+		167EDFF92CDFB15D00E9AAFE /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		167EDFFA2CDFB15D00E9AAFE /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		167EDFFB2CDFB15D00E9AAFE /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		167EDFFC2CDFB15D00E9AAFE /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
+		167EDFFD2CDFB15D00E9AAFE /* RussoOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RussoOne-Regular.ttf"; sourceTree = "<group>"; };
+		167EE0092CDFB1BD00E9AAFE /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		167EE00B2CDFB6E700E9AAFE /* NewBoxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxCell.swift; sourceTree = "<group>"; };
+		167EE00E2CDFBADB00E9AAFE /* DrugBoxListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugBoxListVC.swift; sourceTree = "<group>"; };
+		167EE0102CE47E2D00E9AAFE /* OCRSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRSearchVC.swift; sourceTree = "<group>"; };
+		167EE0122CE47E5400E9AAFE /* OCRModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRModel.swift; sourceTree = "<group>"; };
 		16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBoxViewController.swift; sourceTree = "<group>"; };
 		16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDeleteViewController.swift; sourceTree = "<group>"; };
 		16913C8B2B654A36006A0F0A /* WayToDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WayToDelete.swift; sourceTree = "<group>"; };
@@ -212,7 +239,6 @@
 		16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxManager.swift; sourceTree = "<group>"; };
 		16C5CFF12BB7ED10008DF3D3 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		16C5CFF32BB7ED1E008DF3D3 /* OnboardingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingCell.xib; sourceTree = "<group>"; };
-		16C5CFF52BB7EDC8008DF3D3 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		16D3E6122CB6588F00124F6C /* LocationDetailviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailviewController.swift; sourceTree = "<group>"; };
 		16E008B52B63FDDB004F83F0 /* DrugBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrugBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16E008B82B63FDDB004F83F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -392,10 +418,36 @@
 			path = APIs;
 			sourceTree = "<group>";
 		};
+		167EDFFE2CDFB15D00E9AAFE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				167EDFF42CDFB15D00E9AAFE /* Pretendard-Black.otf */,
+				167EDFF52CDFB15D00E9AAFE /* Pretendard-Bold.otf */,
+				167EDFF62CDFB15D00E9AAFE /* Pretendard-ExtraBold.otf */,
+				167EDFF72CDFB15D00E9AAFE /* Pretendard-ExtraLight.otf */,
+				167EDFF82CDFB15D00E9AAFE /* Pretendard-Light.otf */,
+				167EDFF92CDFB15D00E9AAFE /* Pretendard-Medium.otf */,
+				167EDFFA2CDFB15D00E9AAFE /* Pretendard-Regular.otf */,
+				167EDFFB2CDFB15D00E9AAFE /* Pretendard-SemiBold.otf */,
+				167EDFFC2CDFB15D00E9AAFE /* Pretendard-Thin.otf */,
+				167EDFFD2CDFB15D00E9AAFE /* RussoOne-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		167EE00D2CDFBABC00E9AAFE /* Code-based pages */ = {
+			isa = PBXGroup;
+			children = (
+				167EE00E2CDFBADB00E9AAFE /* DrugBoxListVC.swift */,
+			);
+			path = "Code-based pages";
+			sourceTree = "<group>";
+		};
 		16AA2AED2CA3F32900C4CD24 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				16AA2AF02CA3F35B00C4CD24 /* DisposalDrugCell.swift */,
+				167EE00B2CDFB6E700E9AAFE /* NewBoxCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -569,6 +621,7 @@
 				16E008C12B63FDDB004F83F0 /* Assets.xcassets */,
 				16E008C32B63FDDB004F83F0 /* LaunchScreen.storyboard */,
 				16E008C62B63FDDB004F83F0 /* Info.plist */,
+				167EDFFE2CDFB15D00E9AAFE /* Fonts */,
 				161DB4242B763B1200F85377 /* Protocols */,
 				161DB41F2B7618BD00F85377 /* Extensions */,
 				16AA2AF92CA4061400C4CD24 /* Config.xcconfig */,
@@ -614,6 +667,7 @@
 		16E008E92B63FE5B004F83F0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				167EE0092CDFB1BD00E9AAFE /* UIFont+Extension.swift */,
 				1662B81D2C21655A00BF7802 /* APIs */,
 				16E008F82B6404FF004F83F0 /* Constants.swift */,
 				16C3BA032B6A95B300CD8B97 /* ForDrug */,
@@ -621,6 +675,7 @@
 				16E009002B642EB5004F83F0 /* Alarm.swift */,
 				161DB4182B752B0E00F85377 /* AFDateResponse.swift */,
 				16A213882BF3467C00D82CE3 /* UserData.swift */,
+				167EE0122CE47E5400E9AAFE /* OCRModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -652,8 +707,6 @@
 			children = (
 				16E008F62B640459004F83F0 /* LoginViewController.swift */,
 				16EFBB472B8720CA006C2EFF /* RegisterViewController.swift */,
-				16C5CFF52BB7EDC8008DF3D3 /* OnboardingViewController.swift */,
-				164A0A082CA2A22100504BF1 /* TestViewController.swift */,
 			);
 			path = Default;
 			sourceTree = "<group>";
@@ -661,6 +714,7 @@
 		16E008EE2B640160004F83F0 /* ManagePage */ = {
 			isa = PBXGroup;
 			children = (
+				167EE00D2CDFBABC00E9AAFE /* Code-based pages */,
 				16205A802B7B6225002DF4D2 /* DrugPage */,
 				16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */,
 				16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */,
@@ -689,6 +743,7 @@
 				16126DB42CABE66D00828185 /* DefaultSearchViewController.swift */,
 				16D3E6122CB6588F00124F6C /* LocationDetailviewController.swift */,
 				16126DB72CABE8D700828185 /* SearchViewController.swift */,
+				167EE0102CE47E2D00E9AAFE /* OCRSearchVC.swift */,
 			);
 			path = SearchPage;
 			sourceTree = "<group>";
@@ -884,6 +939,16 @@
 				16E008C02B63FDDB004F83F0 /* Main.storyboard in Resources */,
 				16913C8F2B654A67006A0F0A /* WayToDelete.xib in Resources */,
 				16AA2AFA2CA4061400C4CD24 /* Config.xcconfig in Resources */,
+				167EDFFF2CDFB15D00E9AAFE /* Pretendard-Bold.otf in Resources */,
+				167EE0002CDFB15D00E9AAFE /* Pretendard-Light.otf in Resources */,
+				167EE0012CDFB15D00E9AAFE /* Pretendard-Regular.otf in Resources */,
+				167EE0022CDFB15D00E9AAFE /* RussoOne-Regular.ttf in Resources */,
+				167EE0032CDFB15D00E9AAFE /* Pretendard-Medium.otf in Resources */,
+				167EE0042CDFB15D00E9AAFE /* Pretendard-ExtraBold.otf in Resources */,
+				167EE0052CDFB15D00E9AAFE /* Pretendard-Black.otf in Resources */,
+				167EE0062CDFB15D00E9AAFE /* Pretendard-ExtraLight.otf in Resources */,
+				167EE0072CDFB15D00E9AAFE /* Pretendard-Thin.otf in Resources */,
+				167EE0082CDFB15D00E9AAFE /* Pretendard-SemiBold.otf in Resources */,
 				16C5CFF42BB7ED1E008DF3D3 /* OnboardingCell.xib in Resources */,
 				161DB4092B6E6E4800F85377 /* BoxCell.xib in Resources */,
 			);
@@ -910,7 +975,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				164A0A092CA2A22100504BF1 /* TestViewController.swift in Sources */,
+				167EE00C2CDFB6E700E9AAFE /* NewBoxCell.swift in Sources */,
 				16C19AF52C7D84C400E93FD0 /* BearerTokenPlugin.swift in Sources */,
 				16C19AF12C799C3000E93FD0 /* UserLoginRequest.swift in Sources */,
 				16C19AEF2C799BC500E93FD0 /* TokenDto.swift in Sources */,
@@ -927,7 +992,7 @@
 				16E008F92B6404FF004F83F0 /* Constants.swift in Sources */,
 				16EFBB352B80FFDC006C2EFF /* String.swift in Sources */,
 				16A213892BF3467C00D82CE3 /* UserData.swift in Sources */,
-				16C5CFF62BB7EDC8008DF3D3 /* OnboardingViewController.swift in Sources */,
+				167EE00A2CDFB1BD00E9AAFE /* UIFont+Extension.swift in Sources */,
 				16205A822B7BB4B0002DF4D2 /* AddDrugViewController.swift in Sources */,
 				161DB4262B763B2800F85377 /* ButtonTappedDelegate.swift in Sources */,
 				16E008F72B640459004F83F0 /* LoginViewController.swift in Sources */,
@@ -936,6 +1001,7 @@
 				16126DC22CABF08900828185 /* MapResponse.swift in Sources */,
 				161DB4212B76190100F85377 /* UIImageView.swift in Sources */,
 				16C19B052C7D8E6A00E93FD0 /* BoxInvitationPost.swift in Sources */,
+				167EE00F2CDFBADB00E9AAFE /* DrugBoxListVC.swift in Sources */,
 				16674C1C2CA2935200551008 /* LabelTableViewCell.swift in Sources */,
 				16126DBE2CABEBA600828185 /* AddrParameter.swift in Sources */,
 				16EFBB3F2B8105A1006C2EFF /* DrugCell.swift in Sources */,
@@ -947,6 +1013,7 @@
 				16C19B072C7D902A00E93FD0 /* DrugBoxResponse.swift in Sources */,
 				16C19B272C81B52D00E93FD0 /* SearchDrugViewController.swift in Sources */,
 				16C19B852C81E07B00E93FD0 /* DrugDetailSaveRequest.swift in Sources */,
+				167EE0132CE47E5400E9AAFE /* OCRModel.swift in Sources */,
 				16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */,
 				16AA2AF12CA3F35B00C4CD24 /* DisposalDrugCell.swift in Sources */,
 				16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */,
@@ -964,6 +1031,7 @@
 				16C19B832C81E06D00E93FD0 /* DrugSaveRequest.swift in Sources */,
 				16D3E6132CB6588F00124F6C /* LocationDetailviewController.swift in Sources */,
 				16205A862B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift in Sources */,
+				167EE0112CE47E2D00E9AAFE /* OCRSearchVC.swift in Sources */,
 				16A2138D2BFDCB0200D82CE3 /* BoxListData.swift in Sources */,
 				161DB4192B752B0E00F85377 /* AFDateResponse.swift in Sources */,
 				161DB4282B7A4E3B00F85377 /* InviteViewController.swift in Sources */,
@@ -1174,6 +1242,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = DrugBox;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCameraUsageDescription = test;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"현재 위치 사용을 허용하시겠습니까?\"";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = test;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1207,6 +1276,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = DrugBox;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCameraUsageDescription = test;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"현재 위치 사용을 허용하시겠습니까?\"";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = test;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

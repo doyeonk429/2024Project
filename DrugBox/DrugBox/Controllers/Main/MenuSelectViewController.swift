@@ -14,6 +14,7 @@ class MenuSelectViewController: UIViewController, UICollectionViewDataSource, UI
     private let manageButton = UIButton(type: .system)
     private let deleteButton = UIButton(type: .system)
     private let searchButton = UIButton(type: .system)
+    private let ocrButton = UIButton(type: .system)
     private let alarmButton = UIBarButtonItem()
     private let accountButton = UIBarButtonItem()
     
@@ -126,6 +127,7 @@ class MenuSelectViewController: UIViewController, UICollectionViewDataSource, UI
         contentView.addSubview(manageButton)
         contentView.addSubview(deleteButton)
         contentView.addSubview(searchButton)
+        contentView.addSubview(ocrButton)
         
         // Set up constraints
         setupConstraints()
@@ -134,6 +136,7 @@ class MenuSelectViewController: UIViewController, UICollectionViewDataSource, UI
         configureButton(manageButton, title: "Manage", action: #selector(manageButtonPressed))
         configureButton(deleteButton, title: "Delete", action: #selector(deleteButtonPressed))
         configureButton(searchButton, title: "Search", action: #selector(searchButtonPressed))
+        configureButton(ocrButton, title: "Find by AI Model", action: #selector(ocrButtonPressed))
     }
     
     private func setupConstraints() {
@@ -160,22 +163,23 @@ class MenuSelectViewController: UIViewController, UICollectionViewDataSource, UI
             make.centerX.equalToSuperview()
         }
         
-        // Button Layouts
         manageButton.snp.makeConstraints { make in
             make.top.equalTo(pageControl.snp.bottom).offset(20)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(50)
+            make.leading.trailing.equalToSuperview().inset(20) // 좌우 여백을 20으로 통일
+            make.height.equalTo(40)
         }
-        
-        deleteButton.snp.makeConstraints { make in
-            make.top.equalTo(manageButton.snp.bottom).offset(10)
-            make.leading.trailing.height.equalTo(manageButton)
+
+        // deleteButton, searchButton, ocrButton의 제약 조건을 간결하게 설정
+        let buttons = [deleteButton, searchButton, ocrButton]
+        for (index, button) in buttons.enumerated() {
+            button.snp.makeConstraints { make in
+                make.top.equalTo(index == 0 ? manageButton.snp.bottom : buttons[index - 1].snp.bottom).offset(10)
+                make.leading.trailing.height.equalTo(manageButton)
+            }
         }
-        
-        searchButton.snp.makeConstraints { make in
-            make.top.equalTo(deleteButton.snp.bottom).offset(10)
-            make.leading.trailing.height.equalTo(manageButton)
+
+        // 마지막 버튼(ocrButton)에서 하단 여백 설정
+        ocrButton.snp.makeConstraints { make in
             make.bottom.equalTo(contentView.snp.bottom).offset(-20)
         }
     }
@@ -183,9 +187,9 @@ class MenuSelectViewController: UIViewController, UICollectionViewDataSource, UI
     private func configureButton(_ button: UIButton, title: String, action: Selector) {
         button.setTitle(title, for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor(hex: "169F00")
+        button.backgroundColor = UIColor(named: "AppGreen")
         button.layer.cornerRadius = 8
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18) // Set bold font with size 20
+        button.titleLabel?.font = UIFont.ptdBoldFont(ofSize: 18)
         button.addTarget(self, action: action, for: .touchUpInside)
     }
     
@@ -200,7 +204,7 @@ class MenuSelectViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     @objc private func manageButtonPressed() {
-        let defaultBoxViewController = DefaultBoxViewController()
+        let defaultBoxViewController = DrugBoxListVC()
         navigationController?.pushViewController(defaultBoxViewController, animated: true)
     }
     
@@ -212,6 +216,11 @@ class MenuSelectViewController: UIViewController, UICollectionViewDataSource, UI
     @objc private func searchButtonPressed() {
         let searchVC = DefaultSearchViewController()
         navigationController?.pushViewController(searchVC, animated: true)
+    }
+    
+    @objc private func ocrButtonPressed() {
+        let ocrVC = OCRSearchVC()
+        navigationController?.pushViewController(ocrVC, animated: true)
     }
     
     // MARK: - UICollectionView DataSource & Delegate

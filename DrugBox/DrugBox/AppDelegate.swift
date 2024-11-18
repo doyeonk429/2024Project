@@ -100,6 +100,7 @@ extension AppDelegate: MessagingDelegate {
         Messaging.messaging().token { token, error in
             if let error = error {
                 print("Error fetching FCM registration token: \(error)")
+      
             } else if let token = token {
                 print("FCM registration token: \(token)")
             }

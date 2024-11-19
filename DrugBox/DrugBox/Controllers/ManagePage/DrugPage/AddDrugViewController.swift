@@ -12,6 +12,13 @@ import Moya
 class AddDrugViewController: UIViewController {
     
     public var drugName: String?
+    public var drugboxId : Int?
+    private var drugType : String?
+    
+    let provider = MoyaProvider<DrugService>(plugins: [BearerTokenPlugin()])
+    
+    let detailDrugView = AddNewDrugView()
+    
     
     // MARK: - UI Elements
     private let titleLabel: UILabel = {
@@ -34,45 +41,43 @@ class AddDrugViewController: UIViewController {
     private let drugNameLabel: UILabel = {
         let label = UILabel()
         label.text = ""
+        label.numberOfLines = 0
         label.font = UIFont.ptdMediumFont(ofSize: 16)
         label.textColor = .black
         return label
     }()
     
-    private let scrollView = UIScrollView()
-    private let contentView = UIView()
-    
-    private let addButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("+", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 5
-        return button
+    private let drugTypeTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "제형 선택"
+        label.font = UIFont.ptdRegularFont(ofSize: 16)
+        label.textColor = .black
+        return label
     }()
     
-    private let removeButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("-", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 24)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemRed
-        button.layer.cornerRadius = 5
-        return button
+    // Picker 관련 변수
+    private let drugTypes = ["물약", "알약", "연고", "가루약", "파스", "처방약", "캡슐", "주사"]
+    private var selectedDrugType: String = "물약" // 초기 선택 값
+
+    // PickerView 생성
+    private let typePickerView: UIPickerView = {
+        let picker = UIPickerView()
+        picker.backgroundColor = .white
+        picker.layer.cornerRadius = 10
+        picker.layer.borderWidth = 1
+        picker.layer.borderColor = UIColor.lightGray.cgColor
+        return picker
     }()
     
     private let registerButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("등록", for: .normal)
+        button.setTitle("약 등록하기", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .appGreen
         button.layer.cornerRadius = 10
         return button
     }()
-    
-    private var addNewDrugViews: [AddNewDrugView] = [] // 저장된 AddNewDrugView 배열
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -84,39 +89,24 @@ class AddDrugViewController: UIViewController {
         
         setupUI()
         setupActions()
-        scrollView.isUserInteractionEnabled = true
-        contentView.isUserInteractionEnabled = true
-        scrollView.isExclusiveTouch = false
-        contentView.isExclusiveTouch = false
-        contentView.clipsToBounds = false
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        visualizeScrollviewArea()
-        print("ScrollView Content Size: \(scrollView.contentSize)") // 디버깅용
-        print("ScrollView visible Size: \(scrollView.visibleSize)") // 디버깅용
-        
+
+        // PickerView 설정
+        typePickerView.delegate = self
+        typePickerView.dataSource = self
     }
     
     // MARK: - Setup UI
     private func setupUI() {
-        visualizeScrollviewArea()
         // Add subviews
         view.addSubview(titleLabel)
         view.addSubview(drugNameTitleLabel)
         view.addSubview(drugNameLabel)
-        view.addSubview(scrollView)
-        view.addSubview(addButton)
-        view.addSubview(removeButton)
+        
+        view.addSubview(drugTypeTitleLabel)
+        view.addSubview(typePickerView) // PickerView 추가
+        
+        view.addSubview(detailDrugView)
         view.addSubview(registerButton)
-        
-        scrollView.addSubview(contentView)
-        
-        // Add the first AddNewDrugView
-        let initialDrugView = AddNewDrugView()
-        addNewDrugViews.append(initialDrugView)
-        updateDrugViewsLayout()
         
         // Set constraints for title label
         titleLabel.snp.makeConstraints { make in
@@ -126,46 +116,33 @@ class AddDrugViewController: UIViewController {
         
         // Set constraints for drugNameTitleLabel and drugNameLabel
         drugNameTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.top.equalTo(titleLabel.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(20)
         }
         
         drugNameLabel.snp.makeConstraints { make in
-            make.leading.equalTo(drugNameTitleLabel.snp.trailing).offset(20)
+            make.leading.equalTo(drugNameTitleLabel.snp.trailing).offset(10)
             make.centerY.equalTo(drugNameTitleLabel)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-10)
         }
-        
-        // Set constraints for scrollView
-        scrollView.snp.makeConstraints { make in
+
+        drugTypeTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(drugNameLabel.snp.bottom).offset(20)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(registerButton.snp.top).offset(-20) // 스크롤뷰 위로 "등록" 버튼 간격
+            make.leading.equalToSuperview().offset(20)
+        }
+
+        // PickerView 레이아웃
+        typePickerView.snp.makeConstraints { make in
+            make.top.equalTo(drugTypeTitleLabel.snp.bottom).offset(10)
+            make.leading.equalToSuperview().inset(20)
+            make.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(150)
         }
         
-        contentView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-            make.width.equalTo(scrollView.snp.width)
-            make.height.equalTo(addNewDrugViews.count*220)
-        }
-        
-        // Set constraints for initial AddNewDrugView
-        initialDrugView.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.top).offset(20)
+        detailDrugView.snp.makeConstraints { make in
+            make.top.equalTo(typePickerView.snp.bottom).offset(20)
             make.leading.trailing.equalToSuperview().inset(10)
-        }
-        
-        // Set constraints for + and - buttons (aligned in a row)
-        addButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(30)
-            make.bottom.equalTo(registerButton.snp.top).offset(-20) // "등록" 버튼 위로 간격
-            make.width.equalTo(100)
-            make.height.equalTo(50)
-        }
-        
-        removeButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-30)
-            make.bottom.equalTo(registerButton.snp.top).offset(-20)
-            make.width.height.equalTo(addButton) // 동일한 너비/높이
+            make.height.greaterThanOrEqualTo(200)
         }
         
         // Set constraints for register button
@@ -176,68 +153,89 @@ class AddDrugViewController: UIViewController {
         }
     }
     
-    private func updateDrugViewsLayout() {
-        for (index, view) in addNewDrugViews.enumerated() {
-            contentView.addSubview(view) // 항상 contentView에 추가
-            view.snp.remakeConstraints { make in
-                view.frame.size.height = 200
-                if index == 0 {
-                    make.top.equalToSuperview().inset(10)
-                } else {
-                    make.top.equalTo((index - 1)*220)
-                }
-                make.leading.trailing.equalToSuperview().inset(10)
-            }
-        }
-        
-        // 마지막 뷰 기준으로 contentView 높이 업데이트
-        if let lastView = addNewDrugViews.last {
-            contentView.snp.remakeConstraints { make in
-                make.edges.equalToSuperview()
-                make.width.equalTo(scrollView.snp.width)
-                make.height.equalTo(addNewDrugViews.count*220)
-            }
-        } else {
-            // 배열이 비어있을 경우 contentView 초기화
-            contentView.snp.remakeConstraints { make in
-                make.edges.equalToSuperview()
-                make.width.equalTo(scrollView.snp.width)
-                make.height.equalTo(addNewDrugViews.count*220 + 100)
-            }
-        }
-    }
-    
-    private func visualizeScrollviewArea() {
-        self.scrollView.backgroundColor = UIColor.red.withAlphaComponent(0.5)
-        self.contentView.backgroundColor = UIColor.white.withAlphaComponent(0.3) // 반투명한 파란색
-    }
-    
     // MARK: - Setup Actions
     private func setupActions() {
-        addButton.addTarget(self, action: #selector(addNewDrugViewTapped), for: .touchUpInside)
-        removeButton.addTarget(self, action: #selector(removeLastDrugViewTapped), for: .touchUpInside)
         registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
     }
     
     // MARK: - Button Actions
-    
-    @objc private func addNewDrugViewTapped() {
-        let newDrugView = AddNewDrugView()
-        addNewDrugViews.append(newDrugView) // 배열에 추가
-        updateDrugViewsLayout() // 배열 기반으로 재배치
-    }
-
-    @objc private func removeLastDrugViewTapped() {
-        guard !addNewDrugViews.isEmpty else { return } // 배열이 비어있으면 종료
-
-        let lastView = addNewDrugViews.removeLast() // 배열에서 제거
-        lastView.removeFromSuperview() // 뷰 삭제
-        updateDrugViewsLayout() // 배열 기반으로 재배치
-    }
-    
-    // "등록" 버튼 눌렀을 때
     @objc private func registerButtonTapped() {
-        print("등록 버튼 클릭됨")
-        // 여기서 등록 처리 로직 추가 가능
+        if let userData = setupRequestData() {
+            callPostApi(data: userData) { isSuccess in
+                if isSuccess {
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    print("다시 시도하세요.")
+                }
+            }
+        } else {
+            print("데이터 안만들어짐.")
+        }
+    }
+    
+    private func setupRequestData() -> DrugSaveRequest? {
+        if let count = detailDrugView.countValue,
+           let dateString = detailDrugView.dateValue,
+           let location = detailDrugView.returnLocation(),
+           let boxId = self.drugboxId,
+           let name = self.drugName
+        {
+            let detailData = DrugDetailSaveRequest(count: count, expDate: dateString, location: location)
+            
+            return DrugSaveRequest(detail: [detailData], drugboxId: boxId, name: name, type: self.drugType ?? drugTypes[0])
+        } else {
+            print(detailDrugView.countValue ?? "count 문제")
+            print(detailDrugView.dateValue ?? "date 문제")
+            print(detailDrugView.returnLocation() ?? "location 문제")
+            print(self.drugboxId ?? "id 문제")
+            print(self.drugName ?? "name 문제")
+        }
+        return nil
+    }
+    
+    private func callPostApi(data: DrugSaveRequest, completion : @escaping (Bool) -> Void) {
+        print(data)
+        provider.request(.postDrugs(data: data)) { result in
+            switch result {
+            case .success(let response) :
+                do {
+                    _ = try response.map([IdResponse].self)
+                    completion(true)
+                } catch {
+                    print("map data error : \(error)")
+                    completion(false)
+                }
+            case .failure(let error) :
+                print("Error: \(error.localizedDescription)")
+                if let response = error.response {
+                    print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                }
+                completion(false)
+            }
+        }
     }
 }
+
+extension AddDrugViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    // PickerView에 표시할 열(row) 개수
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1 // 하나의 열
+    }
+ 
+    // PickerView에 표시할 행(row) 개수
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return drugTypes.count
+    }
+
+    // PickerView의 각 행에 표시할 데이터
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return drugTypes[row]
+    }
+
+    // PickerView에서 선택했을 때 호출
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedDrugType = drugTypes[row]
+        self.drugType = drugTypes[row]
+    }
+}
+

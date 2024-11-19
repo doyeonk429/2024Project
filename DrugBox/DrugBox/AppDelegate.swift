@@ -103,6 +103,7 @@ extension AppDelegate: MessagingDelegate {
       
             } else if let token = token {
                 print("FCM registration token: \(token)")
+                LoginViewController.keychain.set(token, forKey: "FCMToken")
             }
         }
     }

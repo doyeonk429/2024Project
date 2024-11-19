@@ -18,5 +18,5 @@ protocol ButtonTappedDelegate : AnyObject {
 //}
 
 protocol CheckBoxDelegate: AnyObject {
-    func onCheck()
+    func onCheck(drugId: Int)
 }

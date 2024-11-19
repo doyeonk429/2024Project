@@ -8,10 +8,10 @@
 import UIKit
 
 struct DrugModel {
-    let boxId: Int
+    let id: Int
     let drugName: String
     let drugCount: Int
     let location: String
-    let expDate: Date
+    let expDate: String
     let inDisposalList: Bool
 }

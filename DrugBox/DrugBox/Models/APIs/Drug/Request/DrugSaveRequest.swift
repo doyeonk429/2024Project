@@ -8,7 +8,7 @@
 import Foundation
 
 struct DrugSaveRequest : Codable {
-    let detail : DrugDetailSaveRequest
+    let detail : [DrugDetailSaveRequest]
     let drugboxId : Int
     let name : String
     let type : String

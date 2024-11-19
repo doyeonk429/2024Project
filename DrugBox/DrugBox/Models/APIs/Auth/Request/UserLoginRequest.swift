@@ -10,4 +10,9 @@ import Foundation
 struct UserLoginRequest : Codable {
     let email : String
     let password : String
+    let fcmToken : String
+}
+struct UserSignUpRequest : Codable {
+    let email : String
+    let password : String
 }

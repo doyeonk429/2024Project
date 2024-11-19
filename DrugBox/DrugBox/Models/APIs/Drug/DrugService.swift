@@ -13,6 +13,11 @@ enum DrugService {
     case postDrugs(data: DrugSaveRequest)
     case patchDrugs(data : DrugUpdateRequest)
     case getSearchResult(name: String)
+    
+    case getDrugDetail(boxId: Int, drugName: String)
+    case patchDrugDisposal(boxId: Int, drugid: Int)
+    case getDisposalList
+    case deleteDisposal(data : [DrugUpdateRequest])
 }
 
 extension DrugService : TargetType {
@@ -22,8 +27,10 @@ extension DrugService : TargetType {
     
     var path: String {
         switch self {
-        case .getSearchResult:
+        case .getSearchResult, .getDrugDetail:
             return "/search-result"
+        case .patchDrugDisposal, .getDisposalList, .deleteDisposal:
+            return "/disposal"
         default:
             return ""
         }
@@ -31,13 +38,13 @@ extension DrugService : TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .getDrugs:
-            return .get
         case .postDrugs:
             return .post
-        case .patchDrugs:
+        case .patchDrugs, .patchDrugDisposal:
             return .patch
-        case .getSearchResult:
+        case .deleteDisposal:
+            return .delete
+        default :
             return .get
         }
     }
@@ -45,13 +52,21 @@ extension DrugService : TargetType {
     var task: Moya.Task {
         switch self {
         case .getDrugs(let id):
-            return .requestParameters(parameters: ["drugboxId" : id], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: ["drugboxId" : id], encoding: URLEncoding.queryString)
         case .postDrugs(let data):
-            return .requestParameters(parameters: ["drugSaveRequest" : data], encoding: JSONEncoding.default)
+            return .requestJSONEncodable(data)
         case .patchDrugs(let data):
             return .requestJSONEncodable(data)
         case .getSearchResult(let name):
             return .requestParameters(parameters: ["name": name], encoding: URLEncoding.queryString)
+        case .getDrugDetail(let boxId, let drugName):
+            return .requestParameters(parameters: ["drugboxId": boxId, "name" : drugName], encoding: URLEncoding.queryString)
+        case .patchDrugDisposal(boxId: let boxId, drugid: let drugid):
+            return .requestParameters(parameters: ["drugboxId": boxId, "drugId": drugid], encoding: URLEncoding.queryString)
+        case .getDisposalList:
+            return .requestPlain
+        case .deleteDisposal(let data):
+            return .requestJSONEncodable(data)
         }
     }
     

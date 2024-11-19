@@ -12,10 +12,15 @@ import Then
 
 class ItemListViewController: UIViewController {
     
+    let provider = MoyaProvider<DrugService>(plugins: [
+        BearerTokenPlugin(),
+        NetworkLoggerPlugin(configuration: .init(logOptions: .verbose))
+    ])
+    
     // Drugs 데이터 배열
-    var Drugs: [DrugModel] = [
-        DrugModel(boxId: 1, drugName: "테스트", drugCount: 10, location: "몰라", expDate: Calendar.current.date(from: DateComponents(year: 2024, month: 8, day: 30)) ?? Date(), inDisposalList: false)
-    ]
+    var Drugs: [DrugModel] = []
+    var drugsInfo : [Int :drugInfoData] = [:]
+    var useDrug : [Int] = []
     
     // 선택된 drugBoxId
     var drugBoxId: Int?
@@ -28,9 +33,13 @@ class ItemListViewController: UIViewController {
     
     // 하단 버튼 생성
     let useDrugButton = UIButton(type: .system).then {
-        $0.setTitle("Use Drug", for: .normal)
+        $0.setTitle("약 사용하기", for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.backgroundColor = .appGreen // 배경색 설정
+        $0.setTitleColor(.white, for: .normal) // 텍스트 색상 설정 (필요 시)
+        $0.layer.cornerRadius = 8 // 모서리 둥글게 (옵션)
+        $0.layer.masksToBounds = true // 둥근 모서리 효과 적용
     }
     
     override func viewDidLoad() {
@@ -41,44 +50,138 @@ class ItemListViewController: UIViewController {
         self.title = drugBoxName ?? ""
         let addNewDrugButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewDrugButtonTapped))
         self.navigationItem.rightBarButtonItem = addNewDrugButton
-        
-        // 뷰에 서브뷰 추가
-        view.addSubview(drugTableView)
-        view.addSubview(useDrugButton)
-        
-        // 레이아웃 설정
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        useDrugButton.addTarget(self, action: #selector(useDrugButtonTapped), for: .touchUpInside)
+        setupTableView()
         setupLayout()
         
-        // 테이블뷰 설정
+        callGetDrugs { isSuccess in
+            if isSuccess {
+                self.drugTableView.reloadData()
+            } else {
+                print("의약품 목록을 불러오는데 실패했습니다.\n다시 시도해주세요.")
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("뷰 윌 어피어 : 여기서 다시 호춣해야하는데?")
+        callGetDrugs { isSuccess in
+            if isSuccess {
+                self.drugTableView.reloadData()
+            } else {
+                print("의약품 목록을 불러오는데 실패했습니다.\n다시 시도해주세요.")
+            }
+        }
+        
+        if let selectedIndexPath = drugTableView.indexPathForSelectedRow {
+            drugTableView.deselectRow(at: selectedIndexPath, animated: animated)
+        }
+    }
+    
+    func setupTableView() {
         drugTableView.delegate = self
         drugTableView.dataSource = self
+        drugTableView.separatorStyle = .singleLine
         drugTableView.register(DrugCell.self, forCellReuseIdentifier: "DrugCell")
+
+        view.addSubview(drugTableView)
+    }
+    
+    func setupLayout() {
+        view.addSubview(useDrugButton)
+
+        drugTableView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-60)
+        }
         
-        drugTableView.reloadData()
+        useDrugButton.snp.makeConstraints { make in
+            make.top.equalTo(drugTableView.snp.bottom).offset(10)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-10)
+        }
     }
     
     @objc func addNewDrugButtonTapped() {
-        // SearchViewController를 모달로 표시
         let searchVC = SearchDrugViewController()
+        searchVC.currentBoxId = self.drugBoxId
         self.navigationController?.pushViewController(searchVC, animated: true)
     }
     
-    // 레이아웃 설정 함수
-    func setupLayout() {
-        // 테이블뷰 레이아웃
-        drugTableView.snp.makeConstraints { make in
-            make.top.equalTo(view.snp.bottom)
-            make.left.equalToSuperview().offset(10)             // 왼쪽과 10의 offset
-            make.right.equalToSuperview().offset(-10)           // 오른쪽과 10의 offset
-            make.height.greaterThanOrEqualTo(200)
-        }
+    @objc private func useDrugButtonTapped() {
+        guard let boxid = self.drugBoxId else { return }
         
-        // 버튼 레이아웃
-        useDrugButton.snp.makeConstraints { make in
-            make.top.greaterThanOrEqualTo(drugTableView.snp.bottom).offset(10)
-            make.left.equalToSuperview().offset(10)             // 왼쪽과 10의 offset
-            make.right.equalToSuperview().offset(-10)           // 오른쪽과 10의 offset
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-16) // Safe area의 하단과 10의 offset
+        callPatchAPI(requestData: setupUseData(boxId: boxid, drugIds: self.useDrug)) { isSuccess in
+            if isSuccess {
+                print("패치 성공!")
+                self.callGetDrugs { isSuccess in
+                    if isSuccess {
+                        self.drugTableView.reloadData()
+                    } else {
+                        print("패치 후, 의약품 목록을 불러오는데 실패했습니다.\n다시 시도해주세요.")
+                    }
+                }
+            } else {
+                print("패치 호출 실패 - 다시 시도해주세요.")
+            }
+        }
+    }
+    
+    func setupUseData(boxId : Int, drugIds: [Int]) -> DrugUpdateRequest {
+        return DrugUpdateRequest(drugIds: drugIds, drugboxId: boxId)
+    }
+    
+    func callPatchAPI(requestData: DrugUpdateRequest, completion : @escaping (Bool) -> Void) {
+        print(requestData)
+        provider.request(.patchDrugs(data: requestData)) { result in
+            switch result {
+            case .success(let response):
+                print("patch api 전송 성공")
+                completion(true)
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+                if let response = error.response {
+                    print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                }
+                completion(false)
+            }
+        }
+    }
+    
+    func callGetDrugs(completion: @escaping (Bool) -> Void) {
+        if let id = self.drugBoxId {
+            provider.request(.getDrugs(boxId: id)) { result in
+                switch result {
+                case .success(let response) :
+                    do {
+                        self.Drugs = []
+                        let responseData = try response.map([DrugDetailResponse].self)
+                        for drugData in responseData {
+                            for drug in drugData.drugResponses {
+                                let drugModel = DrugModel(id : drug.id, drugName: drug.name, drugCount: drug.count, location: drug.location, expDate: drug.expDate, inDisposalList: drug.inDisposalList)
+                                self.Drugs.append(drugModel)
+                                // drugID : [이름, 효과]
+                                self.drugsInfo[drug.id] = drugInfoData(name: drugData.name, effect: drugData.effect)
+                            }
+                        }
+                        completion(true)
+                    } catch {
+                        print("Failed to decode response: \(error)")
+                        completion(false)
+                    }
+                case .failure(let error) :
+                    print("Error: \(error.localizedDescription)")
+                    if let response = error.response {
+                        print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                    }
+                    completion(false)
+                }
+            }
         }
     }
 
@@ -93,11 +196,7 @@ extension ItemListViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DrugCell", for: indexPath) as! DrugCell
         let drug = Drugs[indexPath.row]
         
-        // DrugCell 데이터 설정
-        cell.drugNameLabel.text = drug.drugName
-        cell.drugCountLabel.text = "\(drug.drugCount)개"
-        
-        // CheckBoxDelegate 설정
+        cell.configure(name: drug.drugName, count: drug.drugCount, id: drug.id)
         cell.delegate = self
         
         return cell
@@ -105,31 +204,38 @@ extension ItemListViewController: UITableViewDataSource, UITableViewDelegate {
 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 약 상세 정보로 이동하도록 만들기
-        //테이블뷰의 이벤트처리 함수
-//        print("테이블뷰 셀이 클릭 되었다!")
-        // segue call
-//        self.performSegue(withIdentifier: K.manageSegue.showItemSegue, sender: self)
-//        self.prepare(for: UIStoryboardSegue.init(identifier: K.manageSegue.showItemSegue, source: self, destination: ItemListViewController()), sender: self)
+        let selectedDrug = Drugs[indexPath.row]
+        let drugId = selectedDrug.id
+        let drugDetailVC = ShowDrugDetailViewController()
+        drugDetailVC.boxId = drugBoxId
+        drugDetailVC.drugDetail = selectedDrug
+        if drugsInfo.keys.contains(drugId) {
+            drugDetailVC.drugName = drugsInfo[drugId]?.name
+            drugDetailVC.drugEffect = drugsInfo[drugId]?.effect
+        }
         
-//        boxTableView.deselectRow(at: indexPath, animated: true) // 색 원상태로 복귀
+        self.navigationController?.pushViewController(drugDetailVC, animated: true)
     }
-    
-    
+
 }
 
 extension ItemListViewController: CheckBoxDelegate {
-    func onCheck() {
-        print("체크버튼 눌림)")
+    func onCheck(drugId: Int) {
+        useDrug.append(drugId)
     }
 }
 
 
-struct DrugListData: Codable{
+struct DrugListData: Codable {
     let id: Int
     let name: String
     let count: Int
     let location: String
     let expDate: String
     let inDisposalList: Bool
+}
+
+struct drugInfoData {
+    let name : String
+    let effect : String
 }

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class AddNewDrugView: UIView {
+class AddNewDrugView: UIView, UITextFieldDelegate {
     
     public var countValue : Int?
     public var dateValue : String?
@@ -66,7 +66,7 @@ class AddNewDrugView: UIView {
         return label
     }()
 
-    private let locationTextField: UITextField = {
+    let locationTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
         textField.placeholder = "약을 보관한 위치를 입력하세요"
@@ -78,6 +78,8 @@ class AddNewDrugView: UIView {
         super.init(frame: frame)
         setupUI()
         setupActions()
+        setDefaultDate()
+        locationTextField.delegate = self // Delegate 설정
     }
 
     required init?(coder: NSCoder) {
@@ -143,7 +145,7 @@ class AddNewDrugView: UIView {
 
     @objc private func stepperValueChanged(_ sender: UIStepper) {
         let newValue = Int(sender.value)
-        countLabel.text = "\(newValue)" // 라벨에 새로운 값 표시
+        countValueLabel.text = "\(newValue)" // 라벨에 새로운 값 표시
         countValue = newValue
     }
 
@@ -153,5 +155,24 @@ class AddNewDrugView: UIView {
         date = formatter.string(from: sender.date)
         print("사용기한: \(date ?? "")")
         dateValue = date
+        
+        sender.resignFirstResponder()
+    }
+    
+    private func setDefaultDate() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let todayString = formatter.string(from: Date())
+        
+        dateValue = todayString
+    }
+    
+    public func returnLocation() -> String? {
+        return locationTextField.text
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder() // 키보드 닫기
+        return true
     }
 }

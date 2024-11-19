@@ -4,41 +4,18 @@
 //
 //  Created by 김도연 on 2/18/24.
 //
-
-//import UIKit
-//
-//class DrugCell: UITableViewCell {
-//    
-//    @IBOutlet weak var CheckButton: UIButton!
-//    @IBOutlet weak var DrugCountLabel: UILabel!
-//    @IBOutlet weak var DrugNameLabel: UILabel!
-//    
-//    weak var delegate: CheckBoxDelegate?
-//    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//    }
-//    
-//    @IBAction func checkButtonPressed(_ sender: UIButton) {
-//        // delegate.OnCheck()
-//    }
-//}
-
 import UIKit
 import SnapKit
 import Then
 
 class DrugCell: UITableViewCell {
+    
+    public var drugId : Int?
 
     // UI 요소 생성
     let checkButton = UIButton(type: .system).then {
         $0.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
-        $0.tintColor = .black
+        $0.tintColor = .appGreen
         $0.addTarget(self, action: #selector(checkButtonPressed(_:)), for: .touchUpInside)
     }
     
@@ -105,7 +82,13 @@ class DrugCell: UITableViewCell {
         }
         
         // 델리게이트 호출
-        delegate?.onCheck()
+        delegate?.onCheck(drugId: drugId ?? -1)
+    }
+    
+    func configure(name: String, count: Int, id: Int) {
+        drugNameLabel.text = name
+        drugCountLabel.text = "\(count)개"
+        drugId = id
     }
 }
 

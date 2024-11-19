@@ -14,6 +14,7 @@ class SearchDrugViewController : UIViewController, UISearchBarDelegate {
     
     let provider = MoyaProvider<DrugService>(plugins: [BearerTokenPlugin()])
     var searchResultList = [String]()
+    public var currentBoxId : Int?
     
     // 제목 라벨
     let titleLabel = UILabel().then {
@@ -207,6 +208,7 @@ extension SearchDrugViewController: UITableViewDataSource, UITableViewDelegate {
         print("선택된 약: \(selectedDrug)")
         let addNewDrugVC = AddDrugViewController()
         addNewDrugVC.drugName = selectedDrug
+        addNewDrugVC.drugboxId = self.currentBoxId
         print("전달된 drugName: \(addNewDrugVC.drugName ?? "없음")")
         self.navigationController?.pushViewController(addNewDrugVC, animated: true)
 //        tableView.deselectRow(at: indexPath, animated: true)

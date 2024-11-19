@@ -127,7 +127,7 @@ class RegisterViewController: UIViewController {
     //MARK: - API Call
     private func postSignUp(completion: @escaping (Bool) -> Void) {
         if let emailString = userEmail, let pwString = userPW {
-            let userRequest = UserLoginRequest(email: emailString, password: pwString)
+            let userRequest = UserSignUpRequest(email: emailString, password: pwString)
             print(userRequest)
             provider.request(.postRegister(param: userRequest)) { result in
                 switch result {

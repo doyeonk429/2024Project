@@ -8,6 +8,6 @@
 import Foundation
 
 struct DrugUpdateRequest : Codable {
-    let drugIds : Int
+    let drugIds : [Int]
     let drugboxId : Int
 }

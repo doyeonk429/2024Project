@@ -12,7 +12,7 @@ import KeychainSwift
 enum LoginService {
     // 자체 로그인
     case postLogin(param: UserLoginRequest)
-    case postRegister(param: UserLoginRequest)
+    case postRegister(param: UserSignUpRequest)
     // 구글 로그인
     case postGoogleLogin(param: OAuthLoginRequest)
     case postLogout(accessToken: String)

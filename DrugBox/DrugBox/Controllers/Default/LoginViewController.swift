@@ -185,27 +185,32 @@ class LoginViewController: UIViewController {
     }
     
     private func configureFCM() {
-        Messaging.messaging().token { token, error in
-            if let error = error {
-                print("Error fetching FCM token: \(error)")
-            } else if let token = token {
-                print("FCM token: \(token)")
-                self.fcmToken = token
-                LoginViewController.keychain.set(token, forKey: "FCMToken")
-            }
-        }
+//        Messaging.messaging().token { token, error in
+//            if let error = error {
+//                print("Error fetching FCM token: \(error)")
+//            } else if let token = token {
+//                print("FCM token: \(token)")
+//                self.fcmToken = token
+//                LoginViewController.keychain.set(token, forKey: "FCMToken")
+//            }
+//        }
     }
     
     // MARK: - Button Actions
     @objc private func buttonPressed() {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
-        callLogin(userData: assignLoginData(email: email, password: password)) { isSuccess in
-            if isSuccess {
-                self.navigationController?.pushViewController(MenuSelectViewController(), animated: true)
-            } else {
-                print("로그인 정보가 없습니다.")
+        if let userData = assignLoginData(email: email, password: password) {
+            callLogin(userData: userData) { isSuccess in
+                if isSuccess {
+                    self.navigationController?.pushViewController(MenuSelectViewController(), animated: true)
+                } else {
+                    print("로그인 정보가 없습니다.")
+                }
             }
+        } else {
+            print("UserData 생성 오류")
         }
+        
     }
     
     @objc private func registerButtonPressed() {
@@ -263,8 +268,11 @@ class LoginViewController: UIViewController {
         }
     }
     
-    private func assignLoginData(email: String, password: String) -> UserLoginRequest {
-        return UserLoginRequest(email: email, password: password)
+    private func assignLoginData(email: String, password: String) -> UserLoginRequest? {
+        if let fcmtoken = LoginViewController.keychain.get("FCMToken") {
+            return UserLoginRequest(email: email, password: password, fcmToken: fcmtoken)
+        }
+        return nil
     }
     
     private func assignGoogleLoginData(aToken: String, fcmToken: String, idToken: String) -> OAuthLoginRequest {

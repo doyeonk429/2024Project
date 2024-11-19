@@ -65,6 +65,7 @@ class BoxSettingViewController: UIViewController, UITableViewDelegate, UITableVi
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         $0.imageView?.contentMode = .scaleAspectFit
         $0.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 0)
+        
     }
     
     // editButton 생성
@@ -115,7 +116,7 @@ class BoxSettingViewController: UIViewController, UITableViewDelegate, UITableVi
         ImageChangeButton.addTarget(self, action: #selector(changeImage), for: .touchUpInside)
         
         setUserTableUI()
-        
+        MemberAddButton.addTarget(self, action: #selector(goToAddMemberPage), for: .touchUpInside)
         
         tableView.dataSource = self
         tableView.register(UserCell.self, forCellReuseIdentifier: "UserCell")

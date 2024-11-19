@@ -60,8 +60,7 @@ class ItemListViewController: UIViewController {
     @objc func addNewDrugButtonTapped() {
         // SearchViewController를 모달로 표시
         let searchVC = SearchDrugViewController()
-        searchVC.modalPresentationStyle = .fullScreen  // 전체 화면 모달로 표시
-        present(searchVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(searchVC, animated: true)
     }
     
     // 레이아웃 설정 함수

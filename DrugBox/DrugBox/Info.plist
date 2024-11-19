@@ -16,9 +16,7 @@
 		</dict>
 	</array>
 	<key>FirebaseAppDelegateProxyEnabled</key>
-	<true/>
-	<key>NSRemoteNotificationUsageDescription</key>
-	<string>푸시 알림을 통해 최신 소식을 받아보세요.</string>
+	<false/>
 	<key>GIDClientID</key>
 	<string>1071320915910-8gfqtqel5ia85sjrmoe4m7bl8mnlok1p.apps.googleusercontent.com</string>
 	<key>NSAppTransportSecurity</key>
@@ -26,6 +24,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSRemoteNotificationUsageDescription</key>
+	<string>푸시 알림을 통해 최신 소식을 받아보세요.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>RussoOne-Regular.ttf</string>

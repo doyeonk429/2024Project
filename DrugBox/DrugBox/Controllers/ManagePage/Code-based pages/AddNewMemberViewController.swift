@@ -8,12 +8,25 @@
 import UIKit
 import SnapKit
 import Toast
+import Moya
 
 class AddNewMemberViewController: UIViewController {
     
+    let provider = MoyaProvider<BoxManageService>(plugins: [
+        BearerTokenPlugin(),
+        NetworkLoggerPlugin(configuration: .init(logOptions: .verbose))
+    ])
     
-
+    
     // MARK: - UI Elements
+    private let inviteTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "멤버 초대하기"
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.textColor = .black
+        return label
+    }()
+    
     private let nicknameLabel: UILabel = {
         let label = UILabel()
         label.text = "닉네임"
@@ -69,18 +82,21 @@ class AddNewMemberViewController: UIViewController {
     var boxID: Int?
     var inviteCode: String = ""
     private let pasteboard = UIPasteboard.general
-
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupActions()
+        
+        inviteCodeLabel.text = inviteCode
         nicknameTextField.delegate = self
         view.backgroundColor = .white
     }
     
     // MARK: - UI Setup
     private func setupUI() {
+        view.addSubview(inviteTitleLabel)
         view.addSubview(nicknameLabel)
         view.addSubview(nicknameTextField)
         view.addSubview(inviteButton)
@@ -88,8 +104,13 @@ class AddNewMemberViewController: UIViewController {
         view.addSubview(inviteCodeLabel)
         view.addSubview(copyButton)
         
-        nicknameLabel.snp.makeConstraints { make in
+        inviteTitleLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
+            make.centerX.equalToSuperview()
+        }
+        
+        nicknameLabel.snp.makeConstraints { make in
+            make.top.equalTo(inviteTitleLabel.snp.bottom).offset(20) // "팀원 초대하기" 아래에 배치
             make.leading.equalToSuperview().offset(20)
         }
         
@@ -133,13 +154,52 @@ class AddNewMemberViewController: UIViewController {
             nicknameTextField.placeholder = "닉네임을 입력해주세요"
             return
         }
-        print("초대하기 버튼 클릭 - 닉네임: \(nickname)")
-        // 여기에 API 호출 코드 추가 가능
+        
+        guard let boxid = self.boxID else {
+            return
+        }
+        
+        postInvitationByName(data: setupInvitationData(boxId: boxid, nickname: nickname)) { isSuccess in
+            if isSuccess {
+                print("초대하기 성공 - 닉네임: \(nickname)")
+                let defaultBoxListVC = DrugBoxListVC()
+                self.navigationController?.pushViewController(defaultBoxListVC, animated: true)
+            } else {
+                print("데이터 전송 실패")
+            }
+        }
+        
     }
     
     @objc private func copyButtonPressed() {
         pasteboard.string = inviteCodeLabel.text
         view.makeToast("Copied!", duration: 2.0, position: .bottom)
+    }
+    
+    private func setupInvitationData(boxId : Int, nickname: String) -> BoxInvitationPost {
+        return BoxInvitationPost(drugboxId: boxId, nickname: nickname)
+    }
+    
+    private func postInvitationByName(data: BoxInvitationPost, completion: @escaping (Bool) -> Void) {
+        provider.request(.postInviteBox(param: data)) { result in
+            switch result {
+            case .success(let response) :
+                do {
+                    let responseData = try response.map(IdResponse.self)
+                    print("정상 초대된 box id : \(responseData.id)")
+                    completion(true)
+                } catch {
+                    print("Failed to decode response: \(error)")
+                    completion(false)
+                }
+            case .failure(let error) :
+                print("Error: \(error.localizedDescription)")
+                if let response = error.response {
+                    print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                }
+                completion(false)
+            }
+        }
     }
 }
 

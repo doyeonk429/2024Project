@@ -36,7 +36,6 @@
 		161DB4282B7A4E3B00F85377 /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DB4272B7A4E3B00F85377 /* InviteViewController.swift */; };
 		16205A822B7BB4B0002DF4D2 /* AddDrugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16205A812B7BB4B0002DF4D2 /* AddDrugViewController.swift */; };
 		16205A842B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16205A832B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift */; };
-		16205A862B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16205A852B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift */; };
 		164A0A072CA29E2600504BF1 /* AdImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164A0A062CA29E2600504BF1 /* AdImageCollectionViewCell.swift */; };
 		1662B8112C1FD04900BF7802 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1662B8102C1FD04900BF7802 /* KeychainSwift */; };
 		1662B81C2C21655400BF7802 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1662B81B2C21655400BF7802 /* LoginService.swift */; };
@@ -61,6 +60,7 @@
 		167EE01D2CEB08F000E9AAFE /* BoxSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE01C2CEB08F000E9AAFE /* BoxSettingView.swift */; };
 		167EE0232CEB393400E9AAFE /* AddNewBoxByCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE0222CEB393400E9AAFE /* AddNewBoxByCodeViewController.swift */; };
 		167EE0252CEB400600E9AAFE /* AddNewMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE0242CEB400600E9AAFE /* AddNewMemberViewController.swift */; };
+		167EE0272CEC416900E9AAFE /* AddNewDrugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE0262CEC416900E9AAFE /* AddNewDrugView.swift */; };
 		16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */; };
 		16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */; };
 		16913C8C2B654A36006A0F0A /* WayToDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C8B2B654A36006A0F0A /* WayToDelete.swift */; };
@@ -189,7 +189,6 @@
 		161DB4272B7A4E3B00F85377 /* InviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
 		16205A812B7BB4B0002DF4D2 /* AddDrugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrugViewController.swift; sourceTree = "<group>"; };
 		16205A832B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDrugDetailViewController.swift; sourceTree = "<group>"; };
-		16205A852B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPrescriptionViewController.swift; sourceTree = "<group>"; };
 		164A0A062CA29E2600504BF1 /* AdImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		1662B81B2C21655400BF7802 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		1662B81E2C218AFA00BF7802 /* BoxManageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxManageService.swift; sourceTree = "<group>"; };
@@ -213,6 +212,7 @@
 		167EE01C2CEB08F000E9AAFE /* BoxSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxSettingView.swift; sourceTree = "<group>"; };
 		167EE0222CEB393400E9AAFE /* AddNewBoxByCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBoxByCodeViewController.swift; sourceTree = "<group>"; };
 		167EE0242CEB400600E9AAFE /* AddNewMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMemberViewController.swift; sourceTree = "<group>"; };
+		167EE0262CEC416900E9AAFE /* AddNewDrugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDrugView.swift; sourceTree = "<group>"; };
 		16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBoxViewController.swift; sourceTree = "<group>"; };
 		16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDeleteViewController.swift; sourceTree = "<group>"; };
 		16913C8B2B654A36006A0F0A /* WayToDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WayToDelete.swift; sourceTree = "<group>"; };
@@ -403,9 +403,9 @@
 			isa = PBXGroup;
 			children = (
 				161DB40E2B6E8E1D00F85377 /* ItemListViewController.swift */,
+				16C19B262C81B52D00E93FD0 /* SearchDrugViewController.swift */,
 				16205A812B7BB4B0002DF4D2 /* AddDrugViewController.swift */,
 				16205A832B7BB4CB002DF4D2 /* ShowDrugDetailViewController.swift */,
-				16C19B262C81B52D00E93FD0 /* SearchDrugViewController.swift */,
 			);
 			path = DrugPage;
 			sourceTree = "<group>";
@@ -458,6 +458,8 @@
 			isa = PBXGroup;
 			children = (
 				16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */,
+				161DB4272B7A4E3B00F85377 /* InviteViewController.swift */,
+				161DB4062B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift */,
 			);
 			path = Prev_pages;
 			sourceTree = "<group>";
@@ -680,6 +682,7 @@
 				164A0A062CA29E2600504BF1 /* AdImageCollectionViewCell.swift */,
 				16E008BE2B63FDDB004F83F0 /* Main.storyboard */,
 				167EE01C2CEB08F000E9AAFE /* BoxSettingView.swift */,
+				167EE0262CEC416900E9AAFE /* AddNewDrugView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -737,9 +740,6 @@
 				167EE01B2CEAFD4E00E9AAFE /* Prev_pages */,
 				167EE00D2CDFBABC00E9AAFE /* Code-based pages */,
 				16205A802B7B6225002DF4D2 /* DrugPage */,
-				161DB4062B6DF84000F85377 /* JoinWIthInvitationCodeViewController.swift */,
-				161DB4272B7A4E3B00F85377 /* InviteViewController.swift */,
-				16205A852B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift */,
 			);
 			path = ManagePage;
 			sourceTree = "<group>";
@@ -1023,6 +1023,7 @@
 				167EE00F2CDFBADB00E9AAFE /* DrugBoxListVC.swift in Sources */,
 				16674C1C2CA2935200551008 /* LabelTableViewCell.swift in Sources */,
 				16126DBE2CABEBA600828185 /* AddrParameter.swift in Sources */,
+				167EE0272CEC416900E9AAFE /* AddNewDrugView.swift in Sources */,
 				16EFBB3F2B8105A1006C2EFF /* DrugCell.swift in Sources */,
 				16A2138B2BFDCAD600D82CE3 /* BoxListModel.swift in Sources */,
 				16126DA92CABC36E00828185 /* MenuView.swift in Sources */,
@@ -1049,7 +1050,6 @@
 				161DB4112B6E8F3100F85377 /* DrugModel.swift in Sources */,
 				16C19B832C81E06D00E93FD0 /* DrugSaveRequest.swift in Sources */,
 				16D3E6132CB6588F00124F6C /* LocationDetailviewController.swift in Sources */,
-				16205A862B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift in Sources */,
 				167EE0252CEB400600E9AAFE /* AddNewMemberViewController.swift in Sources */,
 				167EE0112CE47E2D00E9AAFE /* OCRSearchVC.swift in Sources */,
 				16A2138D2BFDCB0200D82CE3 /* BoxListData.swift in Sources */,

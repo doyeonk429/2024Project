@@ -141,7 +141,10 @@ class RegisterViewController: UIViewController {
                         completion(false)
                     }
                 case .failure(let error):
-                    print("Request failed : \(error)")
+                    print("Request failed Error: \(error.localizedDescription)")
+                    if let response = error.response {
+                        print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                    }
                     completion(false)
                 }
             }

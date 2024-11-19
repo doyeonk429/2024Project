@@ -85,8 +85,8 @@ extension BoxManageService : TargetType {
             return .uploadMultipart(formData)
         case .postJoinBox(let inviteCode) :
             return .requestParameters(parameters: ["inviteCode" : inviteCode], encoding: URLEncoding.queryString)
-        case .postInviteBox(let data) :
-            return .requestJSONEncodable(data)
+        case .postInviteBox(let param) :
+            return .requestParameters(parameters: ["drugboxId" : param.drugboxId, "nickname" : param.nickname], encoding: URLEncoding.queryString)
         case .postAddBoxbyCode(let invitId) :
             return .requestParameters(parameters: ["invitationId" : invitId], encoding: JSONEncoding.default)
         case .patchBoxName(let id, let name) :

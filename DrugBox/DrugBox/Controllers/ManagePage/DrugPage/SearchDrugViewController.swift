@@ -58,6 +58,14 @@ class SearchDrugViewController : UIViewController, UISearchBarDelegate {
         return s
     }()
     
+    // TableView 추가
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SearchResultCell")
+        tableView.separatorStyle = .singleLine
+        tableView.rowHeight = 50
+        return tableView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,13 +77,19 @@ class SearchDrugViewController : UIViewController, UISearchBarDelegate {
         view.addSubview(titleLabel)
         view.addSubview(xButton)
         view.addSubview(searchBar)
+        view.addSubview(tableView) // TableView 추가
         
         // UISearchBarDelegate 설정
         searchBar.delegate = self
         
+        // TableView Delegate & DataSource 설정
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         // 레이아웃 설정
         setTitleLabelUI()
         setSearchBarUI()
+        setTableViewUI() // TableView 레이아웃 설정
     }
     
     private func setTitleLabelUI() {
@@ -100,14 +114,20 @@ class SearchDrugViewController : UIViewController, UISearchBarDelegate {
             make.left.equalToSuperview().offset(16)
             make.right.equalToSuperview().offset(-16)
         }
-        
-        // UISearchBarDelegate 설정
-//        searchBar.delegate = self
+
+    }
+    
+    private func setTableViewUI() {
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(searchBar.snp.bottom).offset(16)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-16)
+        }
     }
     
     // 닫기 버튼 액션
     @objc func closeButtonTapped() {
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     public func callGetSearchResult(keyword: String, completion : @escaping (Bool) -> Void) {
@@ -117,13 +137,19 @@ class SearchDrugViewController : UIViewController, UISearchBarDelegate {
                 do {
                     let drugStringList = try response.map([String].self)
                     self.searchResultList = drugStringList
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData() // 검색 결과를 테이블뷰에 업데이트
+                    }
                     completion(true)
                 } catch {
                     print("map data error : \(error)")
                     completion(false)
                 }
             case .failure(let error):
-                print("Request Error : \(error)")
+                print("Error: \(error.localizedDescription)")
+                if let response = error.response {
+                    print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                }
                 completion(false)
             }
         }
@@ -136,14 +162,14 @@ class SearchDrugViewController : UIViewController, UISearchBarDelegate {
         }
         
         // 검색 실행 (예: 콘솔에 출력)
-        print("검색어: \(searchText)")
+//        print("검색어: \(searchText)")
         self.callGetSearchResult(keyword: searchText) { isSuccess in
             if isSuccess {
-                for drug in self.searchResultList {
-                    print("약 1 : \(drug)")
+                for (idx, drug) in self.searchResultList.enumerated() {
+                    print("약 \(idx) : \(drug)")
                 }
             } else {
-                print("실패")
+                print("다시 검색어를 입력하세요")
             }
         }
         
@@ -158,4 +184,31 @@ class SearchDrugViewController : UIViewController, UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
     
+}
+
+extension SearchDrugViewController: UITableViewDataSource, UITableViewDelegate {
+    // 섹션당 셀 개수
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResultList.count
+    }
+
+    // 각 셀 구성
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath)
+        cell.textLabel?.text = searchResultList[indexPath.row] // 검색 결과 텍스트 설정
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 16)
+        cell.textLabel?.textColor = .black
+        return cell
+    }
+    
+    // 셀 클릭 시 호출
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedDrug = searchResultList[indexPath.row]
+        print("선택된 약: \(selectedDrug)")
+        let addNewDrugVC = AddDrugViewController()
+        addNewDrugVC.drugName = selectedDrug
+        print("전달된 drugName: \(addNewDrugVC.drugName ?? "없음")")
+        self.navigationController?.pushViewController(addNewDrugVC, animated: true)
+//        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }

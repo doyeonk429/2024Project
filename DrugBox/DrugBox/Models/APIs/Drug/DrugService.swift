@@ -47,11 +47,11 @@ extension DrugService : TargetType {
         case .getDrugs(let id):
             return .requestParameters(parameters: ["drugboxId" : id], encoding: JSONEncoding.default)
         case .postDrugs(let data):
-            return .requestJSONEncodable(data)
+            return .requestParameters(parameters: ["drugSaveRequest" : data], encoding: JSONEncoding.default)
         case .patchDrugs(let data):
             return .requestJSONEncodable(data)
         case .getSearchResult(let name):
-            return .requestParameters(parameters: ["name": name], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: ["name": name], encoding: URLEncoding.queryString)
         }
     }
     

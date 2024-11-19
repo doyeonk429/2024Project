@@ -59,7 +59,8 @@
 		167EE0112CE47E2D00E9AAFE /* OCRSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE0102CE47E2D00E9AAFE /* OCRSearchVC.swift */; };
 		167EE0132CE47E5400E9AAFE /* OCRModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE0122CE47E5400E9AAFE /* OCRModel.swift */; };
 		167EE01D2CEB08F000E9AAFE /* BoxSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE01C2CEB08F000E9AAFE /* BoxSettingView.swift */; };
-		167EE0212CEB09F700E9AAFE /* NewBoxSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE0202CEB09F700E9AAFE /* NewBoxSettingViewController.swift */; };
+		167EE0232CEB393400E9AAFE /* AddNewBoxByCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE0222CEB393400E9AAFE /* AddNewBoxByCodeViewController.swift */; };
+		167EE0252CEB400600E9AAFE /* AddNewMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE0242CEB400600E9AAFE /* AddNewMemberViewController.swift */; };
 		16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */; };
 		16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */; };
 		16913C8C2B654A36006A0F0A /* WayToDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C8B2B654A36006A0F0A /* WayToDelete.swift */; };
@@ -210,7 +211,8 @@
 		167EE0102CE47E2D00E9AAFE /* OCRSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRSearchVC.swift; sourceTree = "<group>"; };
 		167EE0122CE47E5400E9AAFE /* OCRModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRModel.swift; sourceTree = "<group>"; };
 		167EE01C2CEB08F000E9AAFE /* BoxSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxSettingView.swift; sourceTree = "<group>"; };
-		167EE0202CEB09F700E9AAFE /* NewBoxSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBoxSettingViewController.swift; sourceTree = "<group>"; };
+		167EE0222CEB393400E9AAFE /* AddNewBoxByCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBoxByCodeViewController.swift; sourceTree = "<group>"; };
+		167EE0242CEB400600E9AAFE /* AddNewMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewMemberViewController.swift; sourceTree = "<group>"; };
 		16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBoxViewController.swift; sourceTree = "<group>"; };
 		16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDeleteViewController.swift; sourceTree = "<group>"; };
 		16913C8B2B654A36006A0F0A /* WayToDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WayToDelete.swift; sourceTree = "<group>"; };
@@ -445,8 +447,9 @@
 				167EE00E2CDFBADB00E9AAFE /* DrugBoxListVC.swift */,
 				16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */,
 				161DB41C2B7540F500F85377 /* BoxSettingViewController.swift */,
-				167EE0202CEB09F700E9AAFE /* NewBoxSettingViewController.swift */,
 				160307502C89814C007FD16E /* BoxSettingNameViewController.swift */,
+				167EE0222CEB393400E9AAFE /* AddNewBoxByCodeViewController.swift */,
+				167EE0242CEB400600E9AAFE /* AddNewMemberViewController.swift */,
 			);
 			path = "Code-based pages";
 			sourceTree = "<group>";
@@ -1012,13 +1015,13 @@
 				161DB4262B763B2800F85377 /* ButtonTappedDelegate.swift in Sources */,
 				16E008F72B640459004F83F0 /* LoginViewController.swift in Sources */,
 				16126DBA2CABEA6B00828185 /* MapService.swift in Sources */,
+				167EE0232CEB393400E9AAFE /* AddNewBoxByCodeViewController.swift in Sources */,
 				161DB40B2B6E709500F85377 /* BoxCell.swift in Sources */,
 				16126DC22CABF08900828185 /* MapResponse.swift in Sources */,
 				161DB4212B76190100F85377 /* UIImageView.swift in Sources */,
 				16C19B052C7D8E6A00E93FD0 /* BoxInvitationPost.swift in Sources */,
 				167EE00F2CDFBADB00E9AAFE /* DrugBoxListVC.swift in Sources */,
 				16674C1C2CA2935200551008 /* LabelTableViewCell.swift in Sources */,
-				167EE0212CEB09F700E9AAFE /* NewBoxSettingViewController.swift in Sources */,
 				16126DBE2CABEBA600828185 /* AddrParameter.swift in Sources */,
 				16EFBB3F2B8105A1006C2EFF /* DrugCell.swift in Sources */,
 				16A2138B2BFDCAD600D82CE3 /* BoxListModel.swift in Sources */,
@@ -1047,6 +1050,7 @@
 				16C19B832C81E06D00E93FD0 /* DrugSaveRequest.swift in Sources */,
 				16D3E6132CB6588F00124F6C /* LocationDetailviewController.swift in Sources */,
 				16205A862B7BB4F4002DF4D2 /* AddPrescriptionViewController.swift in Sources */,
+				167EE0252CEB400600E9AAFE /* AddNewMemberViewController.swift in Sources */,
 				167EE0112CE47E2D00E9AAFE /* OCRSearchVC.swift in Sources */,
 				16A2138D2BFDCB0200D82CE3 /* BoxListData.swift in Sources */,
 				161DB4192B752B0E00F85377 /* AFDateResponse.swift in Sources */,

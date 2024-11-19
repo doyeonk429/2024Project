@@ -116,6 +116,7 @@ class BoxSettingViewController: UIViewController, UITableViewDelegate, UITableVi
         
         setUserTableUI()
         
+        
         tableView.dataSource = self
         tableView.register(UserCell.self, forCellReuseIdentifier: "UserCell")
     }
@@ -198,10 +199,6 @@ class BoxSettingViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-//    @IBAction func addMemberButtonPressed(_ sender: UIButton) {
-//        performSegue(withIdentifier: K.manageSegue.inviteSegue, sender: self)
-//    }
-    
     //MARK: - Button Actions
     @objc func changeImage() {
         let alert = UIAlertController(title: "사진을 가져올 곳 선택", message: "", preferredStyle: .actionSheet)
@@ -228,7 +225,10 @@ class BoxSettingViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @objc func goToAddMemberPage() {
-        
+        let newMemberVC = AddNewMemberViewController()
+        newMemberVC.inviteCode = boxSetting.inviteCode
+        newMemberVC.boxID = boxSetting.drugboxId
+        self.navigationController?.pushViewController(newMemberVC, animated: true)
     }
     
     //MARK: - API func

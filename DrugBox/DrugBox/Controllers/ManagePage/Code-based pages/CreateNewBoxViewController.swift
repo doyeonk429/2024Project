@@ -131,9 +131,8 @@ class CreateNewBoxViewController: UIViewController {
     }
     
     @objc func invitationCodeButtonPressed() {
-        let vc = JoinWIthInvitationCodeViewController()
+        let vc = AddNewBoxByCodeViewController()
         self.navigationController?.pushViewController(vc, animated: true)
-//        performSegue(withIdentifier: K.manageSegue.invitationCodeSegue, sender: self)
     }
     
     @objc func saveButtonPressed() {

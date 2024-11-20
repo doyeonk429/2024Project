@@ -53,7 +53,7 @@ class DrugCell: UITableViewCell {
     private func setupLayout() {
         // checkButton 레이아웃
         checkButton.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(16)
+            make.left.equalToSuperview().offset(10)
             make.centerY.equalToSuperview()
             make.width.height.equalTo(30) // 버튼 크기 설정
         }

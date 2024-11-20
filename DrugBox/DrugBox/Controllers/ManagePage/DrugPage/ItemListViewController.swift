@@ -94,8 +94,8 @@ class ItemListViewController: UIViewController {
 
         drugTableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
+            make.leading.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().offset(-10)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-60)
         }
         
@@ -164,7 +164,9 @@ class ItemListViewController: UIViewController {
                         for drugData in responseData {
                             for drug in drugData.drugResponses {
                                 let drugModel = DrugModel(id : drug.id, drugName: drug.name, drugCount: drug.count, location: drug.location, expDate: drug.expDate, inDisposalList: drug.inDisposalList)
-                                self.Drugs.append(drugModel)
+                                if !drugModel.inDisposalList {
+                                    self.Drugs.append(drugModel)
+                                }
                                 // drugID : [이름, 효과]
                                 self.drugsInfo[drug.id] = drugInfoData(name: drugData.name, effect: drugData.effect)
                             }

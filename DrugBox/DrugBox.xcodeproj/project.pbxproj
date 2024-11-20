@@ -63,6 +63,10 @@
 		167EE0272CEC416900E9AAFE /* AddNewDrugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE0262CEC416900E9AAFE /* AddNewDrugView.swift */; };
 		167EE02A2CEC6AE100E9AAFE /* DrugDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE0292CEC6AE100E9AAFE /* DrugDetailResponse.swift */; };
 		167EE02C2CEC915400E9AAFE /* DrugInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE02B2CEC915400E9AAFE /* DrugInfoView.swift */; };
+		167EE0352CED8DFE00E9AAFE /* Pill_OpenData_with_ratio.csv in Resources */ = {isa = PBXBuildFile; fileRef = 167EE0342CED8DFE00E9AAFE /* Pill_OpenData_with_ratio.csv */; };
+		167EE0372CED8EF500E9AAFE /* CSVParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE0362CED8EF500E9AAFE /* CSVParser.swift */; };
+		167EE0392CEDA3D000E9AAFE /* DrugSearchByLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167EE0382CEDA3D000E9AAFE /* DrugSearchByLabelViewController.swift */; };
+		167EE03C2CEDA89F00E9AAFE /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 167EE03B2CEDA89F00E9AAFE /* SDWebImage */; };
 		16913C812B64FB0B006A0F0A /* DefaultBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */; };
 		16913C842B64FB59006A0F0A /* MainDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */; };
 		16913C8C2B654A36006A0F0A /* WayToDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16913C8B2B654A36006A0F0A /* WayToDelete.swift */; };
@@ -122,6 +126,7 @@
 		16C19B892C86CDDF00E93FD0 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C19B882C86CDDF00E93FD0 /* UserCell.swift */; };
 		16C3BA012B6A955800CD8B97 /* CreateNewBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */; };
 		16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */; };
+		16C42DA62CEDACDD0061CB85 /* PillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C42DA52CEDACDD0061CB85 /* PillTableViewCell.swift */; };
 		16C5CFF22BB7ED10008DF3D3 /* OnboardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C5CFF12BB7ED10008DF3D3 /* OnboardingCell.swift */; };
 		16C5CFF42BB7ED1E008DF3D3 /* OnboardingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16C5CFF32BB7ED1E008DF3D3 /* OnboardingCell.xib */; };
 		16D3E6132CB6588F00124F6C /* LocationDetailviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D3E6122CB6588F00124F6C /* LocationDetailviewController.swift */; };
@@ -217,6 +222,9 @@
 		167EE0262CEC416900E9AAFE /* AddNewDrugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDrugView.swift; sourceTree = "<group>"; };
 		167EE0292CEC6AE100E9AAFE /* DrugDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugDetailResponse.swift; sourceTree = "<group>"; };
 		167EE02B2CEC915400E9AAFE /* DrugInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugInfoView.swift; sourceTree = "<group>"; };
+		167EE0342CED8DFE00E9AAFE /* Pill_OpenData_with_ratio.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = Pill_OpenData_with_ratio.csv; sourceTree = "<group>"; };
+		167EE0362CED8EF500E9AAFE /* CSVParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVParser.swift; sourceTree = "<group>"; };
+		167EE0382CEDA3D000E9AAFE /* DrugSearchByLabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugSearchByLabelViewController.swift; sourceTree = "<group>"; };
 		16913C802B64FB0B006A0F0A /* DefaultBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBoxViewController.swift; sourceTree = "<group>"; };
 		16913C832B64FB59006A0F0A /* MainDeleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDeleteViewController.swift; sourceTree = "<group>"; };
 		16913C8B2B654A36006A0F0A /* WayToDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WayToDelete.swift; sourceTree = "<group>"; };
@@ -247,6 +255,7 @@
 		16C19B882C86CDDF00E93FD0 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		16C3BA002B6A955800CD8B97 /* CreateNewBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewBoxViewController.swift; sourceTree = "<group>"; };
 		16C3BA042B6A95CD00CD8B97 /* BoxManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxManager.swift; sourceTree = "<group>"; };
+		16C42DA52CEDACDD0061CB85 /* PillTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillTableViewCell.swift; sourceTree = "<group>"; };
 		16C5CFF12BB7ED10008DF3D3 /* OnboardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCell.swift; sourceTree = "<group>"; };
 		16C5CFF32BB7ED1E008DF3D3 /* OnboardingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingCell.xib; sourceTree = "<group>"; };
 		16D3E6122CB6588F00124F6C /* LocationDetailviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailviewController.swift; sourceTree = "<group>"; };
@@ -309,6 +318,7 @@
 				16C19B782C81BFF400E93FD0 /* GoogleSignInSwift in Frameworks */,
 				16C19B592C81BFD500E93FD0 /* FirebaseDynamicLinks in Frameworks */,
 				16C19B672C81BFD500E93FD0 /* FirebaseMLModelDownloader in Frameworks */,
+				167EE03C2CEDA89F00E9AAFE /* SDWebImage in Frameworks */,
 				16C19B5B2C81BFD500E93FD0 /* FirebaseFirestore in Frameworks */,
 				16C19B612C81BFD500E93FD0 /* FirebaseFunctionsCombine-Community in Frameworks */,
 			);
@@ -386,13 +396,6 @@
 				16674C192CA28ACA00551008 /* UIColor.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		161DB4222B761AAF00F85377 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Assets;
 			sourceTree = "<group>";
 		};
 		161DB4242B763B1200F85377 /* Protocols */ = {
@@ -475,12 +478,21 @@
 			path = Response;
 			sourceTree = "<group>";
 		};
+		167EE0332CED8DEE00E9AAFE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				167EE0342CED8DFE00E9AAFE /* Pill_OpenData_with_ratio.csv */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		16AA2AED2CA3F32900C4CD24 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				16C19B882C86CDDF00E93FD0 /* UserCell.swift */,
 				16AA2AF02CA3F35B00C4CD24 /* DisposalDrugCell.swift */,
 				167EE00B2CDFB6E700E9AAFE /* NewBoxCell.swift */,
+				16C42DA52CEDACDD0061CB85 /* PillTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -637,8 +649,8 @@
 		16E008B72B63FDDB004F83F0 /* DrugBox */ = {
 			isa = PBXGroup;
 			children = (
+				167EE0332CED8DEE00E9AAFE /* Resources */,
 				16A2138E2C01837B00D82CE3 /* DrugBox.entitlements */,
-				161DB4222B761AAF00F85377 /* Assets */,
 				16E008EB2B63FE77004F83F0 /* Controllers */,
 				16E008E92B63FE5B004F83F0 /* Models */,
 				16E008E82B63FE53004F83F0 /* Views */,
@@ -705,6 +717,7 @@
 				161DB4182B752B0E00F85377 /* AFDateResponse.swift */,
 				16A213882BF3467C00D82CE3 /* UserData.swift */,
 				167EE0122CE47E5400E9AAFE /* OCRModel.swift */,
+				167EE0362CED8EF500E9AAFE /* CSVParser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -767,6 +780,7 @@
 				16D3E6122CB6588F00124F6C /* LocationDetailviewController.swift */,
 				16126DB72CABE8D700828185 /* SearchViewController.swift */,
 				167EE0102CE47E2D00E9AAFE /* OCRSearchVC.swift */,
+				167EE0382CEDA3D000E9AAFE /* DrugSearchByLabelViewController.swift */,
 			);
 			path = SearchPage;
 			sourceTree = "<group>";
@@ -855,6 +869,7 @@
 				16C19B7A2C81C13200E93FD0 /* SnapKit */,
 				16C19B7D2C81C14D00E93FD0 /* Alamofire */,
 				16126D9E2CA420F400828185 /* KakaoMapsSDK-SPM */,
+				167EE03B2CEDA89F00E9AAFE /* SDWebImage */,
 			);
 			productName = DrugBox;
 			productReference = 16E008B52B63FDDB004F83F0 /* DrugBox.app */;
@@ -938,6 +953,7 @@
 				16C19B792C81C13200E93FD0 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				16C19B7C2C81C14D00E93FD0 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				16126D9D2CA420F400828185 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
+				167EE03A2CEDA89F00E9AAFE /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 16E008B62B63FDDB004F83F0 /* Products */;
 			projectDirPath = "";
@@ -957,6 +973,7 @@
 			files = (
 				16EFBB412B8105AD006C2EFF /* DrugCell.xib in Resources */,
 				16E008C52B63FDDB004F83F0 /* LaunchScreen.storyboard in Resources */,
+				167EE0352CED8DFE00E9AAFE /* Pill_OpenData_with_ratio.csv in Resources */,
 				16A213942C0836E000D82CE3 /* GoogleService-Info.plist in Resources */,
 				16E008C22B63FDDB004F83F0 /* Assets.xcassets in Resources */,
 				16E008C02B63FDDB004F83F0 /* Main.storyboard in Resources */,
@@ -1015,6 +1032,7 @@
 				16126DBC2CABEB4D00828185 /* LocationParameter.swift in Sources */,
 				16E008F92B6404FF004F83F0 /* Constants.swift in Sources */,
 				16EFBB352B80FFDC006C2EFF /* String.swift in Sources */,
+				167EE0372CED8EF500E9AAFE /* CSVParser.swift in Sources */,
 				16A213892BF3467C00D82CE3 /* UserData.swift in Sources */,
 				167EE00A2CDFB1BD00E9AAFE /* UIFont+Extension.swift in Sources */,
 				16205A822B7BB4B0002DF4D2 /* AddDrugViewController.swift in Sources */,
@@ -1035,6 +1053,7 @@
 				16126DA92CABC36E00828185 /* MenuView.swift in Sources */,
 				16C3BA052B6A95CD00CD8B97 /* BoxManager.swift in Sources */,
 				16EFBB482B8720CA006C2EFF /* RegisterViewController.swift in Sources */,
+				167EE0392CEDA3D000E9AAFE /* DrugSearchByLabelViewController.swift in Sources */,
 				161DB41D2B7540F500F85377 /* BoxSettingViewController.swift in Sources */,
 				16C19B072C7D902A00E93FD0 /* DrugBoxResponse.swift in Sources */,
 				16C19B272C81B52D00E93FD0 /* SearchDrugViewController.swift in Sources */,
@@ -1051,6 +1070,7 @@
 				16E008F32B6401B2004F83F0 /* MenuSelectViewController.swift in Sources */,
 				16674C1A2CA28ACA00551008 /* UIColor.swift in Sources */,
 				16126DAF2CABC5AF00828185 /* PrivacyInfoViewController.swift in Sources */,
+				16C42DA62CEDACDD0061CB85 /* PillTableViewCell.swift in Sources */,
 				16E009012B642EB5004F83F0 /* Alarm.swift in Sources */,
 				16C19AF32C799DF600E93FD0 /* IdResponse.swift in Sources */,
 				16C19AEB2C799B7500E93FD0 /* OAuthLoginRequest.swift in Sources */,
@@ -1456,6 +1476,14 @@
 				minimumVersion = 24.0.0;
 			};
 		};
+		167EE03A2CEDA89F00E9AAFE /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = exactVersion;
+				version = 5.20.0;
+			};
+		};
 		16A213852BF30DCA00D82CE3 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift";
@@ -1524,6 +1552,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1662B80F2C1FD04900BF7802 /* XCRemoteSwiftPackageReference "keychain-swift" */;
 			productName = KeychainSwift;
+		};
+		167EE03B2CEDA89F00E9AAFE /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 167EE03A2CEDA89F00E9AAFE /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 		16A213862BF30DCA00D82CE3 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;

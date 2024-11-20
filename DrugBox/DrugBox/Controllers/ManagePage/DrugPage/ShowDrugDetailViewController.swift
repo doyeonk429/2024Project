@@ -25,6 +25,7 @@ class ShowDrugDetailViewController: UIViewController {
         label.font = UIFont.ptdBoldFont(ofSize: 20)
         label.textAlignment = .center
         label.textColor = .black
+        label.numberOfLines = 2
         return label
     }()
     
@@ -107,7 +108,8 @@ class ShowDrugDetailViewController: UIViewController {
         // Set Constraints
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
-            make.centerX.equalToSuperview()
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().inset(20)
         }
         
         countValueLabel.snp.makeConstraints { make in
@@ -158,7 +160,7 @@ class ShowDrugDetailViewController: UIViewController {
         // Alert 생성
         let alert = UIAlertController(
             title: "폐기 대상 의약품 목록을 확인하시겠습니까?",
-            message: "폐기 대상 의약품 목록에서 해당 의약품이 제거되기 전까지는 구급상자에 남아있습니다.",
+            message: "해당 의약품이 제거되기 전까지는 폐기 대상 의약품 목록에서 확인할 수 있습니다.",
             preferredStyle: .alert
         )
         

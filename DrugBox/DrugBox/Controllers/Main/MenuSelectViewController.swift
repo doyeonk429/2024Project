@@ -8,7 +8,7 @@ import UIKit
 import SnapKit
 import SafariServices
 
-class MenuSelectViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class MenuSelectViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
     
     // UI Components
     private let manageButton = UIButton(type: .system)
@@ -18,7 +18,7 @@ class MenuSelectViewController: UIViewController, UICollectionViewDataSource, UI
     private let alarmButton = UIBarButtonItem()
     private let accountButton = UIBarButtonItem()
     
-    private var AdContents: [String] = ["ad1", "ad1", "ad1"]
+    private var AdContents: [String] = ["ad1", "ad2", "ad3"]
     private var AdLinks: [String] = [
         "https://www.nongmin.com/article/20240317500011",
         "https://gonggam.korea.kr/newsContentView.es?mid=a10205000000&news_id=9d913168-51b4-4802-867e-c14de8940f18&pWise=Letter",
@@ -221,6 +221,12 @@ class MenuSelectViewController: UIViewController, UICollectionViewDataSource, UI
     @objc private func ocrButtonPressed() {
         let ocrVC = OCRSearchVC()
         navigationController?.pushViewController(ocrVC, animated: true)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard scrollView == AdImageCollectionView else { return }
+        let currentPage = Int(scrollView.contentOffset.x / scrollView.frame.width)
+        pageControl.currentPage = currentPage
     }
     
     // MARK: - UICollectionView DataSource & Delegate

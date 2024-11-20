@@ -47,15 +47,20 @@ class OCRModel {
         }
     }
     
-    // 인식된 텍스트를 처리하는 함수
     private func handleDetectedText(request: VNRequest) -> [String] {
         guard let observations = request.results as? [VNRecognizedTextObservation] else {
             return []
         }
-        
-        // 인식된 텍스트를 배열로 반환
-        return observations.compactMap { observation in
-            observation.topCandidates(1).first?.string
+
+        // 개별 텍스트 처리 ( "|" -> "분할선" 변환 )
+        let processedTexts = observations.compactMap { observation in
+            observation.topCandidates(1).first?.string.replacingOccurrences(of: "|", with: "분할선")
         }
+
+        // 모든 텍스트를 단순히 이어붙임 (중간에 아무것도 추가하지 않음)
+        let combinedText = processedTexts.joined()
+
+        // 결과 배열 생성 (개별 텍스트 + 합친 텍스트)
+        return processedTexts + [combinedText]
     }
 }

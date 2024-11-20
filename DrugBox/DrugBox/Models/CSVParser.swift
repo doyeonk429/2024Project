@@ -59,15 +59,15 @@ class CSVParser {
         }
         
         // 부분 일치하는 항목
-        let partialMatches = pillDataList.filter { pill in
-            ocrResults.contains { result in
-                (pill.표시앞.contains(result) || pill.표시뒤.contains(result)) &&
-                !(pill.표시앞 == result || pill.표시뒤 == result)
-            }
-        }
+//        let partialMatches = pillDataList.filter { pill in
+//            ocrResults.contains { result in
+//                (pill.표시앞.contains(result) || pill.표시뒤.contains(result)) &&
+//                !(pill.표시앞 == result || pill.표시뒤 == result)
+//            }
+//        }
         
         // 완전히 일치하는 항목을 앞에 두고, 부분 일치하는 항목을 뒤에 추가
-        return exactMatches + partialMatches
+        return exactMatches
     }
     
     

@@ -11,6 +11,7 @@ import Then
 import MapKit
 import CoreLocation
 import Moya
+import SwiftyToaster
 
 class DefaultSearchViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate {
     
@@ -163,9 +164,8 @@ class DefaultSearchViewController: UIViewController, CLLocationManagerDelegate, 
                     completion(true)
                 }
             case .failure(let error) :
-                print("Error: \(error.localizedDescription)")
                 if let response = error.response {
-                    print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                    Toaster.shared.makeToast("\(response.statusCode) : \(error.localizedDescription)")
                 }
                 completion(false)
             }
@@ -226,6 +226,8 @@ extension DefaultSearchViewController: MKMapViewDelegate {
                 // 장소 ID를 기반으로 새로운 페이지로 이동
                 let detailVC = LocationDetailviewController()
                 detailVC.locationID = selectedLocation.locationId  // 새로운 뷰 컨트롤러로 장소 ID 전달
+                detailVC.locationName = selectedLocation.locationName
+                detailVC.locationAddress = selectedLocation.locationAddress
                 navigationController?.pushViewController(detailVC, animated: true)
             }
         }

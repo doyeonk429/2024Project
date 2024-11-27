@@ -23,7 +23,7 @@ class UserSettingViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     private let nameLabel = UILabel().then {
-        $0.text = "도담"
+        $0.text = "드럭박스테스터"
         $0.font = UIFont.boldSystemFont(ofSize: 20)
         $0.textColor = .black
     }
@@ -35,7 +35,7 @@ class UserSettingViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     private let emailLabel = UILabel().then {
-        $0.text = "dodam0429@example.com"
+        $0.text = "t@g.com"
         $0.font = UIFont.systemFont(ofSize: 16)
         $0.textColor = .gray
     }
@@ -46,17 +46,17 @@ class UserSettingViewController: UIViewController, UIImagePickerControllerDelega
         $0.tintColor = .blue
     }
     
-    private let logoutButton = UIButton().then {
-        $0.setTitle("로그아웃", for: .normal)
-        $0.setTitleColor(.lightGray, for: .normal)
-        $0.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-    }
-    
-    private let deleteAccountButton = UIButton().then {
-        $0.setTitle("탈퇴하기", for: .normal)
-        $0.setTitleColor(.lightGray, for: .normal)
-        $0.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-    }
+//    private let logoutButton = UIButton().then {
+//        $0.setTitle("로그아웃", for: .normal)
+//        $0.setTitleColor(.lightGray, for: .normal)
+//        $0.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+//    }
+//    
+//    private let deleteAccountButton = UIButton().then {
+//        $0.setTitle("탈퇴하기", for: .normal)
+//        $0.setTitleColor(.lightGray, for: .normal)
+//        $0.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+//    }
     
     // MARK: - Lifecycle
     
@@ -75,8 +75,8 @@ class UserSettingViewController: UIViewController, UIImagePickerControllerDelega
         view.addSubview(nameEditButton)
         view.addSubview(emailLabel)
         view.addSubview(emailEditButton)
-        view.addSubview(logoutButton)
-        view.addSubview(deleteAccountButton)
+//        view.addSubview(logoutButton)
+//        view.addSubview(deleteAccountButton)
         
         // Set constraints using SnapKit
         profileImageView.snp.makeConstraints { make in
@@ -107,15 +107,15 @@ class UserSettingViewController: UIViewController, UIImagePickerControllerDelega
             make.width.height.equalTo(24)
         }
         
-        logoutButton.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-40)
-            make.centerX.equalToSuperview().offset(-20)
-        }
-        
-        deleteAccountButton.snp.makeConstraints { make in
-            make.top.equalTo(logoutButton.snp.top)
-            make.leading.equalTo(logoutButton.snp.trailing).offset(10)
-        }
+//        logoutButton.snp.makeConstraints { make in
+//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-40)
+//            make.centerX.equalToSuperview().offset(-20)
+//        }
+//        
+//        deleteAccountButton.snp.makeConstraints { make in
+//            make.top.equalTo(logoutButton.snp.top)
+//            make.leading.equalTo(logoutButton.snp.trailing).offset(10)
+//        }
     }
     
     // MARK: - Gesture Recognizer for Profile Image

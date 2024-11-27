@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import Moya
+import SwiftyToaster
 
 
 class BoxSettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -248,9 +249,8 @@ class BoxSettingViewController: UIViewController, UITableViewDelegate, UITableVi
                     }
                     completion(true)
                 case .failure(let error) :
-                    print("Error: \(error.localizedDescription)")
                     if let response = error.response {
-                        print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                        Toaster.shared.makeToast("\(response.statusCode) : \(error.localizedDescription)")
                     }
                     completion(false)
                 }

@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 import Moya
 import SnapKit
+import SwiftyToaster
 
 class CreateNewBoxViewController: UIViewController {
     
@@ -117,8 +118,22 @@ class CreateNewBoxViewController: UIViewController {
     }
     
     // MARK: - Button Actions
+//    @objc func pickButtonPressed() {
+//        let alert = UIAlertController(title: "사진을 가져올 곳 선택", message: "", preferredStyle: .actionSheet)
+//        let library = UIAlertAction(title: "사진앨범", style: .default) { _ in self.openLibrary() }
+//        let camera = UIAlertAction(title: "카메라", style: .default) { _ in self.openCamera() }
+//        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+//        
+//        alert.addAction(library)
+//        alert.addAction(camera)
+//        alert.addAction(cancel)
+//        
+//        present(alert, animated: true, completion: nil)
+//    }
+    
     @objc func pickButtonPressed() {
-        let alert = UIAlertController(title: "사진을 가져올 곳 선택", message: "", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "사진을 가져올 곳 선택", message: "", preferredStyle: .alert) // 스타일을 .alert로 변경
+        
         let library = UIAlertAction(title: "사진앨범", style: .default) { _ in self.openLibrary() }
         let camera = UIAlertAction(title: "카메라", style: .default) { _ in self.openCamera() }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
@@ -155,16 +170,16 @@ class CreateNewBoxViewController: UIViewController {
             case .success(let response):
                 do {
                     let responseData = try response.map(IdResponse.self)
-                    print("정상 Post된 box id : \(responseData.id)")
+//                    print("정상 Post된 box id : \(responseData.id)")
                     completion(true)
                 } catch {
-                    print("Failed to decode response: \(error)")
+//                    print("Failed to decode response: \(error)")
+                    Toaster.shared.makeToast("Failed to decode response: \(error)")
                     completion(false)
                 }
             case .failure(let error):
-                print("Error: \(error.localizedDescription)")
                 if let response = error.response {
-                    print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                    Toaster.shared.makeToast("\(response.statusCode) : \(error.localizedDescription)")
                 }
                 completion(false)
             }

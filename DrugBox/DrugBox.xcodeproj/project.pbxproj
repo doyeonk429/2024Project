@@ -76,6 +76,7 @@
 		16A2138B2BFDCAD600D82CE3 /* BoxListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A2138A2BFDCAD600D82CE3 /* BoxListModel.swift */; };
 		16A2138D2BFDCB0200D82CE3 /* BoxListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A2138C2BFDCB0200D82CE3 /* BoxListData.swift */; };
 		16A213942C0836E000D82CE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16A213932C0836E000D82CE3 /* GoogleService-Info.plist */; };
+		16A7EBE72CF789F9007D916E /* SwiftyToaster in Frameworks */ = {isa = PBXBuildFile; productRef = 16A7EBE62CF789F9007D916E /* SwiftyToaster */; };
 		16AA2AF12CA3F35B00C4CD24 /* DisposalDrugCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AA2AF02CA3F35B00C4CD24 /* DisposalDrugCell.swift */; };
 		16AA2AF82CA4056400C4CD24 /* DefaultMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AA2AF72CA4056400C4CD24 /* DefaultMapViewController.swift */; };
 		16AA2AFA2CA4061400C4CD24 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 16AA2AF92CA4061400C4CD24 /* Config.xcconfig */; };
@@ -295,6 +296,7 @@
 				16C19B532C81BFD500E93FD0 /* FirebaseAuthCombine-Community in Frameworks */,
 				16C19B6F2C81BFD500E93FD0 /* FirebaseStorage in Frameworks */,
 				16C19B6B2C81BFD500E93FD0 /* FirebasePerformance in Frameworks */,
+				16A7EBE72CF789F9007D916E /* SwiftyToaster in Frameworks */,
 				16126D9F2CA420F400828185 /* KakaoMapsSDK-SPM in Frameworks */,
 				16C19B632C81BFD500E93FD0 /* FirebaseInAppMessaging-Beta in Frameworks */,
 				16C19B372C81BF5D00E93FD0 /* Then in Frameworks */,
@@ -870,6 +872,7 @@
 				16C19B7D2C81C14D00E93FD0 /* Alamofire */,
 				16126D9E2CA420F400828185 /* KakaoMapsSDK-SPM */,
 				167EE03B2CEDA89F00E9AAFE /* SDWebImage */,
+				16A7EBE62CF789F9007D916E /* SwiftyToaster */,
 			);
 			productName = DrugBox;
 			productReference = 16E008B52B63FDDB004F83F0 /* DrugBox.app */;
@@ -954,6 +957,7 @@
 				16C19B7C2C81C14D00E93FD0 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				16126D9D2CA420F400828185 /* XCRemoteSwiftPackageReference "KakaoMapsSDK-SPM" */,
 				167EE03A2CEDA89F00E9AAFE /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				16A7EBE52CF789F9007D916E /* XCRemoteSwiftPackageReference "SwiftyToaster" */,
 			);
 			productRefGroup = 16E008B62B63FDDB004F83F0 /* Products */;
 			projectDirPath = "";
@@ -1297,6 +1301,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1331,6 +1336,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1492,6 +1498,14 @@
 				minimumVersion = 5.1.1;
 			};
 		};
+		16A7EBE52CF789F9007D916E /* XCRemoteSwiftPackageReference "SwiftyToaster" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/noeyiz/SwiftyToaster";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
 		16C19B352C81BF5D00E93FD0 /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then";
@@ -1562,6 +1576,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 16A213852BF30DCA00D82CE3 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		16A7EBE62CF789F9007D916E /* SwiftyToaster */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16A7EBE52CF789F9007D916E /* XCRemoteSwiftPackageReference "SwiftyToaster" */;
+			productName = SwiftyToaster;
 		};
 		16C19B362C81BF5D00E93FD0 /* Then */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import Then
 import Moya
+import SwiftyToaster
 
 class SearchDrugViewController : UIViewController, UISearchBarDelegate {
     
@@ -147,9 +148,8 @@ class SearchDrugViewController : UIViewController, UISearchBarDelegate {
                     completion(false)
                 }
             case .failure(let error):
-                print("Error: \(error.localizedDescription)")
                 if let response = error.response {
-                    print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                    Toaster.shared.makeToast("\(response.statusCode) : \(error.localizedDescription)")
                 }
                 completion(false)
             }
@@ -205,11 +205,11 @@ extension SearchDrugViewController: UITableViewDataSource, UITableViewDelegate {
     // 셀 클릭 시 호출
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedDrug = searchResultList[indexPath.row]
-        print("선택된 약: \(selectedDrug)")
+//        print("선택된 약: \(selectedDrug)")
         let addNewDrugVC = AddDrugViewController()
         addNewDrugVC.drugName = selectedDrug
         addNewDrugVC.drugboxId = self.currentBoxId
-        print("전달된 drugName: \(addNewDrugVC.drugName ?? "없음")")
+//        print("전달된 drugName: \(addNewDrugVC.drugName ?? "없음")")
         self.navigationController?.pushViewController(addNewDrugVC, animated: true)
 //        tableView.deselectRow(at: indexPath, animated: true)
     }

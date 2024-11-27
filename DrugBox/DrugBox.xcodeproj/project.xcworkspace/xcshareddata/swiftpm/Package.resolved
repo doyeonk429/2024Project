@@ -1,5 +1,5 @@
 {
-  "originHash" : "31f58f3457c40222f9d287fdd8898b4a7338a32cdb0d7630528d47d9559db9e1",
+  "originHash" : "651e70150939e5fd9a200719e26e993ef8ce47bef8d9bdc3c9837200a6a219c8",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -186,8 +186,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ReactiveX/RxSwift.git",
       "state" : {
-        "revision" : "b06a8c8596e4c3e8e7788e08e720e3248563ce6a",
-        "version" : "6.7.1"
+        "revision" : "c7c7d2cf50a3211fe2843f76869c698e4e417930",
+        "version" : "6.8.0"
       }
     },
     {
@@ -215,6 +215,15 @@
       "state" : {
         "revision" : "564597ad2fe2513a94dd8f3ba27ea2ff4be3cb37",
         "version" : "1.28.0"
+      }
+    },
+    {
+      "identity" : "swiftytoaster",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/noeyiz/SwiftyToaster",
+      "state" : {
+        "revision" : "4ed905fdecf7426e3e7a7af03b09674980f9c1a7",
+        "version" : "1.0.2"
       }
     },
     {

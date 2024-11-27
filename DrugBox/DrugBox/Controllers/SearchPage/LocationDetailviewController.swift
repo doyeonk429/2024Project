@@ -7,25 +7,31 @@
 
 import UIKit
 import Moya
+import SDWebImage
+import SwiftyToaster
 
 class LocationDetailviewController: UIViewController {
     
     // 장소 ID를 전달받아 API 호출에 사용
     var locationID: String?
+    var locationName : String?
+    var locationAddress : String?
     
     let provider = MoyaProvider<MapService>(plugins: [
         BearerTokenPlugin(),
         NetworkLoggerPlugin(configuration: .init(logOptions: .verbose))
     ])
     
-    private let nameLabel = UILabel().then {
+    private lazy var nameLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        $0.text = self.locationName
         $0.numberOfLines = 0
         $0.textAlignment = .center
     }
     
-    private let addressLabel = UILabel().then {
+    private lazy var addressLabel = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 16)
+        $0.text = self.locationAddress
         $0.numberOfLines = 0
         $0.textAlignment = .center
         $0.textColor = .gray
@@ -35,23 +41,25 @@ class LocationDetailviewController: UIViewController {
         $0.clipsToBounds = true
         $0.layer.cornerRadius = 10
         $0.backgroundColor = .lightGray // 이미지가 없는 경우를 대비한 배경색
+        $0.sd_imageIndicator = SDWebImageActivityIndicator.gray // 로딩 인디케이터 추가
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupLayout()
-
+        
         if let id = locationID {
             fetchLocationDetail(locationID: id) { [weak self] locationDetail in
                 guard let self = self else { return }
-                self.nameLabel.text = locationDetail.locationName
-                self.addressLabel.text = locationDetail.formattedAddress
-                
                 // 이미지 로드
                 if let imageURL = URL(string: locationDetail.locationPhotos) {
-                    self.loadImage(from: imageURL) { image in
-                        self.locationImageView.image = image
+                    self.locationImageView.sd_setImage(with: imageURL, placeholderImage: nil, options: .highPriority) { image, error, _, _ in
+                        if let error = error {
+                            print("Failed to load image with SDWebImage: \(error.localizedDescription)")
+                        } else {
+                            print("Image loaded successfully.")
+                        }
                     }
                 }
             }
@@ -92,7 +100,9 @@ class LocationDetailviewController: UIViewController {
                     print("Failed to decode response: \(error)")
                 }
             case .failure(let error):
-                print("Error: \(error.localizedDescription)")
+                if let response = error.response {
+                    Toaster.shared.makeToast("\(response.statusCode) : \(error.localizedDescription)")
+                }
             }
         }
     }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyToaster
 
 class SearchViewController : UIViewController, UISearchBarDelegate {
     
@@ -34,6 +35,7 @@ class SearchViewController : UIViewController, UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder() // Hide the keyboard
+        Toaster.shared.makeToast("검색 기능은 잠시 중단되었습니다.")
     }
     
 }

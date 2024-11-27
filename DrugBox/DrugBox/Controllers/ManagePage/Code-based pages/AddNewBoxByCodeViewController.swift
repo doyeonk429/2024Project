@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Moya
+import SwiftyToaster
 
 class AddNewBoxByCodeViewController: UIViewController {
     
@@ -91,16 +92,15 @@ class AddNewBoxByCodeViewController: UIViewController {
             case .success(let response) :
                 do {
                     let responseData = try response.map(IdResponse.self)
-                    print("정상 Post된 box id : \(responseData.id)")
+//                    print("정상 Post된 box id : \(responseData.id)")
                     completion(true)
                 } catch {
-                    print("Failed to decode response: \(error)")
+                    Toaster.shared.makeToast("Failed to decode response: \(error)")
                     completion(false)
                 }
             case .failure(let error) :
-                print("Error: \(error.localizedDescription)")
                 if let response = error.response {
-                    print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                    Toaster.shared.makeToast("\(response.statusCode) : \(error.localizedDescription)")
                 }
                 completion(false)
             }

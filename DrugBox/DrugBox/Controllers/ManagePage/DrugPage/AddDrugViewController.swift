@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Moya
+import SwiftyToaster
 
 class AddDrugViewController: UIViewController {
     
@@ -206,9 +207,8 @@ class AddDrugViewController: UIViewController {
                     completion(false)
                 }
             case .failure(let error) :
-                print("Error: \(error.localizedDescription)")
                 if let response = error.response {
-                    print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                    Toaster.shared.makeToast("\(response.statusCode) : \(error.localizedDescription)")
                 }
                 completion(false)
             }

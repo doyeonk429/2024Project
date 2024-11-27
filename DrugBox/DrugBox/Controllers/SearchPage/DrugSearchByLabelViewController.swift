@@ -34,6 +34,7 @@ class DrugSearchByLabelViewController: UIViewController {
         }
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.allowsSelection = false
     }
 }
 
@@ -52,12 +53,5 @@ extension DrugSearchByLabelViewController: UITableViewDataSource, UITableViewDel
         let pill = ocrSearchStringList[indexPath.row]
         cell.configure(with: pill)
         return cell
-    }
-    
-    // 셀 선택 시 액션 (선택사항)
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let pill = ocrSearchStringList[indexPath.row]
-        print("Selected: \(pill.품목명)")
     }
 }

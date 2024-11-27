@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Moya
+import SwiftyToaster
 
 class DrugBoxListVC: UIViewController {
     
@@ -39,7 +40,8 @@ class DrugBoxListVC: UIViewController {
             if isSuccess {
                 self.boxTableView.reloadData()
             } else {
-                print("구급상자 목록을 불러오는데 실패했습니다.\n다시 시도해주세요.")
+//                print("구급상자 목록을 불러오는데 실패했습니다.\n다시 시도해주세요.")
+                
             }
         }
     }
@@ -68,7 +70,7 @@ class DrugBoxListVC: UIViewController {
             if isSuccess {
                 self.boxTableView.reloadData()
             } else {
-                print("구급상자 목록을 불러오는데 실패했습니다.\n다시 시도해주세요.")
+//                print("구급상자 목록을 불러오는데 실패했습니다.\n다시 시도해주세요.")
             }
         }
         
@@ -103,14 +105,13 @@ class DrugBoxListVC: UIViewController {
                         }
                         completion(true)
                     } catch {
-                        print("Failed to decode response: \(error)")
+                        Toaster.shared.makeToast("올바른 데이터가 아닙니다.")
                         completion(false)
                     }
                 }
             case .failure(let error):
-                print("Error: \(error.localizedDescription)")
                 if let response = error.response {
-                    print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                    Toaster.shared.makeToast("\(response.statusCode) : \(error.localizedDescription)")
                 }
                 completion(false)
             }
@@ -151,7 +152,7 @@ extension DrugBoxListVC: UITableViewDataSource, UITableViewDelegate {
 //MARK: - Button Delegate in the Cell
 extension DrugBoxListVC: ButtonTappedDelegate {
     func cellButtonTapped(_ buttonTag: Int) {
-        print("currentDrugbox in cellButtonTapped: \(currentDrugbox ?? -1) 태그는 \(buttonTag)")
+//        print("currentDrugbox in cellButtonTapped: \(currentDrugbox ?? -1) 태그는 \(buttonTag)")
         
         let settingVC = BoxSettingViewController()
         settingVC.drugBoxId = buttonTag

@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import Moya
 import Then
+import SwiftyToaster
 
 class ItemListViewController: UIViewController {
     
@@ -66,7 +67,6 @@ class ItemListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("뷰 윌 어피어 : 여기서 다시 호춣해야하는데?")
         callGetDrugs { isSuccess in
             if isSuccess {
                 self.drugTableView.reloadData()
@@ -118,7 +118,6 @@ class ItemListViewController: UIViewController {
         
         callPatchAPI(requestData: setupUseData(boxId: boxid, drugIds: self.useDrug)) { isSuccess in
             if isSuccess {
-                print("패치 성공!")
                 self.callGetDrugs { isSuccess in
                     if isSuccess {
                         self.drugTableView.reloadData()
@@ -141,12 +140,10 @@ class ItemListViewController: UIViewController {
         provider.request(.patchDrugs(data: requestData)) { result in
             switch result {
             case .success(let response):
-                print("patch api 전송 성공")
                 completion(true)
             case .failure(let error):
-                print("Error: \(error.localizedDescription)")
                 if let response = error.response {
-                    print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                    Toaster.shared.makeToast("\(response.statusCode) : \(error.localizedDescription)")
                 }
                 completion(false)
             }
@@ -177,9 +174,8 @@ class ItemListViewController: UIViewController {
                         completion(false)
                     }
                 case .failure(let error) :
-                    print("Error: \(error.localizedDescription)")
                     if let response = error.response {
-                        print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                        Toaster.shared.makeToast("\(response.statusCode) : \(error.localizedDescription)")
                     }
                     completion(false)
                 }

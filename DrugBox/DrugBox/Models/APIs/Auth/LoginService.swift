@@ -17,6 +17,8 @@ enum LoginService {
     case postGoogleLogin(param: OAuthLoginRequest)
     case postLogout(accessToken: String)
     case postQuit(accessToken: String)
+    
+    case postRefresh(refreshToken: String)
 }
 
 extension LoginService : TargetType {
@@ -31,6 +33,8 @@ extension LoginService : TargetType {
         case .postGoogleLogin : return "login/google"
         case .postLogout : return "logout"
         case .postQuit : return "quit"
+        case .postRefresh:
+            return "refresh"
         }
     }
     
@@ -41,6 +45,8 @@ extension LoginService : TargetType {
         case .postGoogleLogin : return .post
         case .postLogout : return .post
         case .postQuit : return .post
+        default :
+            return .post
         }
     }
     
@@ -56,6 +62,8 @@ extension LoginService : TargetType {
             return .requestParameters(parameters: ["accessToken": accessToken], encoding: JSONEncoding.default)
         case .postQuit(let accessToken) :
             return .requestParameters(parameters: ["accessToken": accessToken], encoding: JSONEncoding.default)
+        case .postRefresh(let refreshToken) :
+            return .requestParameters(parameters: ["refreshToken": refreshToken], encoding: JSONEncoding.default)
         }
     }
     

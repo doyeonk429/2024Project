@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import Then
 import Moya
+import SwiftyToaster
 
 class BoxSettingNameViewController: UIViewController {
     public var drugboxId : Int?
@@ -86,7 +87,9 @@ class BoxSettingNameViewController: UIViewController {
                     completion(false)
                 }
             case .failure(let error) :
-                print("Error: \(error.localizedDescription)")
+                if let response = error.response {
+                    Toaster.shared.makeToast("\(response.statusCode) : \(error.localizedDescription)")
+                }
                 completion(false)
             }
         }

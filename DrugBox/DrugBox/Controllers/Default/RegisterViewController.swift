@@ -4,14 +4,6 @@
 //
 //  Created by 김도연 on 2/22/24.
 //
-
-import UIKit
-import Alamofire
-import Toast
-import Moya
-import SnapKit
-import Then
-
 // 자세한 로그 보기
 //let requestClosure = { (endpoint: Endpoint, closure: MoyaProvider<LoginService>.RequestResultClosure) in
 //    do {
@@ -29,6 +21,7 @@ import UIKit
 import Moya
 import SnapKit
 import Then
+import SwiftyToaster
 
 class RegisterViewController: UIViewController {
     
@@ -52,7 +45,7 @@ class RegisterViewController: UIViewController {
     
     private let completedButton = UIButton(type: .system).then {
         $0.setTitle("Sign Up", for: .normal)
-        $0.backgroundColor = .systemBlue
+        $0.backgroundColor = .appGreen
         $0.setTitleColor(.white, for: .normal)
         $0.layer.cornerRadius = 5
         $0.addTarget(self, action: #selector(completedButtonPressed), for: .touchUpInside)
@@ -70,6 +63,11 @@ class RegisterViewController: UIViewController {
         
         setupLayout()
         setupTextFieldDelegates()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     //MARK: - Layout Setup with SnapKit
@@ -111,9 +109,10 @@ class RegisterViewController: UIViewController {
         assignJoinData()
         postSignUp { [weak self] isSuccess in
             if isSuccess {
-                self?.dismiss(animated: true)
+                self?.navigationController?.popViewController(animated: true)
             } else {
-                print("회원 가입 실패")
+//                print("회원 가입 실패")
+                Toaster.shared.makeToast("다시 시도해주세요.")
             }
         }
     }
@@ -134,22 +133,20 @@ class RegisterViewController: UIViewController {
                 case .success(let response):
                     do {
                         let data = try response.map(IdResponse.self)
-                        print("User Created: \(data)")
                         completion(true)
                     } catch {
                         print("Failed to map data : \(error)")
                         completion(false)
                     }
                 case .failure(let error):
-                    print("Request failed Error: \(error.localizedDescription)")
+//                    print("Request failed Error: \(error.localizedDescription)")
                     if let response = error.response {
-                        print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                        Toaster.shared.makeToast("\(response.statusCode) : \(error.localizedDescription)")
                     }
                     completion(false)
                 }
             }
         } else {
-            print("User input이 없습니다")
             completion(false)
         }
     }

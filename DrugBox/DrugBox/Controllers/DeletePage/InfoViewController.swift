@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import Then
 import Moya
+import SwiftyToaster
 
 class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -97,9 +98,8 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 print("삭제 성공 !")
                 completion(true)
             case .failure(let error) :
-                print("Error: \(error.localizedDescription)")
                 if let response = error.response {
-                    print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                    Toaster.shared.makeToast("\(response.statusCode) : \(error.localizedDescription)")
                 }
                 completion(false)
             }
@@ -127,9 +127,8 @@ class InfoViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     completion(false)
                 }
             case .failure(let error) :
-                print("Error: \(error.localizedDescription)")
                 if let response = error.response {
-                    print("Response Body: \(String(data: response.data, encoding: .utf8) ?? "")")
+                    Toaster.shared.makeToast("\(response.statusCode) : \(error.localizedDescription)")
                 }
                 completion(false)
             }

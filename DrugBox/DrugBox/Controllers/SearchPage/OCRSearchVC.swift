@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import SwiftyToaster
 
 class OCRSearchVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -58,9 +59,9 @@ class OCRSearchVC: UIViewController, UIImagePickerControllerDelegate, UINavigati
         
         // SnapKit을 사용해 레이아웃 설정
         selectedImageView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             make.centerX.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.8)
+            make.width.equalToSuperview().multipliedBy(0.6)
             make.height.equalTo(selectedImageView.snp.width)
         }
         
@@ -72,9 +73,9 @@ class OCRSearchVC: UIViewController, UIImagePickerControllerDelegate, UINavigati
         }
         
         recognizedTextView.snp.makeConstraints { make in
-            make.top.equalTo(selectImageButton.snp.bottom).offset(20)
+            make.top.equalTo(selectImageButton.snp.bottom).offset(10)
             make.left.right.equalToSuperview().inset(20)
-            make.height.equalTo(150)
+            make.height.equalTo(100)
         }
         
         goToResultVCButton.snp.makeConstraints { make in

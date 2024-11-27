@@ -4,6 +4,7 @@
 //
 //  Created by 김도연 on 1/27/24.
 //  Modifed by doyeonk429 on 3/4/24.
+
 import UIKit
 import Firebase
 import FirebaseAuth
@@ -13,6 +14,7 @@ import KeychainSwift
 import Moya
 import FirebaseMessaging
 import SnapKit
+import SwiftyToaster
 
 class LoginViewController: UIViewController {
     
@@ -123,6 +125,11 @@ class LoginViewController: UIViewController {
         configureFCM()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     private func setupViews() {
         view.backgroundColor = .white
         view.addSubview(contentView) // Add contentView to the main view
@@ -140,7 +147,7 @@ class LoginViewController: UIViewController {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView).offset(100)
+            make.top.equalTo(contentView).offset(80)
             make.left.right.equalToSuperview().inset(20)
             make.height.equalTo(40)
         }
@@ -204,24 +211,27 @@ class LoginViewController: UIViewController {
                 if isSuccess {
                     self.navigationController?.pushViewController(MenuSelectViewController(), animated: true)
                 } else {
-                    print("로그인 정보가 없습니다.")
+//                    print("로그인 정보가 없습니다.")
+                    Toaster.shared.makeToast("가입된 회원 정보가 없습니다.")
                 }
             }
         } else {
-            print("UserData 생성 오류")
+//            print("UserData 생성 오류")
+            Toaster.shared.makeToast("이메일 또는 비밀번호가 틀렸습니다.")
         }
         
     }
     
     @objc private func registerButtonPressed() {
         // Replace with appropriate action or segue
-        print("Register button pressed.")
+//        print("Register button pressed.")
         let registerVC = RegisterViewController()
         self.navigationController?.pushViewController(registerVC, animated: true)
     }
     
     @objc private func googleLogin() {
         // Google login setup
+        Toaster.shared.makeToast("현재 구글 로그인 기능 수정 중입니다.")
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         let config = GIDConfiguration(clientID: clientID)
         
@@ -256,13 +266,17 @@ class LoginViewController: UIViewController {
                     let rData = try response.map(TokenDto.self)
                     print(rData)
                     LoginViewController.keychain.set(rData.accessToken, forKey: "serverAccessToken")
+                    LoginViewController.keychain.set(rData.refreshToken, forKey: "serverRefreshToken")
+                    LoginViewController.keychain.set(String(rData.refreshTokenExpiresIn), forKey: "serverAccessTokenExpiresIn")
                     completion(true)
                 } catch {
                     print("Failed to map data: \(error)")
                     completion(false)
                 }
             case .failure(let error):
-                print("Request failed: \(error)")
+                if let response = error.response {
+                    Toaster.shared.makeToast("\(response.statusCode) : \(error.localizedDescription)")
+                }
                 completion(false)
             }
         }

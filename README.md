@@ -17,7 +17,7 @@ By utilizing this service, we aim to address various issues caused by improper d
 ### 2) Clone
 Clone this repo to your local machine using:  
 ```
-git clone https://github.com/2024-Google-Solution-Challenge-Team5/Backend.git
+git clone https://github.com/doyeonk429/2024Project.git
 ```
 <br/>
 
@@ -26,13 +26,14 @@ git clone https://github.com/2024-Google-Solution-Challenge-Team5/Backend.git
 2. Check the simulator version(recommend the *iPhone 15 pro!!*)<br/>
 3. Enjoy our service. You don't need to sign up to use our service. Just press the Google-sign-in button.<br/>
 
-Note! Main branch is not working. You must choose the **forDemoVideo** branch.
+Note! You must choose the **main** branch.
 
 <br/>
 
 ## 🛠 Tech Stacks
 - UIKit from CocoaTouch Framework
-- Alamofire
+- Snapkit, UserDefault
+- Moya
 - GoogleSignIn
 - WebKit Framework
 
@@ -40,6 +41,8 @@ Note! Main branch is not working. You must choose the **forDemoVideo** branch.
 
 
 ## 🖼 Previews
+
+
 <img src="https://github.com/2024-Google-Solution-Challenge-Team5/mobile-ios-native/assets/80318425/1859370f-ec65-4367-a2df-a952a785592f" width="200" height="430"/>
 
 <img src="https://github.com/2024-Google-Solution-Challenge-Team5/mobile-ios-native/assets/80318425/8a4fe429-b97c-4ffa-925b-5e12827e50b1" width="200" height="430"/>
